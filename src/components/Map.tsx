@@ -102,13 +102,20 @@ async function ensureViirsLayer(
       tiles: [urlFormat],
       tileSize: 256,
     });
-    map.addLayer({
-      id: VIIRS_LAYER_ID,
-      type: "raster",
-      source: VIIRS_SOURCE_ID,
-      paint: { "raster-opacity": opacity / 100 },
-      layout: { visibility: visible ? "visible" : "none" },
-    });
+    // Insert below the basemap's label layers (addLayer defaults to placing
+    // new layers on top of everything, which would bury place names under
+    // the color overlay and make them unreadable).
+    const firstSymbolLayerId = map.getStyle()?.layers?.find((layer) => layer.type === "symbol")?.id;
+    map.addLayer(
+      {
+        id: VIIRS_LAYER_ID,
+        type: "raster",
+        source: VIIRS_SOURCE_ID,
+        paint: { "raster-opacity": opacity / 100 },
+        layout: { visibility: visible ? "visible" : "none" },
+      },
+      firstSymbolLayerId,
+    );
   } catch (err) {
     console.error("Failed to load light-pollution layer:", err);
   }
