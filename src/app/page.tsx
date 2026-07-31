@@ -1,12 +1,19 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Map, { MapHandle } from "@/components/Map";
 import SearchBar, { GeocodeResult } from "@/components/SearchBar";
 import Legend from "@/components/Legend";
+import MapControls from "@/components/MapControls";
+import { BasemapId, DEFAULT_BASEMAP } from "@/lib/basemapStyles";
+import { ColorStyleId, DEFAULT_COLOR_STYLE } from "@/lib/colorStyles";
 
 export default function Home() {
   const mapRef = useRef<MapHandle>(null);
+  const [basemap, setBasemap] = useState<BasemapId>(DEFAULT_BASEMAP);
+  const [colorStyle, setColorStyle] = useState<ColorStyleId>(DEFAULT_COLOR_STYLE);
+  const [opacity, setOpacity] = useState(75);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (typeof window === "undefined" || !("geolocation" in navigator)) return;
@@ -36,9 +43,19 @@ export default function Home() {
 
   return (
     <main className="h-screen w-screen overflow-hidden">
-      <Map ref={mapRef} />
+      <Map ref={mapRef} basemap={basemap} colorStyle={colorStyle} opacity={opacity} visible={visible} />
       <SearchBar onSelect={handleSelect} />
-      <Legend />
+      <Legend colorStyle={colorStyle} />
+      <MapControls
+        basemap={basemap}
+        onBasemapChange={setBasemap}
+        colorStyle={colorStyle}
+        onColorStyleChange={setColorStyle}
+        opacity={opacity}
+        onOpacityChange={setOpacity}
+        visible={visible}
+        onVisibleChange={setVisible}
+      />
     </main>
   );
 }

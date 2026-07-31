@@ -1,9 +1,17 @@
 "use client";
 
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
-import { Map as MaplibreMap, NavigationControl, Popup, setWorkerUrl } from "maplibre-gl";
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
+import {
+  Map as MaplibreMap,
+  NavigationControl,
+  Popup,
+  RasterTileSource,
+  setWorkerUrl,
+} from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { MapView, readViewFromUrl, writeViewToUrl } from "@/lib/urlState";
+import { BasemapId, BASEMAP_STYLES } from "@/lib/basemapStyles";
+import { ColorStyleId } from "@/lib/colorStyles";
 
 // maplibre-gl v6 is ESM-only and can't reliably resolve its own worker URL
 // inside a bundler's module graph, so every bundler-based app has to point
@@ -15,14 +23,18 @@ import { MapView, readViewFromUrl, writeViewToUrl } from "@/lib/urlState";
 // both files into public/maplibre/ under their original names instead.
 setWorkerUrl("/maplibre/maplibre-gl-worker.mjs");
 
-// CARTO's free, key-less basemap styles: https://docs.carto.com/carto-for-developers/carto-for-react/guides/basemaps
-const BASEMAP_STYLE = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
-
 const VIIRS_SOURCE_ID = "viirs";
 const VIIRS_LAYER_ID = "viirs-layer";
 
 export type MapHandle = {
   flyTo: (view: MapView) => void;
+};
+
+export type MapProps = {
+  colorStyle: ColorStyleId;
+  basemap: BasemapId;
+  opacity: number; // 0-100
+  visible: boolean;
 };
 
 const BORTLE_DESCRIPTIONS: Record<number, string> = {
@@ -58,12 +70,66 @@ function formatPopupHtml(state: PopupState): string {
   `;
 }
 
-const Map = forwardRef<MapHandle>(function Map(_props, ref) {
+// Adds the VIIRS layer if it doesn't exist yet (e.g. first load, or right
+// after a basemap switch wiped it), or swaps its tile URL in place if it
+// does. Tile URLs are cached per color style so switching back to one
+// already viewed this session doesn't re-hit Earth Engine.
+async function ensureViirsLayer(
+  map: MaplibreMap,
+  colorStyle: ColorStyleId,
+  tileUrlCache: Partial<Record<ColorStyleId, string>>,
+  opacity: number,
+  visible: boolean,
+) {
+  try {
+    let urlFormat = tileUrlCache[colorStyle];
+    if (!urlFormat) {
+      const res = await fetch(`/api/tile-layer?style=${colorStyle}`);
+      if (!res.ok) throw new Error("tile-layer request failed");
+      const data = (await res.json()) as { urlFormat: string };
+      urlFormat = data.urlFormat;
+      tileUrlCache[colorStyle] = urlFormat;
+    }
+
+    const existingSource = map.getSource(VIIRS_SOURCE_ID) as RasterTileSource | undefined;
+    if (existingSource) {
+      existingSource.setTiles([urlFormat]);
+      return;
+    }
+
+    map.addSource(VIIRS_SOURCE_ID, {
+      type: "raster",
+      tiles: [urlFormat],
+      tileSize: 256,
+    });
+    map.addLayer({
+      id: VIIRS_LAYER_ID,
+      type: "raster",
+      source: VIIRS_SOURCE_ID,
+      paint: { "raster-opacity": opacity / 100 },
+      layout: { visibility: visible ? "visible" : "none" },
+    });
+  } catch (err) {
+    console.error("Failed to load light-pollution layer:", err);
+  }
+}
+
+const Map = forwardRef<MapHandle, MapProps>(function Map(
+  { colorStyle, basemap, opacity, visible },
+  ref,
+) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MaplibreMap | null>(null);
-  const [layerVisible, setLayerVisible] = useState(true);
-  const layerVisibleRef = useRef(layerVisible);
-  layerVisibleRef.current = layerVisible;
+  const tileUrlCacheRef = useRef<Partial<Record<ColorStyleId, string>>>({});
+
+  // Latest-value refs so async callbacks (fetch resolution, style.load) never
+  // close over stale props.
+  const colorStyleRef = useRef(colorStyle);
+  const opacityRef = useRef(opacity);
+  const visibleRef = useRef(visible);
+  colorStyleRef.current = colorStyle;
+  opacityRef.current = opacity;
+  visibleRef.current = visible;
 
   useImperativeHandle(ref, () => ({
     flyTo: (view: MapView) => {
@@ -78,7 +144,7 @@ const Map = forwardRef<MapHandle>(function Map(_props, ref) {
 
     const map = new MaplibreMap({
       container: containerRef.current,
-      style: BASEMAP_STYLE,
+      style: BASEMAP_STYLES[basemap].styleUrl,
       center: [initialView.lng, initialView.lat],
       zoom: initialView.zoom,
       attributionControl: { compact: true },
@@ -92,27 +158,7 @@ const Map = forwardRef<MapHandle>(function Map(_props, ref) {
     });
 
     map.on("load", () => {
-      fetch("/api/tile-layer")
-        .then(async (res) => {
-          if (!res.ok) throw new Error("tile-layer request failed");
-          const { urlFormat } = (await res.json()) as { urlFormat: string };
-
-          map.addSource(VIIRS_SOURCE_ID, {
-            type: "raster",
-            tiles: [urlFormat],
-            tileSize: 256,
-          });
-          map.addLayer({
-            id: VIIRS_LAYER_ID,
-            type: "raster",
-            source: VIIRS_SOURCE_ID,
-            paint: { "raster-opacity": 0.75 },
-            layout: { visibility: layerVisibleRef.current ? "visible" : "none" },
-          });
-        })
-        .catch((err) => {
-          console.error("Failed to load light-pollution layer:", err);
-        });
+      ensureViirsLayer(map, colorStyleRef.current, tileUrlCacheRef.current, opacityRef.current, visibleRef.current);
     });
 
     map.on("click", (e) => {
@@ -145,28 +191,65 @@ const Map = forwardRef<MapHandle>(function Map(_props, ref) {
       map.remove();
       mapRef.current = null;
     };
+    // Mount-only: the initial basemap/colorStyle/opacity/visible are read via
+    // refs above; later prop changes are each handled by their own effect below.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const toggleLayer = () => {
-    const next = !layerVisibleRef.current;
-    setLayerVisible(next);
-
-    const map = mapRef.current;
-    if (map?.getLayer(VIIRS_LAYER_ID)) {
-      map.setLayoutProperty(VIIRS_LAYER_ID, "visibility", next ? "visible" : "none");
+  const isFirstColorStyleRender = useRef(true);
+  useEffect(() => {
+    if (isFirstColorStyleRender.current) {
+      isFirstColorStyleRender.current = false;
+      return;
     }
-  };
+    const map = mapRef.current;
+    if (!map) return;
+    ensureViirsLayer(map, colorStyle, tileUrlCacheRef.current, opacityRef.current, visibleRef.current);
+  }, [colorStyle]);
+
+  const isFirstOpacityRender = useRef(true);
+  useEffect(() => {
+    if (isFirstOpacityRender.current) {
+      isFirstOpacityRender.current = false;
+      return;
+    }
+    if (mapRef.current?.getLayer(VIIRS_LAYER_ID)) {
+      mapRef.current.setPaintProperty(VIIRS_LAYER_ID, "raster-opacity", opacity / 100);
+    }
+  }, [opacity]);
+
+  const isFirstVisibleRender = useRef(true);
+  useEffect(() => {
+    if (isFirstVisibleRender.current) {
+      isFirstVisibleRender.current = false;
+      return;
+    }
+    if (mapRef.current?.getLayer(VIIRS_LAYER_ID)) {
+      mapRef.current.setLayoutProperty(VIIRS_LAYER_ID, "visibility", visible ? "visible" : "none");
+    }
+  }, [visible]);
+
+  // Switching basemap style wipes every custom source/layer (MapLibre
+  // behavior), so the VIIRS layer has to be re-added once the new style
+  // finishes loading. NavigationControl and the moveend/click handlers are
+  // bound to the Map instance rather than the style, so they survive as-is.
+  const isFirstBasemapRender = useRef(true);
+  useEffect(() => {
+    if (isFirstBasemapRender.current) {
+      isFirstBasemapRender.current = false;
+      return;
+    }
+    const map = mapRef.current;
+    if (!map) return;
+    map.once("style.load", () => {
+      ensureViirsLayer(map, colorStyleRef.current, tileUrlCacheRef.current, opacityRef.current, visibleRef.current);
+    });
+    map.setStyle(BASEMAP_STYLES[basemap].styleUrl);
+  }, [basemap]);
 
   return (
     <div className="fixed inset-0">
       <div ref={containerRef} className="h-full w-full" />
-      <button
-        type="button"
-        onClick={toggleLayer}
-        className="fixed bottom-16 right-4 z-10 rounded-md border border-white/10 bg-zinc-900/90 px-3 py-2 text-xs text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800"
-      >
-        {layerVisible ? "隐藏光污染图层" : "显示光污染图层"}
-      </button>
     </div>
   );
 });

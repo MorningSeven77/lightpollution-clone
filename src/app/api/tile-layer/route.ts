@@ -1,19 +1,28 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getEarthEngine, getViirsImage } from "@/lib/earthEngine";
+import { COLOR_STYLES, DEFAULT_COLOR_STYLE, isColorStyleId } from "@/lib/colorStyles";
 
-const VIS_PARAMS = {
-  min: 0,
-  max: 60,
-  palette: ["000000", "1a1a2e", "16213e", "e94560", "f9ed69", "ffffff"],
-};
+export async function GET(request: NextRequest) {
+  const styleParam = request.nextUrl.searchParams.get("style");
+  const styleId = isColorStyleId(styleParam) ? styleParam : DEFAULT_COLOR_STYLE;
+  const style = COLOR_STYLES[styleId];
 
-export async function GET() {
+  const visParams = {
+    min: style.min,
+    max: style.max,
+    palette: style.palette,
+  };
+
   try {
     await getEarthEngine();
-    const image = getViirsImage();
+    // VIIRS's native ~15 arcsec (~463m) pixels are visibly blocky once the
+    // map is zoomed past a certain point. Bilinear resampling only smooths
+    // how this *tile layer* is rendered — it doesn't change the underlying
+    // data, and point-value queries still read the raw pixel value.
+    const image = getViirsImage().resample("bilinear");
 
     const urlFormat = await new Promise<string>((resolve, reject) => {
-      image.getMap(VIS_PARAMS, (mapInfo: { urlFormat?: string }, err: unknown) => {
+      image.getMap(visParams, (mapInfo: { urlFormat?: string }, err: unknown) => {
         if (err || !mapInfo?.urlFormat) {
           reject(err instanceof Error ? err : new Error(String(err ?? "no urlFormat returned")));
           return;
