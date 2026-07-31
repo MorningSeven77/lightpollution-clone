@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Map, { MapHandle } from "@/components/Map";
 import SearchBar, { GeocodeResult } from "@/components/SearchBar";
+import Legend from "@/components/Legend";
 
 export default function Home() {
   const mapRef = useRef<MapHandle>(null);
@@ -37,6 +38,7 @@ export default function Home() {
     <main className="h-screen w-screen overflow-hidden">
       <Map ref={mapRef} />
       <SearchBar onSelect={handleSelect} />
+      <Legend />
     </main>
   );
 }
