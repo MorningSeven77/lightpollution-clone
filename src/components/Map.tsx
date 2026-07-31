@@ -1,16 +1,26 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import { Map as MaplibreMap, NavigationControl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { readViewFromUrl, writeViewToUrl } from "@/lib/urlState";
+import { MapView, readViewFromUrl, writeViewToUrl } from "@/lib/urlState";
 
 // CARTO's free, key-less basemap styles: https://docs.carto.com/carto-for-developers/carto-for-react/guides/basemaps
 const BASEMAP_STYLE = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
 
-export default function Map() {
+export type MapHandle = {
+  flyTo: (view: MapView) => void;
+};
+
+const Map = forwardRef<MapHandle>(function Map(_props, ref) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MaplibreMap | null>(null);
+
+  useImperativeHandle(ref, () => ({
+    flyTo: (view: MapView) => {
+      mapRef.current?.flyTo({ center: [view.lng, view.lat], zoom: view.zoom });
+    },
+  }));
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
@@ -51,4 +61,6 @@ export default function Map() {
       <div ref={containerRef} className="h-full w-full" />
     </div>
   );
-}
+});
+
+export default Map;
