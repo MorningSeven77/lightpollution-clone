@@ -1,9 +1,19 @@
 "use client";
 
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
-import { Map as MaplibreMap, NavigationControl, Popup } from "maplibre-gl";
+import { Map as MaplibreMap, NavigationControl, Popup, setWorkerUrl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { MapView, readViewFromUrl, writeViewToUrl } from "@/lib/urlState";
+
+// maplibre-gl v6 is ESM-only and can't reliably resolve its own worker URL
+// inside a bundler's module graph, so every bundler-based app has to point
+// it at the worker file explicitly (otherwise vector tiles never render —
+// they sit in a "loading" state forever with no error). The worker file
+// does a relative `import "./maplibre-gl-shared.mjs"`, so it can't be
+// served from a content-hashed bundler asset path (that would put it next
+// to a differently-named sibling); scripts/copy-maplibre-worker.js copies
+// both files into public/maplibre/ under their original names instead.
+setWorkerUrl("/maplibre/maplibre-gl-worker.mjs");
 
 // CARTO's free, key-less basemap styles: https://docs.carto.com/carto-for-developers/carto-for-react/guides/basemaps
 const BASEMAP_STYLE = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
@@ -138,11 +148,13 @@ const Map = forwardRef<MapHandle>(function Map(_props, ref) {
   }, []);
 
   const toggleLayer = () => {
-    const map = mapRef.current;
-    if (!map || !map.getLayer(VIIRS_LAYER_ID)) return;
     const next = !layerVisibleRef.current;
-    map.setLayoutProperty(VIIRS_LAYER_ID, "visibility", next ? "visible" : "none");
     setLayerVisible(next);
+
+    const map = mapRef.current;
+    if (map?.getLayer(VIIRS_LAYER_ID)) {
+      map.setLayoutProperty(VIIRS_LAYER_ID, "visibility", next ? "visible" : "none");
+    }
   };
 
   return (
