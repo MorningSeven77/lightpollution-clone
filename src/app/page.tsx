@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Map, { MapHandle } from "@/components/Map";
+import Map, { MapHandle, SelectedLocation } from "@/components/Map";
 import SearchBar, { GeocodeResult } from "@/components/SearchBar";
 import Legend from "@/components/Legend";
 import MapControls from "@/components/MapControls";
+import LocationDetailPanel from "@/components/LocationDetailPanel";
 import { BasemapId, DEFAULT_BASEMAP } from "@/lib/basemapStyles";
 import { ColorStyleId, DEFAULT_COLOR_STYLE } from "@/lib/colorStyles";
 
@@ -14,6 +15,7 @@ export default function Home() {
   const [colorStyle, setColorStyle] = useState<ColorStyleId>(DEFAULT_COLOR_STYLE);
   const [opacity, setOpacity] = useState(75);
   const [visible, setVisible] = useState(true);
+  const [selectedLocation, setSelectedLocation] = useState<SelectedLocation | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined" || !("geolocation" in navigator)) return;
@@ -43,7 +45,15 @@ export default function Home() {
 
   return (
     <main className="h-screen w-screen overflow-hidden">
-      <Map ref={mapRef} basemap={basemap} colorStyle={colorStyle} opacity={opacity} visible={visible} />
+      <Map
+        ref={mapRef}
+        basemap={basemap}
+        colorStyle={colorStyle}
+        opacity={opacity}
+        visible={visible}
+        selectedLocation={selectedLocation}
+        onMapClick={(lat, lng) => setSelectedLocation({ lat, lng })}
+      />
       <SearchBar onSelect={handleSelect} />
       <Legend colorStyle={colorStyle} />
       <MapControls
@@ -56,6 +66,7 @@ export default function Home() {
         visible={visible}
         onVisibleChange={setVisible}
       />
+      <LocationDetailPanel location={selectedLocation} onClose={() => setSelectedLocation(null)} />
     </main>
   );
 }

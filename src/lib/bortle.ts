@@ -29,6 +29,33 @@ const BORTLE_SQM_THRESHOLDS: Array<{ bortleClass: number; minSqm: number }> = [
 ];
 const DARKEST_BORTLE_CLASS = 9;
 
+export const BORTLE_DESCRIPTIONS: Record<number, string> = {
+  1: "极暗夜空",
+  2: "典型暗夜空",
+  3: "乡村夜空",
+  4: "乡村/郊区过渡",
+  5: "郊区夜空",
+  6: "较亮郊区夜空",
+  7: "郊区/城市过渡",
+  8: "城市夜空",
+  9: "市中心夜空",
+};
+
+// Rough, illustrative naked-eye visible-star-count ranges per Bortle class —
+// not a precise model, just a commonly cited ballpark to make the numbers
+// feel tangible next to the Bortle/SQM values.
+export const STAR_COUNT_ESTIMATES: Record<number, { min: number; max: number }> = {
+  1: { min: 5000, max: 15000 },
+  2: { min: 3000, max: 5000 },
+  3: { min: 2000, max: 3000 },
+  4: { min: 1000, max: 2000 },
+  5: { min: 500, max: 1000 },
+  6: { min: 250, max: 500 },
+  7: { min: 100, max: 250 },
+  8: { min: 50, max: 100 },
+  9: { min: 15, max: 50 },
+};
+
 export function radianceToBortleEstimate(radiance: number): BortleEstimate {
   const clampedRadiance = Math.max(radiance, 0);
   const logRadiance = Math.log10(clampedRadiance + 1);

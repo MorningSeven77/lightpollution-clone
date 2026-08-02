@@ -1,13 +1,7 @@
 "use client";
 
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
-import {
-  Map as MaplibreMap,
-  NavigationControl,
-  Popup,
-  RasterTileSource,
-  setWorkerUrl,
-} from "maplibre-gl";
+import { Map as MaplibreMap, Marker, NavigationControl, RasterTileSource, setWorkerUrl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { MapView, readViewFromUrl, writeViewToUrl } from "@/lib/urlState";
 import { BasemapId, BASEMAP_STYLES } from "@/lib/basemapStyles";
@@ -25,50 +19,22 @@ setWorkerUrl("/maplibre/maplibre-gl-worker.mjs");
 
 const VIIRS_SOURCE_ID = "viirs";
 const VIIRS_LAYER_ID = "viirs-layer";
+const MARKER_COLOR = "#34d399";
 
 export type MapHandle = {
   flyTo: (view: MapView) => void;
 };
+
+export type SelectedLocation = { lat: number; lng: number };
 
 export type MapProps = {
   colorStyle: ColorStyleId;
   basemap: BasemapId;
   opacity: number; // 0-100
   visible: boolean;
+  selectedLocation: SelectedLocation | null;
+  onMapClick: (lat: number, lng: number) => void;
 };
-
-const BORTLE_DESCRIPTIONS: Record<number, string> = {
-  1: "极暗夜空",
-  2: "典型暗夜空",
-  3: "乡村夜空",
-  4: "乡村/郊区过渡",
-  5: "郊区夜空",
-  6: "较亮郊区夜空",
-  7: "郊区/城市过渡",
-  8: "城市夜空",
-  9: "市中心夜空",
-};
-
-type PopupState =
-  | { status: "loading" }
-  | { status: "error" }
-  | { status: "done"; bortleClass: number; sqm: number };
-
-function formatPopupHtml(state: PopupState): string {
-  if (state.status === "loading") {
-    return `<div style="font-size:13px;">查询中…</div>`;
-  }
-  if (state.status === "error") {
-    return `<div style="font-size:13px;color:#f87171;">查询失败，请重试</div>`;
-  }
-  const desc = BORTLE_DESCRIPTIONS[state.bortleClass] ?? "";
-  return `
-    <div style="font-size:13px; line-height:1.6;">
-      <div><strong>Bortle ${state.bortleClass}</strong>（${desc}，近似值）</div>
-      <div>SQM ≈ ${state.sqm.toFixed(2)} mag/arcsec²</div>
-    </div>
-  `;
-}
 
 // Adds the VIIRS layer if it doesn't exist yet (e.g. first load, or right
 // after a basemap switch wiped it), or swaps its tile URL in place if it
@@ -122,21 +88,24 @@ async function ensureViirsLayer(
 }
 
 const Map = forwardRef<MapHandle, MapProps>(function Map(
-  { colorStyle, basemap, opacity, visible },
+  { colorStyle, basemap, opacity, visible, selectedLocation, onMapClick },
   ref,
 ) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MaplibreMap | null>(null);
+  const markerRef = useRef<Marker | null>(null);
   const tileUrlCacheRef = useRef<Partial<Record<ColorStyleId, string>>>({});
 
-  // Latest-value refs so async callbacks (fetch resolution, style.load) never
-  // close over stale props.
+  // Latest-value refs so async callbacks (fetch resolution, style.load, the
+  // click handler registered once at mount) never close over stale props.
   const colorStyleRef = useRef(colorStyle);
   const opacityRef = useRef(opacity);
   const visibleRef = useRef(visible);
+  const onMapClickRef = useRef(onMapClick);
   colorStyleRef.current = colorStyle;
   opacityRef.current = opacity;
   visibleRef.current = visible;
+  onMapClickRef.current = onMapClick;
 
   useImperativeHandle(ref, () => ({
     flyTo: (view: MapView) => {
@@ -169,21 +138,7 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
     });
 
     map.on("click", (e) => {
-      const { lng, lat } = e.lngLat;
-      const popup = new Popup({ closeButton: true, closeOnClick: true })
-        .setLngLat(e.lngLat)
-        .setHTML(formatPopupHtml({ status: "loading" }))
-        .addTo(map);
-
-      fetch(`/api/point-value?lat=${lat}&lng=${lng}`)
-        .then(async (res) => {
-          if (!res.ok) throw new Error("point-value request failed");
-          const data = (await res.json()) as { bortleClass: number; sqm: number };
-          popup.setHTML(formatPopupHtml({ status: "done", bortleClass: data.bortleClass, sqm: data.sqm }));
-        })
-        .catch(() => {
-          popup.setHTML(formatPopupHtml({ status: "error" }));
-        });
+      onMapClickRef.current(e.lngLat.lat, e.lngLat.lng);
     });
 
     mapRef.current = map;
@@ -253,6 +208,29 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
     });
     map.setStyle(BASEMAP_STYLES[basemap].styleUrl);
   }, [basemap]);
+
+  // Keep a marker at the currently selected point (or remove it once
+  // deselected), mirroring LocationDetailPanel's open/closed state.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+
+    if (!selectedLocation) {
+      markerRef.current?.remove();
+      markerRef.current = null;
+      return;
+    }
+
+    if (!markerRef.current) {
+      // Marker needs a position set *before* addTo() — it reads its lngLat
+      // while attaching to compute initial screen placement.
+      markerRef.current = new Marker({ color: MARKER_COLOR })
+        .setLngLat([selectedLocation.lng, selectedLocation.lat])
+        .addTo(map);
+    } else {
+      markerRef.current.setLngLat([selectedLocation.lng, selectedLocation.lat]);
+    }
+  }, [selectedLocation]);
 
   return (
     <div className="fixed inset-0">
