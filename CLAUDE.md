@@ -23,10 +23,10 @@
 
 - **MVP 闭环**：地图 + 真实 VIIRS 光污染叠加层 + 点击查询 Bortle/SQM + 地点搜索 + URL 分享，全部完成并部署上线
 - **批次二·视觉改版**：4 套配色风格（经典/柔光/科幻/群光）+ 底图切换（暗色/浅色/彩色）+ 透明度滑块 + 右上角设置面板，全部完成并部署上线
+- **批次三·第一项·位置详情面板**：点击地图弹出左侧常驻面板（坐标、反查地名、大字 Bortle、SQM、粗略可见恒星数），替换了原来的小气泡，全部完成并部署上线
 - **后续候选批次**（用户按此优先级排的序，还没做）：
-  1. 位置详情面板（左侧常驻面板显示 Bortle 大字号数值 + 描述文字等，目前只有点击弹出的小气泡）
-  2. 历史趋势图（查 Earth Engine 历年 VIIRS 数据，画某个点多年的光污染变化趋势）
-  3. 暗空地点图层 / 极光图层 / 天气叠加 / 昼夜分界线（这几个都需要接入全新的第三方数据源，工作量最大，放最后）
+  1. 历史趋势图（查 Earth Engine 历年 VIIRS 数据，画某个点多年的光污染变化趋势）
+  2. 暗空地点图层 / 极光图层 / 天气叠加 / 昼夜分界线（这几个都需要接入全新的第三方数据源，工作量最大，放最后）
 
 ## 已知坑点（踩过的坑，遇到类似问题不用重新排查一遍）
 
@@ -36,6 +36,8 @@
 - **Earth Engine `getMap()`/`visualize()` 不允许同时传 `gamma` 和 `palette`**，会直接报错。
 - **`@google/earthengine` 这个包的 Node 客户端完全不支持走代理**（内部用老式 xmlhttprequest，请求写死 `agent: false`）。本机需要在 Clash Verge 里开 **TUN 模式**（系统网络层接管全部流量）才能连上 `earthengine.googleapis.com`。如果换一台电脑本来就能直连境外服务，这步可以跳过——`src/instrumentation.ts` 里给普通 `fetch` 用的代理逻辑是按有没有设 `HTTP_PROXY`/`HTTPS_PROXY` 环境变量自动判断的，没设就不启用。
 - **`git push` 卡死不报错**：如果这台电脑是新装的 `gh` CLI，`gh repo create --push` 能成功是因为它自己处理认证，但后续单独 `git push` 会因为 git 没配置凭证助手卡在等一个不会来的密码输入。解决：跑一次 `gh auth setup-git`。
+- **maplibre-gl `Marker` 先 `addTo()` 再 `setLngLat()` 会报错**：`Cannot read properties of undefined (reading 'lng')`。`addTo(map)` 内部要读 marker 自己的经纬度算初始屏幕位置，所以必须先 `.setLngLat()` 再 `.addTo(map)`（链式调用顺序：`new Marker().setLngLat([lng,lat]).addTo(map)`）。
+- **Nominatim 反向地理编码查不到地名时返回 200**：不是失败状态码，响应体里是 `{"error":"Unable to geocode"}`，要当正常的"无地名"结果处理，不能当成上游请求失败。
 
 ## 注意事项
 
