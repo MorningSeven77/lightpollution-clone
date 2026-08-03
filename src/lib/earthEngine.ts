@@ -1,4 +1,7 @@
 import "server-only";
+// Must be imported before "@google/earthengine" — it patches the transport
+// the SDK uses for every network call. See earthEngineTransport.ts for why.
+import "./earthEngineTransport";
 import ee from "@google/earthengine";
 
 // NOAA/VIIRS/DNB/ANNUAL_V22: annual VIIRS nighttime-lights composite.

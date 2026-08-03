@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { BORTLE_DESCRIPTIONS, STAR_COUNT_ESTIMATES } from "@/lib/bortle";
 import { SelectedLocation } from "@/components/Map";
 
@@ -34,47 +34,47 @@ function LocationDetailPanelContent({
 }) {
   const [pointValue, setPointValue] = useState<PointValueState>({ status: "loading" });
   const [placeName, setPlaceName] = useState<PlaceNameState>({ status: "loading" });
-  const pointValueRequestIdRef = useRef(0);
-  const placeNameRequestIdRef = useRef(0);
 
-  const fetchPointValue = useCallback((lat: number, lng: number) => {
-    const requestId = ++pointValueRequestIdRef.current;
-    fetch(`/api/point-value?lat=${lat}&lng=${lng}`)
+  // AbortController-backed so React Strict Mode's dev-only double-invoke of
+  // this effect (mount -> cleanup -> mount again) cancels the first fetch
+  // instead of leaving two real in-flight requests racing each other — the
+  // slower one failing could otherwise clobber a perfectly good result.
+  const fetchPointValue = useCallback((lat: number, lng: number, signal: AbortSignal) => {
+    fetch(`/api/point-value?lat=${lat}&lng=${lng}`, { signal })
       .then(async (res) => {
         if (!res.ok) throw new Error("point-value request failed");
         const data = (await res.json()) as { bortleClass: number; sqm: number };
-        if (pointValueRequestIdRef.current !== requestId) return;
         setPointValue({ status: "done", bortleClass: data.bortleClass, sqm: data.sqm });
       })
-      .catch(() => {
-        if (pointValueRequestIdRef.current !== requestId) return;
+      .catch((err) => {
+        if (err instanceof DOMException && err.name === "AbortError") return;
         setPointValue({ status: "error" });
       });
   }, []);
 
-  const fetchPlaceName = useCallback((lat: number, lng: number) => {
-    const requestId = ++placeNameRequestIdRef.current;
-    fetch(`/api/reverse-geocode?lat=${lat}&lng=${lng}`)
+  const fetchPlaceName = useCallback((lat: number, lng: number, signal: AbortSignal) => {
+    fetch(`/api/reverse-geocode?lat=${lat}&lng=${lng}`, { signal })
       .then(async (res) => {
         if (!res.ok) throw new Error("reverse-geocode request failed");
         const data = (await res.json()) as { displayName: string | null };
-        if (placeNameRequestIdRef.current !== requestId) return;
         setPlaceName({ status: "done", name: data.displayName });
       })
-      .catch(() => {
-        if (placeNameRequestIdRef.current !== requestId) return;
+      .catch((err) => {
+        if (err instanceof DOMException && err.name === "AbortError") return;
         setPlaceName({ status: "error" });
       });
   }, []);
 
   useEffect(() => {
-    fetchPointValue(location.lat, location.lng);
-    fetchPlaceName(location.lat, location.lng);
+    const controller = new AbortController();
+    fetchPointValue(location.lat, location.lng, controller.signal);
+    fetchPlaceName(location.lat, location.lng, controller.signal);
+    return () => controller.abort();
   }, [location, fetchPointValue, fetchPlaceName]);
 
   const retryPointValue = () => {
     setPointValue({ status: "loading" });
-    fetchPointValue(location.lat, location.lng);
+    fetchPointValue(location.lat, location.lng, new AbortController().signal);
   };
 
   const placeNameText =
