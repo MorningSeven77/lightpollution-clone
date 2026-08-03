@@ -87,6 +87,24 @@ async function ensureViirsLayer(
   }
 }
 
+// CARTO's basemaps render CJK place/road names with a "HanWangHeiLight"
+// fallback font (their Latin-oriented font stack has no CJK glyphs) — that
+// font is visually much heavier than the Latin "Regular" weight the style
+// specifies, so Chinese labels read as bold even though nothing is actually
+// set to bold. Swapping in a lighter CJK font isn't possible without hosting
+// our own glyphs, so this thins the text halo instead, which is the one
+// lever that meaningfully reduces how heavy the labels look.
+const THINNED_TEXT_HALO_WIDTH = 0.5;
+
+function thinOutLabels(map: MaplibreMap) {
+  const layers = map.getStyle()?.layers ?? [];
+  for (const layer of layers) {
+    if (layer.type === "symbol" && layer.layout && "text-field" in layer.layout && map.getLayer(layer.id)) {
+      map.setPaintProperty(layer.id, "text-halo-width", THINNED_TEXT_HALO_WIDTH);
+    }
+  }
+}
+
 const Map = forwardRef<MapHandle, MapProps>(function Map(
   { colorStyle, basemap, opacity, visible, selectedLocation, onMapClick },
   ref,
@@ -135,6 +153,7 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
 
     map.on("load", () => {
       ensureViirsLayer(map, colorStyleRef.current, tileUrlCacheRef.current, opacityRef.current, visibleRef.current);
+      thinOutLabels(map);
     });
 
     map.on("click", (e) => {
@@ -205,6 +224,7 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
     if (!map) return;
     map.once("style.load", () => {
       ensureViirsLayer(map, colorStyleRef.current, tileUrlCacheRef.current, opacityRef.current, visibleRef.current);
+      thinOutLabels(map);
     });
     map.setStyle(BASEMAP_STYLES[basemap].styleUrl);
   }, [basemap]);
