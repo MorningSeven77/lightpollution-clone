@@ -34,7 +34,7 @@
 - **图层遮住地图文字**：`map.addLayer()` 不传第二个参数会把新图层加到最顶层，盖住底图的文字标注。要用 `map.getStyle().layers.find(l => l.type === "symbol")?.id` 找到第一个文字图层传进去。
 - **VIIRS 瓦片像素马赛克感**：原始分辨率约 463m/像素，缩放到街道级别很明显。用 `image.resample("bilinear")`（只用于生成瓦片图那次调用，不影响 `point-value` 用的原始像素值）能让色块平滑过渡。
 - **Earth Engine `getMap()`/`visualize()` 不允许同时传 `gamma` 和 `palette`**，会直接报错。
-- **`@google/earthengine` 这个包的 Node 客户端完全不支持走代理**（内部用老式 xmlhttprequest，请求写死 `agent: false`）。本机需要在 Clash Verge 里开 **TUN 模式**（系统网络层接管全部流量）才能连上 `earthengine.googleapis.com`。如果换一台电脑本来就能直连境外服务，这步可以跳过——`src/instrumentation.ts` 里给普通 `fetch` 用的代理逻辑是按有没有设 `HTTP_PROXY`/`HTTPS_PROXY` 环境变量自动判断的，没设就不启用。
+- **`@google/earthengine` 这个包的 Node 客户端完全不支持走代理**（内部用老式 xmlhttprequest，请求写死 `agent: false`）——**这个问题已经修复，不再需要开 TUN 模式**。`src/lib/earthEngineTransport.ts` 把 `xmlhttprequest` 包导出的构造函数换成了一个用 `fetch` 实现的替身（必须在 `import "@google/earthengine"` 之前 import 这个文件，见 `earthEngine.ts` 开头），这样 EE 的所有请求都走 `fetch`，自然享受 `instrumentation.ts` 里已经配好的代理。修复过程中还顺带抓到一个真 bug：`xmlhttprequest` 对不带 body 的 GET 请求会调用 `send("")`，但原生 `fetch()` 只要 GET/HEAD 请求带了 body（哪怕是空字符串）就直接抛错，得转成 `body ? body : undefined`。
 - **`git push` 卡死不报错**：如果这台电脑是新装的 `gh` CLI，`gh repo create --push` 能成功是因为它自己处理认证，但后续单独 `git push` 会因为 git 没配置凭证助手卡在等一个不会来的密码输入。解决：跑一次 `gh auth setup-git`。
 - **maplibre-gl `Marker` 先 `addTo()` 再 `setLngLat()` 会报错**：`Cannot read properties of undefined (reading 'lng')`。`addTo(map)` 内部要读 marker 自己的经纬度算初始屏幕位置，所以必须先 `.setLngLat()` 再 `.addTo(map)`（链式调用顺序：`new Marker().setLngLat([lng,lat]).addTo(map)`）。
 - **Nominatim 反向地理编码查不到地名时返回 200**：不是失败状态码，响应体里是 `{"error":"Unable to geocode"}`，要当正常的"无地名"结果处理，不能当成上游请求失败。
