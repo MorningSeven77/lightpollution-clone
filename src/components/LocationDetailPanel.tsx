@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { BORTLE_DESCRIPTIONS, STAR_COUNT_ESTIMATES } from "@/lib/bortle";
 import { SelectedLocation } from "@/components/Map";
+import TrendChart from "@/components/TrendChart";
+import { TrendPoint } from "@/app/api/trend/route";
 
 export type LocationDetailPanelProps = {
   location: SelectedLocation | null;
@@ -15,6 +17,8 @@ type PointValueState =
   | { status: "done"; bortleClass: number; sqm: number };
 
 type PlaceNameState = { status: "loading" } | { status: "error" } | { status: "done"; name: string | null };
+
+type TrendState = { status: "loading" } | { status: "error" } | { status: "done"; points: TrendPoint[] };
 
 export default function LocationDetailPanel({ location, onClose }: LocationDetailPanelProps) {
   if (!location) return null;
@@ -34,6 +38,7 @@ function LocationDetailPanelContent({
 }) {
   const [pointValue, setPointValue] = useState<PointValueState>({ status: "loading" });
   const [placeName, setPlaceName] = useState<PlaceNameState>({ status: "loading" });
+  const [trend, setTrend] = useState<TrendState>({ status: "loading" });
 
   // AbortController-backed so React Strict Mode's dev-only double-invoke of
   // this effect (mount -> cleanup -> mount again) cancels the first fetch
@@ -65,12 +70,26 @@ function LocationDetailPanelContent({
       });
   }, []);
 
+  const fetchTrend = useCallback((lat: number, lng: number, signal: AbortSignal) => {
+    fetch(`/api/trend?lat=${lat}&lng=${lng}`, { signal })
+      .then(async (res) => {
+        if (!res.ok) throw new Error("trend request failed");
+        const data = (await res.json()) as { points: TrendPoint[] };
+        setTrend({ status: "done", points: data.points });
+      })
+      .catch((err) => {
+        if (err instanceof DOMException && err.name === "AbortError") return;
+        setTrend({ status: "error" });
+      });
+  }, []);
+
   useEffect(() => {
     const controller = new AbortController();
     fetchPointValue(location.lat, location.lng, controller.signal);
     fetchPlaceName(location.lat, location.lng, controller.signal);
+    fetchTrend(location.lat, location.lng, controller.signal);
     return () => controller.abort();
-  }, [location, fetchPointValue, fetchPlaceName]);
+  }, [location, fetchPointValue, fetchPlaceName, fetchTrend]);
 
   const retryPointValue = () => {
     setPointValue({ status: "loading" });
@@ -124,6 +143,15 @@ function LocationDetailPanelContent({
               {STAR_COUNT_ESTIMATES[pointValue.bortleClass].max} 颗（粗略估算）
             </div>
           )}
+
+          {trend.status === "loading" && <div className="mt-3 text-xs text-zinc-400">趋势图查询中…</div>}
+          {trend.status === "done" && (
+            <div className="mt-3">
+              <TrendChart points={trend.points} />
+            </div>
+          )}
+          {/* A missing trend chart isn't worth a visible error — the Bortle/SQM
+              numbers above are the data that matters, so this just stays quiet. */}
         </div>
       )}
     </div>
