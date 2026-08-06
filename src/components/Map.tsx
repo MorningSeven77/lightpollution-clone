@@ -6,6 +6,11 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { MapView, readViewFromUrl, writeViewToUrl } from "@/lib/urlState";
 import { BasemapId, BASEMAP_STYLES } from "@/lib/basemapStyles";
 import { ColorStyleId } from "@/lib/colorStyles";
+import { DarkSkyPlace, DARK_SKY_PLACES, DARK_SKY_CATEGORY_META } from "@/lib/darkSkyPlaces";
+import type { AuroraFeatureCollection } from "@/app/api/aurora/route";
+import { computeTerminatorPolygon } from "@/lib/terminator";
+import { WeatherOverlayId, WEATHER_OVERLAYS } from "@/lib/weatherOverlay";
+import type { CircleLayerSpecification, FillLayerSpecification, GeoJSONSource, HeatmapLayerSpecification } from "maplibre-gl";
 
 // maplibre-gl v6 is ESM-only and can't reliably resolve its own worker URL
 // inside a bundler's module graph, so every bundler-based app has to point
@@ -20,6 +25,85 @@ setWorkerUrl("/maplibre/maplibre-gl-worker.mjs");
 const VIIRS_SOURCE_ID = "viirs";
 const VIIRS_LAYER_ID = "viirs-layer";
 const MARKER_COLOR = "#34d399";
+const DARK_SKY_SOURCE_ID = "dark-sky-places";
+const DARK_SKY_LAYER_ID = "dark-sky-places-layer";
+const AURORA_SOURCE_ID = "aurora";
+const AURORA_LAYER_ID = "aurora-layer";
+const TERMINATOR_SOURCE_ID = "terminator";
+const TERMINATOR_LAYER_ID = "terminator-layer";
+const WEATHER_TILES_SOURCE_ID = "weather-tiles";
+const WEATHER_TILES_LAYER_ID = "weather-tiles-layer";
+// How often to recompute the terminator polygon while it's visible — the
+// terminator sweeps ~15° of longitude per hour, so a 1-minute refresh keeps
+// it visually accurate without redrawing on every render frame.
+const TERMINATOR_REFRESH_MS = 60_000;
+
+// Static — DARK_SKY_PLACES never changes at runtime, so this is built once
+// at module load rather than re-derived on every ensureDarkSkyPlacesLayer call.
+const DARK_SKY_PLACES_GEOJSON: GeoJSON.FeatureCollection<GeoJSON.Point, DarkSkyPlace> = {
+  type: "FeatureCollection",
+  features: DARK_SKY_PLACES.map((place) => ({
+    type: "Feature",
+    geometry: { type: "Point", coordinates: [place.lng, place.lat] },
+    properties: place,
+  })),
+};
+
+const DARK_SKY_CIRCLE_COLOR: CircleLayerSpecification["paint"] = {
+  "circle-radius": 7,
+  "circle-color": [
+    "match",
+    ["get", "category"],
+    "park",
+    DARK_SKY_CATEGORY_META.park.color,
+    "community",
+    DARK_SKY_CATEGORY_META.community.color,
+    "sanctuary",
+    DARK_SKY_CATEGORY_META.sanctuary.color,
+    "reserve",
+    DARK_SKY_CATEGORY_META.reserve.color,
+    "urban",
+    DARK_SKY_CATEGORY_META.urban.color,
+    "#999999",
+  ],
+  "circle-stroke-width": 1.5,
+  "circle-stroke-color": "#ffffff",
+};
+
+// Green→yellow→red matches the reference site's own aurora-probability
+// legend (10% / 50% / 90%). "probability" is NOAA's 0-100 scale.
+const AURORA_HEATMAP_PAINT: HeatmapLayerSpecification["paint"] = {
+  "heatmap-weight": ["interpolate", ["linear"], ["get", "probability"], 0, 0, 100, 1],
+  "heatmap-intensity": ["interpolate", ["linear"], ["zoom"], 0, 1, 8, 2.5],
+  "heatmap-color": [
+    "interpolate",
+    ["linear"],
+    ["heatmap-density"],
+    0,
+    "rgba(0,0,0,0)",
+    0.2,
+    "rgba(34,197,94,0.5)",
+    0.5,
+    "rgba(234,179,8,0.7)",
+    1,
+    "rgba(239,68,68,0.85)",
+  ],
+  "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 0, 12, 8, 35],
+  "heatmap-opacity": 0.75,
+};
+
+const TERMINATOR_FILL_PAINT: FillLayerSpecification["paint"] = {
+  "fill-color": "#000000",
+  "fill-opacity": 0.35,
+};
+
+// BasemapDef is either a CARTO style.json URL or (for the raster satellite
+// basemap) an inline style object — both are valid values for MapLibre's
+// `style` option / setStyle(), so this just picks whichever one is present.
+function resolveBasemapStyle(id: BasemapId) {
+  const def = BASEMAP_STYLES[id];
+  return "styleUrl" in def ? def.styleUrl : def.style;
+}
 
 export type MapHandle = {
   flyTo: (view: MapView) => void;
@@ -34,6 +118,11 @@ export type MapProps = {
   visible: boolean;
   selectedLocation: SelectedLocation | null;
   onMapClick: (lat: number, lng: number) => void;
+  showDarkSkyPlaces: boolean;
+  onDarkSkyPlaceClick: (place: DarkSkyPlace) => void;
+  showAurora: boolean;
+  showTerminator: boolean;
+  weatherOverlay: WeatherOverlayId;
 };
 
 // Adds the VIIRS layer if it doesn't exist yet (e.g. first load, or right
@@ -87,6 +176,114 @@ async function ensureViirsLayer(
   }
 }
 
+// Adds the certified dark-sky-places source/layer if it doesn't exist yet
+// (e.g. first load, or right after a basemap switch wiped it) — the data is
+// static (see darkSkyPlaces.ts) so, unlike the VIIRS layer, there's no tile
+// URL to swap on re-entry.
+function ensureDarkSkyPlacesLayer(map: MaplibreMap, visible: boolean) {
+  if (map.getSource(DARK_SKY_SOURCE_ID)) return;
+
+  map.addSource(DARK_SKY_SOURCE_ID, {
+    type: "geojson",
+    data: DARK_SKY_PLACES_GEOJSON,
+  });
+  map.addLayer({
+    id: DARK_SKY_LAYER_ID,
+    type: "circle",
+    source: DARK_SKY_SOURCE_ID,
+    paint: DARK_SKY_CIRCLE_COLOR,
+    layout: { visibility: visible ? "visible" : "none" },
+  });
+}
+
+// Adds the aurora-probability source/layer if it doesn't exist yet, fetching
+// NOAA's OVATION forecast once and reusing it across re-entries (basemap
+// switches wipe the layer but not this cache) — unlike the VIIRS layer, there's
+// only ever one aurora dataset, not one per color style.
+async function ensureAuroraLayer(map: MaplibreMap, cache: { current: AuroraFeatureCollection | null }, visible: boolean) {
+  if (map.getSource(AURORA_SOURCE_ID)) return;
+  try {
+    let data = cache.current;
+    if (!data) {
+      const res = await fetch("/api/aurora");
+      if (!res.ok) throw new Error("aurora request failed");
+      data = (await res.json()) as AuroraFeatureCollection;
+      cache.current = data;
+    }
+    // The fetch above is async — a basemap switch or second mount could have
+    // already re-added the source while this call was awaiting the response.
+    if (map.getSource(AURORA_SOURCE_ID)) return;
+
+    map.addSource(AURORA_SOURCE_ID, { type: "geojson", data });
+    map.addLayer({
+      id: AURORA_LAYER_ID,
+      type: "heatmap",
+      source: AURORA_SOURCE_ID,
+      paint: AURORA_HEATMAP_PAINT,
+      layout: { visibility: visible ? "visible" : "none" },
+    });
+  } catch (err) {
+    console.error("Failed to load aurora layer:", err);
+  }
+}
+
+// Adds the day/night terminator source/layer if it doesn't exist yet. Unlike
+// the other layers this is pure client-side astronomy (see terminator.ts) —
+// no fetch, so it's synchronous and always current as of the moment it's added.
+function ensureTerminatorLayer(map: MaplibreMap, visible: boolean) {
+  if (map.getSource(TERMINATOR_SOURCE_ID)) return;
+
+  map.addSource(TERMINATOR_SOURCE_ID, {
+    type: "geojson",
+    data: computeTerminatorPolygon(new Date()),
+  });
+  map.addLayer({
+    id: TERMINATOR_LAYER_ID,
+    type: "fill",
+    source: TERMINATOR_SOURCE_ID,
+    paint: TERMINATOR_FILL_PAINT,
+    layout: { visibility: visible ? "visible" : "none" },
+  });
+}
+
+// Adds/updates the weather-tiles layer (clouds or rain, from
+// OpenWeatherMap via our own /api/weather-tiles proxy — see that route for
+// why it's proxied rather than hit directly). "none" just hides whatever's
+// there instead of removing it, matching the visibility-toggle pattern used
+// by the other layers, so switching back to clouds/rain doesn't need a
+// fresh addLayer.
+function ensureWeatherTilesLayer(map: MaplibreMap, overlay: WeatherOverlayId) {
+  const owmLayer = WEATHER_OVERLAYS[overlay].owmLayer;
+  const existingSource = map.getSource(WEATHER_TILES_SOURCE_ID) as RasterTileSource | undefined;
+
+  if (!owmLayer) {
+    if (map.getLayer(WEATHER_TILES_LAYER_ID)) {
+      map.setLayoutProperty(WEATHER_TILES_LAYER_ID, "visibility", "none");
+    }
+    return;
+  }
+
+  const tileUrl = `/api/weather-tiles?layer=${owmLayer}&z={z}&x={x}&y={y}`;
+
+  if (existingSource) {
+    existingSource.setTiles([tileUrl]);
+    map.setLayoutProperty(WEATHER_TILES_LAYER_ID, "visibility", "visible");
+    return;
+  }
+
+  map.addSource(WEATHER_TILES_SOURCE_ID, {
+    type: "raster",
+    tiles: [tileUrl],
+    tileSize: 256,
+  });
+  map.addLayer({
+    id: WEATHER_TILES_LAYER_ID,
+    type: "raster",
+    source: WEATHER_TILES_SOURCE_ID,
+    paint: { "raster-opacity": 0.7 },
+  });
+}
+
 // CARTO's basemaps render CJK place/road names with a "HanWangHeiLight"
 // fallback font (their Latin-oriented font stack has no CJK glyphs) — that
 // font is visually much heavier than the Latin "Regular" weight the style
@@ -106,13 +303,26 @@ function thinOutLabels(map: MaplibreMap) {
 }
 
 const Map = forwardRef<MapHandle, MapProps>(function Map(
-  { colorStyle, basemap, opacity, visible, selectedLocation, onMapClick },
+  {
+    colorStyle,
+    basemap,
+    opacity,
+    visible,
+    selectedLocation,
+    onMapClick,
+    showDarkSkyPlaces,
+    onDarkSkyPlaceClick,
+    showAurora,
+    showTerminator,
+    weatherOverlay,
+  },
   ref,
 ) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MaplibreMap | null>(null);
   const markerRef = useRef<Marker | null>(null);
   const tileUrlCacheRef = useRef<Partial<Record<ColorStyleId, string>>>({});
+  const auroraCacheRef = useRef<AuroraFeatureCollection | null>(null);
 
   // Latest-value refs so async callbacks (fetch resolution, style.load, the
   // click handler registered once at mount) never close over stale props.
@@ -120,10 +330,20 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
   const opacityRef = useRef(opacity);
   const visibleRef = useRef(visible);
   const onMapClickRef = useRef(onMapClick);
+  const showDarkSkyPlacesRef = useRef(showDarkSkyPlaces);
+  const onDarkSkyPlaceClickRef = useRef(onDarkSkyPlaceClick);
+  const showAuroraRef = useRef(showAurora);
+  const showTerminatorRef = useRef(showTerminator);
+  const weatherOverlayRef = useRef(weatherOverlay);
   colorStyleRef.current = colorStyle;
   opacityRef.current = opacity;
   visibleRef.current = visible;
   onMapClickRef.current = onMapClick;
+  showDarkSkyPlacesRef.current = showDarkSkyPlaces;
+  onDarkSkyPlaceClickRef.current = onDarkSkyPlaceClick;
+  showAuroraRef.current = showAurora;
+  showTerminatorRef.current = showTerminator;
+  weatherOverlayRef.current = weatherOverlay;
 
   useImperativeHandle(ref, () => ({
     flyTo: (view: MapView) => {
@@ -138,7 +358,7 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
 
     const map = new MaplibreMap({
       container: containerRef.current,
-      style: BASEMAP_STYLES[basemap].styleUrl,
+      style: resolveBasemapStyle(basemap),
       center: [initialView.lng, initialView.lat],
       zoom: initialView.zoom,
       attributionControl: { compact: true },
@@ -153,11 +373,32 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
 
     map.on("load", () => {
       ensureViirsLayer(map, colorStyleRef.current, tileUrlCacheRef.current, opacityRef.current, visibleRef.current);
+      ensureDarkSkyPlacesLayer(map, showDarkSkyPlacesRef.current);
+      ensureAuroraLayer(map, auroraCacheRef, showAuroraRef.current);
+      ensureTerminatorLayer(map, showTerminatorRef.current);
+      ensureWeatherTilesLayer(map, weatherOverlayRef.current);
       thinOutLabels(map);
     });
 
     map.on("click", (e) => {
+      // The dark-sky-places layer sits on top of the basemap; a click that
+      // lands on one of its circles should open that place's panel instead
+      // of falling through to the generic lat/lng point-value lookup.
+      const hits = map.getLayer(DARK_SKY_LAYER_ID)
+        ? map.queryRenderedFeatures(e.point, { layers: [DARK_SKY_LAYER_ID] })
+        : [];
+      if (hits.length > 0) {
+        onDarkSkyPlaceClickRef.current(hits[0].properties as unknown as DarkSkyPlace);
+        return;
+      }
       onMapClickRef.current(e.lngLat.lat, e.lngLat.lng);
+    });
+
+    map.on("mouseenter", DARK_SKY_LAYER_ID, () => {
+      map.getCanvas().style.cursor = "pointer";
+    });
+    map.on("mouseleave", DARK_SKY_LAYER_ID, () => {
+      map.getCanvas().style.cursor = "";
     });
 
     mapRef.current = map;
@@ -224,10 +465,69 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
     if (!map) return;
     map.once("style.load", () => {
       ensureViirsLayer(map, colorStyleRef.current, tileUrlCacheRef.current, opacityRef.current, visibleRef.current);
+      ensureDarkSkyPlacesLayer(map, showDarkSkyPlacesRef.current);
+      ensureAuroraLayer(map, auroraCacheRef, showAuroraRef.current);
+      ensureTerminatorLayer(map, showTerminatorRef.current);
+      ensureWeatherTilesLayer(map, weatherOverlayRef.current);
       thinOutLabels(map);
     });
-    map.setStyle(BASEMAP_STYLES[basemap].styleUrl);
+    map.setStyle(resolveBasemapStyle(basemap));
   }, [basemap]);
+
+  const isFirstWeatherOverlayRender = useRef(true);
+  useEffect(() => {
+    if (isFirstWeatherOverlayRender.current) {
+      isFirstWeatherOverlayRender.current = false;
+      return;
+    }
+    const map = mapRef.current;
+    if (!map) return;
+    ensureWeatherTilesLayer(map, weatherOverlay);
+  }, [weatherOverlay]);
+
+  const isFirstTerminatorRender = useRef(true);
+  useEffect(() => {
+    if (isFirstTerminatorRender.current) {
+      isFirstTerminatorRender.current = false;
+      return;
+    }
+    if (mapRef.current?.getLayer(TERMINATOR_LAYER_ID)) {
+      mapRef.current.setLayoutProperty(TERMINATOR_LAYER_ID, "visibility", showTerminator ? "visible" : "none");
+    }
+  }, [showTerminator]);
+
+  // Keep the terminator polygon current while it's visible — it sweeps
+  // ~15°/hour, so a stale polygon left up for a while would visibly drift.
+  useEffect(() => {
+    if (!showTerminator) return;
+    const intervalId = setInterval(() => {
+      const source = mapRef.current?.getSource(TERMINATOR_SOURCE_ID) as GeoJSONSource | undefined;
+      source?.setData(computeTerminatorPolygon(new Date()));
+    }, TERMINATOR_REFRESH_MS);
+    return () => clearInterval(intervalId);
+  }, [showTerminator]);
+
+  const isFirstAuroraRender = useRef(true);
+  useEffect(() => {
+    if (isFirstAuroraRender.current) {
+      isFirstAuroraRender.current = false;
+      return;
+    }
+    if (mapRef.current?.getLayer(AURORA_LAYER_ID)) {
+      mapRef.current.setLayoutProperty(AURORA_LAYER_ID, "visibility", showAurora ? "visible" : "none");
+    }
+  }, [showAurora]);
+
+  const isFirstDarkSkyPlacesRender = useRef(true);
+  useEffect(() => {
+    if (isFirstDarkSkyPlacesRender.current) {
+      isFirstDarkSkyPlacesRender.current = false;
+      return;
+    }
+    if (mapRef.current?.getLayer(DARK_SKY_LAYER_ID)) {
+      mapRef.current.setLayoutProperty(DARK_SKY_LAYER_ID, "visibility", showDarkSkyPlaces ? "visible" : "none");
+    }
+  }, [showDarkSkyPlaces]);
 
   // Keep a marker at the currently selected point (or remove it once
   // deselected), mirroring LocationDetailPanel's open/closed state.

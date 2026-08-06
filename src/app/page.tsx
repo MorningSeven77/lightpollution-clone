@@ -6,8 +6,12 @@ import SearchBar, { GeocodeResult } from "@/components/SearchBar";
 import Legend from "@/components/Legend";
 import MapControls from "@/components/MapControls";
 import LocationDetailPanel from "@/components/LocationDetailPanel";
+import DarkSkyPlacePanel from "@/components/DarkSkyPlacePanel";
+import MoonPhasePanel from "@/components/MoonPhasePanel";
 import { BasemapId, DEFAULT_BASEMAP } from "@/lib/basemapStyles";
 import { ColorStyleId, DEFAULT_COLOR_STYLE } from "@/lib/colorStyles";
+import { DarkSkyPlace } from "@/lib/darkSkyPlaces";
+import { WeatherOverlayId, DEFAULT_WEATHER_OVERLAY } from "@/lib/weatherOverlay";
 
 export default function Home() {
   const mapRef = useRef<MapHandle>(null);
@@ -16,6 +20,11 @@ export default function Home() {
   const [opacity, setOpacity] = useState(75);
   const [visible, setVisible] = useState(true);
   const [selectedLocation, setSelectedLocation] = useState<SelectedLocation | null>(null);
+  const [showDarkSkyPlaces, setShowDarkSkyPlaces] = useState(false);
+  const [selectedDarkSkyPlace, setSelectedDarkSkyPlace] = useState<DarkSkyPlace | null>(null);
+  const [showAurora, setShowAurora] = useState(false);
+  const [showTerminator, setShowTerminator] = useState(false);
+  const [weatherOverlay, setWeatherOverlay] = useState<WeatherOverlayId>(DEFAULT_WEATHER_OVERLAY);
 
   useEffect(() => {
     if (typeof window === "undefined" || !("geolocation" in navigator)) return;
@@ -52,10 +61,22 @@ export default function Home() {
         opacity={opacity}
         visible={visible}
         selectedLocation={selectedLocation}
-        onMapClick={(lat, lng) => setSelectedLocation({ lat, lng })}
+        onMapClick={(lat, lng) => {
+          setSelectedDarkSkyPlace(null);
+          setSelectedLocation({ lat, lng });
+        }}
+        showDarkSkyPlaces={showDarkSkyPlaces}
+        onDarkSkyPlaceClick={(place) => {
+          setSelectedLocation(null);
+          setSelectedDarkSkyPlace(place);
+        }}
+        showAurora={showAurora}
+        showTerminator={showTerminator}
+        weatherOverlay={weatherOverlay}
       />
       <SearchBar onSelect={handleSelect} />
       <Legend colorStyle={colorStyle} />
+      <MoonPhasePanel />
       <MapControls
         basemap={basemap}
         onBasemapChange={setBasemap}
@@ -65,8 +86,20 @@ export default function Home() {
         onOpacityChange={setOpacity}
         visible={visible}
         onVisibleChange={setVisible}
+        showDarkSkyPlaces={showDarkSkyPlaces}
+        onShowDarkSkyPlacesChange={setShowDarkSkyPlaces}
+        showAurora={showAurora}
+        onShowAuroraChange={setShowAurora}
+        showTerminator={showTerminator}
+        onShowTerminatorChange={setShowTerminator}
+        weatherOverlay={weatherOverlay}
+        onWeatherOverlayChange={setWeatherOverlay}
       />
-      <LocationDetailPanel location={selectedLocation} onClose={() => setSelectedLocation(null)} />
+      {selectedDarkSkyPlace ? (
+        <DarkSkyPlacePanel place={selectedDarkSkyPlace} onClose={() => setSelectedDarkSkyPlace(null)} />
+      ) : (
+        <LocationDetailPanel location={selectedLocation} onClose={() => setSelectedLocation(null)} />
+      )}
     </main>
   );
 }

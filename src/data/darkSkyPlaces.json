@@ -1,0 +1,2672 @@
+[
+  {
+    "id": 37969,
+    "name": "Weißbach Nature Park and Municipality",
+    "category": "park",
+    "lat": 47.522,
+    "lng": 12.753,
+    "year": 2026,
+    "area": "Park: 28km2Community: 69km2",
+    "link": "https://darksky.org/places/weisbach-nature-park-and-municipality/"
+  },
+  {
+    "id": 37400,
+    "name": "Sunshine Coast",
+    "category": "reserve",
+    "lat": -26.757509621343,
+    "lng": 152.86456648479,
+    "year": 2026,
+    "area": null,
+    "link": "https://darksky.org/places/sunshine-coast/"
+  },
+  {
+    "id": 37288,
+    "name": "Organ Pipe Cactus National Monument",
+    "category": "park",
+    "lat": 31.957746008761,
+    "lng": -112.79425727274,
+    "year": 2026,
+    "area": "1,335 km²",
+    "link": "https://darksky.org/places/organ-pipe-cactus-national-monument/"
+  },
+  {
+    "id": 37259,
+    "name": "Apache Junction Municipal Complex",
+    "category": "urban",
+    "lat": 33.423181176416,
+    "lng": -111.54273584663,
+    "year": 2026,
+    "area": "0.161874 km²",
+    "link": "https://darksky.org/places/apache-junction-municipal-complex/"
+  },
+  {
+    "id": 36898,
+    "name": "Stärepark Pëtschent – Putscheid, Luxembourg",
+    "category": "community",
+    "lat": 49.9623,
+    "lng": 6.1245,
+    "year": 2026,
+    "area": "27 km²",
+    "link": "https://darksky.org/places/starepark-petschent-putscheid-luxembourg/"
+  },
+  {
+    "id": 36664,
+    "name": "Winton Dark Sky Community",
+    "category": "community",
+    "lat": -22.38185,
+    "lng": 143.0424,
+    "year": 2026,
+    "area": "53,814 km²",
+    "link": "https://darksky.org/places/winton-dark-sky-community/"
+  },
+  {
+    "id": 36449,
+    "name": "Old Snowmass, Colorado",
+    "category": "community",
+    "lat": 39.330237902952,
+    "lng": -106.98327173224,
+    "year": 2026,
+    "area": "2.6 km²",
+    "link": "https://darksky.org/places/old-snowmass-colorado/"
+  },
+  {
+    "id": 36445,
+    "name": "Thorington Street, Suffolk",
+    "category": "community",
+    "lat": 51.981,
+    "lng": 0.933,
+    "year": 2026,
+    "area": "3.5 km²",
+    "link": "https://darksky.org/places/thorington-street-suffolk/"
+  },
+  {
+    "id": 36337,
+    "name": "Natur- und Sternenpark Nossentiner/Schwinzer Heide",
+    "category": "park",
+    "lat": 53.614,
+    "lng": 12.217,
+    "year": 2025,
+    "area": "355 km²",
+    "link": "https://darksky.org/places/natur-und-sternenpark-nossentiner-schwinzer-heide/"
+  },
+  {
+    "id": 36305,
+    "name": "Observatory Park at Turner Farm",
+    "category": "urban",
+    "lat": 38.99537,
+    "lng": -77.31149,
+    "year": 2024,
+    "area": "0.23 km²",
+    "link": "https://darksky.org/places/observatory-park-at-turner-farm/"
+  },
+  {
+    "id": 36258,
+    "name": "Kyritz-Ruppiner Heath",
+    "category": "park",
+    "lat": 53.038194,
+    "lng": 12.666314,
+    "year": 2025,
+    "area": "118 km²",
+    "link": "https://darksky.org/places/kyrtiz-ruppiner-heath/"
+  },
+  {
+    "id": 36256,
+    "name": "Río Hurtado, Chile",
+    "category": "community",
+    "lat": -30.258,
+    "lng": -70.668,
+    "year": 2025,
+    "area": "2117.2 km²",
+    "link": "https://darksky.org/places/rio-hurtado-chile/"
+  },
+  {
+    "id": 35898,
+    "name": "Chimney Rock National Monument",
+    "category": "park",
+    "lat": 37.164665419232,
+    "lng": -107.31145094604,
+    "year": 2025,
+    "area": "19.13 km²",
+    "link": "https://darksky.org/places/chimney-rock-national-monument/"
+  },
+  {
+    "id": 31497,
+    "name": "AlUla Dark Sky Parks",
+    "category": "park",
+    "lat": 27.209221,
+    "lng": 37.887482,
+    "year": 2024,
+    "area": "6,146 Sq. Km",
+    "link": "https://darksky.org/places/alula-manara-and-algharameel-nature-reserves/"
+  },
+  {
+    "id": 35817,
+    "name": "Snow Canyon State Park",
+    "category": "urban",
+    "lat": 37.2032421,
+    "lng": -113.64060508163,
+    "year": 2025,
+    "area": "29.95 km²",
+    "link": "https://darksky.org/places/snow-canyon-state-park/"
+  },
+  {
+    "id": 35830,
+    "name": "Black Mesa State Park",
+    "category": "park",
+    "lat": 36.842,
+    "lng": -102.883,
+    "year": 2025,
+    "area": "9.6 km²",
+    "link": "https://darksky.org/places/black-mesa-state-park/"
+  },
+  {
+    "id": 35643,
+    "name": "AlNufud ITBA",
+    "category": "park",
+    "lat": 28.92,
+    "lng": 40.398,
+    "year": 2025,
+    "area": null,
+    "link": "https://darksky.org/places/alnufud-itba/"
+  },
+  {
+    "id": 35587,
+    "name": "Caprock Canyons State Park, Texas",
+    "category": "park",
+    "lat": 34.410678257781,
+    "lng": -101.0532203512,
+    "year": 2025,
+    "area": null,
+    "link": "https://darksky.org/places/caprock-canyons-state-park-texas/"
+  },
+  {
+    "id": 35396,
+    "name": "Huanglong International Dark Sky Park",
+    "category": "park",
+    "lat": 32.746,
+    "lng": 103.749,
+    "year": 2025,
+    "area": null,
+    "link": "https://darksky.org/places/huanglong-international-dark-sky-park/"
+  },
+  {
+    "id": 35208,
+    "name": "ARTIS Park",
+    "category": "urban",
+    "lat": 52.366039579149,
+    "lng": 4.9165320977656,
+    "year": 2025,
+    "area": "0.14 km²",
+    "link": "https://darksky.org/places/artis-park/"
+  },
+  {
+    "id": 34925,
+    "name": "Naseby, New Zealand",
+    "category": "community",
+    "lat": -45.025956215741,
+    "lng": 170.14540392637,
+    "year": 2025,
+    "area": null,
+    "link": "https://darksky.org/places/naseby-new-zealand/"
+  },
+  {
+    "id": 34790,
+    "name": "Lapalala Wilderness Nature Reserve",
+    "category": "park",
+    "lat": -23.81,
+    "lng": 28.31,
+    "year": 2025,
+    "area": null,
+    "link": "https://darksky.org/places/lapalala-wilderness-nature-reserve/"
+  },
+  {
+    "id": 34865,
+    "name": "Town of Breckenridge, Colorado",
+    "category": "community",
+    "lat": 39.48,
+    "lng": -106.05,
+    "year": 2025,
+    "area": null,
+    "link": "https://darksky.org/places/town-of-breckenridge-colorado/"
+  },
+  {
+    "id": 34125,
+    "name": "Liberty Hill, Texas",
+    "category": "community",
+    "lat": 30.667152,
+    "lng": -97.92646,
+    "year": 2025,
+    "area": null,
+    "link": "https://darksky.org/places/liberty-hill-texas/"
+  },
+  {
+    "id": 34141,
+    "name": "Bavarian Forest National Park",
+    "category": "reserve",
+    "lat": 48.98807851619,
+    "lng": 13.384156941797,
+    "year": 2025,
+    "area": null,
+    "link": "https://darksky.org/places/bavarian-forest-national-park/"
+  },
+  {
+    "id": 33920,
+    "name": "Bluff, Utah",
+    "category": "community",
+    "lat": 37.285440515875,
+    "lng": -109.55691123928,
+    "year": 2025,
+    "area": null,
+    "link": "https://darksky.org/places/bluff-utah/"
+  },
+  {
+    "id": 33495,
+    "name": "Regional Natural Park of Morvan",
+    "category": "reserve",
+    "lat": 47.146033011069,
+    "lng": 3.9560481155548,
+    "year": 2025,
+    "area": null,
+    "link": "https://darksky.org/places/regional-natural-park-of-morvan/"
+  },
+  {
+    "id": 33572,
+    "name": "Island of Anholt",
+    "category": "park",
+    "lat": 56.710095,
+    "lng": 11.570061,
+    "year": 2025,
+    "area": "22.37 Sq. Km",
+    "link": "https://darksky.org/places/island-of-anholt/"
+  },
+  {
+    "id": 33484,
+    "name": "Jackson Hole Airport",
+    "category": "urban",
+    "lat": 43.601202119010054,
+    "lng": -110.73559330163968,
+    "year": 2025,
+    "area": "2.02 km",
+    "link": "https://darksky.org/places/jackson-hole-airport/"
+  },
+  {
+    "id": 33285,
+    "name": "Teton County",
+    "category": "community",
+    "lat": 43.48275177189,
+    "lng": -110.75898390985,
+    "year": 2025,
+    "area": "10,920 km",
+    "link": "https://darksky.org/places/teton-county/"
+  },
+  {
+    "id": 32540,
+    "name": "Landes de Gascogne Regional Natural Park",
+    "category": "reserve",
+    "lat": 44.496,
+    "lng": -0.7898,
+    "year": 2025,
+    "area": null,
+    "link": "https://darksky.org/places/landes-de-gascogne-regional-natural-park/"
+  },
+  {
+    "id": 32446,
+    "name": "Tāhuna Glenorchy",
+    "category": "sanctuary",
+    "lat": -44.713,
+    "lng": 168.319,
+    "year": 2025,
+    "area": "2150 Sq. Km",
+    "link": "https://darksky.org/places/tahuna-glenorchy/"
+  },
+  {
+    "id": 32395,
+    "name": "Sisters, Oregon",
+    "category": "community",
+    "lat": 44.291,
+    "lng": -121.544,
+    "year": 2025,
+    "area": "4.96 sq km",
+    "link": "https://darksky.org/places/sisters-oregon/"
+  },
+  {
+    "id": 32279,
+    "name": "Gower National Landscape, Wales",
+    "category": "community",
+    "lat": 51.6,
+    "lng": -4.171,
+    "year": 2024,
+    "area": "186 sq km",
+    "link": "https://darksky.org/places/gower-national-landscape-wales/"
+  },
+  {
+    "id": 32202,
+    "name": "Cottonwood Canyon State Park",
+    "category": "park",
+    "lat": 45.586067648544,
+    "lng": -120.68635265767,
+    "year": 2024,
+    "area": "65 Sq. Km",
+    "link": "https://darksky.org/places/cottonwood-canyon-state-park/"
+  },
+  {
+    "id": 32191,
+    "name": "Browns Canyon National Monument",
+    "category": "park",
+    "lat": 38.770844135347,
+    "lng": -106.07871070206,
+    "year": 2024,
+    "area": "89.03 Sq. Km",
+    "link": "https://darksky.org/places/browns-canyon-national-monument/"
+  },
+  {
+    "id": 32162,
+    "name": "Antelope, Oregon",
+    "category": "community",
+    "lat": 44.913468,
+    "lng": -120.720172,
+    "year": 2024,
+    "area": "1.19 Sq. Km",
+    "link": "https://darksky.org/places/antelope-oregon/"
+  },
+  {
+    "id": 32131,
+    "name": "Thousand Hills State Park",
+    "category": "urban",
+    "lat": 40.359,
+    "lng": -92.648,
+    "year": 2024,
+    "area": "12.46 Sq. Km",
+    "link": "https://darksky.org/places/thousand-hills-state-park/"
+  },
+  {
+    "id": 31985,
+    "name": "Bisbee, Arizona",
+    "category": "community",
+    "lat": 31.4405,
+    "lng": -109.91321,
+    "year": 2024,
+    "area": "13.41 Sq. Km",
+    "link": "https://darksky.org/places/bisbee-arizona/"
+  },
+  {
+    "id": 31952,
+    "name": "Oregon Caves National Monument and Preserve",
+    "category": "park",
+    "lat": 42.11009,
+    "lng": -123.40419,
+    "year": 2024,
+    "area": "18.42 Sq. Km",
+    "link": "https://darksky.org/places/oregon-caves-national-monument-and-preserve/"
+  },
+  {
+    "id": 31395,
+    "name": "Kaikōura",
+    "category": "sanctuary",
+    "lat": -42.3994,
+    "lng": 173.6824,
+    "year": 2024,
+    "area": "2,039 Sq. Km",
+    "link": "https://darksky.org/places/kaikoura-international-dark-sky-sanctuary/"
+  },
+  {
+    "id": 31366,
+    "name": "Town of Paonia, Colorado",
+    "category": "community",
+    "lat": 38.87,
+    "lng": -107.59,
+    "year": 2024,
+    "area": "2.2 Sq. Km",
+    "link": "https://darksky.org/places/paonia-colorado/"
+  },
+  {
+    "id": 31354,
+    "name": "Tubac, Arizona",
+    "category": "community",
+    "lat": 31.61,
+    "lng": -111.05,
+    "year": 2024,
+    "area": "28.1 Sq. Km",
+    "link": "https://darksky.org/places/tubac/"
+  },
+  {
+    "id": 31334,
+    "name": "Gunnison Gorge National Conservation Area",
+    "category": "park",
+    "lat": 38.70808,
+    "lng": -107.80965,
+    "year": 2024,
+    "area": "255 Sq. Km",
+    "link": "https://darksky.org/places/gunnison-gorge-national-conservation-area/"
+  },
+  {
+    "id": 31278,
+    "name": "Isle of Rum",
+    "category": "sanctuary",
+    "lat": 57.00948,
+    "lng": -6.27491,
+    "year": 2024,
+    "area": "104.6 Sq. Km",
+    "link": "https://darksky.org/places/isle-of-rum/"
+  },
+  {
+    "id": 31116,
+    "name": "Eiweiler Star Village",
+    "category": "community",
+    "lat": 49.59,
+    "lng": 7.14,
+    "year": 2024,
+    "area": "8.66 Sq. Km",
+    "link": "https://darksky.org/places/eiweiler-star-village/"
+  },
+  {
+    "id": 30959,
+    "name": "Øvre Pasvik National Park",
+    "category": "park",
+    "lat": 69.16531,
+    "lng": 29.21882,
+    "year": 2024,
+    "area": "119 Sq. Km",
+    "link": "https://darksky.org/places/ovre-pasvik-national-park/"
+  },
+  {
+    "id": 30888,
+    "name": "Palm Beach Headland",
+    "category": "urban",
+    "lat": -33.579808,
+    "lng": 151.3298086,
+    "year": 2024,
+    "area": ".62 Sq. Km",
+    "link": "https://darksky.org/places/palm-beach-headland/"
+  },
+  {
+    "id": 30802,
+    "name": "The City of Moab, Utah",
+    "category": "community",
+    "lat": 38.57,
+    "lng": -109.55,
+    "year": 2024,
+    "area": "12.34 Sq. Km",
+    "link": "https://darksky.org/places/the-city-of-moab/"
+  },
+  {
+    "id": 30682,
+    "name": "Kawarau Gibbston Dark Sky Park",
+    "category": "park",
+    "lat": -45.03,
+    "lng": 168.97,
+    "year": 2024,
+    "area": "25 Sq. Km",
+    "link": "https://darksky.org/places/kawarau-gibbston-dark-sky-park/"
+  },
+  {
+    "id": 30599,
+    "name": "Beaver Island State Wildlife Research Area",
+    "category": "sanctuary",
+    "lat": 45.66,
+    "lng": -85.58,
+    "year": 2024,
+    "area": "37.2 Sq. Km",
+    "link": "https://darksky.org/places/beaver-island-state-wildlife-research-area/"
+  },
+  {
+    "id": 30523,
+    "name": "Mandø",
+    "category": "park",
+    "lat": 55.274770454938,
+    "lng": 8.5371143463922,
+    "year": 2024,
+    "area": "8,46 Sq. Km",
+    "link": "https://darksky.org/places/mando/"
+  },
+  {
+    "id": 30486,
+    "name": "Oregon Outback",
+    "category": "sanctuary",
+    "lat": 42.19,
+    "lng": -120.35,
+    "year": 2024,
+    "area": "10,074.21 Sq. Km",
+    "link": "https://darksky.org/places/oregon-outback-international-dark-sky-sanctuary-oregon/"
+  },
+  {
+    "id": 30475,
+    "name": "Gantrisch Dark Sky Zone, Switzerland",
+    "category": "park",
+    "lat": 46.77,
+    "lng": 7.42,
+    "year": 2024,
+    "area": "104 Sq. Km",
+    "link": "https://darksky.org/places/gantrisch-dark-sky-zone-switzerland/"
+  },
+  {
+    "id": 30186,
+    "name": "Oxford Forest Conservation Area, New Zealand",
+    "category": "park",
+    "lat": -43.29,
+    "lng": 172.2,
+    "year": 2024,
+    "area": "113.5 km2 Sq. Km",
+    "link": "https://darksky.org/places/oxford-forest-conservation-area-new-zealand/"
+  },
+  {
+    "id": 30170,
+    "name": "Town of Castle Valley, Utah",
+    "category": "community",
+    "lat": 38.64,
+    "lng": -109.41,
+    "year": 2024,
+    "area": "24 Sq. Km",
+    "link": "https://darksky.org/places/castle_valley/"
+  },
+  {
+    "id": 30091,
+    "name": "Presteigne & Norton Dark Sky Community, Wales",
+    "category": "community",
+    "lat": 52.29,
+    "lng": -3.03,
+    "year": 2023,
+    "area": "40 Sq. Km",
+    "link": "https://darksky.org/places/presteigne-norton-dark-sky-community-wales/"
+  },
+  {
+    "id": 30064,
+    "name": "Jonestown, Texas",
+    "category": "community",
+    "lat": 30.4922,
+    "lng": -97.9206,
+    "year": 2023,
+    "area": "13.7 Sq. Km",
+    "link": "https://darksky.org/places/jonestown-texas/"
+  },
+  {
+    "id": 29932,
+    "name": "Dark Sky Park Bulbjerg",
+    "category": "park",
+    "lat": 57.1788,
+    "lng": 9.0195,
+    "year": 2023,
+    "area": "12.5 km2",
+    "link": "https://darksky.org/places/dark-sky-park-bulbjerg/"
+  },
+  {
+    "id": 29757,
+    "name": "Sinks Canyon State Park",
+    "category": "park",
+    "lat": 42.747,
+    "lng": -108.8133,
+    "year": 2023,
+    "area": null,
+    "link": "https://darksky.org/places/sinks-canyon-state-park/"
+  },
+  {
+    "id": 29740,
+    "name": "Saguaro National Park",
+    "category": "urban",
+    "lat": 32.254576245058,
+    "lng": -111.19659499458,
+    "year": 2023,
+    "area": null,
+    "link": "https://darksky.org/places/saguaro-national-park/"
+  },
+  {
+    "id": 29730,
+    "name": "Sopotnia Wielka",
+    "category": "community",
+    "lat": 49.592130333411,
+    "lng": 19.295418492351,
+    "year": 2023,
+    "area": null,
+    "link": "https://darksky.org/places/sopotnia-wielka/"
+  },
+  {
+    "id": 29434,
+    "name": "Ynys Enlli – Bardsey Island",
+    "category": "sanctuary",
+    "lat": 52.7595,
+    "lng": -4.7861,
+    "year": null,
+    "area": null,
+    "link": "https://darksky.org/places/ynys-enlli-bardsey-island-dark-sky-sanctuary/"
+  },
+  {
+    "id": 29365,
+    "name": "Joya-La Barreta Ecological Park",
+    "category": "urban",
+    "lat": 20.74,
+    "lng": -100.45,
+    "year": 2023,
+    "area": null,
+    "link": "https://darksky.org/places/joya-la-barreta-ecological-park/"
+  },
+  {
+    "id": 29242,
+    "name": "Regional Natural Park of Vercors",
+    "category": "reserve",
+    "lat": 44.97,
+    "lng": 5.42,
+    "year": 2023,
+    "area": null,
+    "link": "https://darksky.org/places/regional-natural-park-of-vercors/"
+  },
+  {
+    "id": 28509,
+    "name": "Parc national du Mont-Tremblant",
+    "category": "park",
+    "lat": 46.4584,
+    "lng": -74.3096,
+    "year": 2023,
+    "area": null,
+    "link": "https://darksky.org/places/parc-national-du-mont-tremblant/"
+  },
+  {
+    "id": 28510,
+    "name": "Minami-Rokuroshi",
+    "category": "urban",
+    "lat": 36.0252,
+    "lng": 136.594,
+    "year": 2023,
+    "area": null,
+    "link": "https://darksky.org/places/minami-rokuroshi/"
+  },
+  {
+    "id": 27239,
+    "name": "Springdale, Utah",
+    "category": "community",
+    "lat": 37.1892,
+    "lng": -113.0011,
+    "year": 2023,
+    "area": "11.9 km2",
+    "link": "https://darksky.org/places/springdale-utah-dark-sky-community/"
+  },
+  {
+    "id": 27800,
+    "name": "Arkaroola Wilderness Sanctuary",
+    "category": "sanctuary",
+    "lat": -30.2939,
+    "lng": 139.3332,
+    "year": 2023,
+    "area": "610 km2",
+    "link": "https://darksky.org/places/arkaroola-wilderness-sanctuary-dark-sky-sanctuary/"
+  },
+  {
+    "id": 26328,
+    "name": "Groveland, Florida",
+    "category": "community",
+    "lat": 28.546,
+    "lng": -81.8566,
+    "year": 2023,
+    "area": "71.2 km2",
+    "link": "https://darksky.org/places/groveland-florida-dark-sky-community/"
+  },
+  {
+    "id": 26324,
+    "name": "Aenos National Park",
+    "category": "park",
+    "lat": 38.2402,
+    "lng": 20.6502,
+    "year": 2023,
+    "area": "28.6 km2",
+    "link": "https://darksky.org/places/aenos-national-park-dark-sky-park/"
+  },
+  {
+    "id": 24587,
+    "name": "Bee Cave",
+    "category": "community",
+    "lat": 30.3097,
+    "lng": -97.965,
+    "year": 2023,
+    "area": "22.21 km2",
+    "link": "https://darksky.org/places/bee-cave-dark-sky-community/"
+  },
+  {
+    "id": 24583,
+    "name": "Xichong, Shenzen",
+    "category": "community",
+    "lat": 22.4798,
+    "lng": 114.531,
+    "year": 2023,
+    "area": "10.9 km2",
+    "link": "https://darksky.org/places/xichong-shenzhen-dark-sky-community/"
+  },
+  {
+    "id": 24578,
+    "name": "City of Rocks National Reserve",
+    "category": "park",
+    "lat": 42.1049,
+    "lng": -113.7092,
+    "year": 2023,
+    "area": "43.05 km2",
+    "link": "https://darksky.org/places/city-of-rocks-dark-sky-park/"
+  },
+  {
+    "id": 20875,
+    "name": "Wairarapa Dark Sky Reserve",
+    "category": "reserve",
+    "lat": -41.4562,
+    "lng": 175.323,
+    "year": 2023,
+    "area": "3,665 km2",
+    "link": "https://darksky.org/places/wairarapa-dark-sky-reserve/"
+  },
+  {
+    "id": 20239,
+    "name": "Lost Trail National Wildlife Refuge",
+    "category": "sanctuary",
+    "lat": 48.179908,
+    "lng": -114.914258,
+    "year": 2022,
+    "area": "37.3 km2",
+    "link": "https://darksky.org/places/lost-trail-national-wildlife-refuge-dark-sky-sanctuary/"
+  },
+  {
+    "id": 19580,
+    "name": "Merritt Reservoir State Recreation Area",
+    "category": "park",
+    "lat": 42.625890484019,
+    "lng": -100.85993122782,
+    "year": 2022,
+    "area": "2.95 km2",
+    "link": "https://darksky.org/places/merritt-reservoir-dark-sky-park/"
+  },
+  {
+    "id": 19922,
+    "name": "Parc du Mont-Bellevue",
+    "category": "urban",
+    "lat": 45.3777,
+    "lng": -71.9151,
+    "year": 2022,
+    "area": "1.59 km2",
+    "link": "https://darksky.org/places/parc-du-mont-bellevue-urban-night-sky-place/"
+  },
+  {
+    "id": 19033,
+    "name": "Keweenaw Dark Sky Park",
+    "category": "park",
+    "lat": 47.45939,
+    "lng": -87.909926,
+    "year": 2022,
+    "area": "2.26 km2",
+    "link": "https://darksky.org/places/keweenaw-michigan-dark-sky-park/"
+  },
+  {
+    "id": 18662,
+    "name": "Blanco, Texas",
+    "category": "community",
+    "lat": 30.097532,
+    "lng": -98.422104,
+    "year": 2022,
+    "area": "8.4 km2",
+    "link": "https://darksky.org/places/city-of-blanco-texas-dark-sky-community/"
+  },
+  {
+    "id": 18491,
+    "name": "Greater Big Bend International Dark Sky Reserve",
+    "category": "reserve",
+    "lat": 30.671844,
+    "lng": -104.022138,
+    "year": 2022,
+    "area": "38850 km2",
+    "link": "https://darksky.org/places/greater-big-bend-international-dark-sky-reserve/"
+  },
+  {
+    "id": 18173,
+    "name": "Desengano State Park",
+    "category": "park",
+    "lat": -21.90803,
+    "lng": -41.938019,
+    "year": 2021,
+    "area": "224 km2",
+    "link": "https://darksky.org/places/desengano-dark-sky-park/"
+  },
+  {
+    "id": 18147,
+    "name": "Cape Lookout National Seashore",
+    "category": "park",
+    "lat": 34.62324,
+    "lng": -76.52479,
+    "year": 2021,
+    "area": "117.4 km2",
+    "link": "https://darksky.org/places/cape-lookout-national-seashore-dark-sky-park/"
+  },
+  {
+    "id": 18117,
+    "name": "West Penwith",
+    "category": "park",
+    "lat": 50.142886,
+    "lng": -5.648326,
+    "year": 2021,
+    "area": "135.84 km2",
+    "link": "https://darksky.org/places/west-penwith-dark-sky-park/"
+  },
+  {
+    "id": 18076,
+    "name": "Regional Natural Park of Millevaches in Limousin",
+    "category": "reserve",
+    "lat": 45.642389,
+    "lng": 2.094209,
+    "year": 2021,
+    "area": "3,350 km2",
+    "link": "https://darksky.org/places/regional-natural-park-of-millevaches-dark-sky-reserve/"
+  },
+  {
+    "id": 18061,
+    "name": "Top of the Pines",
+    "category": "park",
+    "lat": 38.11139,
+    "lng": -107.794272,
+    "year": 2021,
+    "area": "0.71 km2",
+    "link": "https://darksky.org/places/top-of-the-pines-dark-sky-park/"
+  },
+  {
+    "id": 17923,
+    "name": "Lyndon B. Johnson National Historical Park",
+    "category": "park",
+    "lat": 30.243271,
+    "lng": -98.606043,
+    "year": 2021,
+    "area": "6.4 km2",
+    "link": "https://darksky.org/places/lyndon-b-johnson-national-historical-park-dark-sky-park/"
+  },
+  {
+    "id": 18009,
+    "name": "Milton Reimers Ranch Park",
+    "category": "park",
+    "lat": 30.341995,
+    "lng": -98.137412,
+    "year": 2021,
+    "area": "9.82 km2",
+    "link": "https://darksky.org/places/milton-reimers-ranch-park-dark-sky-park/"
+  },
+  {
+    "id": 17943,
+    "name": "Bisei Town, Ibara City",
+    "category": "community",
+    "lat": 34.672172,
+    "lng": 133.544774,
+    "year": 2021,
+    "area": "72.71 km2",
+    "link": "https://darksky.org/places/bisei-town-ibara-city-dark-sky-community/"
+  },
+  {
+    "id": 17811,
+    "name": "Mammoth Cave National Park",
+    "category": "park",
+    "lat": 37.185989,
+    "lng": -86.100363,
+    "year": 2021,
+    "area": "207 km2",
+    "link": "https://darksky.org/places/mammoth-cave-national-park-dark-sky-park/"
+  },
+  {
+    "id": 17818,
+    "name": "Watoga State Park",
+    "category": "park",
+    "lat": 38.116768,
+    "lng": -80.127892,
+    "year": 2021,
+    "area": "79.25 km2",
+    "link": "https://darksky.org/places/watoga-state-park-dark-sky-park/"
+  },
+  {
+    "id": 17795,
+    "name": "Fry Family Park",
+    "category": "urban",
+    "lat": 40.661918,
+    "lng": -81.344928,
+    "year": 2021,
+    "area": "1.4 km2",
+    "link": "https://darksky.org/places/fry-family-park-urban-night-sky-place/"
+  },
+  {
+    "id": 17645,
+    "name": "Stacy Park",
+    "category": "urban",
+    "lat": 38.671088,
+    "lng": -90.391611,
+    "year": 2021,
+    "area": "0.14 km2",
+    "link": "https://darksky.org/places/stacy-park-urban-night-sky-place/"
+  },
+  {
+    "id": 17469,
+    "name": "North Ronaldsay Dark Sky Island",
+    "category": "community",
+    "lat": 59.367277,
+    "lng": -2.433278,
+    "year": 2021,
+    "area": "7.0 km2",
+    "link": "https://darksky.org/places/north-ronaldsay-island-dark-sky-community/"
+  },
+  {
+    "id": 17451,
+    "name": "Spiekeroog Star Island",
+    "category": "community",
+    "lat": 53.769534,
+    "lng": 7.697902,
+    "year": 2021,
+    "area": "18.3 km2",
+    "link": "https://darksky.org/places/spiekeroog-star-island-dark-sky-community/"
+  },
+  {
+    "id": 17443,
+    "name": "Pellworm Star Island",
+    "category": "community",
+    "lat": 54.5205,
+    "lng": 8.641198,
+    "year": 2021,
+    "area": "37.4 km2",
+    "link": "https://darksky.org/places/pellworm-star-island-dark-sky-community/"
+  },
+  {
+    "id": 17368,
+    "name": "Palos Preserves",
+    "category": "urban",
+    "lat": 41.707408,
+    "lng": -87.873969,
+    "year": 2021,
+    "area": "27.3 km2",
+    "link": "https://darksky.org/places/palos-preserves-urban-night-sky-place/"
+  },
+  {
+    "id": 17312,
+    "name": "Black Gap Wildlife Management Area",
+    "category": "sanctuary",
+    "lat": 29.571163,
+    "lng": -102.947596,
+    "year": 2021,
+    "area": "416.8 km2",
+    "link": "https://darksky.org/places/black-gap-dark-sky-sanctuary/"
+  },
+  {
+    "id": 17239,
+    "name": "Curecanti National Recreation Area",
+    "category": "park",
+    "lat": 38.4657,
+    "lng": -107.16647,
+    "year": 2021,
+    "area": "170.03 km2",
+    "link": "https://darksky.org/places/curecanti-national-recreation-area-dark-sky-park/"
+  },
+  {
+    "id": 16899,
+    "name": "Florissant Fossil Beds National Monument",
+    "category": "park",
+    "lat": 38.913611,
+    "lng": -105.285421,
+    "year": 2021,
+    "area": "26 km2",
+    "link": "https://darksky.org/places/florissant-fossil-beds-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 16878,
+    "name": "Nucla and Naturita, Colorado",
+    "category": "community",
+    "lat": 38.240891,
+    "lng": -108.560848,
+    "year": 2021,
+    "area": "Nucla: 1.80 km2 Naturita: 1.59 km2 km2",
+    "link": "https://darksky.org/places/nucla-and-naturita-colorado-dark-sky-community/"
+  },
+  {
+    "id": 16833,
+    "name": "Zion National Park",
+    "category": "park",
+    "lat": 37.270215,
+    "lng": -112.988712,
+    "year": 2021,
+    "area": "588 km2",
+    "link": "https://darksky.org/places/zion-national-park-dark-sky-park/"
+  },
+  {
+    "id": 16739,
+    "name": "AMC Maine Woods",
+    "category": "park",
+    "lat": 45.479598,
+    "lng": -69.344588,
+    "year": 2021,
+    "area": "404.25 km2",
+    "link": "https://darksky.org/places/amc-maine-woods-dark-sky-park/"
+  },
+  {
+    "id": 16436,
+    "name": "Crestone, Colorado",
+    "category": "community",
+    "lat": 37.995247,
+    "lng": -105.697597,
+    "year": 2021,
+    "area": "1 km2",
+    "link": "https://darksky.org/places/crestone-colorado-dark-sky-community/"
+  },
+  {
+    "id": 16381,
+    "name": "Julian, California",
+    "category": "community",
+    "lat": 33.078692,
+    "lng": -116.602669,
+    "year": 2021,
+    "area": "20.3 km2",
+    "link": "https://darksky.org/places/julian-dark-sky-community/"
+  },
+  {
+    "id": 16408,
+    "name": "Prineville Reservoir State Park",
+    "category": "park",
+    "lat": 44.131322,
+    "lng": -120.72578,
+    "year": 2021,
+    "area": "1.2 km2",
+    "link": "https://darksky.org/places/prineville-reservoir-state-park-dark-sky-park/"
+  },
+  {
+    "id": 16327,
+    "name": "Chiricahua National Monument",
+    "category": "park",
+    "lat": 32.020524,
+    "lng": -109.346196,
+    "year": 2021,
+    "area": "48.6 km2",
+    "link": "https://darksky.org/places/chiricahua-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 16251,
+    "name": "Naturpark Attersee-Traunsee",
+    "category": "park",
+    "lat": 47.83109,
+    "lng": 13.54938,
+    "year": 2021,
+    "area": "106 km2",
+    "link": "https://darksky.org/places/naturpark-attersee-traunsee-dark-sky-park/"
+  },
+  {
+    "id": 16231,
+    "name": "Natural Bridge State Park",
+    "category": "park",
+    "lat": 37.624072,
+    "lng": -79.551503,
+    "year": 2021,
+    "area": "6.1 km2",
+    "link": "https://darksky.org/places/natural-bridge-state-park-dark-sky-park/"
+  },
+  {
+    "id": 16238,
+    "name": "Sky Meadows State Park",
+    "category": "park",
+    "lat": 38.98768,
+    "lng": -77.96694,
+    "year": 2021,
+    "area": "7.54 km2",
+    "link": "https://darksky.org/places/sky-meadows-state-park-dark-sky-park/"
+  },
+  {
+    "id": 16065,
+    "name": "Mesa Verde National Park",
+    "category": "park",
+    "lat": 37.24051,
+    "lng": -108.46059,
+    "year": 2021,
+    "area": "212 km2",
+    "link": "https://darksky.org/places/mesa-verde-national-park-dark-sky-park/"
+  },
+  {
+    "id": 16007,
+    "name": "Goosenecks State Park",
+    "category": "park",
+    "lat": 37.174369,
+    "lng": -109.926995,
+    "year": 2021,
+    "area": "0.4 km2",
+    "link": "https://darksky.org/places/goosenecks-state-park-dark-sky-park/"
+  },
+  {
+    "id": 16002,
+    "name": "Fremont Indian State Park",
+    "category": "park",
+    "lat": 38.57558,
+    "lng": -112.33556,
+    "year": 2021,
+    "area": "4.86 km2",
+    "link": "https://darksky.org/places/fremont-indian-state-park-dark-sky-park/"
+  },
+  {
+    "id": 16139,
+    "name": "Pipe Spring National Monument",
+    "category": "park",
+    "lat": 36.862385,
+    "lng": -112.737495,
+    "year": 2021,
+    "area": "0.16 km2",
+    "link": "https://darksky.org/places/pipe-spring-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 15885,
+    "name": "Quetico Provincial Park",
+    "category": "park",
+    "lat": 48.39355,
+    "lng": -91.53528,
+    "year": 2021,
+    "area": "4718 km2",
+    "link": "https://darksky.org/places/quetico-provincial-park-dark-sky-park/"
+  },
+  {
+    "id": 15822,
+    "name": "Valles Caldera National Preserve",
+    "category": "park",
+    "lat": 35.90413,
+    "lng": -106.53639,
+    "year": 2021,
+    "area": "361 km2",
+    "link": "https://darksky.org/places/valles-caldera-national-preserve-dark-sky-park/"
+  },
+  {
+    "id": 15751,
+    "name": "Rockport State Park",
+    "category": "park",
+    "lat": 40.77538,
+    "lng": -111.38975,
+    "year": 2021,
+    "area": "4.8 km2",
+    "link": "https://darksky.org/places/rockport-state-park-dark-sky-park/"
+  },
+  {
+    "id": 15734,
+    "name": "Jordanelle State Park",
+    "category": "park",
+    "lat": 40.622315,
+    "lng": -111.404956,
+    "year": 2021,
+    "area": "27.1 km2",
+    "link": "https://darksky.org/places/jordanelle-state-park-dark-sky-park/"
+  },
+  {
+    "id": 15546,
+    "name": "Medicine Rocks State Park",
+    "category": "sanctuary",
+    "lat": 46.0453,
+    "lng": -104.458558,
+    "year": 2020,
+    "area": "1.4 km2",
+    "link": "https://darksky.org/places/medicine-rocks-state-park-dark-sky-sanctuary/"
+  },
+  {
+    "id": 15371,
+    "name": "Yorkshire Dales National Park",
+    "category": "reserve",
+    "lat": 54.17732,
+    "lng": -2.20083,
+    "year": 2020,
+    "area": "2,180 km2",
+    "link": "https://darksky.org/places/yorkshire-dales-national-park-dark-sky-reserve/"
+  },
+  {
+    "id": 15381,
+    "name": "North York Moors National Park",
+    "category": "reserve",
+    "lat": 54.38083,
+    "lng": -0.97028,
+    "year": 2020,
+    "area": "1,436 km2",
+    "link": "https://darksky.org/places/north-york-moors-national-park-dark-sky-reserve/"
+  },
+  {
+    "id": 15350,
+    "name": "Voyageurs National Park",
+    "category": "park",
+    "lat": 48.49246,
+    "lng": -92.85472,
+    "year": 2020,
+    "area": "882 km2",
+    "link": "https://darksky.org/places/voyageurs-national-park-dark-sky-park/"
+  },
+  {
+    "id": 15292,
+    "name": "Kozushima Dark Sky Island",
+    "category": "park",
+    "lat": 34.20848,
+    "lng": 139.15083,
+    "year": 2020,
+    "area": "18.58 km2",
+    "link": "https://darksky.org/places/kozushima-island-dark-sky-park/"
+  },
+  {
+    "id": 14706,
+    "name": "Lake Fork Earth and Sky Center",
+    "category": "park",
+    "lat": 37.996961,
+    "lng": -107.291836,
+    "year": 2020,
+    "area": "0.24 km2",
+    "link": "https://darksky.org/places/lake-fork-earth-and-sky-center-dark-sky-park/"
+  },
+  {
+    "id": 14691,
+    "name": "Pisgah Astronomical Research Institute",
+    "category": "park",
+    "lat": 35.199775,
+    "lng": -82.873545,
+    "year": 2020,
+    "area": "0.81 km2",
+    "link": "https://darksky.org/places/pisgah-astronomical-research-institute-dark-sky-park/"
+  },
+  {
+    "id": 14666,
+    "name": "Timpanogos Cave National Monument",
+    "category": "urban",
+    "lat": 40.43855,
+    "lng": -111.70861,
+    "year": 2020,
+    "area": "1 km2",
+    "link": "https://darksky.org/places/timpanogos-cave-national-monument-urban-night-sky-place/"
+  },
+  {
+    "id": 14609,
+    "name": "Jackson Lake State Park",
+    "category": "park",
+    "lat": 40.38572,
+    "lng": -104.09111,
+    "year": 2020,
+    "area": "13.2 km2",
+    "link": "https://darksky.org/places/jackson-lake-state-park-dark-sky-park/"
+  },
+  {
+    "id": 14601,
+    "name": "Boundary Waters Canoe Area Wilderness",
+    "category": "sanctuary",
+    "lat": 47.905001,
+    "lng": -91.259054,
+    "year": 2020,
+    "area": null,
+    "link": "https://darksky.org/places/boundary-waters-canoe-area-dark-sky-sanctuary/"
+  },
+  {
+    "id": 14587,
+    "name": "OM Dark Sky Park & Observatory",
+    "category": "park",
+    "lat": 54.718764,
+    "lng": -6.916909,
+    "year": 2020,
+    "area": "14.02 km2",
+    "link": "https://darksky.org/places/om-dark-sky-park-and-observatory-dark-sky-park/"
+  },
+  {
+    "id": 14558,
+    "name": "East Canyon State Park",
+    "category": "park",
+    "lat": 40.90043,
+    "lng": -111.58722,
+    "year": 2020,
+    "area": "2.95 km2",
+    "link": "https://darksky.org/places/east-canyon-state-park-dark-sky-park/"
+  },
+  {
+    "id": 14495,
+    "name": "Hawthorn Woods, Illinois",
+    "category": "community",
+    "lat": 42.220073,
+    "lng": -88.059916,
+    "year": 2020,
+    "area": "20.53 km2",
+    "link": "https://darksky.org/places/hawthorn-woods-illinois-dark-sky-community/"
+  },
+  {
+    "id": 14264,
+    "name": "Ridgway, Colorado",
+    "category": "community",
+    "lat": 38.1513,
+    "lng": -107.75944,
+    "year": 2020,
+    "area": "4.8 km2",
+    "link": "https://darksky.org/places/ridgway-colorado-dark-sky-community/"
+  },
+  {
+    "id": 14249,
+    "name": "Wai-Iti",
+    "category": "park",
+    "lat": -41.429743,
+    "lng": 172.992396,
+    "year": 2020,
+    "area": "1.35 km2",
+    "link": "https://darksky.org/places/wai-iti-dark-sky-park/"
+  },
+  {
+    "id": 13891,
+    "name": "Katahdin Woods and Waters National Monument",
+    "category": "sanctuary",
+    "lat": 45.839999,
+    "lng": -68.74747,
+    "year": 2020,
+    "area": "354 km2",
+    "link": "https://darksky.org/places/katahdin-woods-and-waters-dark-sky-sanctuary/"
+  },
+  {
+    "id": 13458,
+    "name": "Fredericksburg, Texas",
+    "category": "community",
+    "lat": 30.27449,
+    "lng": -98.87444,
+    "year": 2020,
+    "area": "24.95 km2",
+    "link": "https://darksky.org/places/fredericksburg-texas-dark-sky-community/"
+  },
+  {
+    "id": 12543,
+    "name": "Lakewood Village, Texas",
+    "category": "community",
+    "lat": 33.14353,
+    "lng": -96.97104,
+    "year": 2019,
+    "area": "1.9 km2",
+    "link": "https://darksky.org/places/lakewood-village-texas-dark-sky-community/"
+  },
+  {
+    "id": 13446,
+    "name": "Helper, Utah",
+    "category": "community",
+    "lat": 39.68551,
+    "lng": -110.85528,
+    "year": 2020,
+    "area": "4.7 km2",
+    "link": "https://darksky.org/places/helper-utah-dark-sky-community/"
+  },
+  {
+    "id": 13456,
+    "name": "Niue",
+    "category": "sanctuary",
+    "lat": -19.074588,
+    "lng": -169.929424,
+    "year": 2020,
+    "area": "259 km2",
+    "link": "https://darksky.org/places/niue-dark-sky-sanctuary/"
+  },
+  {
+    "id": 13453,
+    "name": "Niue",
+    "category": "community",
+    "lat": -19.074588,
+    "lng": -169.91,
+    "year": 2020,
+    "area": "23.5 km2",
+    "link": "https://darksky.org/places/niue-dark-sky-community/"
+  },
+  {
+    "id": 13153,
+    "name": "Dr. T.K. Lawless County Park",
+    "category": "park",
+    "lat": 41.89464,
+    "lng": -85.86111,
+    "year": 2019,
+    "area": "3.4 km2",
+    "link": "https://darksky.org/places/dr-lawless-dark-sky-park/"
+  },
+  {
+    "id": 13048,
+    "name": "Alpes Azur Mercantour",
+    "category": "reserve",
+    "lat": 44.13778,
+    "lng": 6.98056,
+    "year": 2019,
+    "area": "3,700 km2",
+    "link": "https://darksky.org/places/alpes-azur-mercantour-dark-sky-reserve/"
+  },
+  {
+    "id": 12959,
+    "name": "El Morro National Monument",
+    "category": "park",
+    "lat": 35.038313,
+    "lng": -108.340222,
+    "year": 2019,
+    "area": "5.17 km2",
+    "link": "https://darksky.org/places/el-morro-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 13026,
+    "name": "Cottonwood, Arizona",
+    "category": "community",
+    "lat": 34.7442,
+    "lng": -112.01944,
+    "year": 2019,
+    "area": "43 km2",
+    "link": "https://darksky.org/places/cottonwood-arizona-dark-sky-community/"
+  },
+  {
+    "id": 12951,
+    "name": "Vrani kamen",
+    "category": "park",
+    "lat": 45.608654,
+    "lng": 17.343653,
+    "year": 2019,
+    "area": "80 km2",
+    "link": "https://darksky.org/places/vrani-kamen-dark-sky-park/"
+  },
+  {
+    "id": 12907,
+    "name": "River Murray",
+    "category": "reserve",
+    "lat": -34.62247,
+    "lng": 139.476432,
+    "year": 2019,
+    "area": "3,200 km2",
+    "link": "https://darksky.org/places/river-murray-dark-sky-reserve/"
+  },
+  {
+    "id": 12784,
+    "name": "Valle de Oro National Wildlife Refuge",
+    "category": "urban",
+    "lat": 34.97996,
+    "lng": -106.67151,
+    "year": 2019,
+    "area": "2.3 km2",
+    "link": "https://darksky.org/places/valle-de-oro-national-wildlife-refuge-urban-night-sky-place/"
+  },
+  {
+    "id": 12753,
+    "name": "Cranborne Chase",
+    "category": "reserve",
+    "lat": 50.96754,
+    "lng": -2.06722,
+    "year": 2019,
+    "area": "983 km2",
+    "link": "https://darksky.org/places/cranborne-chase-dark-sky-reserve/"
+  },
+  {
+    "id": 12442,
+    "name": "Fort Union National Monument",
+    "category": "park",
+    "lat": 35.904653,
+    "lng": -105.01124,
+    "year": 2019,
+    "area": "2.9 km2",
+    "link": "https://darksky.org/places/fort-union-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 12297,
+    "name": "Bryce Canyon National Park",
+    "category": "park",
+    "lat": 37.606138,
+    "lng": -112.182213,
+    "year": 2019,
+    "area": "145 km2",
+    "link": "https://darksky.org/places/bryce-canyon-national-park-dark-sky-park/"
+  },
+  {
+    "id": 12267,
+    "name": "Hehuan Mountain",
+    "category": "park",
+    "lat": 24.161829,
+    "lng": 121.287561,
+    "year": 2019,
+    "area": "13.45 km2",
+    "link": "https://darksky.org/places/hehuan-mountain-dark-sky-park/"
+  },
+  {
+    "id": 12241,
+    "name": "Arches National Park",
+    "category": "park",
+    "lat": 38.630633,
+    "lng": -109.599277,
+    "year": 2019,
+    "area": "310 km2",
+    "link": "https://darksky.org/places/arches-national-park-dark-sky-park/"
+  },
+  {
+    "id": 12194,
+    "name": "Petrova Gora-Biljeg",
+    "category": "park",
+    "lat": 45.314105040764,
+    "lng": 15.804954940136,
+    "year": 2019,
+    "area": "29.3 km2",
+    "link": "https://darksky.org/places/petrova-gora-biljeg-dark-sky-park/"
+  },
+  {
+    "id": 11866,
+    "name": "Buffalo National River",
+    "category": "park",
+    "lat": 35.981631,
+    "lng": -92.748617,
+    "year": 2019,
+    "area": "396.2 km2",
+    "link": "https://darksky.org/places/buffalo-national-river-dark-sky-park/"
+  },
+  {
+    "id": 11969,
+    "name": "The Jump-Up",
+    "category": "sanctuary",
+    "lat": -22.479382,
+    "lng": 143.183296,
+    "year": 2019,
+    "area": "14 km2",
+    "link": "https://darksky.org/places/the-jump-up-dark-sky-sanctuary/"
+  },
+  {
+    "id": 11963,
+    "name": "Great Sand Dunes National Park and Preserve",
+    "category": "park",
+    "lat": 37.7925,
+    "lng": -105.61917,
+    "year": 2019,
+    "area": "603.1 km2",
+    "link": "https://darksky.org/places/great-sand-dunes-national-park-dark-sky-park/"
+  },
+  {
+    "id": 11921,
+    "name": "Dinosaur National Monument",
+    "category": "park",
+    "lat": 40.515962,
+    "lng": -108.962837,
+    "year": 2019,
+    "area": "850.98 km2",
+    "link": "https://darksky.org/places/dinosaur-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 11881,
+    "name": "!Ae!Hai Kalahari Heritage Park",
+    "category": "sanctuary",
+    "lat": -26.149607,
+    "lng": 20.257002,
+    "year": 2019,
+    "area": "500 km2",
+    "link": "https://darksky.org/places/aehai-kalahari-heritage-park-dark-sky-sanctuary/"
+  },
+  {
+    "id": 11676,
+    "name": "Pitcairn Islands",
+    "category": "sanctuary",
+    "lat": -24.35587,
+    "lng": -128.30687,
+    "year": 2019,
+    "area": "43.25 km2",
+    "link": "https://darksky.org/places/pitcairn-islands-dark-sky-sanctuary/"
+  },
+  {
+    "id": 11681,
+    "name": "Massacre Rim Wilderness Study Area",
+    "category": "sanctuary",
+    "lat": 41.683335,
+    "lng": -119.716912,
+    "year": 2019,
+    "area": "409.9 km2",
+    "link": "https://darksky.org/places/massacre-rim-wilderness-study-area-dark-sky-sanctuary/"
+  },
+  {
+    "id": 11170,
+    "name": "James River State Park",
+    "category": "park",
+    "lat": 37.623573,
+    "lng": -78.799522,
+    "year": 2019,
+    "area": "6.07 km2",
+    "link": "https://darksky.org/places/james-river-state-park-dark-sky-park/"
+  },
+  {
+    "id": 11415,
+    "name": "Rappahannock County Park",
+    "category": "park",
+    "lat": 38.710815,
+    "lng": -78.152655,
+    "year": 2019,
+    "area": ".03 km2",
+    "link": "https://darksky.org/places/rappahannock-county-park-dark-sky-park/"
+  },
+  {
+    "id": 11603,
+    "name": "Norwood, Colorado",
+    "category": "community",
+    "lat": 38.13042,
+    "lng": -108.292027,
+    "year": 2019,
+    "area": "1.04 km2",
+    "link": "https://darksky.org/places/norwood-colorado-dark-sky-community/"
+  },
+  {
+    "id": 11212,
+    "name": "Fulda, Hesse",
+    "category": "community",
+    "lat": 50.554605,
+    "lng": 9.678636,
+    "year": 2019,
+    "area": "104.04 km2",
+    "link": "https://darksky.org/places/fulda-dark-sky-community/"
+  },
+  {
+    "id": 11284,
+    "name": "Devils River State Natural Area — Del Norte Unit",
+    "category": "sanctuary",
+    "lat": 29.939694,
+    "lng": -100.970206,
+    "year": 2019,
+    "area": "80.3 km2",
+    "link": "https://darksky.org/places/devils-river-state-natural-area-dark-sky-sanctuary/"
+  },
+  {
+    "id": 11205,
+    "name": "Stewart Island / Rakiura",
+    "category": "sanctuary",
+    "lat": -46.9973,
+    "lng": 167.8372,
+    "year": 2019,
+    "area": "1,746 km2",
+    "link": "https://darksky.org/places/stewart-island-rakiura-dark-sky-sanctuary/"
+  },
+  {
+    "id": 10964,
+    "name": "Tomintoul and Glenlivet – Cairngorms",
+    "category": "park",
+    "lat": 57.24773,
+    "lng": -3.37296,
+    "year": 2018,
+    "area": "244 km2",
+    "link": "https://darksky.org/places/tomintoul-glenlivet-cairngorms-dark-sky-park/"
+  },
+  {
+    "id": 10946,
+    "name": "Middle Fork River Forest Preserve",
+    "category": "park",
+    "lat": 40.37548,
+    "lng": -87.95124,
+    "year": 2018,
+    "area": "6.88 km2",
+    "link": "https://darksky.org/places/middle-fork-river-forest-preserve-dark-sky-park/"
+  },
+  {
+    "id": 10123,
+    "name": "Cévennes National Park",
+    "category": "reserve",
+    "lat": 44.22819,
+    "lng": 3.71833,
+    "year": 2018,
+    "area": "3,089 km2",
+    "link": "https://darksky.org/places/cevennes-dark-sky-reserve/"
+  },
+  {
+    "id": 9944,
+    "name": "Petrified Forest National Park",
+    "category": "park",
+    "lat": 35.00446,
+    "lng": -109.78228,
+    "year": 2018,
+    "area": "594.6 km2",
+    "link": "https://darksky.org/places/petrified-forest-national-park-dark-sky-park/"
+  },
+  {
+    "id": 9937,
+    "name": "Camp Verde, Arizona",
+    "category": "community",
+    "lat": 34.580076,
+    "lng": -111.879461,
+    "year": 2018,
+    "area": "109.7 km2",
+    "link": "https://darksky.org/places/camp-verde-dark-sky-park/"
+  },
+  {
+    "id": 9896,
+    "name": "Wimberley Valley, Texas",
+    "category": "community",
+    "lat": 29.98717,
+    "lng": -98.09143,
+    "year": 2018,
+    "area": "97.6 km2",
+    "link": "https://darksky.org/places/wimberley-valley-texas-dark-sky-community/"
+  },
+  {
+    "id": 9701,
+    "name": "Tumacácori National Historical Park",
+    "category": "park",
+    "lat": 31.572656,
+    "lng": -111.04781,
+    "year": 2018,
+    "area": "1.5 km2",
+    "link": "https://darksky.org/places/tumacacori-national-historical-park-dark-sky-park/"
+  },
+  {
+    "id": 9691,
+    "name": "Winklmoosalm",
+    "category": "park",
+    "lat": 47.657422,
+    "lng": 12.582548,
+    "year": 2018,
+    "area": "1.0 km2",
+    "link": "https://darksky.org/places/winklmoosalm-dark-sky-park/"
+  },
+  {
+    "id": 9538,
+    "name": "Rainbow Bridge National Monument",
+    "category": "sanctuary",
+    "lat": 37.077386,
+    "lng": -110.96442,
+    "year": 2018,
+    "area": "414 km2",
+    "link": "https://darksky.org/places/rainbow-bridge-national-monument-dark-sky-sanctuary/"
+  },
+  {
+    "id": 9571,
+    "name": "Iriomote-Ishigaki National Park",
+    "category": "park",
+    "lat": 24.34989,
+    "lng": 123.86557,
+    "year": 2018,
+    "area": "406.58 km2",
+    "link": "https://darksky.org/places/iriomote-ishigaki-national-park-dark-sky-park/"
+  },
+  {
+    "id": 9163,
+    "name": "Steinaker State Park",
+    "category": "park",
+    "lat": 40.50703,
+    "lng": -109.5284,
+    "year": 2018,
+    "area": "7.08 km2",
+    "link": "https://darksky.org/places/steinaker-state-park-dark-sky-park/"
+  },
+  {
+    "id": 9094,
+    "name": "Anza-Borrego Desert State Park",
+    "category": "park",
+    "lat": 33.089632,
+    "lng": -116.304546,
+    "year": null,
+    "area": "2,630 km2",
+    "link": "https://darksky.org/places/anza-borrego-dark-sky-park/"
+  },
+  {
+    "id": 9031,
+    "name": "Torrey, Utah",
+    "category": "community",
+    "lat": 38.30117,
+    "lng": -111.41953,
+    "year": 2018,
+    "area": "1.3 km2",
+    "link": "https://darksky.org/places/torrey-utah-dark-sky-community/"
+  },
+  {
+    "id": 9024,
+    "name": "Fountain Hills, Arizona",
+    "category": "community",
+    "lat": 33.60489,
+    "lng": -111.7212,
+    "year": 2018,
+    "area": "52.7 km2",
+    "link": "https://darksky.org/places/fountain-hills-arizona-dark-sky-community/"
+  },
+  {
+    "id": 8942,
+    "name": "Central Idaho",
+    "category": "reserve",
+    "lat": 43.96239,
+    "lng": -114.91222,
+    "year": 2017,
+    "area": "3,668 km2",
+    "link": "https://darksky.org/places/central-idaho-dark-sky-reserve/"
+  },
+  {
+    "id": 8524,
+    "name": "Big Bend Ranch State Park",
+    "category": "park",
+    "lat": 29.461133,
+    "lng": -103.990425,
+    "year": 2017,
+    "area": "1,258 km2",
+    "link": "https://darksky.org/places/big-bend-ranch-dark-sky-park/"
+  },
+  {
+    "id": 8498,
+    "name": "Obed Wild and Scenic River",
+    "category": "park",
+    "lat": 36.123611,
+    "lng": -84.796006,
+    "year": 2017,
+    "area": "20.2 km2",
+    "link": "https://darksky.org/places/obed-wild-and-scenic-river-dark-sky-park/"
+  },
+  {
+    "id": 8459,
+    "name": "Ketchum, Idaho",
+    "category": "community",
+    "lat": 43.68331,
+    "lng": -114.36257,
+    "year": 2017,
+    "area": "8.4 km2",
+    "link": "https://darksky.org/places/ketchum-dark-sky-community/"
+  },
+  {
+    "id": 7474,
+    "name": "Ramon Crater Nature Reserve",
+    "category": "park",
+    "lat": 30.584284,
+    "lng": 34.855356,
+    "year": 2017,
+    "area": "1,100 km2",
+    "link": "https://darksky.org/places/ramon-crater-nature-reserve-dark-sky-park/"
+  },
+  {
+    "id": 7675,
+    "name": "Kartchner Caverns State Park",
+    "category": "park",
+    "lat": 31.83672,
+    "lng": -110.34901,
+    "year": 2017,
+    "area": "2.9 km2",
+    "link": "https://darksky.org/places/kartchner-caverns-state-park-dark-sky-park/"
+  },
+  {
+    "id": 7639,
+    "name": "Craters Of The Moon National Monument",
+    "category": "park",
+    "lat": 43.145743,
+    "lng": -113.51511,
+    "year": 2017,
+    "area": "3,035 km2",
+    "link": "https://darksky.org/places/craters-of-the-moon-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 7128,
+    "name": "Joshua Tree National Park",
+    "category": "park",
+    "lat": 33.86819,
+    "lng": -115.79444,
+    "year": 2017,
+    "area": "3,218 km2",
+    "link": "https://darksky.org/places/joshua-tree-national-park-dark-sky-park/"
+  },
+  {
+    "id": 7437,
+    "name": "Bodmin Moor Dark Sky Landscape",
+    "category": "park",
+    "lat": 50.54572,
+    "lng": -4.55889,
+    "year": 2017,
+    "area": "434 km2",
+    "link": "https://darksky.org/places/bodmin-moor-dark-sky-park/"
+  },
+  {
+    "id": 7376,
+    "name": "Albanyà",
+    "category": "park",
+    "lat": 42.305,
+    "lng": 2.70917,
+    "year": 2017,
+    "area": "94.4 km2",
+    "link": "https://darksky.org/places/albanya-dark-sky-park/"
+  },
+  {
+    "id": 7365,
+    "name": "Aotea Great Barrier Island",
+    "category": "sanctuary",
+    "lat": -36.2075,
+    "lng": 175.42389,
+    "year": null,
+    "area": "288 km2",
+    "link": "https://darksky.org/places/aotea-great-barrier-island-dark-sky-sanctuary/"
+  },
+  {
+    "id": 7249,
+    "name": "Bükk National Park",
+    "category": "park",
+    "lat": 48.057273,
+    "lng": 20.422707,
+    "year": 2017,
+    "area": "431.3 km2",
+    "link": "https://darksky.org/places/bukk-national-park-dark-sky-park/"
+  },
+  {
+    "id": 7203,
+    "name": "Newport State Park",
+    "category": "park",
+    "lat": 45.23594,
+    "lng": -86.99361,
+    "year": 2017,
+    "area": "9.6 km2",
+    "link": "https://darksky.org/places/newport-state-park-dark-sky-park/"
+  },
+  {
+    "id": 7090,
+    "name": "Waterton-Glacier International Peace Park",
+    "category": "park",
+    "lat": 49.05705,
+    "lng": -113.90486,
+    "year": 2017,
+    "area": "4,606 km2",
+    "link": "https://darksky.org/places/waterton-glacier-international-peace-park-dark-sky-park/"
+  },
+  {
+    "id": 7080,
+    "name": "Antelope Island State Park",
+    "category": "park",
+    "lat": 40.9563,
+    "lng": -112.20722,
+    "year": null,
+    "area": "114.28 km2",
+    "link": "https://darksky.org/places/antelope-island-dark-sky-park/"
+  },
+  {
+    "id": 6886,
+    "name": "Møn and Nyord",
+    "category": "park",
+    "lat": 54.993913,
+    "lng": 12.414062,
+    "year": 2017,
+    "area": "11 km2",
+    "link": "https://darksky.org/places/mon-and-nyord-dark-sky-park/"
+  },
+  {
+    "id": 6879,
+    "name": "Møn and Nyord",
+    "category": "community",
+    "lat": 54.993913,
+    "lng": 12.414062,
+    "year": 2017,
+    "area": "223 km2",
+    "link": "https://darksky.org/places/mon-and-nyord-dark-sky-community/"
+  },
+  {
+    "id": 6853,
+    "name": "Cedar Breaks National Monument",
+    "category": "park",
+    "lat": 37.61313,
+    "lng": -112.83743,
+    "year": 2017,
+    "area": "24.9 km2",
+    "link": "https://darksky.org/places/cedar-breaks-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 6760,
+    "name": "South Llano River State Park",
+    "category": "park",
+    "lat": 30.42645,
+    "lng": -99.79972,
+    "year": 2017,
+    "area": "10.5 km2",
+    "link": "https://darksky.org/places/south-llano-river-state-park-dark-sky-park/"
+  },
+  {
+    "id": 6075,
+    "name": "Stephen C. Foster State Park",
+    "category": "park",
+    "lat": 30.82449,
+    "lng": -82.36194,
+    "year": 2016,
+    "area": "0.32 km2",
+    "link": "https://darksky.org/places/stephen-c-foster-state-park-dark-sky-park/"
+  },
+  {
+    "id": 6021,
+    "name": "Big Cypress National Preserve",
+    "category": "park",
+    "lat": 25.97167,
+    "lng": -81.07417,
+    "year": 2016,
+    "area": "2,950 km2",
+    "link": "https://darksky.org/places/big-cypress-dark-sky-park/"
+  },
+  {
+    "id": 5937,
+    "name": "Lauwersmeer National Park",
+    "category": "park",
+    "lat": 53.387535,
+    "lng": 6.209971,
+    "year": 2016,
+    "area": "60 km2",
+    "link": "https://darksky.org/places/lauwersmeer-national-park-dark-sky-park/"
+  },
+  {
+    "id": 5788,
+    "name": "Salinas Pueblo Missions National Monument",
+    "category": "park",
+    "lat": 34.25761,
+    "lng": -106.09306,
+    "year": 2016,
+    "area": "3.99 km2",
+    "link": "https://darksky.org/places/salinas-pueblo-missions-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 5603,
+    "name": "Goblin Valley State Park",
+    "category": "park",
+    "lat": 38.56667,
+    "lng": -110.71,
+    "year": 2016,
+    "area": "40.12 km2",
+    "link": "https://darksky.org/places/goblin-valley-state-park-dark-sky-park/"
+  },
+  {
+    "id": 5696,
+    "name": "Capulin Volcano National Monument",
+    "category": "park",
+    "lat": 36.77906,
+    "lng": -103.96972,
+    "year": 2016,
+    "area": "3.2 km2",
+    "link": "https://darksky.org/places/capulin-volcano-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 5430,
+    "name": "Warrumbungle Dark Sky Park",
+    "category": "park",
+    "lat": -31.27779,
+    "lng": 149.02614,
+    "year": 2016,
+    "area": "233.1 km2",
+    "link": "https://darksky.org/places/warrumbungle-dark-sky-park/"
+  },
+  {
+    "id": 5427,
+    "name": "Grand Canyon National Park",
+    "category": "park",
+    "lat": 36.10043,
+    "lng": -112.09028,
+    "year": 2016,
+    "area": "4,931 km2",
+    "link": "https://darksky.org/places/grand-canyon-national-park-dark-sky-park/"
+  },
+  {
+    "id": 5465,
+    "name": "Dead Horse Point State Park",
+    "category": "park",
+    "lat": 38.46949,
+    "lng": -109.73972,
+    "year": 2016,
+    "area": "21.7 km2",
+    "link": "https://darksky.org/places/dead-horse-point-state-park-dark-sky-park/"
+  },
+  {
+    "id": 5406,
+    "name": "Moore's Reserve",
+    "category": "reserve",
+    "lat": 50.930782,
+    "lng": -0.710738,
+    "year": 2016,
+    "area": "1,627 km2",
+    "link": "https://darksky.org/places/moores-reserve-south-downs-dark-sky-reserve/"
+  },
+  {
+    "id": 5360,
+    "name": "Great Basin National Park",
+    "category": "park",
+    "lat": 38.94399,
+    "lng": -114.25528,
+    "year": 2016,
+    "area": "312.3 km2",
+    "link": "https://darksky.org/places/great-basin-national-park-dark-sky-park/"
+  },
+  {
+    "id": 5369,
+    "name": "Mayo Dark Sky Park",
+    "category": "park",
+    "lat": 54.02087,
+    "lng": -9.821177,
+    "year": 2016,
+    "area": "150 km2",
+    "link": "https://darksky.org/places/mayo-dark-sky-park/"
+  },
+  {
+    "id": 5347,
+    "name": "Flagstaff Area National Monuments",
+    "category": "park",
+    "lat": 35.17058,
+    "lng": -111.50972,
+    "year": 2016,
+    "area": "175 km2",
+    "link": "https://darksky.org/places/flagstaff-area-national-monuments-dark-sky-park/"
+  },
+  {
+    "id": 4963,
+    "name": "Big Park / Village of Oak Creek, Arizona",
+    "category": "community",
+    "lat": 34.77514,
+    "lng": -111.76306,
+    "year": 2016,
+    "area": "11.8 km2",
+    "link": "https://darksky.org/places/big-park-village-of-oak-creek-dark-sky-community/"
+  },
+  {
+    "id": 4955,
+    "name": "Moffat",
+    "category": "community",
+    "lat": 55.32971,
+    "lng": -3.44417,
+    "year": 2016,
+    "area": "187 km2",
+    "link": "https://darksky.org/places/moffat-dark-sky-community/"
+  },
+  {
+    "id": 4791,
+    "name": "Cosmic Campground",
+    "category": "sanctuary",
+    "lat": 33.479223,
+    "lng": -108.922649,
+    "year": 2016,
+    "area": "0.01 km2",
+    "link": "https://darksky.org/places/cosmic-campground-dark-sky-place/"
+  },
+  {
+    "id": 4758,
+    "name": "Kissimmee Prairie Preserve State Park",
+    "category": "park",
+    "lat": 27.56126,
+    "lng": -81.02285,
+    "year": 2016,
+    "area": "234.7 km2",
+    "link": "https://darksky.org/places/kissimmee-prairie-preserve-dark-sky-park/"
+  },
+  {
+    "id": 4262,
+    "name": "Eryri National Park (Snowdonia)",
+    "category": "reserve",
+    "lat": 52.90415,
+    "lng": -3.86383,
+    "year": 2015,
+    "area": "2,132 km2",
+    "link": "https://darksky.org/places/snowdonia-national-park-dark-sky-reserve/"
+  },
+  {
+    "id": 4363,
+    "name": "Horseshoe Bay, Texas",
+    "category": "community",
+    "lat": 30.528409,
+    "lng": -98.398106,
+    "year": 2015,
+    "area": "30.1 km2",
+    "link": "https://darksky.org/places/horseshoe-bay-texas-dark-sky-community/"
+  },
+  {
+    "id": 4233,
+    "name": "UBarU Camp and Retreat Center",
+    "category": "park",
+    "lat": 30.1879,
+    "lng": -99.27333,
+    "year": 2015,
+    "area": "0.57 km2",
+    "link": "https://darksky.org/places/ubaru-camp-and-retreat-center-dark-sky-park/"
+  },
+  {
+    "id": 4199,
+    "name": "Yeongyang Firefly Eco Park",
+    "category": "park",
+    "lat": 36.83037,
+    "lng": 129.26991,
+    "year": 2015,
+    "area": "3.63 km2",
+    "link": "https://darksky.org/places/yeongyang-firefly-eco-park-dark-sky-park/"
+  },
+  {
+    "id": 3613,
+    "name": "Black Canyon of the Gunnison National Park",
+    "category": "park",
+    "lat": 38.57797,
+    "lng": -107.71556,
+    "year": 2015,
+    "area": "124.4 km2",
+    "link": "https://darksky.org/places/black-canyon-of-the-gunnison-national-park-dark-sky-park/"
+  },
+  {
+    "id": 3471,
+    "name": "Canyonlands National Park",
+    "category": "park",
+    "lat": 38.2537,
+    "lng": -109.93556,
+    "year": 2015,
+    "area": "1365 km2",
+    "link": "https://darksky.org/places/canyonlands-national-park-dark-sky-park/"
+  },
+  {
+    "id": 3413,
+    "name": "Bon Accord, Alberta",
+    "category": "community",
+    "lat": 53.83551,
+    "lng": -113.41417,
+    "year": 2015,
+    "area": "2.11 km2",
+    "link": "https://darksky.org/places/bon-accord-dark-sky-community/"
+  },
+  {
+    "id": 3396,
+    "name": "Gabriela Mistral",
+    "category": "sanctuary",
+    "lat": -30.16972,
+    "lng": -70.80639,
+    "year": 2015,
+    "area": "364 km2",
+    "link": "https://darksky.org/places/gabriela-mistral-dark-sky-sanctuary/"
+  },
+  {
+    "id": 2993,
+    "name": "Elan Valley Estate",
+    "category": "park",
+    "lat": 52.281852,
+    "lng": -3.591736,
+    "year": 2015,
+    "area": "180 km2",
+    "link": "https://darksky.org/places/elan-valley-dark-sky-park/"
+  },
+  {
+    "id": 2893,
+    "name": "Staunton River State Park",
+    "category": "park",
+    "lat": 36.69882,
+    "lng": -78.67694,
+    "year": 2015,
+    "area": "9.7 km2",
+    "link": "https://darksky.org/places/staunton-river-state-park-dark-sky-park/"
+  },
+  {
+    "id": 2631,
+    "name": "De Boschplaat",
+    "category": "park",
+    "lat": 53.42688,
+    "lng": 5.47528,
+    "year": 2015,
+    "area": "40 km2",
+    "link": "https://darksky.org/places/de-boschplaat-dark-sky-park/"
+  },
+  {
+    "id": 1360,
+    "name": "Geauga Observatory Park",
+    "category": "park",
+    "lat": 41.58442,
+    "lng": -81.08056,
+    "year": 2011,
+    "area": "4.45 km2",
+    "link": "https://darksky.org/places/geauga-observatory-park-dark-sky-park/"
+  },
+  {
+    "id": 1192,
+    "name": "Zselic National Landscape Protection Area",
+    "category": "park",
+    "lat": 46.23333,
+    "lng": 17.76667,
+    "year": 2009,
+    "area": "105 km2",
+    "link": "https://darksky.org/places/zselic-national-landscape-protection-area-dark-sky-park/"
+  },
+  {
+    "id": 1186,
+    "name": "Grand Canyon-Parashant National Monument",
+    "category": "park",
+    "lat": 36.19594,
+    "lng": -113.515,
+    "year": 2014,
+    "area": "4,047 km2",
+    "link": "https://darksky.org/places/grand-canyon-parashant-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 1182,
+    "name": "Pickett CCC Memorial State Park & Pogue Creek Canyon State Natural Area",
+    "category": "park",
+    "lat": 36.53833,
+    "lng": -84.82917,
+    "year": 2015,
+    "area": "16.2 km2",
+    "link": "https://darksky.org/places/pickett-memorial-and-pogue-creek-canyon-dark-sky-park/"
+  },
+  {
+    "id": 1177,
+    "name": "Oracle State Park",
+    "category": "park",
+    "lat": 32.60609,
+    "lng": -110.73306,
+    "year": 2014,
+    "area": "16 km2",
+    "link": "https://darksky.org/places/oracle-state-park-dark-sky-park/"
+  },
+  {
+    "id": 1169,
+    "name": "Northumberland National Park and Kielder Water & Forest Park",
+    "category": "park",
+    "lat": 55.27775,
+    "lng": -2.28,
+    "year": 2013,
+    "area": "1,482 km2",
+    "link": "https://darksky.org/places/northumberland-national-park-and-kielder-water-forest-dark-sky-park/"
+  },
+  {
+    "id": 1162,
+    "name": "North Fork Park",
+    "category": "park",
+    "lat": 41.37095,
+    "lng": -111.90714,
+    "year": 2015,
+    "area": "10 km2",
+    "link": "https://darksky.org/places/north-fork-park-dark-sky-park/"
+  },
+  {
+    "id": 1134,
+    "name": "Hovenweep National Monument",
+    "category": "park",
+    "lat": 37.38355,
+    "lng": -109.0725,
+    "year": 2014,
+    "area": "3.17 km2",
+    "link": "https://darksky.org/places/hovenweep-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 1129,
+    "name": "Hortobágy National Park",
+    "category": "park",
+    "lat": 47.52536,
+    "lng": 21.12917,
+    "year": 2011,
+    "area": "820 km2",
+    "link": "https://darksky.org/places/hortobagy-national-park-dark-sky-park/"
+  },
+  {
+    "id": 1124,
+    "name": "Headlands",
+    "category": "park",
+    "lat": 45.77536,
+    "lng": -84.78278,
+    "year": 2011,
+    "area": "2.2 km2",
+    "link": "https://darksky.org/places/headlands-dark-sky-park/"
+  },
+  {
+    "id": 1112,
+    "name": "Galloway Forest Park",
+    "category": "park",
+    "lat": 55.091439,
+    "lng": -4.427195,
+    "year": 2009,
+    "area": "774 km2",
+    "link": "https://darksky.org/places/galloway-forest-park-dark-sky-park/"
+  },
+  {
+    "id": 1106,
+    "name": "Enchanted Rock State Natural Area",
+    "category": "park",
+    "lat": 30.49333,
+    "lng": -98.82056,
+    "year": 2014,
+    "area": "6.82 km2",
+    "link": "https://darksky.org/places/enchanted-rock-state-natural-area-dark-sky-park/"
+  },
+  {
+    "id": 1101,
+    "name": "Eifel National Park",
+    "category": "park",
+    "lat": 50.56065,
+    "lng": 6.39944,
+    "year": 2014,
+    "area": "110 km2",
+    "link": "https://darksky.org/places/eifel-national-park-dark-sky-park/"
+  },
+  {
+    "id": 1097,
+    "name": "Copper Breaks State Park",
+    "category": "park",
+    "lat": 34.11171,
+    "lng": -99.752126,
+    "year": 2014,
+    "area": "7.82 km2",
+    "link": "https://darksky.org/places/copper-breaks-state-park-dark-sky-park/"
+  },
+  {
+    "id": 1093,
+    "name": "Clayton Lake State Park",
+    "category": "park",
+    "lat": 36.5758,
+    "lng": -103.30611,
+    "year": 2010,
+    "area": "0.796 km2",
+    "link": "https://darksky.org/places/clayton-lake-state-park-dark-sky-park/"
+  },
+  {
+    "id": 1084,
+    "name": "Cherry Springs State Park",
+    "category": "park",
+    "lat": 41.66,
+    "lng": -77.82306,
+    "year": 2008,
+    "area": "4.3 km2",
+    "link": "https://darksky.org/places/cherry-springs-state-park-dark-sky-park/"
+  },
+  {
+    "id": 1073,
+    "name": "Chaco Culture National Historical Park",
+    "category": "park",
+    "lat": 36.05826,
+    "lng": -107.96167,
+    "year": 2013,
+    "area": "137.5 km2",
+    "link": "https://darksky.org/places/chaco-culture-national-historic-park-dark-sky-park/"
+  },
+  {
+    "id": 1042,
+    "name": "Capitol Reef National Park",
+    "category": "park",
+    "lat": 38.291514107265,
+    "lng": -111.26167272323,
+    "year": 2015,
+    "area": "990 km2",
+    "link": "https://darksky.org/places/capitol-reef-national-park-dark-sky-park/"
+  },
+  {
+    "id": 1003,
+    "name": "Mayland Earth to Sky Park & Bare Dark Sky Observatory",
+    "category": "park",
+    "lat": 35.929886,
+    "lng": -82.181449,
+    "year": 2014,
+    "area": "0.02 km2",
+    "link": "https://darksky.org/places/mayland-earth-to-sky-park-dark-sky-park/"
+  },
+  {
+    "id": 996,
+    "name": "Natural Bridges National Monument",
+    "category": "park",
+    "lat": 37.60109,
+    "lng": -110.01361,
+    "year": 2007,
+    "area": "31 km2",
+    "link": "https://darksky.org/places/natural-bridges-national-monument-dark-sky-park/"
+  },
+  {
+    "id": 990,
+    "name": "NamibRand Nature Reserve",
+    "category": "reserve",
+    "lat": -25,
+    "lng": 16,
+    "year": 2012,
+    "area": "2,022 km2",
+    "link": "https://darksky.org/places/namibrand-dark-sky-reserve/"
+  },
+  {
+    "id": 872,
+    "name": "Westcliffe and Silver Cliff, Colorado",
+    "category": "community",
+    "lat": 38.13551,
+    "lng": -105.45861,
+    "year": 2015,
+    "area": "43.3 km2",
+    "link": "https://darksky.org/places/westcliffe-and-silver-cliff-dark-sky-community/"
+  },
+  {
+    "id": 870,
+    "name": "Thunder Mountain Pootsee Nightsky",
+    "category": "community",
+    "lat": 36.92135,
+    "lng": -112.67863,
+    "year": 2015,
+    "area": "488.9 km2",
+    "link": "https://darksky.org/places/kaibab-paiute-indian-reservation-dark-sky-community/"
+  },
+  {
+    "id": 630,
+    "name": "Sark, Channel Islands",
+    "category": "community",
+    "lat": 49.42949,
+    "lng": -2.36083,
+    "year": 2011,
+    "area": "5.4 km2",
+    "link": "https://darksky.org/places/sark-dark-sky-community/"
+  },
+  {
+    "id": 629,
+    "name": "Coll",
+    "category": "community",
+    "lat": 56.62319,
+    "lng": -6.56194,
+    "year": 2013,
+    "area": "77 km2",
+    "link": "https://darksky.org/places/coll-dark-sky-community/"
+  },
+  {
+    "id": 628,
+    "name": "Beverly Shores, Indiana",
+    "category": "community",
+    "lat": 41.68768,
+    "lng": -86.97778,
+    "year": 2014,
+    "area": "15.1 km2",
+    "link": "https://darksky.org/places/beverly-shores-indiana-dark-sky-community/"
+  },
+  {
+    "id": 627,
+    "name": "Borrego Springs, California",
+    "category": "community",
+    "lat": 33.2442,
+    "lng": -116.37194,
+    "year": 2009,
+    "area": "112 km2",
+    "link": "https://darksky.org/places/borrego-springs-dark-sky-community/"
+  },
+  {
+    "id": 626,
+    "name": "Dripping Springs, Texas",
+    "category": "community",
+    "lat": 30.18986,
+    "lng": -98.0875,
+    "year": 2014,
+    "area": "22.95 km2",
+    "link": "https://darksky.org/places/dripping-springs-dark-sky-community/"
+  },
+  {
+    "id": 625,
+    "name": "Flagstaff, Arizona",
+    "category": "community",
+    "lat": 35.19572,
+    "lng": -111.63111,
+    "year": 2001,
+    "area": "171 km2",
+    "link": "https://darksky.org/places/flagstaff-arizona-dark-sky-community/"
+  },
+  {
+    "id": 624,
+    "name": "Homer Glen, Illinois",
+    "category": "community",
+    "lat": 41.600833,
+    "lng": -87.948419,
+    "year": 2011,
+    "area": "58 km2",
+    "link": "https://darksky.org/places/homer-glen-illinois-dark-sky-community/"
+  },
+  {
+    "id": 623,
+    "name": "Sedona, Arizona",
+    "category": "community",
+    "lat": 34.85978,
+    "lng": -111.78056,
+    "year": 2014,
+    "area": "49.7 km2",
+    "link": "https://darksky.org/places/sedona-arizona-dark-sky-community/"
+  },
+  {
+    "id": 581,
+    "name": "Mont-Mégantic",
+    "category": "reserve",
+    "lat": 45.45543,
+    "lng": -71.1625,
+    "year": 2007,
+    "area": "5,260 km2",
+    "link": "https://darksky.org/places/mont-megantic-dark-sky-reserve/"
+  },
+  {
+    "id": 580,
+    "name": "Exmoor National Park",
+    "category": "reserve",
+    "lat": 51.12754,
+    "lng": -3.65,
+    "year": 2011,
+    "area": "181 km2",
+    "link": "https://darksky.org/places/exmoor-national-park-dark-sky-place/"
+  },
+  {
+    "id": 579,
+    "name": "Westhavelland",
+    "category": "reserve",
+    "lat": 52.66797,
+    "lng": 12.43333,
+    "year": 2014,
+    "area": "1,380 km2",
+    "link": "https://darksky.org/places/westhavelland-dark-sky-reserve/"
+  },
+  {
+    "id": 578,
+    "name": "Aoraki Mackenzie",
+    "category": "reserve",
+    "lat": -43.99528,
+    "lng": 170.46139,
+    "year": 2012,
+    "area": "4,367 km2",
+    "link": "https://darksky.org/places/aoraki-mackenzie-dark-sky-reserve/"
+  },
+  {
+    "id": 577,
+    "name": "Rhön",
+    "category": "reserve",
+    "lat": 50.56087,
+    "lng": 10.07861,
+    "year": 2014,
+    "area": "1,720 km2",
+    "link": "https://darksky.org/places/rhon-dark-sky-reserve/"
+  },
+  {
+    "id": 576,
+    "name": "Kerry",
+    "category": "reserve",
+    "lat": 51.824162,
+    "lng": -10.0008,
+    "year": 2014,
+    "area": "700 km2",
+    "link": "https://darksky.org/places/kerry-dark-sky-reserve/"
+  },
+  {
+    "id": 575,
+    "name": "Pic du Midi",
+    "category": "reserve",
+    "lat": 42.93638,
+    "lng": -0.14139,
+    "year": 2013,
+    "area": "3,112 km2",
+    "link": "https://darksky.org/places/pic-du-midi-dark-sky-reserve/"
+  },
+  {
+    "id": 574,
+    "name": "Bannau Brycheiniog National Park (Brecon Beacons)",
+    "category": "reserve",
+    "lat": 51.88333,
+    "lng": -3.4,
+    "year": 2013,
+    "area": "1,347 km2",
+    "link": "https://darksky.org/places/brecon-beacons-national-park-dark-sky-reserve/"
+  },
+  {
+    "id": 541,
+    "name": "Big Bend National Park",
+    "category": "park",
+    "lat": 29.25,
+    "lng": -103.25,
+    "year": 2012,
+    "area": "3,242 km2",
+    "link": "https://darksky.org/places/big-bend-national-park-dark-sky-park/"
+  },
+  {
+    "id": 507,
+    "name": "Death Valley National Park",
+    "category": "park",
+    "lat": 36.24007,
+    "lng": -116.82583,
+    "year": 2013,
+    "area": "13,848 km2",
+    "link": "https://darksky.org/places/death-valley-national-park-dark-sky-park/"
+  }
+]

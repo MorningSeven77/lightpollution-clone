@@ -1,10 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { BORTLE_DESCRIPTIONS, STAR_COUNT_ESTIMATES } from "@/lib/bortle";
 import { SelectedLocation } from "@/components/Map";
 import TrendChart from "@/components/TrendChart";
 import { TrendPoint } from "@/app/api/trend/route";
+import { WeatherDay } from "@/app/api/weather/route";
+import WeatherSection, { ScoredWeatherDay } from "@/components/WeatherSection";
+import { computeStargazingScore } from "@/lib/stargazing";
+import ExposureCalculator from "@/components/ExposureCalculator";
 
 export type LocationDetailPanelProps = {
   location: SelectedLocation | null;
@@ -19,6 +23,8 @@ type PointValueState =
 type PlaceNameState = { status: "loading" } | { status: "error" } | { status: "done"; name: string | null };
 
 type TrendState = { status: "loading" } | { status: "error" } | { status: "done"; points: TrendPoint[] };
+
+type WeatherState = { status: "loading" } | { status: "error" } | { status: "done"; days: WeatherDay[] };
 
 export default function LocationDetailPanel({ location, onClose }: LocationDetailPanelProps) {
   if (!location) return null;
@@ -39,6 +45,7 @@ function LocationDetailPanelContent({
   const [pointValue, setPointValue] = useState<PointValueState>({ status: "loading" });
   const [placeName, setPlaceName] = useState<PlaceNameState>({ status: "loading" });
   const [trend, setTrend] = useState<TrendState>({ status: "loading" });
+  const [weather, setWeather] = useState<WeatherState>({ status: "loading" });
 
   // AbortController-backed so React Strict Mode's dev-only double-invoke of
   // this effect (mount -> cleanup -> mount again) cancels the first fetch
@@ -83,13 +90,41 @@ function LocationDetailPanelContent({
       });
   }, []);
 
+  const fetchWeather = useCallback((lat: number, lng: number, signal: AbortSignal) => {
+    fetch(`/api/weather?lat=${lat}&lng=${lng}`, { signal })
+      .then(async (res) => {
+        if (!res.ok) throw new Error("weather request failed");
+        const data = (await res.json()) as { days: WeatherDay[] };
+        setWeather({ status: "done", days: data.days });
+      })
+      .catch((err) => {
+        if (err instanceof DOMException && err.name === "AbortError") return;
+        setWeather({ status: "error" });
+      });
+  }, []);
+
   useEffect(() => {
     const controller = new AbortController();
     fetchPointValue(location.lat, location.lng, controller.signal);
     fetchPlaceName(location.lat, location.lng, controller.signal);
     fetchTrend(location.lat, location.lng, controller.signal);
+    fetchWeather(location.lat, location.lng, controller.signal);
     return () => controller.abort();
-  }, [location, fetchPointValue, fetchPlaceName, fetchTrend]);
+  }, [location, fetchPointValue, fetchPlaceName, fetchTrend, fetchWeather]);
+
+  // Combines once both independent fetches land — the weather API returns
+  // raw data only (no score) so it never has to wait on pointValue first.
+  const scoredWeatherDays: ScoredWeatherDay[] = useMemo(() => {
+    if (pointValue.status !== "done" || weather.status !== "done") return [];
+    return weather.days.map((day) => ({
+      ...day,
+      ...computeStargazingScore({
+        nightCloudCoverPercent: day.nightCloudCoverPercent,
+        moonIlluminationPercent: day.moonIlluminationPercent,
+        bortleClass: pointValue.bortleClass,
+      }),
+    }));
+  }, [pointValue, weather]);
 
   const retryPointValue = () => {
     setPointValue({ status: "loading" });
@@ -152,6 +187,14 @@ function LocationDetailPanelContent({
           )}
           {/* A missing trend chart isn't worth a visible error — the Bortle/SQM
               numbers above are the data that matters, so this just stays quiet. */}
+
+          {weather.status === "loading" && <div className="mt-3 text-xs text-zinc-400">天气查询中…</div>}
+          {scoredWeatherDays.length > 0 && (
+            <WeatherSection days={scoredWeatherDays} bortleClass={pointValue.bortleClass} sqm={pointValue.sqm} />
+          )}
+          {/* Same "stays quiet on failure" treatment as the trend chart above. */}
+
+          <ExposureCalculator sqm={pointValue.sqm} />
         </div>
       )}
     </div>

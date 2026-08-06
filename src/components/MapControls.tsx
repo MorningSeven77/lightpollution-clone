@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { BasemapId, BASEMAP_STYLES } from "@/lib/basemapStyles";
 import { ColorStyleId, COLOR_STYLES, paletteToCssGradient } from "@/lib/colorStyles";
+import { DARK_SKY_CATEGORY_META } from "@/lib/darkSkyPlaces";
+import { WeatherOverlayId, WEATHER_OVERLAYS } from "@/lib/weatherOverlay";
 
 export type MapControlsProps = {
   basemap: BasemapId;
@@ -13,6 +15,14 @@ export type MapControlsProps = {
   onOpacityChange: (value: number) => void;
   visible: boolean;
   onVisibleChange: (value: boolean) => void;
+  showDarkSkyPlaces: boolean;
+  onShowDarkSkyPlacesChange: (value: boolean) => void;
+  showAurora: boolean;
+  onShowAuroraChange: (value: boolean) => void;
+  showTerminator: boolean;
+  onShowTerminatorChange: (value: boolean) => void;
+  weatherOverlay: WeatherOverlayId;
+  onWeatherOverlayChange: (value: WeatherOverlayId) => void;
 };
 
 export default function MapControls({
@@ -24,6 +34,14 @@ export default function MapControls({
   onOpacityChange,
   visible,
   onVisibleChange,
+  showDarkSkyPlaces,
+  onShowDarkSkyPlacesChange,
+  showAurora,
+  onShowAuroraChange,
+  showTerminator,
+  onShowTerminatorChange,
+  weatherOverlay,
+  onWeatherOverlayChange,
 }: MapControlsProps) {
   const [open, setOpen] = useState(true);
 
@@ -83,8 +101,102 @@ export default function MapControls({
           }`}
         >
           <span
-            className={`absolute top-0.5 h-4 w-4 rounded-full bg-white transition-transform ${
-              visible ? "translate-x-4" : "translate-x-0.5"
+            className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform ${
+              visible ? "translate-x-4" : "translate-x-0"
+            }`}
+          />
+        </button>
+      </div>
+
+      <label className="mb-3 block">
+        <span className="mb-1 block text-xs text-zinc-400">天气叠加</span>
+        <select
+          value={weatherOverlay}
+          onChange={(e) => onWeatherOverlayChange(e.target.value as WeatherOverlayId)}
+          className="w-full rounded border border-white/10 bg-zinc-800 px-2 py-1.5 text-sm"
+        >
+          {Object.values(WEATHER_OVERLAYS).map((w) => (
+            <option key={w.id} value={w.id}>
+              {w.label}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <div className="mb-3 flex items-center justify-between">
+        <span className="text-xs text-zinc-400">认证暗空地点</span>
+        <button
+          type="button"
+          role="switch"
+          aria-checked={showDarkSkyPlaces}
+          onClick={() => onShowDarkSkyPlacesChange(!showDarkSkyPlaces)}
+          className={`relative h-5 w-9 shrink-0 rounded-full transition-colors ${
+            showDarkSkyPlaces ? "bg-emerald-500" : "bg-zinc-600"
+          }`}
+        >
+          <span
+            className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform ${
+              showDarkSkyPlaces ? "translate-x-4" : "translate-x-0"
+            }`}
+          />
+        </button>
+      </div>
+
+      {showDarkSkyPlaces && (
+        <div className="mb-3 flex flex-wrap gap-x-3 gap-y-1">
+          {Object.values(DARK_SKY_CATEGORY_META).map((meta) => (
+            <div key={meta.label} className="flex items-center gap-1">
+              <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: meta.color }} />
+              <span className="text-[10px] text-zinc-400">{meta.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="mb-3 flex items-center justify-between">
+        <span className="text-xs text-zinc-400">极光概率（NOAA 预测）</span>
+        <button
+          type="button"
+          role="switch"
+          aria-checked={showAurora}
+          onClick={() => onShowAuroraChange(!showAurora)}
+          className={`relative h-5 w-9 shrink-0 rounded-full transition-colors ${
+            showAurora ? "bg-emerald-500" : "bg-zinc-600"
+          }`}
+        >
+          <span
+            className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform ${
+              showAurora ? "translate-x-4" : "translate-x-0"
+            }`}
+          />
+        </button>
+      </div>
+
+      {showAurora && (
+        <div className="mb-3">
+          <div className="h-2 w-full rounded-full" style={{ background: "linear-gradient(to right, #22c55e, #eab308, #ef4444)" }} />
+          <div className="mt-1 flex justify-between text-[10px] text-zinc-400">
+            <span>10%</span>
+            <span>50%</span>
+            <span>90%</span>
+          </div>
+        </div>
+      )}
+
+      <div className="mb-3 flex items-center justify-between">
+        <span className="text-xs text-zinc-400">昼夜分界线</span>
+        <button
+          type="button"
+          role="switch"
+          aria-checked={showTerminator}
+          onClick={() => onShowTerminatorChange(!showTerminator)}
+          className={`relative h-5 w-9 shrink-0 rounded-full transition-colors ${
+            showTerminator ? "bg-emerald-500" : "bg-zinc-600"
+          }`}
+        >
+          <span
+            className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform ${
+              showTerminator ? "translate-x-4" : "translate-x-0"
             }`}
           />
         </button>
@@ -104,6 +216,7 @@ export default function MapControls({
             >
               <div className="h-2 w-full rounded-full" style={{ background: paletteToCssGradient(s.palette) }} />
               <div className="mt-1 text-xs">{s.label}</div>
+              <div className="text-[10px] text-zinc-400">{s.description}</div>
             </button>
           ))}
         </div>
