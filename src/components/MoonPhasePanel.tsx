@@ -26,7 +26,7 @@ export default function MoonPhasePanel() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label="打开月相面板"
-        className="fixed left-1/2 top-4 z-10 -translate-x-1/2 rounded-md border border-white/10 bg-zinc-900/90 p-2 text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800"
+        className="absolute left-1/2 top-4 z-10 -translate-x-1/2 rounded-md border border-white/10 bg-zinc-900/90 p-2 text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800"
       >
         <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
           <path d="M17.5 10a7.5 7.5 0 0 1-11.24 6.5A7.5 7.5 0 0 0 6.26 3.5 7.5 7.5 0 0 1 17.5 10Z" />
@@ -38,7 +38,7 @@ export default function MoonPhasePanel() {
   if (!info) return null;
 
   return (
-    <div className="fixed left-1/2 top-4 z-10 w-64 -translate-x-1/2 rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
+    <div className="absolute left-1/2 top-4 z-10 w-64 -translate-x-1/2 rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-3 flex items-center justify-between">
         <span className="font-medium">月相</span>
         <button

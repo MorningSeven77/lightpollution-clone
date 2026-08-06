@@ -51,7 +51,7 @@ export default function MapControls({
         type="button"
         onClick={() => setOpen(true)}
         aria-label="打开地图控制"
-        className="fixed right-4 top-20 z-10 rounded-md border border-white/10 bg-zinc-900/90 p-2 text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800"
+        className="absolute right-4 top-20 z-10 rounded-md border border-white/10 bg-zinc-900/90 p-2 text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800"
       >
         <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
           <path d="M10 2a1 1 0 0 1 1 1v1.09a6.51 6.51 0 0 1 2.4 1L14.3 4.3a1 1 0 0 1 1.41 1.41l-.8.8a6.51 6.51 0 0 1 1 2.4H17a1 1 0 1 1 0 2h-1.09a6.51 6.51 0 0 1-1 2.4l.8.8a1 1 0 0 1-1.41 1.41l-.8-.8a6.51 6.51 0 0 1-2.4 1V17a1 1 0 1 1-2 0v-1.09a6.51 6.51 0 0 1-2.4-1l-.8.8a1 1 0 0 1-1.41-1.41l.8-.8a6.51 6.51 0 0 1-1-2.4H3a1 1 0 1 1 0-2h1.09a6.51 6.51 0 0 1 1-2.4l-.8-.8A1 1 0 0 1 5.7 4.3l.8.8a6.51 6.51 0 0 1 2.4-1V3a1 1 0 0 1 1-1Zm0 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z" />
@@ -61,7 +61,7 @@ export default function MapControls({
   }
 
   return (
-    <div className="fixed right-4 top-20 z-10 w-64 rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
+    <div className="absolute right-4 top-20 z-10 w-64 rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-3 flex items-center justify-between">
         <span className="font-medium">地图控制</span>
         <button

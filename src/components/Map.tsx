@@ -553,7 +553,7 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
   }, [selectedLocation]);
 
   return (
-    <div className="fixed inset-0">
+    <div className="absolute inset-0">
       <div ref={containerRef} className="h-full w-full" />
     </div>
   );

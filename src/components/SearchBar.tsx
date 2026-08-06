@@ -44,7 +44,7 @@ export default function SearchBar({
   }, [query]);
 
   return (
-    <div className="fixed left-4 top-4 z-10 w-full max-w-xs">
+    <div className="absolute left-4 top-4 z-10 w-full max-w-xs">
       <input
         value={query}
         onChange={(e) => {

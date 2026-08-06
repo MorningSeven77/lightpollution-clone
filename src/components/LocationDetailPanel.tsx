@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BORTLE_DESCRIPTIONS, STAR_COUNT_ESTIMATES } from "@/lib/bortle";
 import { SelectedLocation } from "@/components/Map";
 import TrendChart from "@/components/TrendChart";
@@ -9,6 +9,7 @@ import { WeatherDay } from "@/app/api/weather/route";
 import WeatherSection, { ScoredWeatherDay } from "@/components/WeatherSection";
 import { computeStargazingScore } from "@/lib/stargazing";
 import ExposureCalculator from "@/components/ExposureCalculator";
+import { addLocationHistoryEntry } from "@/lib/locationHistory";
 
 export type LocationDetailPanelProps = {
   location: SelectedLocation | null;
@@ -112,6 +113,26 @@ function LocationDetailPanelContent({
     return () => controller.abort();
   }, [location, fetchPointValue, fetchPlaceName, fetchTrend, fetchWeather]);
 
+  // Records one history entry per selected point, once both the Bortle/SQM
+  // value and place name have settled (name may still end up null/unknown —
+  // that's fine, still worth recording). The `key`-based remount above means
+  // this effect only ever sees one "done" transition per selection, but the
+  // ref guards against it firing twice anyway (e.g. if placeName resolves
+  // after an unrelated re-render).
+  const hasRecordedHistoryRef = useRef(false);
+  useEffect(() => {
+    if (hasRecordedHistoryRef.current) return;
+    if (pointValue.status !== "done" || placeName.status === "loading") return;
+    hasRecordedHistoryRef.current = true;
+    addLocationHistoryEntry({
+      lat: location.lat,
+      lng: location.lng,
+      placeName: placeName.status === "done" ? placeName.name : null,
+      bortleClass: pointValue.bortleClass,
+      sqm: pointValue.sqm,
+    });
+  }, [location, pointValue, placeName]);
+
   // Combines once both independent fetches land — the weather API returns
   // raw data only (no score) so it never has to wait on pointValue first.
   const scoredWeatherDays: ScoredWeatherDay[] = useMemo(() => {
@@ -135,7 +156,7 @@ function LocationDetailPanelContent({
     placeName.status === "loading" ? "查询中…" : placeName.status === "done" ? (placeName.name ?? "未知地点") : "未知地点";
 
   return (
-    <div className="fixed left-4 top-20 z-10 w-full max-w-xs rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
+    <div className="absolute left-4 top-20 z-10 w-full max-w-xs rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-2 flex items-center justify-between">
         <span className="font-medium">位置详情</span>
         <button type="button" onClick={onClose} aria-label="关闭位置详情" className="text-zinc-400 hover:text-zinc-100">

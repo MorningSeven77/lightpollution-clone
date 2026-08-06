@@ -13,7 +13,7 @@ export default function DarkSkyPlacePanel({ place, onClose }: DarkSkyPlacePanelP
   const meta = DARK_SKY_CATEGORY_META[place.category];
 
   return (
-    <div className="fixed left-4 top-20 z-10 w-full max-w-xs rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
+    <div className="absolute left-4 top-20 z-10 w-full max-w-xs rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-2 flex items-center justify-between">
         <span className="font-medium">认证暗空地点</span>
         <button type="button" onClick={onClose} aria-label="关闭暗空地点详情" className="text-zinc-400 hover:text-zinc-100">

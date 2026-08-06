@@ -8,6 +8,8 @@ import MapControls from "@/components/MapControls";
 import LocationDetailPanel from "@/components/LocationDetailPanel";
 import DarkSkyPlacePanel from "@/components/DarkSkyPlacePanel";
 import MoonPhasePanel from "@/components/MoonPhasePanel";
+import LocationHistoryPanel from "@/components/LocationHistoryPanel";
+import SiteHeader from "@/components/SiteHeader";
 import { BasemapId, DEFAULT_BASEMAP } from "@/lib/basemapStyles";
 import { ColorStyleId, DEFAULT_COLOR_STYLE } from "@/lib/colorStyles";
 import { DarkSkyPlace } from "@/lib/darkSkyPlaces";
@@ -53,7 +55,9 @@ export default function Home() {
   };
 
   return (
-    <main className="h-screen w-screen overflow-hidden">
+    <main className="flex h-screen w-screen flex-col overflow-hidden">
+      <SiteHeader />
+      <div className="relative flex-1">
       <Map
         ref={mapRef}
         basemap={basemap}
@@ -77,6 +81,13 @@ export default function Home() {
       <SearchBar onSelect={handleSelect} />
       <Legend colorStyle={colorStyle} />
       <MoonPhasePanel />
+      <LocationHistoryPanel
+        onSelectLocation={(lat, lng) => {
+          setSelectedDarkSkyPlace(null);
+          setSelectedLocation({ lat, lng });
+          mapRef.current?.flyTo({ lat, lng, zoom: 10 });
+        }}
+      />
       <MapControls
         basemap={basemap}
         onBasemapChange={setBasemap}
@@ -100,6 +111,7 @@ export default function Home() {
       ) : (
         <LocationDetailPanel location={selectedLocation} onClose={() => setSelectedLocation(null)} />
       )}
+      </div>
     </main>
   );
 }
