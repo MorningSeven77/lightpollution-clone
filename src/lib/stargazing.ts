@@ -1,17 +1,14 @@
 export type StargazingTier = "poor" | "marginal" | "fair" | "good";
 
+// Which factor dominated the score's penalty, so the UI layer can localize
+// a "main limiting factor" message without this module baking in any
+// particular language.
+export type ConstraintFactor = "cloud" | "moon" | "light-pollution" | "none";
+
 export type StargazingScore = {
   score: number; // 0-100
   tier: StargazingTier;
-  tierLabel: string;
-  constraint: string;
-};
-
-const TIER_LABELS: Record<StargazingTier, string> = {
-  poor: "较差",
-  marginal: "一般",
-  fair: "良好",
-  good: "极佳",
+  constraintFactor: ConstraintFactor;
 };
 
 function scoreToTier(score: number): StargazingTier {
@@ -45,13 +42,13 @@ export function computeStargazingScore(input: {
   const score = Math.round(Math.max(0, 100 - cloudPenalty - moonPenalty - lightPollutionPenalty));
   const tier = scoreToTier(score);
 
-  const penalties = [
-    { name: "云量较高", value: cloudPenalty },
-    { name: "月光较亮", value: moonPenalty },
-    { name: "光污染较重", value: lightPollutionPenalty },
+  const penalties: Array<{ factor: ConstraintFactor; value: number }> = [
+    { factor: "cloud", value: cloudPenalty },
+    { factor: "moon", value: moonPenalty },
+    { factor: "light-pollution", value: lightPollutionPenalty },
   ];
   const worst = penalties.reduce((a, b) => (b.value > a.value ? b : a));
-  const constraint = worst.value > 0 ? `主要受限于：${worst.name}` : "各项条件都不错";
+  const constraintFactor: ConstraintFactor = worst.value > 0 ? worst.factor : "none";
 
-  return { score, tier, tierLabel: TIER_LABELS[tier], constraint };
+  return { score, tier, constraintFactor };
 }

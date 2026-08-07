@@ -7,10 +7,10 @@ export type ColorStyleId = "classic" | "soft" | "vivid" | "amber";
 // computed from this style's min/max via radianceToBortleEstimate.
 export type LegendType = "bortle" | "sqm";
 
+// Text label/description live in src/lib/i18n/translations.ts
+// (dataLabels.colorStyles) so this module stays language-agnostic.
 export type ColorStyleDef = {
   id: ColorStyleId;
-  label: string;
-  description: string;
   palette: string[];
   min: number;
   max: number;
@@ -39,9 +39,7 @@ const FIXED_MAX_RADIANCE = 120;
 export const COLOR_STYLES: Record<ColorStyleId, ColorStyleDef> = {
   classic: {
     id: "classic",
-    label: "经典",
-    description: "清晰分区",
-    // Sampled the same way as "科研"'s palette below — fetched the reference
+    // Sampled the same way as the "Scientific" style's palette below — fetched the reference
     // site's own Classic-style tile over Cairo and read real pixel values —
     // rather than eyeballed. Their tile turned out to have literally only
     // ~9-11 unique colors (it's genuinely discrete, not a smoothed gradient
@@ -58,8 +56,6 @@ export const COLOR_STYLES: Record<ColorStyleId, ColorStyleDef> = {
   },
   soft: {
     id: "soft",
-    label: "高亮",
-    description: "平滑强度",
     palette: ["1a1a2e", "4a5568", "f59e0b", "ef4444", "ec4899"],
     min: FIXED_MIN_RADIANCE,
     max: FIXED_MAX_RADIANCE,
@@ -67,8 +63,6 @@ export const COLOR_STYLES: Record<ColorStyleId, ColorStyleDef> = {
   },
   vivid: {
     id: "vivid",
-    label: "辉光",
-    description: "天光扩散",
     palette: ["000000", "3f3f46", "71717a", "a1a1aa", "e4e4e7", "ffffff"],
     min: FIXED_MIN_RADIANCE,
     max: FIXED_MAX_RADIANCE,
@@ -76,8 +70,6 @@ export const COLOR_STYLES: Record<ColorStyleId, ColorStyleDef> = {
   },
   amber: {
     id: "amber",
-    label: "科研",
-    description: "固定 SQM 标尺",
     // Sampled directly from the reference site's own rendered tiles (fetched
     // their Scientific-style PNGs, read real pixel values dark→bright with
     // a canvas) rather than eyeballed from a screenshot — this is the actual

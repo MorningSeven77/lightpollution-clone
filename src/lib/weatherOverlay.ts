@@ -1,17 +1,18 @@
 export type WeatherOverlayId = "none" | "clouds" | "rain";
 
+// Text labels live in src/lib/i18n/translations.ts (dataLabels.weatherOverlays)
+// so this module stays language-agnostic.
 export type WeatherOverlayDef = {
   id: WeatherOverlayId;
-  label: string;
   // OpenWeatherMap's own tile layer name, proxied via /api/weather-tiles.
   // null for "none", which just hides the layer instead of fetching anything.
   owmLayer: string | null;
 };
 
 export const WEATHER_OVERLAYS: Record<WeatherOverlayId, WeatherOverlayDef> = {
-  none: { id: "none", label: "无/隐藏", owmLayer: null },
-  clouds: { id: "clouds", label: "云层", owmLayer: "clouds_new" },
-  rain: { id: "rain", label: "降水", owmLayer: "precipitation_new" },
+  none: { id: "none", owmLayer: null },
+  clouds: { id: "clouds", owmLayer: "clouds_new" },
+  rain: { id: "rain", owmLayer: "precipitation_new" },
 };
 
 export const DEFAULT_WEATHER_OVERLAY: WeatherOverlayId = "none";

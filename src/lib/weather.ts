@@ -1,40 +1,40 @@
-export type WmoWeatherInfo = { emoji: string; label: string };
-
-// WMO weather interpretation codes -> {emoji, 中文简述}. Only covers the
-// codes Open-Meteo's forecast actually returns, not the full WMO table.
-export const WMO_WEATHER_CODES: Record<number, WmoWeatherInfo> = {
-  0: { emoji: "☀️", label: "晴朗" },
-  1: { emoji: "🌤️", label: "大部晴朗" },
-  2: { emoji: "⛅", label: "局部多云" },
-  3: { emoji: "☁️", label: "阴天" },
-  45: { emoji: "🌫️", label: "有雾" },
-  48: { emoji: "🌫️", label: "有雾" },
-  51: { emoji: "🌦️", label: "毛毛雨" },
-  53: { emoji: "🌦️", label: "毛毛雨" },
-  55: { emoji: "🌦️", label: "毛毛雨" },
-  56: { emoji: "🌧️", label: "冻雨" },
-  57: { emoji: "🌧️", label: "冻雨" },
-  61: { emoji: "🌧️", label: "降雨" },
-  63: { emoji: "🌧️", label: "降雨" },
-  65: { emoji: "🌧️", label: "强降雨" },
-  66: { emoji: "🌧️", label: "冻雨" },
-  67: { emoji: "🌧️", label: "冻雨" },
-  71: { emoji: "🌨️", label: "降雪" },
-  73: { emoji: "🌨️", label: "降雪" },
-  75: { emoji: "🌨️", label: "强降雪" },
-  77: { emoji: "🌨️", label: "米雪" },
-  80: { emoji: "🌦️", label: "阵雨" },
-  81: { emoji: "🌧️", label: "阵雨" },
-  82: { emoji: "🌧️", label: "强阵雨" },
-  85: { emoji: "🌨️", label: "阵雪" },
-  86: { emoji: "🌨️", label: "强阵雪" },
-  95: { emoji: "⛈️", label: "雷暴" },
-  96: { emoji: "⛈️", label: "雷暴伴冰雹" },
-  99: { emoji: "⛈️", label: "雷暴伴冰雹" },
+// WMO weather interpretation codes -> emoji. Only covers the codes
+// Open-Meteo's forecast actually returns, not the full WMO table. Text
+// labels live in src/lib/i18n/translations.ts (dataLabels.weatherCodes) so
+// this module stays language-agnostic.
+export const WMO_WEATHER_EMOJI: Record<number, string> = {
+  0: "☀️",
+  1: "🌤️",
+  2: "⛅",
+  3: "☁️",
+  45: "🌫️",
+  48: "🌫️",
+  51: "🌦️",
+  53: "🌦️",
+  55: "🌦️",
+  56: "🌧️",
+  57: "🌧️",
+  61: "🌧️",
+  63: "🌧️",
+  65: "🌧️",
+  66: "🌧️",
+  67: "🌧️",
+  71: "🌨️",
+  73: "🌨️",
+  75: "🌨️",
+  77: "🌨️",
+  80: "🌦️",
+  81: "🌧️",
+  82: "🌧️",
+  85: "🌨️",
+  86: "🌨️",
+  95: "⛈️",
+  96: "⛈️",
+  99: "⛈️",
 };
 
-export function describeWeatherCode(code: number): WmoWeatherInfo {
-  return WMO_WEATHER_CODES[code] ?? { emoji: "❓", label: "未知天气" };
+export function getWeatherEmoji(code: number): string {
+  return WMO_WEATHER_EMOJI[code] ?? "❓";
 }
 
 // Open-Meteo's `moon_phase` is a 0-1 position in the synodic cycle (0/1 = new

@@ -1,8 +1,10 @@
 import { sqmToRadiance } from "@/lib/bortle";
 
+// Text labels live in src/lib/i18n/translations.ts
+// (exposureCalculator.cameraPresets, keyed by id) so this module stays
+// language-agnostic.
 export type CameraPreset = {
   id: string;
-  label: string;
   pixelSizeUm: number;
   readNoiseE: number;
   sensorQePercent: number;
@@ -12,9 +14,9 @@ export type CameraPreset = {
 // Starting values, not device specs — same disclaimer the reference site
 // shows next to its own presets. Real cameras vary a lot within each category.
 export const CAMERA_PRESETS: CameraPreset[] = [
-  { id: "cooled-cmos", label: "制冷 CMOS", pixelSizeUm: 3.76, readNoiseE: 1.5, sensorQePercent: 80, darkCurrentEPerPxPerS: 0.005 },
-  { id: "uncooled-cmos", label: "非制冷 CMOS", pixelSizeUm: 3.76, readNoiseE: 1.8, sensorQePercent: 75, darkCurrentEPerPxPerS: 0.05 },
-  { id: "dslr", label: "单反/微单", pixelSizeUm: 4.3, readNoiseE: 3.5, sensorQePercent: 50, darkCurrentEPerPxPerS: 0.02 },
+  { id: "cooled-cmos", pixelSizeUm: 3.76, readNoiseE: 1.5, sensorQePercent: 80, darkCurrentEPerPxPerS: 0.005 },
+  { id: "uncooled-cmos", pixelSizeUm: 3.76, readNoiseE: 1.8, sensorQePercent: 75, darkCurrentEPerPxPerS: 0.05 },
+  { id: "dslr", pixelSizeUm: 4.3, readNoiseE: 3.5, sensorQePercent: 50, darkCurrentEPerPxPerS: 0.02 },
 ];
 
 export const DEFAULT_CAMERA_PRESET_ID = "cooled-cmos";

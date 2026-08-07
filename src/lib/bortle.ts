@@ -29,17 +29,8 @@ const BORTLE_SQM_THRESHOLDS: Array<{ bortleClass: number; minSqm: number }> = [
 ];
 const DARKEST_BORTLE_CLASS = 9;
 
-export const BORTLE_DESCRIPTIONS: Record<number, string> = {
-  1: "极暗夜空",
-  2: "典型暗夜空",
-  3: "乡村夜空",
-  4: "乡村/郊区过渡",
-  5: "郊区夜空",
-  6: "较亮郊区夜空",
-  7: "郊区/城市过渡",
-  8: "城市夜空",
-  9: "市中心夜空",
-};
+// Text descriptions live in src/lib/i18n/translations.ts
+// (dataLabels.bortleDescriptions) so this module stays language-agnostic.
 
 // Rough, illustrative naked-eye visible-star-count ranges per Bortle class —
 // not a precise model, just a commonly cited ballpark to make the numbers

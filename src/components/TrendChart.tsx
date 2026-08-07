@@ -1,4 +1,7 @@
+"use client";
+
 import { TrendPoint } from "@/app/api/trend/route";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export type TrendChartProps = {
   points: TrendPoint[];
@@ -9,6 +12,7 @@ const CHART_HEIGHT = 60;
 const BAR_GAP = 2;
 
 export default function TrendChart({ points }: TrendChartProps) {
+  const { t } = useLanguage();
   if (points.length === 0) return null;
 
   const sqmValues = points.map((p) => p.sqm);
@@ -23,9 +27,9 @@ export default function TrendChart({ points }: TrendChartProps) {
   return (
     <div>
       <div className="mb-1 text-xs text-zinc-400">
-        光害趋势（{points[0].year}-{points[points.length - 1].year}，SQM 越高越暗）
+        {t.trendChart.title(points[0].year, points[points.length - 1].year)}
       </div>
-      <svg viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`} className="w-full" role="img" aria-label="历年 SQM 趋势柱状图">
+      <svg viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`} className="w-full" role="img" aria-label={t.trendChart.ariaLabel}>
         {points.map((point, i) => {
           // Higher SQM (darker sky) reads as a taller bar.
           const heightRatio = 0.15 + 0.85 * ((point.sqm - minSqm) / range);
@@ -41,9 +45,7 @@ export default function TrendChart({ points }: TrendChartProps) {
               height={barHeight}
               className="fill-emerald-400/70"
             >
-              <title>
-                {point.year} 年：SQM ≈ {point.sqm.toFixed(2)}，Bortle {point.bortleClass}
-              </title>
+              <title>{t.trendChart.tooltip(point.year, point.sqm.toFixed(2), point.bortleClass)}</title>
             </rect>
           );
         })}

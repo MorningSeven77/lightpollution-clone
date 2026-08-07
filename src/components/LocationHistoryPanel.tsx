@@ -7,6 +7,8 @@ import {
   clearLocationHistory,
   computeSkyBackgroundRatio,
 } from "@/lib/locationHistory";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { Translations } from "@/lib/i18n/translations";
 
 export type LocationHistoryPanelProps = {
   onSelectLocation: (lat: number, lng: number) => void;
@@ -14,13 +16,13 @@ export type LocationHistoryPanelProps = {
 
 const MAX_COMPARE = 5;
 
-function formatRelativeTime(timestamp: number): string {
+function formatRelativeTime(timestamp: number, relativeTime: Translations["locationHistory"]["relativeTime"]): string {
   const diffMin = Math.floor((Date.now() - timestamp) / 60000);
-  if (diffMin < 1) return "刚刚";
-  if (diffMin < 60) return `${diffMin} 分钟前`;
+  if (diffMin < 1) return relativeTime.justNow;
+  if (diffMin < 60) return relativeTime.minutesAgo(diffMin);
   const diffHour = Math.floor(diffMin / 60);
-  if (diffHour < 24) return `${diffHour} 小时前`;
-  return `${Math.floor(diffHour / 24)} 天前`;
+  if (diffHour < 24) return relativeTime.hoursAgo(diffHour);
+  return relativeTime.daysAgo(Math.floor(diffHour / 24));
 }
 
 function entryKey(entry: LocationHistoryEntry): string {
@@ -31,6 +33,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
   const [open, setOpen] = useState(false);
   const [history, setHistory] = useState<LocationHistoryEntry[]>([]);
   const [compareKeys, setCompareKeys] = useState<Set<string>>(new Set());
+  const { t } = useLanguage();
 
   // Re-read from localStorage right when the panel opens — entries may have
   // been added by point-value queries made while it was closed.
@@ -44,7 +47,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
       <button
         type="button"
         onClick={handleOpen}
-        aria-label="打开位置历史面板"
+        aria-label={t.locationHistory.openAria}
         className="absolute left-1/2 top-4 z-10 translate-x-6 rounded-md border border-white/10 bg-zinc-900/90 p-2 text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800"
       >
         <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
@@ -96,17 +99,17 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
         onClick={(e) => e.stopPropagation()}
       >
       <div className="mb-2 flex items-center justify-between">
-        <span className="font-medium">位置历史</span>
+        <span className="font-medium">{t.locationHistory.title}</span>
         <div className="flex items-center gap-2">
           {history.length > 0 && (
             <button type="button" onClick={handleClear} className="text-xs text-zinc-400 hover:text-red-400">
-              清空
+              {t.locationHistory.clear}
             </button>
           )}
           <button
             type="button"
             onClick={() => setOpen(false)}
-            aria-label="关闭位置历史面板"
+            aria-label={t.locationHistory.closeAria}
             className="text-zinc-400 hover:text-zinc-100"
           >
             ✕
@@ -114,7 +117,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
         </div>
       </div>
 
-      {history.length === 0 && <div className="text-xs text-zinc-400">还没有查询记录，点击地图上的位置看看吧</div>}
+      {history.length === 0 && <div className="text-xs text-zinc-400">{t.locationHistory.empty}</div>}
 
       <div className="max-h-64 space-y-1 overflow-y-auto">
         {history.map((entry) => {
@@ -128,7 +131,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
                 onChange={() => toggleCompare(key)}
                 disabled={!checked && compareKeys.size >= MAX_COMPARE}
                 className="shrink-0"
-                aria-label="加入对比"
+                aria-label={t.locationHistory.addToCompareAria}
               />
               <button
                 type="button"
@@ -137,7 +140,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
               >
                 <div className="truncate font-medium">{entry.placeName ?? `${entry.lat.toFixed(2)}, ${entry.lng.toFixed(2)}`}</div>
                 <div className="text-[10px] text-zinc-400">
-                  Bortle {entry.bortleClass} · SQM {entry.sqm.toFixed(2)} · {formatRelativeTime(entry.timestamp)}
+                  Bortle {entry.bortleClass} · SQM {entry.sqm.toFixed(2)} · {formatRelativeTime(entry.timestamp, t.locationHistory.relativeTime)}
                 </div>
               </button>
             </div>
@@ -147,13 +150,13 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
 
       {compareEntries.length >= 2 && darkestSqm !== undefined && (
         <div className="mt-3 border-t border-white/10 pt-3">
-          <div className="mb-1 text-xs font-medium text-zinc-300">位置对比（按暗到亮排序）</div>
+          <div className="mb-1 text-xs font-medium text-zinc-300">{t.locationHistory.compareTitle}</div>
           <div className="space-y-1">
             {compareEntries.map((entry, i) => (
               <div key={entryKey(entry)} className="flex items-center justify-between gap-2 text-xs">
                 <span className="min-w-0 flex-1 truncate">
                   {i === 0 && (
-                    <span className="mr-1 rounded bg-emerald-500/20 px-1 text-[10px] text-emerald-400">最暗</span>
+                    <span className="mr-1 rounded bg-emerald-500/20 px-1 text-[10px] text-emerald-400">{t.locationHistory.darkestBadge}</span>
                   )}
                   {entry.placeName ?? `${entry.lat.toFixed(2)}, ${entry.lng.toFixed(2)}`}
                 </span>
@@ -163,7 +166,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
               </div>
             ))}
           </div>
-          <div className="mt-1 text-[10px] text-zinc-500">天光背景倍数是物理亮度比例，不是曝光时间或信噪比预测。</div>
+          <div className="mt-1 text-[10px] text-zinc-500">{t.locationHistory.ratioNote}</div>
         </div>
       )}
       </div>

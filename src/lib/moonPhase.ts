@@ -22,17 +22,6 @@ export type MoonPhaseId =
   | "last-quarter"
   | "waning-crescent";
 
-export const MOON_PHASE_LABELS: Record<MoonPhaseId, string> = {
-  "new-moon": "新月",
-  "waxing-crescent": "娥眉月（渐盈）",
-  "first-quarter": "上弦月",
-  "waxing-gibbous": "盈凸月",
-  "full-moon": "满月",
-  "waning-gibbous": "亏凸月",
-  "last-quarter": "下弦月",
-  "waning-crescent": "残月（渐亏）",
-};
-
 const PHASE_ORDER: MoonPhaseId[] = [
   "new-moon",
   "waxing-crescent",
@@ -83,7 +72,6 @@ export type MoonPhaseInfo = {
   ageDays: number;
   illuminationPercent: number;
   phaseId: MoonPhaseId;
-  phaseLabel: string;
   nextPhases: NextPhaseDate[];
 };
 
@@ -95,7 +83,6 @@ export function getMoonPhaseInfo(date: Date): MoonPhaseInfo {
     ageDays,
     illuminationPercent: moonPhaseToIlluminationPercent(phaseFraction),
     phaseId,
-    phaseLabel: MOON_PHASE_LABELS[phaseId],
     nextPhases: computeNextPhaseDates(date),
   };
 }

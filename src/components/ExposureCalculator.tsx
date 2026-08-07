@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { CAMERA_PRESETS, DEFAULT_CAMERA_PRESET_ID, computeExposure } from "@/lib/exposureCalculator";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export type ExposureCalculatorProps = { sqm: number };
 
@@ -19,6 +20,7 @@ function formatDuration(seconds: number): string {
 export default function ExposureCalculator({ sqm }: ExposureCalculatorProps) {
   const [presetId, setPresetId] = useState(DEFAULT_CAMERA_PRESET_ID);
   const [focalRatio, setFocalRatio] = useState(DEFAULT_FOCAL_RATIO);
+  const { t } = useLanguage();
 
   const preset = CAMERA_PRESETS.find((p) => p.id === presetId) ?? CAMERA_PRESETS[0];
 
@@ -40,11 +42,11 @@ export default function ExposureCalculator({ sqm }: ExposureCalculatorProps) {
 
   return (
     <div className="mt-3 border-t border-white/10 pt-3">
-      <div className="mb-2 text-xs font-medium text-zinc-300">曝光计算器（简化估算）</div>
+      <div className="mb-2 text-xs font-medium text-zinc-300">{t.exposureCalculator.title}</div>
 
       <div className="mb-2 grid grid-cols-2 gap-2">
         <label className="block">
-          <span className="mb-1 block text-[10px] text-zinc-400">相机类型</span>
+          <span className="mb-1 block text-[10px] text-zinc-400">{t.exposureCalculator.cameraTypeLabel}</span>
           <select
             value={presetId}
             onChange={(e) => setPresetId(e.target.value)}
@@ -52,13 +54,13 @@ export default function ExposureCalculator({ sqm }: ExposureCalculatorProps) {
           >
             {CAMERA_PRESETS.map((p) => (
               <option key={p.id} value={p.id}>
-                {p.label}
+                {t.exposureCalculator.cameraPresets[p.id]}
               </option>
             ))}
           </select>
         </label>
         <label className="block">
-          <span className="mb-1 block text-[10px] text-zinc-400">焦比 f/</span>
+          <span className="mb-1 block text-[10px] text-zinc-400">{t.exposureCalculator.focalRatioLabel}</span>
           <input
             type="number"
             min={0.5}
@@ -71,18 +73,15 @@ export default function ExposureCalculator({ sqm }: ExposureCalculatorProps) {
       </div>
 
       <div className="rounded border border-white/10 bg-zinc-800/50 p-2">
-        <div className="text-xs text-zinc-400">建议单帧曝光时长</div>
+        <div className="text-xs text-zinc-400">{t.exposureCalculator.recommendedLabel}</div>
         <div className="text-2xl font-semibold">{formatDuration(result.recommendedSubExposureSeconds)}</div>
         {result.cappedByMax && (
-          <div className="mt-1 text-[10px] text-zinc-400">
-            已按最长单帧 {MAX_SUB_SECONDS}s 封顶——暗天空下噪声预算本可以更长，但受跟踪精度、卫星拖尾等实际因素限制
-          </div>
+          <div className="mt-1 text-[10px] text-zinc-400">{t.exposureCalculator.cappedNote(MAX_SUB_SECONDS)}</div>
         )}
       </div>
 
       <div className="mt-2 text-[10px] text-zinc-500">
-        基于 SQM {sqm.toFixed(2)} 估算天空背景信号强度，目标读出噪声占比 {ALLOWED_READ_NOISE_PERCENT}%
-        ——简化估算，仅供参考，不是精确曝光建议。
+        {t.exposureCalculator.footnote(sqm.toFixed(2), ALLOWED_READ_NOISE_PERCENT)}
       </div>
     </div>
   );

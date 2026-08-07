@@ -2,9 +2,11 @@ import type { StyleSpecification } from "maplibre-gl";
 
 export type BasemapId = "street" | "dark" | "satellite";
 
+// Text labels live in src/lib/i18n/translations.ts (dataLabels.basemaps) so
+// this module stays language-agnostic.
 export type BasemapDef =
-  | { id: BasemapId; label: string; styleUrl: string }
-  | { id: BasemapId; label: string; style: StyleSpecification };
+  | { id: BasemapId; styleUrl: string }
+  | { id: BasemapId; style: StyleSpecification };
 
 // "street"/"dark" are CARTO's free, key-less vector basemaps
 // (https://docs.carto.com/carto-for-developers/carto-for-react/guides/basemaps).
@@ -18,17 +20,14 @@ export type BasemapDef =
 export const BASEMAP_STYLES: Record<BasemapId, BasemapDef> = {
   street: {
     id: "street",
-    label: "街道",
     styleUrl: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
   },
   dark: {
     id: "dark",
-    label: "暗色",
     styleUrl: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
   },
   satellite: {
     id: "satellite",
-    label: "卫星图",
     style: {
       version: 8,
       sources: {

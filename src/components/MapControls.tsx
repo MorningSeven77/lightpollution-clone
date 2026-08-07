@@ -5,6 +5,7 @@ import { BasemapId, BASEMAP_STYLES } from "@/lib/basemapStyles";
 import { ColorStyleId, COLOR_STYLES, paletteToCssGradient } from "@/lib/colorStyles";
 import { DARK_SKY_CATEGORY_META } from "@/lib/darkSkyPlaces";
 import { WeatherOverlayId, WEATHER_OVERLAYS } from "@/lib/weatherOverlay";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export type MapControlsProps = {
   basemap: BasemapId;
@@ -44,13 +45,14 @@ export default function MapControls({
   onWeatherOverlayChange,
 }: MapControlsProps) {
   const [open, setOpen] = useState(true);
+  const { t } = useLanguage();
 
   if (!open) {
     return (
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="打开地图控制"
+        aria-label={t.mapControls.openAria}
         className="absolute right-4 top-20 z-10 rounded-md border border-white/10 bg-zinc-900/90 p-2 text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800"
       >
         <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
@@ -63,11 +65,11 @@ export default function MapControls({
   return (
     <div className="absolute right-4 top-20 z-10 w-64 rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-3 flex items-center justify-between">
-        <span className="font-medium">地图控制</span>
+        <span className="font-medium">{t.mapControls.title}</span>
         <button
           type="button"
           onClick={() => setOpen(false)}
-          aria-label="关闭地图控制"
+          aria-label={t.mapControls.closeAria}
           className="text-zinc-400 hover:text-zinc-100"
         >
           ✕
@@ -75,7 +77,7 @@ export default function MapControls({
       </div>
 
       <label className="mb-3 block">
-        <span className="mb-1 block text-xs text-zinc-400">底图</span>
+        <span className="mb-1 block text-xs text-zinc-400">{t.mapControls.basemapLabel}</span>
         <select
           value={basemap}
           onChange={(e) => onBasemapChange(e.target.value as BasemapId)}
@@ -83,14 +85,14 @@ export default function MapControls({
         >
           {Object.values(BASEMAP_STYLES).map((b) => (
             <option key={b.id} value={b.id}>
-              {b.label}
+              {t.dataLabels.basemaps[b.id]}
             </option>
           ))}
         </select>
       </label>
 
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-xs text-zinc-400">光污染图层（VIIRS 2024）</span>
+        <span className="text-xs text-zinc-400">{t.mapControls.lightPollutionLayerLabel}</span>
         <button
           type="button"
           role="switch"
@@ -109,7 +111,7 @@ export default function MapControls({
       </div>
 
       <label className="mb-3 block">
-        <span className="mb-1 block text-xs text-zinc-400">天气叠加</span>
+        <span className="mb-1 block text-xs text-zinc-400">{t.mapControls.weatherOverlayLabel}</span>
         <select
           value={weatherOverlay}
           onChange={(e) => onWeatherOverlayChange(e.target.value as WeatherOverlayId)}
@@ -117,14 +119,14 @@ export default function MapControls({
         >
           {Object.values(WEATHER_OVERLAYS).map((w) => (
             <option key={w.id} value={w.id}>
-              {w.label}
+              {t.dataLabels.weatherOverlays[w.id]}
             </option>
           ))}
         </select>
       </label>
 
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-xs text-zinc-400">认证暗空地点</span>
+        <span className="text-xs text-zinc-400">{t.mapControls.darkSkyPlacesLabel}</span>
         <button
           type="button"
           role="switch"
@@ -144,17 +146,19 @@ export default function MapControls({
 
       {showDarkSkyPlaces && (
         <div className="mb-3 flex flex-wrap gap-x-3 gap-y-1">
-          {Object.values(DARK_SKY_CATEGORY_META).map((meta) => (
-            <div key={meta.label} className="flex items-center gap-1">
-              <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: meta.color }} />
-              <span className="text-[10px] text-zinc-400">{meta.label}</span>
-            </div>
-          ))}
+          {(Object.entries(DARK_SKY_CATEGORY_META) as Array<[keyof typeof DARK_SKY_CATEGORY_META, { color: string }]>).map(
+            ([category, meta]) => (
+              <div key={category} className="flex items-center gap-1">
+                <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: meta.color }} />
+                <span className="text-[10px] text-zinc-400">{t.dataLabels.darkSkyCategories[category]}</span>
+              </div>
+            ),
+          )}
         </div>
       )}
 
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-xs text-zinc-400">极光概率（NOAA 预测）</span>
+        <span className="text-xs text-zinc-400">{t.mapControls.auroraLabel}</span>
         <button
           type="button"
           role="switch"
@@ -184,7 +188,7 @@ export default function MapControls({
       )}
 
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-xs text-zinc-400">昼夜分界线</span>
+        <span className="text-xs text-zinc-400">{t.mapControls.terminatorLabel}</span>
         <button
           type="button"
           role="switch"
@@ -203,7 +207,7 @@ export default function MapControls({
       </div>
 
       <div className="mb-3">
-        <span className="mb-1 block text-xs text-zinc-400">配色风格</span>
+        <span className="mb-1 block text-xs text-zinc-400">{t.mapControls.colorStyleLabel}</span>
         <div className="grid grid-cols-2 gap-2">
           {Object.values(COLOR_STYLES).map((s) => (
             <button
@@ -215,8 +219,8 @@ export default function MapControls({
               }`}
             >
               <div className="h-2 w-full rounded-full" style={{ background: paletteToCssGradient(s.palette) }} />
-              <div className="mt-1 text-xs">{s.label}</div>
-              <div className="text-[10px] text-zinc-400">{s.description}</div>
+              <div className="mt-1 text-xs">{t.dataLabels.colorStyles[s.id].label}</div>
+              <div className="text-[10px] text-zinc-400">{t.dataLabels.colorStyles[s.id].description}</div>
             </button>
           ))}
         </div>
@@ -224,7 +228,7 @@ export default function MapControls({
 
       <label className="block">
         <span className="mb-1 flex items-center justify-between text-xs text-zinc-400">
-          <span>透明度</span>
+          <span>{t.mapControls.opacityLabel}</span>
           <span>{opacity}%</span>
         </span>
         <input

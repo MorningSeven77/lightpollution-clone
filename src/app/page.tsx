@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Map, { MapHandle, SelectedLocation } from "@/components/Map";
 import SearchBar, { GeocodeResult } from "@/components/SearchBar";
 import Legend from "@/components/Legend";
+import InfoPanel from "@/components/InfoPanel";
 import MapControls from "@/components/MapControls";
 import LocationDetailPanel from "@/components/LocationDetailPanel";
 import DarkSkyPlacePanel from "@/components/DarkSkyPlacePanel";
@@ -80,6 +81,7 @@ export default function Home() {
       />
       <SearchBar onSelect={handleSelect} />
       <Legend colorStyle={colorStyle} />
+      <InfoPanel />
       <MoonPhasePanel />
       <LocationHistoryPanel
         onSelectLocation={(lat, lng) => {
