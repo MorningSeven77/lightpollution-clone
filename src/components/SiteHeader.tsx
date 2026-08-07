@@ -66,8 +66,8 @@ export default function SiteHeader() {
     <header className="relative z-20 flex h-14 shrink-0 items-center justify-between border-b border-white/10 bg-zinc-900 px-4 text-zinc-100">
       <div className="flex items-baseline gap-2 overflow-hidden">
         <span className="text-lg">🌌</span>
-        <span className="truncate font-semibold">{t.siteHeader.title}</span>
-        <span className="hidden truncate text-xs text-zinc-400 sm:inline">{t.siteHeader.subtitle}</span>
+        <h1 className="truncate font-semibold">{t.siteHeader.title}</h1>
+        <p className="hidden truncate text-xs text-zinc-400 sm:inline">{t.siteHeader.subtitle}</p>
       </div>
       <LanguageSwitcher />
     </header>

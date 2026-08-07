@@ -29,7 +29,7 @@ export default function InfoPanel() {
         }`}
       >
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-zinc-900 px-4 py-3">
-          <span className="font-medium">{t.infoPanel.title}</span>
+          <h2 className="font-medium">{t.infoPanel.title}</h2>
           <button
             type="button"
             onClick={() => setOpen(false)}
@@ -46,7 +46,7 @@ export default function InfoPanel() {
           <div className="space-y-4">
             {t.infoPanel.qa.map((item) => (
               <div key={item.question}>
-                <div className="mb-1 text-xs font-medium text-zinc-200">{item.question}</div>
+                <h3 className="mb-1 text-xs font-medium text-zinc-200">{item.question}</h3>
                 <p className="text-xs leading-relaxed text-zinc-400">{item.answer}</p>
               </div>
             ))}

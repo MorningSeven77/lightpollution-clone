@@ -99,7 +99,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
         onClick={(e) => e.stopPropagation()}
       >
       <div className="mb-2 flex items-center justify-between">
-        <span className="font-medium">{t.locationHistory.title}</span>
+        <h2 className="font-medium">{t.locationHistory.title}</h2>
         <div className="flex items-center gap-2">
           {history.length > 0 && (
             <button type="button" onClick={handleClear} className="text-xs text-zinc-400 hover:text-red-400">
@@ -150,7 +150,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
 
       {compareEntries.length >= 2 && darkestSqm !== undefined && (
         <div className="mt-3 border-t border-white/10 pt-3">
-          <div className="mb-1 text-xs font-medium text-zinc-300">{t.locationHistory.compareTitle}</div>
+          <h3 className="mb-1 text-xs font-medium text-zinc-300">{t.locationHistory.compareTitle}</h3>
           <div className="space-y-1">
             {compareEntries.map((entry, i) => (
               <div key={entryKey(entry)} className="flex items-center justify-between gap-2 text-xs">

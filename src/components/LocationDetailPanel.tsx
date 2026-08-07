@@ -164,7 +164,7 @@ function LocationDetailPanelContent({
   return (
     <div className="absolute left-4 top-20 z-10 w-full max-w-xs rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-2 flex items-center justify-between">
-        <span className="font-medium">{t.locationDetail.title}</span>
+        <h2 className="font-medium">{t.locationDetail.title}</h2>
         <button type="button" onClick={onClose} aria-label={t.locationDetail.closeAria} className="text-zinc-400 hover:text-zinc-100">
           ✕
         </button>

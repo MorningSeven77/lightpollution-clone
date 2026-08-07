@@ -14,10 +14,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://lightpollutionmap.io";
+const SITE_TITLE = "Light Pollution Map – Bortle Scale & Dark Sky Finder";
+const SITE_DESCRIPTION =
+  "Interactive light pollution map with Bortle Scale ratings. Find dark sky spots, check SQM levels, and plan stargazing trips near you.";
+
 export const metadata: Metadata = {
-  title: "Light Pollution Map – Bortle Scale & Dark Sky Finder",
-  description:
-    "Interactive light pollution map with Bortle Scale ratings. Find dark sky spots, check SQM levels, and plan stargazing trips near you.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    type: "website",
+  },
 };
 
 export default function RootLayout({

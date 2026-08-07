@@ -42,7 +42,7 @@ export default function ExposureCalculator({ sqm }: ExposureCalculatorProps) {
 
   return (
     <div className="mt-3 border-t border-white/10 pt-3">
-      <div className="mb-2 text-xs font-medium text-zinc-300">{t.exposureCalculator.title}</div>
+      <h3 className="mb-2 text-xs font-medium text-zinc-300">{t.exposureCalculator.title}</h3>
 
       <div className="mb-2 grid grid-cols-2 gap-2">
         <label className="block">

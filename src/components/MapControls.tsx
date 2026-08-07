@@ -65,7 +65,7 @@ export default function MapControls({
   return (
     <div className="absolute right-4 top-20 z-10 w-64 rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-3 flex items-center justify-between">
-        <span className="font-medium">{t.mapControls.title}</span>
+        <h2 className="font-medium">{t.mapControls.title}</h2>
         <button
           type="button"
           onClick={() => setOpen(false)}

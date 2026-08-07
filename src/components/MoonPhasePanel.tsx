@@ -35,7 +35,7 @@ export default function MoonPhasePanel() {
   return (
     <div className="absolute left-1/2 top-4 z-10 w-64 -translate-x-1/2 rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-3 flex items-center justify-between">
-        <span className="font-medium">{t.moonPhase.title}</span>
+        <h2 className="font-medium">{t.moonPhase.title}</h2>
         <button
           type="button"
           onClick={() => setOpen(false)}

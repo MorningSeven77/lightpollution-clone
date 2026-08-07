@@ -44,7 +44,7 @@ export default function WeatherSection({ days, bortleClass, sqm }: WeatherSectio
 
   return (
     <div className="mt-3 border-t border-white/10 pt-3">
-      <div className="mb-2 text-xs font-medium text-zinc-300">{t.weatherSection.title}</div>
+      <h3 className="mb-2 text-xs font-medium text-zinc-300">{t.weatherSection.title}</h3>
 
       <div className="mb-3 rounded border border-white/10 bg-zinc-800/50 p-2">
         <div className="flex items-center justify-between">
