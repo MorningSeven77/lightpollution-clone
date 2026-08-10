@@ -1,18 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useTranslations } from "next-intl";
+
+type QaItem = { question: string; answer: string };
 
 export default function InfoPanel() {
   const [open, setOpen] = useState(false);
-  const { t } = useLanguage();
+  const t = useTranslations("infoPanel");
+  // FAQ questions/answers are structured, non-parameterized content — t.raw()
+  // is next-intl's mechanism for retrieving that directly instead of running
+  // each field through ICU message formatting individually.
+  const qa = t.raw("qa") as QaItem[];
 
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label={t.infoPanel.openAria}
+        aria-label={t("openAria")}
         className="absolute bottom-4 left-64 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-zinc-900/90 text-sm font-semibold text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800"
       >
         i
@@ -29,11 +35,11 @@ export default function InfoPanel() {
         }`}
       >
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-zinc-900 px-4 py-3">
-          <h2 className="font-medium">{t.infoPanel.title}</h2>
+          <h2 className="font-medium">{t("title")}</h2>
           <button
             type="button"
             onClick={() => setOpen(false)}
-            aria-label={t.infoPanel.closeAria}
+            aria-label={t("closeAria")}
             className="text-zinc-400 hover:text-zinc-100"
           >
             ✕
@@ -41,10 +47,10 @@ export default function InfoPanel() {
         </div>
 
         <div className="p-4">
-          <p className="mb-4 text-xs text-zinc-400">{t.infoPanel.intro}</p>
+          <p className="mb-4 text-xs text-zinc-400">{t("intro")}</p>
 
           <div className="space-y-4">
-            {t.infoPanel.qa.map((item) => (
+            {qa.map((item) => (
               <div key={item.question}>
                 <h3 className="mb-1 text-xs font-medium text-zinc-200">{item.question}</h3>
                 <p className="text-xs leading-relaxed text-zinc-400">{item.answer}</p>

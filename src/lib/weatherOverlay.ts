@@ -1,7 +1,7 @@
 export type WeatherOverlayId = "none" | "clouds" | "rain";
 
-// Text labels live in src/lib/i18n/translations.ts (dataLabels.weatherOverlays)
-// so this module stays language-agnostic.
+// Text labels live in messages/{locale}.json (dataLabels.weatherOverlays) so
+// this module stays language-agnostic.
 export type WeatherOverlayDef = {
   id: WeatherOverlayId;
   // OpenWeatherMap's own tile layer name, proxied via /api/weather-tiles.

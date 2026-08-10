@@ -1,15 +1,31 @@
 "use client";
 
-import { useState } from "react";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { Suspense, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { Language, LANGUAGE_META } from "@/lib/i18n/language";
 
 const LANGUAGE_ORDER: Language[] = ["zh", "en"];
 
 function LanguageSwitcher() {
-  const { language, setLanguage, t } = useLanguage();
+  const t = useTranslations("siteHeader");
+  const locale = useLocale() as Language;
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [open, setOpen] = useState(false);
-  const current = LANGUAGE_META[language];
+  const current = LANGUAGE_META[locale];
+
+  // Preserves the map's own lat/lng/zoom query string across a language
+  // switch — this is a real page navigation (locale is part of the URL now,
+  // not just client state), so without this the map would reset to the
+  // default view every time someone toggles language.
+  const switchTo = (next: Language) => {
+    const query = searchParams.toString();
+    router.replace(`${pathname}${query ? `?${query}` : ""}`, { locale: next });
+    setOpen(false);
+  };
 
   return (
     // Click-outside-to-close via a full-screen transparent overlay behind the
@@ -19,7 +35,7 @@ function LanguageSwitcher() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        aria-label={t.siteHeader.languageSwitcherAria}
+        aria-label={t("languageSwitcherAria")}
         aria-expanded={open}
         className="flex items-center gap-1.5 rounded-md border border-white/10 bg-zinc-800/80 px-2.5 py-1.5 text-xs text-zinc-100 hover:bg-zinc-800"
       >
@@ -40,15 +56,12 @@ function LanguageSwitcher() {
                 <button
                   key={id}
                   type="button"
-                  onClick={() => {
-                    setLanguage(id);
-                    setOpen(false);
-                  }}
+                  onClick={() => switchTo(id)}
                   className="flex w-full items-center gap-2 px-3 py-2 text-left hover:bg-zinc-800"
                 >
                   <span>{meta.flag}</span>
                   <span className="flex-1">{meta.label}</span>
-                  {language === id && <span className="text-emerald-400">✓</span>}
+                  {locale === id && <span className="text-emerald-400">✓</span>}
                 </button>
               );
             })}
@@ -60,16 +73,18 @@ function LanguageSwitcher() {
 }
 
 export default function SiteHeader() {
-  const { t } = useLanguage();
+  const t = useTranslations("siteHeader");
 
   return (
     <header className="relative z-20 flex h-14 shrink-0 items-center justify-between border-b border-white/10 bg-zinc-900 px-4 text-zinc-100">
       <div className="flex items-baseline gap-2 overflow-hidden">
         <span className="text-lg">🌌</span>
-        <h1 className="truncate font-semibold">{t.siteHeader.title}</h1>
-        <p className="hidden truncate text-xs text-zinc-400 sm:inline">{t.siteHeader.subtitle}</p>
+        <h1 className="truncate font-semibold">{t("title")}</h1>
+        <p className="hidden truncate text-xs text-zinc-400 sm:inline">{t("subtitle")}</p>
       </div>
-      <LanguageSwitcher />
+      <Suspense fallback={<div className="h-8 w-20 rounded-md border border-white/10 bg-zinc-800/80" />}>
+        <LanguageSwitcher />
+      </Suspense>
     </header>
   );
 }

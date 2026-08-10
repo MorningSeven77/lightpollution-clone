@@ -26,7 +26,7 @@ export const DARK_SKY_PLACES = rawPlaces as DarkSkyPlace[];
 // sanctuary / reserve, confirmed by clicking markers directly on
 // lightpollutionmap.app. "urban" (Urban Night Sky Place) wasn't confirmed
 // there, so it just gets a color visually distinct from the other four.
-// Text labels live in src/lib/i18n/translations.ts (dataLabels.darkSkyCategories).
+// Text labels live in messages/{locale}.json (dataLabels.darkSkyCategories).
 export const DARK_SKY_CATEGORY_META: Record<DarkSkyPlaceCategory, { color: string }> = {
   park: { color: "#22c55e" },
   community: { color: "#f97316" },

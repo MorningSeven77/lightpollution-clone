@@ -1,7 +1,7 @@
 // WMO weather interpretation codes -> emoji. Only covers the codes
 // Open-Meteo's forecast actually returns, not the full WMO table. Text
-// labels live in src/lib/i18n/translations.ts (dataLabels.weatherCodes) so
-// this module stays language-agnostic.
+// labels live in messages/{locale}.json (dataLabels.weatherCodes) so this
+// module stays language-agnostic.
 export const WMO_WEATHER_EMOJI: Record<number, string> = {
   0: "☀️",
   1: "🌤️",

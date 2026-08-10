@@ -29,8 +29,8 @@ const BORTLE_SQM_THRESHOLDS: Array<{ bortleClass: number; minSqm: number }> = [
 ];
 const DARKEST_BORTLE_CLASS = 9;
 
-// Text descriptions live in src/lib/i18n/translations.ts
-// (dataLabels.bortleDescriptions) so this module stays language-agnostic.
+// Text descriptions live in messages/{locale}.json (dataLabels.bortleDescriptions)
+// so this module stays language-agnostic.
 
 // Rough, illustrative naked-eye visible-star-count ranges per Bortle class —
 // not a precise model, just a commonly cited ballpark to make the numbers

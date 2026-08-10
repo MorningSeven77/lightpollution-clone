@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { BasemapId, BASEMAP_STYLES } from "@/lib/basemapStyles";
 import { ColorStyleId, COLOR_STYLES, paletteToCssGradient } from "@/lib/colorStyles";
 import { DARK_SKY_CATEGORY_META } from "@/lib/darkSkyPlaces";
 import { WeatherOverlayId, WEATHER_OVERLAYS } from "@/lib/weatherOverlay";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export type MapControlsProps = {
   basemap: BasemapId;
@@ -45,14 +45,18 @@ export default function MapControls({
   onWeatherOverlayChange,
 }: MapControlsProps) {
   const [open, setOpen] = useState(true);
-  const { t } = useLanguage();
+  const t = useTranslations("mapControls");
+  const tBasemaps = useTranslations("dataLabels.basemaps");
+  const tWeatherOverlays = useTranslations("dataLabels.weatherOverlays");
+  const tDarkSkyCategories = useTranslations("dataLabels.darkSkyCategories");
+  const tColorStyles = useTranslations("dataLabels.colorStyles");
 
   if (!open) {
     return (
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label={t.mapControls.openAria}
+        aria-label={t("openAria")}
         className="absolute right-4 top-20 z-10 rounded-md border border-white/10 bg-zinc-900/90 p-2 text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800"
       >
         <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
@@ -65,11 +69,11 @@ export default function MapControls({
   return (
     <div className="absolute right-4 top-20 z-10 w-64 rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-3 flex items-center justify-between">
-        <h2 className="font-medium">{t.mapControls.title}</h2>
+        <h2 className="font-medium">{t("title")}</h2>
         <button
           type="button"
           onClick={() => setOpen(false)}
-          aria-label={t.mapControls.closeAria}
+          aria-label={t("closeAria")}
           className="text-zinc-400 hover:text-zinc-100"
         >
           ✕
@@ -77,7 +81,7 @@ export default function MapControls({
       </div>
 
       <label className="mb-3 block">
-        <span className="mb-1 block text-xs text-zinc-400">{t.mapControls.basemapLabel}</span>
+        <span className="mb-1 block text-xs text-zinc-400">{t("basemapLabel")}</span>
         <select
           value={basemap}
           onChange={(e) => onBasemapChange(e.target.value as BasemapId)}
@@ -85,14 +89,14 @@ export default function MapControls({
         >
           {Object.values(BASEMAP_STYLES).map((b) => (
             <option key={b.id} value={b.id}>
-              {t.dataLabels.basemaps[b.id]}
+              {tBasemaps(b.id)}
             </option>
           ))}
         </select>
       </label>
 
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-xs text-zinc-400">{t.mapControls.lightPollutionLayerLabel}</span>
+        <span className="text-xs text-zinc-400">{t("lightPollutionLayerLabel")}</span>
         <button
           type="button"
           role="switch"
@@ -111,7 +115,7 @@ export default function MapControls({
       </div>
 
       <label className="mb-3 block">
-        <span className="mb-1 block text-xs text-zinc-400">{t.mapControls.weatherOverlayLabel}</span>
+        <span className="mb-1 block text-xs text-zinc-400">{t("weatherOverlayLabel")}</span>
         <select
           value={weatherOverlay}
           onChange={(e) => onWeatherOverlayChange(e.target.value as WeatherOverlayId)}
@@ -119,14 +123,14 @@ export default function MapControls({
         >
           {Object.values(WEATHER_OVERLAYS).map((w) => (
             <option key={w.id} value={w.id}>
-              {t.dataLabels.weatherOverlays[w.id]}
+              {tWeatherOverlays(w.id)}
             </option>
           ))}
         </select>
       </label>
 
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-xs text-zinc-400">{t.mapControls.darkSkyPlacesLabel}</span>
+        <span className="text-xs text-zinc-400">{t("darkSkyPlacesLabel")}</span>
         <button
           type="button"
           role="switch"
@@ -150,7 +154,7 @@ export default function MapControls({
             ([category, meta]) => (
               <div key={category} className="flex items-center gap-1">
                 <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: meta.color }} />
-                <span className="text-[10px] text-zinc-400">{t.dataLabels.darkSkyCategories[category]}</span>
+                <span className="text-[10px] text-zinc-400">{tDarkSkyCategories(category)}</span>
               </div>
             ),
           )}
@@ -158,7 +162,7 @@ export default function MapControls({
       )}
 
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-xs text-zinc-400">{t.mapControls.auroraLabel}</span>
+        <span className="text-xs text-zinc-400">{t("auroraLabel")}</span>
         <button
           type="button"
           role="switch"
@@ -188,7 +192,7 @@ export default function MapControls({
       )}
 
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-xs text-zinc-400">{t.mapControls.terminatorLabel}</span>
+        <span className="text-xs text-zinc-400">{t("terminatorLabel")}</span>
         <button
           type="button"
           role="switch"
@@ -207,7 +211,7 @@ export default function MapControls({
       </div>
 
       <div className="mb-3">
-        <span className="mb-1 block text-xs text-zinc-400">{t.mapControls.colorStyleLabel}</span>
+        <span className="mb-1 block text-xs text-zinc-400">{t("colorStyleLabel")}</span>
         <div className="grid grid-cols-2 gap-2">
           {Object.values(COLOR_STYLES).map((s) => (
             <button
@@ -219,8 +223,8 @@ export default function MapControls({
               }`}
             >
               <div className="h-2 w-full rounded-full" style={{ background: paletteToCssGradient(s.palette) }} />
-              <div className="mt-1 text-xs">{t.dataLabels.colorStyles[s.id].label}</div>
-              <div className="text-[10px] text-zinc-400">{t.dataLabels.colorStyles[s.id].description}</div>
+              <div className="mt-1 text-xs">{tColorStyles(`${s.id}.label`)}</div>
+              <div className="text-[10px] text-zinc-400">{tColorStyles(`${s.id}.description`)}</div>
             </button>
           ))}
         </div>
@@ -228,7 +232,7 @@ export default function MapControls({
 
       <label className="block">
         <span className="mb-1 flex items-center justify-between text-xs text-zinc-400">
-          <span>{t.mapControls.opacityLabel}</span>
+          <span>{t("opacityLabel")}</span>
           <span>{opacity}%</span>
         </span>
         <input

@@ -1,0 +1,230 @@
+{
+  "siteHeader": {
+    "title": "Light Pollution Map",
+    "subtitle": "A light pollution map and dark sky finder — click anywhere to see the Bortle Scale rating and best nearby stargazing spots.",
+    "languageSwitcherAria": "Switch language"
+  },
+  "infoPanel": {
+    "openAria": "Open Light Pollution Map FAQ",
+    "closeAria": "Close FAQ",
+    "title": "Light Pollution Map FAQ",
+    "intro": "A light pollution map and dark sky finder — click anywhere to see the Bortle Scale rating and best nearby stargazing spots.",
+    "qa": [
+      {
+        "question": "What is this light pollution map and how does it work?",
+        "answer": "This light pollution map (also called a dark sky map or light map) uses satellite-derived night-light data to show artificial skyglow anywhere on Earth. It works as an interactive light pollution map — click any point on the world light pollution map to see a detailed brightness reading for that exact location, from heavily lit cities down to the darkest rural skies."
+      },
+      {
+        "question": "What is the Bortle Scale, and how is sky brightness (SQM) measured?",
+        "answer": "The Bortle Scale (also called bortle class or bortle rating) is a 9-level scale from Bortle 1 (the darkest possible sky, Milky Way clearly visible) to Bortle 9 (inner-city skies where only the brightest stars show). It's built on top of SQM (Sky Quality Meter) readings — a more precise sky quality measurement in magnitudes per square arcsecond. Click anywhere on the map to instantly check what bortle am i in, without needing a physical darkness scale meter."
+      },
+      {
+        "question": "How do I find dark skies or zero-light-pollution places near me?",
+        "answer": "Use the map as a dark sky finder or dark site finder to locate the lowest light pollution near me — look for the darkest shading on the map, which marks certified dark sky places, dark sky parks, and other places with no light pollution. True zero light pollution is rare, but Bortle 1–2 areas away from major cities come very close, making them the best spots for genuinely dark, unpolluted skies."
+      },
+      {
+        "question": "What does the sky look like without light pollution, and how is light pollution measured, caused, and reduced?",
+        "answer": "Under a truly dark night sky without light pollution, thousands of stars, the Milky Way, and faint nebulae become visible — compare your area's light pollution levels on the map against a Bortle 1 site to see the difference. Light pollution is measured with an SQM or estimated from satellite data (this map's method for how to measure light pollution), and skyglow can travel over 100 km from a city, so how far does light pollution travel matters when picking a site. Common examples of light pollution include streetlights, signage, and unshielded fixtures — together they cause light contamination that raises sky brightness citywide. On a practical level, shielded fixtures and warmer lighting are the main way communities reduce light pollution over time."
+      },
+      {
+        "question": "How can I use this map for stargazing, Milky Way viewing, and astrophotography?",
+        "answer": "Use the map as a stargazing map to plan trips: a milky way visibility map reading of Bortle 4 or darker (ideally during a new moon) tells you how to view the milky way clearly. For astrophotography, brighter skies push you toward shorter sub-exposures — check the map's light pollution reading before taking night sky photos to pick a starting exposure time."
+      },
+      {
+        "question": "Can I check meteor shower or aurora visibility on this map?",
+        "answer": "Yes — combine the darkness map with a meteor shower forecast to find both a dark viewing spot and the shower's radiant direction. For the northern lights, enable the aurora probability layer to see current visibility odds for your latitude, then cross-reference with the map to avoid local skyglow."
+      },
+      {
+        "question": "Do you have light pollution maps for specific US states or cities?",
+        "answer": "Yes — search directly for any location in the map's search bar, from broad regions like light pollution map texas or light pollution map california down to specific cities such as light pollution in nyc or las vegas light pollution, and the map will fly straight to that spot with its Bortle and SQM readings. A dedicated regional browse page is planned for the future."
+      }
+    ]
+  },
+  "searchBar": {
+    "placeholder": "Search location…",
+    "searching": "Searching…",
+    "noResults": "No results found"
+  },
+  "legend": {
+    "title": "Light Pollution Intensity (VIIRS satellite data · {styleLabel})",
+    "hint": "Click the map to see the Bortle class and approximate SQM value for that point"
+  },
+  "moonPhase": {
+    "openAria": "Open moon phase panel",
+    "closeAria": "Close moon phase panel",
+    "title": "Moon Phase",
+    "ageDays": "Age {n} days",
+    "illumination": "Illumination: {n}%",
+    "nextPhases": "Upcoming key phases",
+    "phaseLabels": {
+      "new-moon": "New Moon",
+      "waxing-crescent": "Waxing Crescent",
+      "first-quarter": "First Quarter",
+      "waxing-gibbous": "Waxing Gibbous",
+      "full-moon": "Full Moon",
+      "waning-gibbous": "Waning Gibbous",
+      "last-quarter": "Last Quarter",
+      "waning-crescent": "Waning Crescent"
+    }
+  },
+  "locationHistory": {
+    "openAria": "Open location history panel",
+    "closeAria": "Close location history panel",
+    "title": "Location History",
+    "clear": "Clear",
+    "empty": "No history yet — click a point on the map to get started",
+    "addToCompareAria": "Add to comparison",
+    "compareTitle": "Comparison (darkest to brightest)",
+    "darkestBadge": "Darkest",
+    "ratioNote": "The sky-background ratio is a physical brightness comparison, not an exposure-time or signal-to-noise prediction.",
+    "relativeTime": {
+      "justNow": "Just now",
+      "minutesAgo": "{n}m ago",
+      "hoursAgo": "{n}h ago",
+      "daysAgo": "{n}d ago"
+    }
+  },
+  "mapControls": {
+    "openAria": "Open map controls",
+    "closeAria": "Close map controls",
+    "title": "Map Controls",
+    "basemapLabel": "Basemap",
+    "lightPollutionLayerLabel": "Light pollution layer (VIIRS 2024)",
+    "weatherOverlayLabel": "Weather overlay",
+    "darkSkyPlacesLabel": "Certified Dark Sky Places",
+    "auroraLabel": "Aurora probability (NOAA forecast)",
+    "terminatorLabel": "Day/night terminator",
+    "colorStyleLabel": "Color style",
+    "opacityLabel": "Opacity"
+  },
+  "locationDetail": {
+    "title": "Location Details",
+    "closeAria": "Close location details",
+    "loadingPlaceName": "Looking up…",
+    "unknownPlace": "Unknown location",
+    "loading": "Loading…",
+    "errorText": "Failed to load — please retry",
+    "retry": "Retry",
+    "bortleUnitLabel": "Bortle class · {desc} (approximate)",
+    "sqmLabel": "SQM ≈ {n} mag/arcsec²",
+    "starEstimate": "Estimated naked-eye visible stars: ~{min}-{max} (rough estimate)",
+    "trendLoading": "Loading trend chart…",
+    "weatherLoading": "Loading weather…"
+  },
+  "darkSkyPlace": {
+    "title": "Certified Dark Sky Place",
+    "closeAria": "Close dark sky place details",
+    "yearLabel": "Designated: {year}",
+    "areaLabel": "Land area: {area}",
+    "linkText": "View on DarkSky.org ↗"
+  },
+  "trendChart": {
+    "title": "Light pollution trend ({startYear}-{endYear}, higher SQM = darker)",
+    "ariaLabel": "Yearly SQM trend bar chart",
+    "tooltip": "{year}: SQM ≈ {sqm}, Bortle {bortleClass}"
+  },
+  "weatherSection": {
+    "title": "Nighttime Weather",
+    "bestNightLabel": "Best observing night",
+    "scoreUnit": "pts",
+    "cloudLabel": "Cloud {n}%",
+    "moonLabel": "Moon {n}%",
+    "bestBadge": "Best {score}",
+    "scoreWithTier": "{score} {tierLabel}",
+    "visibilityKm": "👁 {n}km",
+    "footer": "Weather data from Open-Meteo",
+    "yesterday": "Yesterday",
+    "today": "Today",
+    "weekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "constraintCloud": "Main limiting factor: cloud cover",
+    "constraintMoon": "Main limiting factor: moonlight",
+    "constraintLightPollution": "Main limiting factor: light pollution",
+    "constraintNone": "Conditions look good",
+    "tiers": {
+      "poor": "Poor",
+      "marginal": "Marginal",
+      "fair": "Fair",
+      "good": "Good"
+    }
+  },
+  "exposureCalculator": {
+    "title": "Exposure Calculator (simplified estimate)",
+    "cameraTypeLabel": "Camera type",
+    "focalRatioLabel": "Focal ratio f/",
+    "recommendedLabel": "Recommended sub-exposure",
+    "cappedNote": "Capped at the {maxSeconds}s maximum sub-exposure — dark-sky noise budgets could allow longer, but tracking precision, satellite trails, etc. make that impractical",
+    "footnote": "Estimated sky-background signal from SQM {sqm}, targeting {pct}% read-noise contribution — a simplified estimate for reference only, not precise exposure guidance.",
+    "cameraPresets": {
+      "cooled-cmos": "Cooled CMOS",
+      "uncooled-cmos": "Uncooled CMOS",
+      "dslr": "DSLR/Mirrorless"
+    }
+  },
+  "dataLabels": {
+    "bortleDescriptions": {
+      "1": "Excellent dark sky",
+      "2": "Typical dark sky",
+      "3": "Rural sky",
+      "4": "Rural/suburban transition",
+      "5": "Suburban sky",
+      "6": "Bright suburban sky",
+      "7": "Suburban/urban transition",
+      "8": "City sky",
+      "9": "Inner-city sky"
+    },
+    "weatherCodes": {
+      "0": "Clear",
+      "1": "Mostly clear",
+      "2": "Partly cloudy",
+      "3": "Overcast",
+      "45": "Fog",
+      "48": "Fog",
+      "51": "Drizzle",
+      "53": "Drizzle",
+      "55": "Drizzle",
+      "56": "Freezing rain",
+      "57": "Freezing rain",
+      "61": "Rain",
+      "63": "Rain",
+      "65": "Heavy rain",
+      "66": "Freezing rain",
+      "67": "Freezing rain",
+      "71": "Snow",
+      "73": "Snow",
+      "75": "Heavy snow",
+      "77": "Snow grains",
+      "80": "Showers",
+      "81": "Showers",
+      "82": "Heavy showers",
+      "85": "Snow showers",
+      "86": "Heavy snow showers",
+      "95": "Thunderstorm",
+      "96": "Thunderstorm with hail",
+      "99": "Thunderstorm with hail"
+    },
+    "unknownWeather": "Unknown weather",
+    "darkSkyCategories": {
+      "park": "Dark Sky Park",
+      "community": "Dark Sky Community",
+      "sanctuary": "Dark Sky Sanctuary",
+      "reserve": "Dark Sky Reserve",
+      "urban": "Urban Night Sky Place"
+    },
+    "colorStyles": {
+      "classic": { "label": "Classic", "description": "Clear zones" },
+      "soft": { "label": "Bright", "description": "Smooth intensity" },
+      "vivid": { "label": "Glow", "description": "Sky glow spread" },
+      "amber": { "label": "Scientific", "description": "Fixed SQM scale" }
+    },
+    "basemaps": {
+      "street": "Streets",
+      "dark": "Dark",
+      "satellite": "Satellite"
+    },
+    "weatherOverlays": {
+      "none": "None",
+      "clouds": "Clouds",
+      "rain": "Precipitation"
+    }
+  }
+}

@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   LocationHistoryEntry,
   getLocationHistory,
   clearLocationHistory,
   computeSkyBackgroundRatio,
 } from "@/lib/locationHistory";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { Translations } from "@/lib/i18n/translations";
 
 export type LocationHistoryPanelProps = {
   onSelectLocation: (lat: number, lng: number) => void;
@@ -16,13 +15,13 @@ export type LocationHistoryPanelProps = {
 
 const MAX_COMPARE = 5;
 
-function formatRelativeTime(timestamp: number, relativeTime: Translations["locationHistory"]["relativeTime"]): string {
+function formatRelativeTime(timestamp: number, t: ReturnType<typeof useTranslations>): string {
   const diffMin = Math.floor((Date.now() - timestamp) / 60000);
-  if (diffMin < 1) return relativeTime.justNow;
-  if (diffMin < 60) return relativeTime.minutesAgo(diffMin);
+  if (diffMin < 1) return t("justNow");
+  if (diffMin < 60) return t("minutesAgo", { n: diffMin });
   const diffHour = Math.floor(diffMin / 60);
-  if (diffHour < 24) return relativeTime.hoursAgo(diffHour);
-  return relativeTime.daysAgo(Math.floor(diffHour / 24));
+  if (diffHour < 24) return t("hoursAgo", { n: diffHour });
+  return t("daysAgo", { n: Math.floor(diffHour / 24) });
 }
 
 function entryKey(entry: LocationHistoryEntry): string {
@@ -33,7 +32,8 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
   const [open, setOpen] = useState(false);
   const [history, setHistory] = useState<LocationHistoryEntry[]>([]);
   const [compareKeys, setCompareKeys] = useState<Set<string>>(new Set());
-  const { t } = useLanguage();
+  const t = useTranslations("locationHistory");
+  const tRelativeTime = useTranslations("locationHistory.relativeTime");
 
   // Re-read from localStorage right when the panel opens — entries may have
   // been added by point-value queries made while it was closed.
@@ -47,7 +47,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
       <button
         type="button"
         onClick={handleOpen}
-        aria-label={t.locationHistory.openAria}
+        aria-label={t("openAria")}
         className="absolute left-1/2 top-4 z-10 translate-x-6 rounded-md border border-white/10 bg-zinc-900/90 p-2 text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800"
       >
         <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
@@ -99,17 +99,17 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
         onClick={(e) => e.stopPropagation()}
       >
       <div className="mb-2 flex items-center justify-between">
-        <h2 className="font-medium">{t.locationHistory.title}</h2>
+        <h2 className="font-medium">{t("title")}</h2>
         <div className="flex items-center gap-2">
           {history.length > 0 && (
             <button type="button" onClick={handleClear} className="text-xs text-zinc-400 hover:text-red-400">
-              {t.locationHistory.clear}
+              {t("clear")}
             </button>
           )}
           <button
             type="button"
             onClick={() => setOpen(false)}
-            aria-label={t.locationHistory.closeAria}
+            aria-label={t("closeAria")}
             className="text-zinc-400 hover:text-zinc-100"
           >
             ✕
@@ -117,7 +117,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
         </div>
       </div>
 
-      {history.length === 0 && <div className="text-xs text-zinc-400">{t.locationHistory.empty}</div>}
+      {history.length === 0 && <div className="text-xs text-zinc-400">{t("empty")}</div>}
 
       <div className="max-h-64 space-y-1 overflow-y-auto">
         {history.map((entry) => {
@@ -131,7 +131,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
                 onChange={() => toggleCompare(key)}
                 disabled={!checked && compareKeys.size >= MAX_COMPARE}
                 className="shrink-0"
-                aria-label={t.locationHistory.addToCompareAria}
+                aria-label={t("addToCompareAria")}
               />
               <button
                 type="button"
@@ -140,7 +140,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
               >
                 <div className="truncate font-medium">{entry.placeName ?? `${entry.lat.toFixed(2)}, ${entry.lng.toFixed(2)}`}</div>
                 <div className="text-[10px] text-zinc-400">
-                  Bortle {entry.bortleClass} · SQM {entry.sqm.toFixed(2)} · {formatRelativeTime(entry.timestamp, t.locationHistory.relativeTime)}
+                  Bortle {entry.bortleClass} · SQM {entry.sqm.toFixed(2)} · {formatRelativeTime(entry.timestamp, tRelativeTime)}
                 </div>
               </button>
             </div>
@@ -150,13 +150,13 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
 
       {compareEntries.length >= 2 && darkestSqm !== undefined && (
         <div className="mt-3 border-t border-white/10 pt-3">
-          <h3 className="mb-1 text-xs font-medium text-zinc-300">{t.locationHistory.compareTitle}</h3>
+          <h3 className="mb-1 text-xs font-medium text-zinc-300">{t("compareTitle")}</h3>
           <div className="space-y-1">
             {compareEntries.map((entry, i) => (
               <div key={entryKey(entry)} className="flex items-center justify-between gap-2 text-xs">
                 <span className="min-w-0 flex-1 truncate">
                   {i === 0 && (
-                    <span className="mr-1 rounded bg-emerald-500/20 px-1 text-[10px] text-emerald-400">{t.locationHistory.darkestBadge}</span>
+                    <span className="mr-1 rounded bg-emerald-500/20 px-1 text-[10px] text-emerald-400">{t("darkestBadge")}</span>
                   )}
                   {entry.placeName ?? `${entry.lat.toFixed(2)}, ${entry.lng.toFixed(2)}`}
                 </span>
@@ -166,7 +166,7 @@ export default function LocationHistoryPanel({ onSelectLocation }: LocationHisto
               </div>
             ))}
           </div>
-          <div className="mt-1 text-[10px] text-zinc-500">{t.locationHistory.ratioNote}</div>
+          <div className="mt-1 text-[10px] text-zinc-500">{t("ratioNote")}</div>
         </div>
       )}
       </div>

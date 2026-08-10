@@ -7,8 +7,8 @@ export type ColorStyleId = "classic" | "soft" | "vivid" | "amber";
 // computed from this style's min/max via radianceToBortleEstimate.
 export type LegendType = "bortle" | "sqm";
 
-// Text label/description live in src/lib/i18n/translations.ts
-// (dataLabels.colorStyles) so this module stays language-agnostic.
+// Text label/description live in messages/{locale}.json (dataLabels.colorStyles)
+// so this module stays language-agnostic.
 export type ColorStyleDef = {
   id: ColorStyleId;
   palette: string[];

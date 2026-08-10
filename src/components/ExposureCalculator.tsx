@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { CAMERA_PRESETS, DEFAULT_CAMERA_PRESET_ID, computeExposure } from "@/lib/exposureCalculator";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export type ExposureCalculatorProps = { sqm: number };
 
@@ -20,7 +20,8 @@ function formatDuration(seconds: number): string {
 export default function ExposureCalculator({ sqm }: ExposureCalculatorProps) {
   const [presetId, setPresetId] = useState(DEFAULT_CAMERA_PRESET_ID);
   const [focalRatio, setFocalRatio] = useState(DEFAULT_FOCAL_RATIO);
-  const { t } = useLanguage();
+  const t = useTranslations("exposureCalculator");
+  const tCameraPresets = useTranslations("exposureCalculator.cameraPresets");
 
   const preset = CAMERA_PRESETS.find((p) => p.id === presetId) ?? CAMERA_PRESETS[0];
 
@@ -42,11 +43,11 @@ export default function ExposureCalculator({ sqm }: ExposureCalculatorProps) {
 
   return (
     <div className="mt-3 border-t border-white/10 pt-3">
-      <h3 className="mb-2 text-xs font-medium text-zinc-300">{t.exposureCalculator.title}</h3>
+      <h3 className="mb-2 text-xs font-medium text-zinc-300">{t("title")}</h3>
 
       <div className="mb-2 grid grid-cols-2 gap-2">
         <label className="block">
-          <span className="mb-1 block text-[10px] text-zinc-400">{t.exposureCalculator.cameraTypeLabel}</span>
+          <span className="mb-1 block text-[10px] text-zinc-400">{t("cameraTypeLabel")}</span>
           <select
             value={presetId}
             onChange={(e) => setPresetId(e.target.value)}
@@ -54,13 +55,13 @@ export default function ExposureCalculator({ sqm }: ExposureCalculatorProps) {
           >
             {CAMERA_PRESETS.map((p) => (
               <option key={p.id} value={p.id}>
-                {t.exposureCalculator.cameraPresets[p.id]}
+                {tCameraPresets(p.id)}
               </option>
             ))}
           </select>
         </label>
         <label className="block">
-          <span className="mb-1 block text-[10px] text-zinc-400">{t.exposureCalculator.focalRatioLabel}</span>
+          <span className="mb-1 block text-[10px] text-zinc-400">{t("focalRatioLabel")}</span>
           <input
             type="number"
             min={0.5}
@@ -73,15 +74,15 @@ export default function ExposureCalculator({ sqm }: ExposureCalculatorProps) {
       </div>
 
       <div className="rounded border border-white/10 bg-zinc-800/50 p-2">
-        <div className="text-xs text-zinc-400">{t.exposureCalculator.recommendedLabel}</div>
+        <div className="text-xs text-zinc-400">{t("recommendedLabel")}</div>
         <div className="text-2xl font-semibold">{formatDuration(result.recommendedSubExposureSeconds)}</div>
         {result.cappedByMax && (
-          <div className="mt-1 text-[10px] text-zinc-400">{t.exposureCalculator.cappedNote(MAX_SUB_SECONDS)}</div>
+          <div className="mt-1 text-[10px] text-zinc-400">{t("cappedNote", { maxSeconds: MAX_SUB_SECONDS })}</div>
         )}
       </div>
 
       <div className="mt-2 text-[10px] text-zinc-500">
-        {t.exposureCalculator.footnote(sqm.toFixed(2), ALLOWED_READ_NOISE_PERCENT)}
+        {t("footnote", { sqm: sqm.toFixed(2), pct: ALLOWED_READ_NOISE_PERCENT })}
       </div>
     </div>
   );

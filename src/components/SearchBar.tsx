@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useTranslations } from "next-intl";
 
 export type GeocodeResult = {
   displayName: string;
@@ -19,7 +19,7 @@ export default function SearchBar({
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const { t } = useLanguage();
+  const t = useTranslations("searchBar");
 
   useEffect(() => {
     const trimmed = query.trim();
@@ -58,14 +58,14 @@ export default function SearchBar({
           }
         }}
         onFocus={() => results.length > 0 && setOpen(true)}
-        placeholder={t.searchBar.placeholder}
+        placeholder={t("placeholder")}
         className="w-full rounded-md border border-white/10 bg-zinc-900/90 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-500 shadow-lg backdrop-blur focus:outline-none focus:ring-2 focus:ring-zinc-400"
       />
       {open && (
         <ul className="mt-1 max-h-64 overflow-y-auto rounded-md border border-white/10 bg-zinc-900/95 text-sm text-zinc-100 shadow-lg backdrop-blur">
-          {loading && <li className="px-3 py-2 text-zinc-400">{t.searchBar.searching}</li>}
+          {loading && <li className="px-3 py-2 text-zinc-400">{t("searching")}</li>}
           {!loading && results.length === 0 && (
-            <li className="px-3 py-2 text-zinc-400">{t.searchBar.noResults}</li>
+            <li className="px-3 py-2 text-zinc-400">{t("noResults")}</li>
           )}
           {!loading &&
             results.map((r, i) => (

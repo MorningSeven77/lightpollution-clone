@@ -1,8 +1,7 @@
 import { sqmToRadiance } from "@/lib/bortle";
 
-// Text labels live in src/lib/i18n/translations.ts
-// (exposureCalculator.cameraPresets, keyed by id) so this module stays
-// language-agnostic.
+// Text labels live in messages/{locale}.json (exposureCalculator.cameraPresets,
+// keyed by id) so this module stays language-agnostic.
 export type CameraPreset = {
   id: string;
   pixelSizeUm: number;

@@ -2,8 +2,8 @@ import type { StyleSpecification } from "maplibre-gl";
 
 export type BasemapId = "street" | "dark" | "satellite";
 
-// Text labels live in src/lib/i18n/translations.ts (dataLabels.basemaps) so
-// this module stays language-agnostic.
+// Text labels live in messages/{locale}.json (dataLabels.basemaps) so this
+// module stays language-agnostic.
 export type BasemapDef =
   | { id: BasemapId; styleUrl: string }
   | { id: BasemapId; style: StyleSpecification };

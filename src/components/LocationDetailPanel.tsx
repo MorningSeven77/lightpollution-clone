@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { STAR_COUNT_ESTIMATES } from "@/lib/bortle";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { SelectedLocation } from "@/components/Map";
 import TrendChart from "@/components/TrendChart";
 import { TrendPoint } from "@/app/api/trend/route";
@@ -48,7 +48,8 @@ function LocationDetailPanelContent({
   const [placeName, setPlaceName] = useState<PlaceNameState>({ status: "loading" });
   const [trend, setTrend] = useState<TrendState>({ status: "loading" });
   const [weather, setWeather] = useState<WeatherState>({ status: "loading" });
-  const { t } = useLanguage();
+  const t = useTranslations("locationDetail");
+  const tBortleDescriptions = useTranslations("dataLabels.bortleDescriptions");
 
   // AbortController-backed so React Strict Mode's dev-only double-invoke of
   // this effect (mount -> cleanup -> mount again) cancels the first fetch
@@ -156,16 +157,16 @@ function LocationDetailPanelContent({
 
   const placeNameText =
     placeName.status === "loading"
-      ? t.locationDetail.loadingPlaceName
+      ? t("loadingPlaceName")
       : placeName.status === "done"
-        ? (placeName.name ?? t.locationDetail.unknownPlace)
-        : t.locationDetail.unknownPlace;
+        ? (placeName.name ?? t("unknownPlace"))
+        : t("unknownPlace");
 
   return (
     <div className="absolute left-4 top-20 z-10 w-full max-w-xs rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-2 flex items-center justify-between">
-        <h2 className="font-medium">{t.locationDetail.title}</h2>
-        <button type="button" onClick={onClose} aria-label={t.locationDetail.closeAria} className="text-zinc-400 hover:text-zinc-100">
+        <h2 className="font-medium">{t("title")}</h2>
+        <button type="button" onClick={onClose} aria-label={t("closeAria")} className="text-zinc-400 hover:text-zinc-100">
           ✕
         </button>
       </div>
@@ -175,17 +176,17 @@ function LocationDetailPanelContent({
       </div>
       <div className="mb-3 text-xs">{placeNameText}</div>
 
-      {pointValue.status === "loading" && <div className="text-zinc-400">{t.locationDetail.loading}</div>}
+      {pointValue.status === "loading" && <div className="text-zinc-400">{t("loading")}</div>}
 
       {pointValue.status === "error" && (
         <div>
-          <div className="mb-2 text-red-400">{t.locationDetail.errorText}</div>
+          <div className="mb-2 text-red-400">{t("errorText")}</div>
           <button
             type="button"
             onClick={retryPointValue}
             className="rounded border border-white/10 px-2 py-1 text-xs hover:bg-zinc-800"
           >
-            {t.locationDetail.retry}
+            {t("retry")}
           </button>
         </div>
       )}
@@ -195,20 +196,20 @@ function LocationDetailPanelContent({
           <div className="flex items-baseline gap-2">
             <span className="text-3xl font-semibold">{pointValue.bortleClass}</span>
             <span className="text-xs text-zinc-400">
-              {t.locationDetail.bortleUnitLabel(t.dataLabels.bortleDescriptions[pointValue.bortleClass] ?? "")}
+              {t("bortleUnitLabel", { desc: tBortleDescriptions(String(pointValue.bortleClass)) })}
             </span>
           </div>
-          <div className="mt-1 text-xs text-zinc-400">{t.locationDetail.sqmLabel(pointValue.sqm.toFixed(2))}</div>
+          <div className="mt-1 text-xs text-zinc-400">{t("sqmLabel", { n: pointValue.sqm.toFixed(2) })}</div>
           {STAR_COUNT_ESTIMATES[pointValue.bortleClass] && (
             <div className="mt-1 text-xs text-zinc-400">
-              {t.locationDetail.starEstimate(
-                STAR_COUNT_ESTIMATES[pointValue.bortleClass].min,
-                STAR_COUNT_ESTIMATES[pointValue.bortleClass].max,
-              )}
+              {t("starEstimate", {
+                min: STAR_COUNT_ESTIMATES[pointValue.bortleClass].min,
+                max: STAR_COUNT_ESTIMATES[pointValue.bortleClass].max,
+              })}
             </div>
           )}
 
-          {trend.status === "loading" && <div className="mt-3 text-xs text-zinc-400">{t.locationDetail.trendLoading}</div>}
+          {trend.status === "loading" && <div className="mt-3 text-xs text-zinc-400">{t("trendLoading")}</div>}
           {trend.status === "done" && (
             <div className="mt-3">
               <TrendChart points={trend.points} />
@@ -217,7 +218,7 @@ function LocationDetailPanelContent({
           {/* A missing trend chart isn't worth a visible error — the Bortle/SQM
               numbers above are the data that matters, so this just stays quiet. */}
 
-          {weather.status === "loading" && <div className="mt-3 text-xs text-zinc-400">{t.locationDetail.weatherLoading}</div>}
+          {weather.status === "loading" && <div className="mt-3 text-xs text-zinc-400">{t("weatherLoading")}</div>}
           {scoredWeatherDays.length > 0 && (
             <WeatherSection days={scoredWeatherDays} bortleClass={pointValue.bortleClass} sqm={pointValue.sqm} />
           )}

@@ -1,0 +1,230 @@
+{
+  "siteHeader": {
+    "title": "光污染地图",
+    "subtitle": "一份光污染地图与暗夜地点查找工具——点击地图任意位置，即可查看当地波特尔等级评分与附近推荐的观星地点。",
+    "languageSwitcherAria": "切换语言"
+  },
+  "infoPanel": {
+    "openAria": "打开光污染地图常见问题",
+    "closeAria": "关闭常见问题",
+    "title": "光污染地图常见问题",
+    "intro": "一份光污染地图与暗夜地点查找工具——点击地图任意位置，即可查看当地波特尔等级评分与附近推荐的观星地点。",
+    "qa": [
+      {
+        "question": "这是一份怎样的光污染地图？它是怎么工作的？",
+        "answer": "这份光污染地图（也叫暗夜地图或光害地图）基于卫星夜间灯光数据，展示地球上任意位置的人造天光污染程度。作为一张可交互的光污染地图，你可以点击世界地图上任意一点，立即查看该精确位置的详细亮度读数——从灯火通明的城市中心，到最暗的乡村夜空，一目了然。"
+      },
+      {
+        "question": "什么是波特尔等级（Bortle Scale）？天空亮度（SQM）又是怎么测量的？",
+        "answer": "波特尔等级（也叫波特尔分级、波特尔星空等级）是一套 9 级的暗夜分级标准，从波特尔 1 级（最暗的天空，银河清晰可见）到波特尔 9 级（市中心夜空，只能看到最亮的几颗星）。它的基础是 SQM（天空质量计）读数——一种以每平方角秒星等为单位的更精确的天空亮度测量方式。点击地图上任意一点，无需实体测光仪，就能立刻查到你所在地区属于波特尔几级。"
+      },
+      {
+        "question": "怎么找到附近光污染最低、接近零光污染的暗夜地点？",
+        "answer": "把这份地图当作暗夜地点查找工具，用来定位你附近光污染最低的区域——地图上颜色最暗的区域，标记的就是认证暗空公园、暗空社区等各类无光污染或低光污染地点。真正的零光污染其实很罕见，但远离大城市的波特尔 1-2 级区域已经非常接近，是观星、看星空最理想的目的地。"
+      },
+      {
+        "question": "没有光污染的夜空是什么样子？光污染又是怎么被测量、造成、以及该如何减少的？",
+        "answer": "在真正不受光污染影响的夜空下，成千上万颗星星、银河，甚至暗弱的星云都清晰可见——你可以在地图上把自己所在地区的光污染水平和波特尔 1 级地点做对比，直观感受差异。光污染的测量方式，是用 SQM 天空质量计实测，或者像本地图这样通过卫星数据估算；城市天光甚至能传播 100 公里以上，所以选观测地点时「光污染能传多远」是个很关键的问题。常见的光污染来源包括路灯、广告招牌、没有遮罩的照明灯具，这些加在一起就是让整座城市夜空变亮的光污染源；而在实践层面，加装遮光灯罩、改用更暖色温的照明，是社区长期降低光污染最主要的两个办法。"
+      },
+      {
+        "question": "怎么用这张地图规划观星、看银河或天文摄影？",
+        "answer": "把地图当作观星地图来规划行程：波特尔 4 级或更暗的区域（最好选新月前后），银河能见度就比较理想，能帮你判断什么时候、去哪里能看清银河。做天文摄影时，天空越亮，单帧曝光时间就得越短——拍摄夜空照片前，先在地图上查一下当地的光污染读数，能帮你更快确定合适的起始曝光时间。"
+      },
+      {
+        "question": "这张地图能查流星雨或极光的能见度吗？",
+        "answer": "可以——把这张暗夜地图和流星雨预测结合起来看，既能找到足够暗的观测地点，也能确认流星雨辐射点的方向。至于极光，打开极光概率图层就能看到你所在纬度当前的极光能见度概率，再对照地图确认当地有没有明显的光污染干扰。"
+      },
+      {
+        "question": "有没有针对具体城市或地区的光污染地图？",
+        "answer": "有——直接在地图的位置搜索框里输入州名或城市名（比如美国的德克萨斯州、加州，或者纽约、拉斯维加斯这类光污染严重的大城市），地图就会飞到对应位置并显示当地的波特尔等级和 SQM 读数；专门的分地区浏览列表页正在计划中，之后会加入地图的入口里。"
+      }
+    ]
+  },
+  "searchBar": {
+    "placeholder": "搜索地点…",
+    "searching": "搜索中…",
+    "noResults": "没有找到结果"
+  },
+  "legend": {
+    "title": "光污染强度（VIIRS 卫星数据 · {styleLabel}）",
+    "hint": "点击地图查看该点的 Bortle 等级与近似 SQM 值"
+  },
+  "moonPhase": {
+    "openAria": "打开月相面板",
+    "closeAria": "关闭月相面板",
+    "title": "月相",
+    "ageDays": "月龄 {n} 天",
+    "illumination": "照亮度：{n}%",
+    "nextPhases": "近期关键相位",
+    "phaseLabels": {
+      "new-moon": "新月",
+      "waxing-crescent": "娥眉月（渐盈）",
+      "first-quarter": "上弦月",
+      "waxing-gibbous": "盈凸月",
+      "full-moon": "满月",
+      "waning-gibbous": "亏凸月",
+      "last-quarter": "下弦月",
+      "waning-crescent": "残月（渐亏）"
+    }
+  },
+  "locationHistory": {
+    "openAria": "打开位置历史面板",
+    "closeAria": "关闭位置历史面板",
+    "title": "位置历史",
+    "clear": "清空",
+    "empty": "还没有查询记录，点击地图上的位置看看吧",
+    "addToCompareAria": "加入对比",
+    "compareTitle": "位置对比（按暗到亮排序）",
+    "darkestBadge": "最暗",
+    "ratioNote": "天光背景倍数是物理亮度比例，不是曝光时间或信噪比预测。",
+    "relativeTime": {
+      "justNow": "刚刚",
+      "minutesAgo": "{n} 分钟前",
+      "hoursAgo": "{n} 小时前",
+      "daysAgo": "{n} 天前"
+    }
+  },
+  "mapControls": {
+    "openAria": "打开地图控制",
+    "closeAria": "关闭地图控制",
+    "title": "地图控制",
+    "basemapLabel": "底图",
+    "lightPollutionLayerLabel": "光污染图层（VIIRS 2024）",
+    "weatherOverlayLabel": "天气叠加",
+    "darkSkyPlacesLabel": "认证暗空地点",
+    "auroraLabel": "极光概率（NOAA 预测）",
+    "terminatorLabel": "昼夜分界线",
+    "colorStyleLabel": "配色风格",
+    "opacityLabel": "透明度"
+  },
+  "locationDetail": {
+    "title": "位置详情",
+    "closeAria": "关闭位置详情",
+    "loadingPlaceName": "查询中…",
+    "unknownPlace": "未知地点",
+    "loading": "查询中…",
+    "errorText": "查询失败，请重试",
+    "retry": "重试",
+    "bortleUnitLabel": "Bortle 等级 · {desc}（近似值）",
+    "sqmLabel": "SQM ≈ {n} mag/arcsec²",
+    "starEstimate": "预计肉眼可见恒星数：约 {min}-{max} 颗（粗略估算）",
+    "trendLoading": "趋势图查询中…",
+    "weatherLoading": "天气查询中…"
+  },
+  "darkSkyPlace": {
+    "title": "认证暗空地点",
+    "closeAria": "关闭暗空地点详情",
+    "yearLabel": "认证年份：{year}",
+    "areaLabel": "保护面积：{area}",
+    "linkText": "在 DarkSky 官网查看 ↗"
+  },
+  "trendChart": {
+    "title": "光害趋势（{startYear}-{endYear}，SQM 越高越暗）",
+    "ariaLabel": "历年 SQM 趋势柱状图",
+    "tooltip": "{year} 年：SQM ≈ {sqm}，Bortle {bortleClass}"
+  },
+  "weatherSection": {
+    "title": "夜间天气",
+    "bestNightLabel": "最佳观测夜",
+    "scoreUnit": "分",
+    "cloudLabel": "云量 {n}%",
+    "moonLabel": "月光 {n}%",
+    "bestBadge": "最佳 {score}",
+    "scoreWithTier": "{score} {tierLabel}",
+    "visibilityKm": "👁 {n}km",
+    "footer": "天气数据来自 Open-Meteo",
+    "yesterday": "昨天",
+    "today": "今天",
+    "weekdays": ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+    "constraintCloud": "主要受限于：云量较高",
+    "constraintMoon": "主要受限于：月光较亮",
+    "constraintLightPollution": "主要受限于：光污染较重",
+    "constraintNone": "各项条件都不错",
+    "tiers": {
+      "poor": "较差",
+      "marginal": "一般",
+      "fair": "良好",
+      "good": "极佳"
+    }
+  },
+  "exposureCalculator": {
+    "title": "曝光计算器（简化估算）",
+    "cameraTypeLabel": "相机类型",
+    "focalRatioLabel": "焦比 f/",
+    "recommendedLabel": "建议单帧曝光时长",
+    "cappedNote": "已按最长单帧 {maxSeconds}s 封顶——暗天空下噪声预算本可以更长，但受跟踪精度、卫星拖尾等实际因素限制",
+    "footnote": "基于 SQM {sqm} 估算天空背景信号强度，目标读出噪声占比 {pct}%——简化估算，仅供参考，不是精确曝光建议。",
+    "cameraPresets": {
+      "cooled-cmos": "制冷 CMOS",
+      "uncooled-cmos": "非制冷 CMOS",
+      "dslr": "单反/微单"
+    }
+  },
+  "dataLabels": {
+    "bortleDescriptions": {
+      "1": "极暗夜空",
+      "2": "典型暗夜空",
+      "3": "乡村夜空",
+      "4": "乡村/郊区过渡",
+      "5": "郊区夜空",
+      "6": "较亮郊区夜空",
+      "7": "郊区/城市过渡",
+      "8": "城市夜空",
+      "9": "市中心夜空"
+    },
+    "weatherCodes": {
+      "0": "晴朗",
+      "1": "大部晴朗",
+      "2": "局部多云",
+      "3": "阴天",
+      "45": "有雾",
+      "48": "有雾",
+      "51": "毛毛雨",
+      "53": "毛毛雨",
+      "55": "毛毛雨",
+      "56": "冻雨",
+      "57": "冻雨",
+      "61": "降雨",
+      "63": "降雨",
+      "65": "强降雨",
+      "66": "冻雨",
+      "67": "冻雨",
+      "71": "降雪",
+      "73": "降雪",
+      "75": "强降雪",
+      "77": "米雪",
+      "80": "阵雨",
+      "81": "阵雨",
+      "82": "强阵雨",
+      "85": "阵雪",
+      "86": "强阵雪",
+      "95": "雷暴",
+      "96": "雷暴伴冰雹",
+      "99": "雷暴伴冰雹"
+    },
+    "unknownWeather": "未知天气",
+    "darkSkyCategories": {
+      "park": "暗空公园",
+      "community": "暗空社区",
+      "sanctuary": "暗空保护区",
+      "reserve": "暗空保留地",
+      "urban": "城市暗空地点"
+    },
+    "colorStyles": {
+      "classic": { "label": "经典", "description": "清晰分区" },
+      "soft": { "label": "高亮", "description": "平滑强度" },
+      "vivid": { "label": "辉光", "description": "天光扩散" },
+      "amber": { "label": "科研", "description": "固定 SQM 标尺" }
+    },
+    "basemaps": {
+      "street": "街道",
+      "dark": "暗色",
+      "satellite": "卫星图"
+    },
+    "weatherOverlays": {
+      "none": "无/隐藏",
+      "clouds": "云层",
+      "rain": "降水"
+    }
+  }
+}
