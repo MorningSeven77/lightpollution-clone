@@ -3,7 +3,7 @@
 import { Suspense, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { usePathname, useRouter, Link } from "@/i18n/navigation";
 import { Language, LANGUAGE_META } from "@/lib/i18n/language";
 
 const LANGUAGE_ORDER: Language[] = ["zh", "en"];
@@ -72,19 +72,35 @@ function LanguageSwitcher() {
   );
 }
 
-export default function SiteHeader() {
+export type SiteHeaderProps = {
+  // The home page has no other natural top-level heading, so the title
+  // renders as the page's one-and-only <h1> there. Other pages (like
+  // /golden-hour) have their own real <h1> — on those this renders as plain
+  // text instead, to avoid two competing h1s on one page.
+  titleAsHeading?: boolean;
+};
+
+export default function SiteHeader({ titleAsHeading = true }: SiteHeaderProps) {
   const t = useTranslations("siteHeader");
+  const tRankings = useTranslations("rankings");
+  const TitleTag = titleAsHeading ? "h1" : "span";
 
   return (
     <header className="relative z-20 flex h-14 shrink-0 items-center justify-between border-b border-white/10 bg-zinc-900 px-4 text-zinc-100">
       <div className="flex items-baseline gap-2 overflow-hidden">
         <span className="text-lg">🌌</span>
-        <h1 className="truncate font-semibold">{t("title")}</h1>
+        <TitleTag className="truncate font-semibold">{t("title")}</TitleTag>
         <p className="hidden truncate text-xs text-zinc-400 sm:inline">{t("subtitle")}</p>
       </div>
-      <Suspense fallback={<div className="h-8 w-20 rounded-md border border-white/10 bg-zinc-800/80" />}>
-        <LanguageSwitcher />
-      </Suspense>
+      <div className="flex items-center gap-2">
+        <Link href="/rankings" className="hidden rounded-md border border-white/10 bg-zinc-800/80 px-2.5 py-1.5 text-xs text-zinc-100 hover:bg-zinc-800 sm:inline-flex sm:items-center sm:gap-1.5">
+          <span>🌍</span>
+          <span>{tRankings("navLabel")}</span>
+        </Link>
+        <Suspense fallback={<div className="h-8 w-20 rounded-md border border-white/10 bg-zinc-800/80" />}>
+          <LanguageSwitcher />
+        </Suspense>
+      </div>
     </header>
   );
 }

@@ -1,4 +1,4 @@
-function dayOfYear(date: Date): number {
+export function dayOfYear(date: Date): number {
   const yearStart = Date.UTC(date.getUTCFullYear(), 0, 1);
   const today = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
   return Math.floor((today - yearStart) / 86400000) + 1;
@@ -7,7 +7,7 @@ function dayOfYear(date: Date): number {
 // Standard simplified solar declination approximation (accurate to roughly
 // 0.2°) — good enough for a visual day/night overlay, same "simplified
 // approximation" spirit as bortle.ts's own radiance->Bortle math.
-function solarDeclinationDeg(date: Date): number {
+export function solarDeclinationDeg(date: Date): number {
   const n = dayOfYear(date);
   return -23.44 * Math.cos(((2 * Math.PI) / 365.24) * (n + 10));
 }
@@ -15,7 +15,7 @@ function solarDeclinationDeg(date: Date): number {
 // Equation of time (minutes) — how far apparent solar time drifts from mean
 // solar time across the year, due to Earth's elliptical orbit and axial
 // tilt. Spencer's commonly-cited approximation.
-function equationOfTimeMinutes(date: Date): number {
+export function equationOfTimeMinutes(date: Date): number {
   const n = dayOfYear(date);
   const b = ((2 * Math.PI) / 365) * (n - 81);
   return 9.87 * Math.sin(2 * b) - 7.53 * Math.cos(b) - 1.5 * Math.sin(b);
@@ -23,7 +23,7 @@ function equationOfTimeMinutes(date: Date): number {
 
 // The longitude currently experiencing solar noon (the sun directly
 // overhead, ignoring latitude).
-function subsolarLongitudeDeg(date: Date): number {
+export function subsolarLongitudeDeg(date: Date): number {
   const utcHours = date.getUTCHours() + date.getUTCMinutes() / 60 + date.getUTCSeconds() / 3600;
   const solarTime = utcHours + equationOfTimeMinutes(date) / 60;
   const lng = -(solarTime - 12) * 15;

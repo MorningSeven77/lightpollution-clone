@@ -5,16 +5,16 @@ import Map, { MapHandle, SelectedLocation } from "@/components/Map";
 import SearchBar, { GeocodeResult } from "@/components/SearchBar";
 import Legend from "@/components/Legend";
 import InfoPanel from "@/components/InfoPanel";
-import MapControls from "@/components/MapControls";
 import LocationDetailPanel from "@/components/LocationDetailPanel";
 import DarkSkyPlacePanel from "@/components/DarkSkyPlacePanel";
-import MoonPhasePanel from "@/components/MoonPhasePanel";
-import LocationHistoryPanel from "@/components/LocationHistoryPanel";
+import IconToolbar from "@/components/IconToolbar";
+import BestSpotsResults from "@/components/BestSpotsResults";
 import SiteHeader from "@/components/SiteHeader";
 import { BasemapId, DEFAULT_BASEMAP } from "@/lib/basemapStyles";
 import { ColorStyleId, DEFAULT_COLOR_STYLE } from "@/lib/colorStyles";
 import { DarkSkyPlace } from "@/lib/darkSkyPlaces";
 import { WeatherOverlayId, DEFAULT_WEATHER_OVERLAY } from "@/lib/weatherOverlay";
+import type { RankedSpot } from "@/lib/bestSpots";
 
 export default function Home() {
   const mapRef = useRef<MapHandle>(null);
@@ -28,6 +28,7 @@ export default function Home() {
   const [showAurora, setShowAurora] = useState(false);
   const [showTerminator, setShowTerminator] = useState(false);
   const [weatherOverlay, setWeatherOverlay] = useState<WeatherOverlayId>(DEFAULT_WEATHER_OVERLAY);
+  const [bestSpots, setBestSpots] = useState<RankedSpot[] | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined" || !("geolocation" in navigator)) return;
@@ -78,19 +79,17 @@ export default function Home() {
         showAurora={showAurora}
         showTerminator={showTerminator}
         weatherOverlay={weatherOverlay}
+        bestSpots={bestSpots}
+        onBestSpotClick={(spot) => {
+          setSelectedDarkSkyPlace(null);
+          setSelectedLocation({ lat: spot.lat, lng: spot.lng });
+        }}
       />
       <SearchBar onSelect={handleSelect} />
       <Legend colorStyle={colorStyle} />
       <InfoPanel />
-      <MoonPhasePanel />
-      <LocationHistoryPanel
-        onSelectLocation={(lat, lng) => {
-          setSelectedDarkSkyPlace(null);
-          setSelectedLocation({ lat, lng });
-          mapRef.current?.flyTo({ lat, lng, zoom: 10 });
-        }}
-      />
-      <MapControls
+      <IconToolbar
+        mapRef={mapRef}
         basemap={basemap}
         onBasemapChange={setBasemap}
         colorStyle={colorStyle}
@@ -107,11 +106,31 @@ export default function Home() {
         onShowTerminatorChange={setShowTerminator}
         weatherOverlay={weatherOverlay}
         onWeatherOverlayChange={setWeatherOverlay}
+        onBestSpotsFound={setBestSpots}
+        onSelectHistoryLocation={(lat, lng) => {
+          setSelectedDarkSkyPlace(null);
+          setSelectedLocation({ lat, lng });
+          mapRef.current?.flyTo({ lat, lng, zoom: 10 });
+        }}
       />
       {selectedDarkSkyPlace ? (
         <DarkSkyPlacePanel place={selectedDarkSkyPlace} onClose={() => setSelectedDarkSkyPlace(null)} />
       ) : (
-        <LocationDetailPanel location={selectedLocation} onClose={() => setSelectedLocation(null)} />
+        <LocationDetailPanel
+          location={selectedLocation}
+          onClose={() => setSelectedLocation(null)}
+          onBestSpotsFound={setBestSpots}
+        />
+      )}
+      {bestSpots && bestSpots.length > 0 && (
+        <BestSpotsResults
+          spots={bestSpots}
+          onClose={() => setBestSpots(null)}
+          onSelectSpot={(lat, lng) => {
+            setSelectedDarkSkyPlace(null);
+            setSelectedLocation({ lat, lng });
+          }}
+        />
       )}
       </div>
     </main>

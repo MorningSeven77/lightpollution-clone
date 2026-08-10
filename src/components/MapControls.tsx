@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { BasemapId, BASEMAP_STYLES } from "@/lib/basemapStyles";
 import { ColorStyleId, COLOR_STYLES, paletteToCssGradient } from "@/lib/colorStyles";
@@ -8,6 +7,8 @@ import { DARK_SKY_CATEGORY_META } from "@/lib/darkSkyPlaces";
 import { WeatherOverlayId, WEATHER_OVERLAYS } from "@/lib/weatherOverlay";
 
 export type MapControlsProps = {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
   basemap: BasemapId;
   onBasemapChange: (id: BasemapId) => void;
   colorStyle: ColorStyleId;
@@ -27,6 +28,8 @@ export type MapControlsProps = {
 };
 
 export default function MapControls({
+  open,
+  onOpenChange,
   basemap,
   onBasemapChange,
   colorStyle,
@@ -44,35 +47,40 @@ export default function MapControls({
   weatherOverlay,
   onWeatherOverlayChange,
 }: MapControlsProps) {
-  const [open, setOpen] = useState(true);
   const t = useTranslations("mapControls");
   const tBasemaps = useTranslations("dataLabels.basemaps");
   const tWeatherOverlays = useTranslations("dataLabels.weatherOverlays");
   const tDarkSkyCategories = useTranslations("dataLabels.darkSkyCategories");
   const tColorStyles = useTranslations("dataLabels.colorStyles");
 
-  if (!open) {
-    return (
+  return (
+    <div className="group relative">
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => onOpenChange(!open)}
         aria-label={t("openAria")}
-        className="absolute right-4 top-20 z-10 rounded-md border border-white/10 bg-zinc-900/90 p-2 text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800"
+        className={`flex items-center justify-center rounded-md border border-white/10 p-2 text-zinc-100 shadow-lg backdrop-blur hover:bg-zinc-800 ${
+          open ? "bg-zinc-800" : "bg-zinc-900/90"
+        }`}
       >
         <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
           <path d="M10 2a1 1 0 0 1 1 1v1.09a6.51 6.51 0 0 1 2.4 1L14.3 4.3a1 1 0 0 1 1.41 1.41l-.8.8a6.51 6.51 0 0 1 1 2.4H17a1 1 0 1 1 0 2h-1.09a6.51 6.51 0 0 1-1 2.4l.8.8a1 1 0 0 1-1.41 1.41l-.8-.8a6.51 6.51 0 0 1-2.4 1V17a1 1 0 1 1-2 0v-1.09a6.51 6.51 0 0 1-2.4-1l-.8.8a1 1 0 0 1-1.41-1.41l.8-.8a6.51 6.51 0 0 1-1-2.4H3a1 1 0 1 1 0-2h1.09a6.51 6.51 0 0 1 1-2.4l-.8-.8A1 1 0 0 1 5.7 4.3l.8.8a6.51 6.51 0 0 1 2.4-1V3a1 1 0 0 1 1-1Zm0 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z" />
         </svg>
       </button>
-    );
-  }
 
-  return (
-    <div className="absolute right-4 top-20 z-10 w-64 rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
+      {!open && (
+        <span className="pointer-events-none absolute right-0 top-full z-20 mt-2 whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-xs text-zinc-100 opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+          {t("title")}
+        </span>
+      )}
+
+      {open && (
+      <div className="absolute right-0 top-full z-20 mt-2 w-64 rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-3 flex items-center justify-between">
         <h2 className="font-medium">{t("title")}</h2>
         <button
           type="button"
-          onClick={() => setOpen(false)}
+          onClick={() => onOpenChange(false)}
           aria-label={t("closeAria")}
           className="text-zinc-400 hover:text-zinc-100"
         >
@@ -244,6 +252,8 @@ export default function MapControls({
           className="w-full"
         />
       </label>
+      </div>
+      )}
     </div>
   );
 }

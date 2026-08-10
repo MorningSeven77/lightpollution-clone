@@ -10,11 +10,14 @@ import { WeatherDay } from "@/app/api/weather/route";
 import WeatherSection, { ScoredWeatherDay } from "@/components/WeatherSection";
 import { computeStargazingScore } from "@/lib/stargazing";
 import ExposureCalculator from "@/components/ExposureCalculator";
+import BestSpotsPanel from "@/components/BestSpotsPanel";
 import { addLocationHistoryEntry } from "@/lib/locationHistory";
+import type { RankedSpot } from "@/lib/bestSpots";
 
 export type LocationDetailPanelProps = {
   location: SelectedLocation | null;
   onClose: () => void;
+  onBestSpotsFound: (spots: RankedSpot[]) => void;
 };
 
 type PointValueState =
@@ -28,21 +31,30 @@ type TrendState = { status: "loading" } | { status: "error" } | { status: "done"
 
 type WeatherState = { status: "loading" } | { status: "error" } | { status: "done"; days: WeatherDay[] };
 
-export default function LocationDetailPanel({ location, onClose }: LocationDetailPanelProps) {
+export default function LocationDetailPanel({ location, onClose, onBestSpotsFound }: LocationDetailPanelProps) {
   if (!location) return null;
 
   // Remounts the panel (resetting state to its initial "loading" values)
   // whenever a genuinely different point is selected, instead of an effect
   // reaching back to reset state on every location change.
-  return <LocationDetailPanelContent key={`${location.lat},${location.lng}`} location={location} onClose={onClose} />;
+  return (
+    <LocationDetailPanelContent
+      key={`${location.lat},${location.lng}`}
+      location={location}
+      onClose={onClose}
+      onBestSpotsFound={onBestSpotsFound}
+    />
+  );
 }
 
 function LocationDetailPanelContent({
   location,
   onClose,
+  onBestSpotsFound,
 }: {
   location: SelectedLocation;
   onClose: () => void;
+  onBestSpotsFound: (spots: RankedSpot[]) => void;
 }) {
   const [pointValue, setPointValue] = useState<PointValueState>({ status: "loading" });
   const [placeName, setPlaceName] = useState<PlaceNameState>({ status: "loading" });
@@ -225,6 +237,8 @@ function LocationDetailPanelContent({
           {/* Same "stays quiet on failure" treatment as the trend chart above. */}
 
           <ExposureCalculator sqm={pointValue.sqm} />
+
+          <BestSpotsPanel lat={location.lat} lng={location.lng} onResults={onBestSpotsFound} />
         </div>
       )}
     </div>

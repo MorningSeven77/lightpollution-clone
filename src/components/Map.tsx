@@ -10,6 +10,7 @@ import { DarkSkyPlace, DARK_SKY_PLACES, DARK_SKY_CATEGORY_META } from "@/lib/dar
 import type { AuroraFeatureCollection } from "@/app/api/aurora/route";
 import { computeTerminatorPolygon } from "@/lib/terminator";
 import { WeatherOverlayId, WEATHER_OVERLAYS } from "@/lib/weatherOverlay";
+import type { RankedSpot } from "@/lib/bestSpots";
 import type { CircleLayerSpecification, FillLayerSpecification, GeoJSONSource, HeatmapLayerSpecification } from "maplibre-gl";
 
 // maplibre-gl v6 is ESM-only and can't reliably resolve its own worker URL
@@ -33,6 +34,9 @@ const TERMINATOR_SOURCE_ID = "terminator";
 const TERMINATOR_LAYER_ID = "terminator-layer";
 const WEATHER_TILES_SOURCE_ID = "weather-tiles";
 const WEATHER_TILES_LAYER_ID = "weather-tiles-layer";
+const BEST_SPOTS_SOURCE_ID = "best-spots";
+const BEST_SPOTS_CIRCLE_LAYER_ID = "best-spots-circle-layer";
+const BEST_SPOTS_LABEL_LAYER_ID = "best-spots-label-layer";
 // How often to recompute the terminator polygon while it's visible — the
 // terminator sweeps ~15° of longitude per hour, so a 1-minute refresh keeps
 // it visually accurate without redrawing on every render frame.
@@ -97,6 +101,13 @@ const TERMINATOR_FILL_PAINT: FillLayerSpecification["paint"] = {
   "fill-opacity": 0.35,
 };
 
+const BEST_SPOTS_CIRCLE_PAINT: CircleLayerSpecification["paint"] = {
+  "circle-radius": 11,
+  "circle-color": "#a855f7",
+  "circle-stroke-width": 2,
+  "circle-stroke-color": "#ffffff",
+};
+
 // BasemapDef is either a CARTO style.json URL or (for the raster satellite
 // basemap) an inline style object — both are valid values for MapLibre's
 // `style` option / setStyle(), so this just picks whichever one is present.
@@ -107,6 +118,7 @@ function resolveBasemapStyle(id: BasemapId) {
 
 export type MapHandle = {
   flyTo: (view: MapView) => void;
+  getCenter: () => { lat: number; lng: number } | null;
 };
 
 export type SelectedLocation = { lat: number; lng: number };
@@ -123,6 +135,8 @@ export type MapProps = {
   showAurora: boolean;
   showTerminator: boolean;
   weatherOverlay: WeatherOverlayId;
+  bestSpots: RankedSpot[] | null;
+  onBestSpotClick: (spot: RankedSpot) => void;
 };
 
 // Adds the VIIRS layer if it doesn't exist yet (e.g. first load, or right
@@ -284,6 +298,53 @@ function ensureWeatherTilesLayer(map: MaplibreMap, overlay: WeatherOverlayId) {
   });
 }
 
+// Adds the "best stargazing spots" search-result markers if they don't
+// exist yet, or swaps the data in place if they do (a new search replaces
+// the previous one's results rather than accumulating them). Ranks are
+// 1-based, matching how the results list numbers them.
+function ensureBestSpotsLayer(map: MaplibreMap, spots: RankedSpot[]) {
+  const geojson: GeoJSON.FeatureCollection = {
+    type: "FeatureCollection",
+    features: spots.map((spot, i) => ({
+      type: "Feature",
+      geometry: { type: "Point", coordinates: [spot.lng, spot.lat] },
+      properties: { rank: i + 1, lat: spot.lat, lng: spot.lng, sqm: spot.sqm, bortleClass: spot.bortleClass, score: spot.score },
+    })),
+  };
+
+  const existingSource = map.getSource(BEST_SPOTS_SOURCE_ID) as GeoJSONSource | undefined;
+  if (existingSource) {
+    existingSource.setData(geojson);
+    return;
+  }
+
+  map.addSource(BEST_SPOTS_SOURCE_ID, { type: "geojson", data: geojson });
+  map.addLayer({
+    id: BEST_SPOTS_CIRCLE_LAYER_ID,
+    type: "circle",
+    source: BEST_SPOTS_SOURCE_ID,
+    paint: BEST_SPOTS_CIRCLE_PAINT,
+  });
+  map.addLayer({
+    id: BEST_SPOTS_LABEL_LAYER_ID,
+    type: "symbol",
+    source: BEST_SPOTS_SOURCE_ID,
+    layout: {
+      "text-field": ["get", "rank"],
+      "text-size": 11,
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+    },
+    paint: { "text-color": "#ffffff" },
+  });
+}
+
+function removeBestSpotsLayer(map: MaplibreMap) {
+  if (map.getLayer(BEST_SPOTS_LABEL_LAYER_ID)) map.removeLayer(BEST_SPOTS_LABEL_LAYER_ID);
+  if (map.getLayer(BEST_SPOTS_CIRCLE_LAYER_ID)) map.removeLayer(BEST_SPOTS_CIRCLE_LAYER_ID);
+  if (map.getSource(BEST_SPOTS_SOURCE_ID)) map.removeSource(BEST_SPOTS_SOURCE_ID);
+}
+
 // CARTO's basemaps render CJK place/road names with a "HanWangHeiLight"
 // fallback font (their Latin-oriented font stack has no CJK glyphs) — that
 // font is visually much heavier than the Latin "Regular" weight the style
@@ -315,6 +376,8 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
     showAurora,
     showTerminator,
     weatherOverlay,
+    bestSpots,
+    onBestSpotClick,
   },
   ref,
 ) {
@@ -335,6 +398,8 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
   const showAuroraRef = useRef(showAurora);
   const showTerminatorRef = useRef(showTerminator);
   const weatherOverlayRef = useRef(weatherOverlay);
+  const bestSpotsRef = useRef(bestSpots);
+  const onBestSpotClickRef = useRef(onBestSpotClick);
   colorStyleRef.current = colorStyle;
   opacityRef.current = opacity;
   visibleRef.current = visible;
@@ -344,10 +409,17 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
   showAuroraRef.current = showAurora;
   showTerminatorRef.current = showTerminator;
   weatherOverlayRef.current = weatherOverlay;
+  bestSpotsRef.current = bestSpots;
+  onBestSpotClickRef.current = onBestSpotClick;
 
   useImperativeHandle(ref, () => ({
     flyTo: (view: MapView) => {
       mapRef.current?.flyTo({ center: [view.lng, view.lat], zoom: view.zoom });
+    },
+    getCenter: () => {
+      if (!mapRef.current) return null;
+      const center = mapRef.current.getCenter();
+      return { lat: center.lat, lng: center.lng };
     },
   }));
 
@@ -377,18 +449,28 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
       ensureAuroraLayer(map, auroraCacheRef, showAuroraRef.current);
       ensureTerminatorLayer(map, showTerminatorRef.current);
       ensureWeatherTilesLayer(map, weatherOverlayRef.current);
+      if (bestSpotsRef.current) ensureBestSpotsLayer(map, bestSpotsRef.current);
       thinOutLabels(map);
     });
 
     map.on("click", (e) => {
-      // The dark-sky-places layer sits on top of the basemap; a click that
-      // lands on one of its circles should open that place's panel instead
-      // of falling through to the generic lat/lng point-value lookup.
-      const hits = map.getLayer(DARK_SKY_LAYER_ID)
+      // The best-spots markers sit on top of the dark-sky-places layer,
+      // which itself sits on top of the basemap — a click that lands on
+      // either should open that thing's details instead of falling through
+      // to the generic lat/lng point-value lookup.
+      const bestSpotHits = map.getLayer(BEST_SPOTS_CIRCLE_LAYER_ID)
+        ? map.queryRenderedFeatures(e.point, { layers: [BEST_SPOTS_CIRCLE_LAYER_ID] })
+        : [];
+      if (bestSpotHits.length > 0) {
+        onBestSpotClickRef.current(bestSpotHits[0].properties as unknown as RankedSpot);
+        return;
+      }
+
+      const darkSkyHits = map.getLayer(DARK_SKY_LAYER_ID)
         ? map.queryRenderedFeatures(e.point, { layers: [DARK_SKY_LAYER_ID] })
         : [];
-      if (hits.length > 0) {
-        onDarkSkyPlaceClickRef.current(hits[0].properties as unknown as DarkSkyPlace);
+      if (darkSkyHits.length > 0) {
+        onDarkSkyPlaceClickRef.current(darkSkyHits[0].properties as unknown as DarkSkyPlace);
         return;
       }
       onMapClickRef.current(e.lngLat.lat, e.lngLat.lng);
@@ -398,6 +480,12 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
       map.getCanvas().style.cursor = "pointer";
     });
     map.on("mouseleave", DARK_SKY_LAYER_ID, () => {
+      map.getCanvas().style.cursor = "";
+    });
+    map.on("mouseenter", BEST_SPOTS_CIRCLE_LAYER_ID, () => {
+      map.getCanvas().style.cursor = "pointer";
+    });
+    map.on("mouseleave", BEST_SPOTS_CIRCLE_LAYER_ID, () => {
       map.getCanvas().style.cursor = "";
     });
 
@@ -469,10 +557,21 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
       ensureAuroraLayer(map, auroraCacheRef, showAuroraRef.current);
       ensureTerminatorLayer(map, showTerminatorRef.current);
       ensureWeatherTilesLayer(map, weatherOverlayRef.current);
+      if (bestSpotsRef.current) ensureBestSpotsLayer(map, bestSpotsRef.current);
       thinOutLabels(map);
     });
     map.setStyle(resolveBasemapStyle(basemap));
   }, [basemap]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    if (bestSpots && bestSpots.length > 0) {
+      ensureBestSpotsLayer(map, bestSpots);
+    } else if (map.getSource(BEST_SPOTS_SOURCE_ID)) {
+      removeBestSpotsLayer(map);
+    }
+  }, [bestSpots]);
 
   const isFirstWeatherOverlayRender = useRef(true);
   useEffect(() => {

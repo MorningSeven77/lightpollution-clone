@@ -1,0 +1,1969 @@
+[
+  {
+    "name": "Abyei Area",
+    "code": "UU",
+    "avgSqm": 21.75,
+    "bortleLe4Percent": 100,
+    "pixelCount": 128
+  },
+  {
+    "name": "Afghanistan",
+    "code": "AF",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 99.8,
+    "pixelCount": 8091
+  },
+  {
+    "name": "Akrotiri",
+    "code": "AX",
+    "avgSqm": 20.76,
+    "bortleLe4Percent": 36.4,
+    "pixelCount": 9
+  },
+  {
+    "name": "Aksai Chin",
+    "code": "UU",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 100,
+    "pixelCount": 441
+  },
+  {
+    "name": "Albania",
+    "code": "AL",
+    "avgSqm": 21.45,
+    "bortleLe4Percent": 94,
+    "pixelCount": 447
+  },
+  {
+    "name": "Algeria",
+    "code": "AG",
+    "avgSqm": 21.63,
+    "bortleLe4Percent": 97.6,
+    "pixelCount": 26810
+  },
+  {
+    "name": "American Samoa",
+    "code": "AQ",
+    "avgSqm": 21.53,
+    "bortleLe4Percent": 100,
+    "pixelCount": 10
+  },
+  {
+    "name": "Andorra",
+    "code": "AN",
+    "avgSqm": 21.16,
+    "bortleLe4Percent": 68.6,
+    "pixelCount": 14
+  },
+  {
+    "name": "Angola",
+    "code": "AO",
+    "avgSqm": 21.75,
+    "bortleLe4Percent": 99.5,
+    "pixelCount": 13206
+  },
+  {
+    "name": "Anguilla",
+    "code": "AV",
+    "avgSqm": 21.43,
+    "bortleLe4Percent": 100,
+    "pixelCount": 5
+  },
+  {
+    "name": "Antigua & Barbuda",
+    "code": "AC",
+    "avgSqm": 21.04,
+    "bortleLe4Percent": 64.9,
+    "pixelCount": 17
+  },
+  {
+    "name": "Argentina",
+    "code": "AR",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 98.2,
+    "pixelCount": 35397
+  },
+  {
+    "name": "Armenia",
+    "code": "AM",
+    "avgSqm": 21.56,
+    "bortleLe4Percent": 97.2,
+    "pixelCount": 469
+  },
+  {
+    "name": "Aruba",
+    "code": "AA",
+    "avgSqm": 20.64,
+    "bortleLe4Percent": 35.2,
+    "pixelCount": 7
+  },
+  {
+    "name": "Ashmore & Cartier Is",
+    "code": "AT",
+    "avgSqm": 21.82,
+    "bortleLe4Percent": 100,
+    "pixelCount": 1
+  },
+  {
+    "name": "Australia",
+    "code": "AS",
+    "avgSqm": 21.76,
+    "bortleLe4Percent": 99.5,
+    "pixelCount": 87934
+  },
+  {
+    "name": "Austria",
+    "code": "AU",
+    "avgSqm": 21.46,
+    "bortleLe4Percent": 95.9,
+    "pixelCount": 1393
+  },
+  {
+    "name": "Azerbaijan",
+    "code": "AJ",
+    "avgSqm": 21.51,
+    "bortleLe4Percent": 95.6,
+    "pixelCount": 1308
+  },
+  {
+    "name": "Bahamas, The",
+    "code": "BF",
+    "avgSqm": 21.66,
+    "bortleLe4Percent": 98.3,
+    "pixelCount": 358
+  },
+  {
+    "name": "Bahrain",
+    "code": "BA",
+    "avgSqm": 19.23,
+    "bortleLe4Percent": 9.3,
+    "pixelCount": 27
+  },
+  {
+    "name": "Bangladesh",
+    "code": "BG",
+    "avgSqm": 21.47,
+    "bortleLe4Percent": 96.7,
+    "pixelCount": 1766
+  },
+  {
+    "name": "Barbados",
+    "code": "BB",
+    "avgSqm": 21.15,
+    "bortleLe4Percent": 78,
+    "pixelCount": 12
+  },
+  {
+    "name": "Belarus",
+    "code": "BO",
+    "avgSqm": 21.55,
+    "bortleLe4Percent": 98.3,
+    "pixelCount": 3696
+  },
+  {
+    "name": "Belgium",
+    "code": "BE",
+    "avgSqm": 20.89,
+    "bortleLe4Percent": 61.6,
+    "pixelCount": 559
+  },
+  {
+    "name": "Belize",
+    "code": "BH",
+    "avgSqm": 21.67,
+    "bortleLe4Percent": 99.2,
+    "pixelCount": 290
+  },
+  {
+    "name": "Benin",
+    "code": "BN",
+    "avgSqm": 21.69,
+    "bortleLe4Percent": 99.7,
+    "pixelCount": 1300
+  },
+  {
+    "name": "Bermuda",
+    "code": "BD",
+    "avgSqm": 20.86,
+    "bortleLe4Percent": 57.5,
+    "pixelCount": 5
+  },
+  {
+    "name": "Bhutan",
+    "code": "BT",
+    "avgSqm": 21.67,
+    "bortleLe4Percent": 99.5,
+    "pixelCount": 492
+  },
+  {
+    "name": "Bir Tawil",
+    "code": "EG",
+    "avgSqm": 21.76,
+    "bortleLe4Percent": 100,
+    "pixelCount": 29
+  },
+  {
+    "name": "Bolivia",
+    "code": "BL",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 99.4,
+    "pixelCount": 11724
+  },
+  {
+    "name": "Bosnia & Herzegovina",
+    "code": "BK",
+    "avgSqm": 21.45,
+    "bortleLe4Percent": 94,
+    "pixelCount": 809
+  },
+  {
+    "name": "Botswana",
+    "code": "BC",
+    "avgSqm": 21.77,
+    "bortleLe4Percent": 99.8,
+    "pixelCount": 6501
+  },
+  {
+    "name": "Bouvet Island",
+    "code": "BV",
+    "avgSqm": 21.09,
+    "bortleLe4Percent": 50.9,
+    "pixelCount": 5
+  },
+  {
+    "name": "Brazil",
+    "code": "BR",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 98.2,
+    "pixelCount": 89053
+  },
+  {
+    "name": "British Indian Ocean Terr",
+    "code": "IO",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 100,
+    "pixelCount": 13
+  },
+  {
+    "name": "British Virgin Is",
+    "code": "VI",
+    "avgSqm": 21.35,
+    "bortleLe4Percent": 61.4,
+    "pixelCount": 8
+  },
+  {
+    "name": "Brunei",
+    "code": "BX",
+    "avgSqm": 21.44,
+    "bortleLe4Percent": 88,
+    "pixelCount": 93
+  },
+  {
+    "name": "Bulgaria",
+    "code": "BU",
+    "avgSqm": 21.49,
+    "bortleLe4Percent": 95.9,
+    "pixelCount": 1643
+  },
+  {
+    "name": "Burkina Faso",
+    "code": "UV",
+    "avgSqm": 21.71,
+    "bortleLe4Percent": 99.7,
+    "pixelCount": 2992
+  },
+  {
+    "name": "Burma",
+    "code": "BM",
+    "avgSqm": 21.69,
+    "bortleLe4Percent": 99.6,
+    "pixelCount": 7785
+  },
+  {
+    "name": "Burundi",
+    "code": "BY",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 99.6,
+    "pixelCount": 320
+  },
+  {
+    "name": "Cabo Verde",
+    "code": "CV",
+    "avgSqm": 21.65,
+    "bortleLe4Percent": 99.6,
+    "pixelCount": 99
+  },
+  {
+    "name": "Cambodia",
+    "code": "CB",
+    "avgSqm": 21.71,
+    "bortleLe4Percent": 99.4,
+    "pixelCount": 2011
+  },
+  {
+    "name": "Cameroon",
+    "code": "CM",
+    "avgSqm": 21.72,
+    "bortleLe4Percent": 99.6,
+    "pixelCount": 4963
+  },
+  {
+    "name": "Canada",
+    "code": "CA",
+    "avgSqm": 21.43,
+    "bortleLe4Percent": 99.5,
+    "pixelCount": 195542
+  },
+  {
+    "name": "Cayman Is",
+    "code": "CJ",
+    "avgSqm": 21.55,
+    "bortleLe4Percent": 100,
+    "pixelCount": 16
+  },
+  {
+    "name": "Central African Rep",
+    "code": "CT",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 100,
+    "pixelCount": 6567
+  },
+  {
+    "name": "Chad",
+    "code": "CD",
+    "avgSqm": 21.75,
+    "bortleLe4Percent": 99.9,
+    "pixelCount": 13613
+  },
+  {
+    "name": "Chile",
+    "code": "CI",
+    "avgSqm": 21.66,
+    "bortleLe4Percent": 98.1,
+    "pixelCount": 11281
+  },
+  {
+    "name": "China",
+    "code": "CH",
+    "avgSqm": 21.56,
+    "bortleLe4Percent": 95.9,
+    "pixelCount": 120152
+  },
+  {
+    "name": "Christmas I",
+    "code": "KT",
+    "avgSqm": 21.77,
+    "bortleLe4Percent": 100,
+    "pixelCount": 6
+  },
+  {
+    "name": "Clipperton Island",
+    "code": "IP",
+    "avgSqm": 21.79,
+    "bortleLe4Percent": 100,
+    "pixelCount": 2
+  },
+  {
+    "name": "Cocos (Keeling) Is",
+    "code": "CK",
+    "avgSqm": 21.77,
+    "bortleLe4Percent": 100,
+    "pixelCount": 2
+  },
+  {
+    "name": "Colombia",
+    "code": "CO",
+    "avgSqm": 21.69,
+    "bortleLe4Percent": 98.6,
+    "pixelCount": 11967
+  },
+  {
+    "name": "Comoros",
+    "code": "CN",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 100,
+    "pixelCount": 39
+  },
+  {
+    "name": "Cook Is",
+    "code": "CW",
+    "avgSqm": 21.72,
+    "bortleLe4Percent": 100,
+    "pixelCount": 27
+  },
+  {
+    "name": "Costa Rica",
+    "code": "CS",
+    "avgSqm": 21.54,
+    "bortleLe4Percent": 96.3,
+    "pixelCount": 628
+  },
+  {
+    "name": "Cote d'Ivoire",
+    "code": "IV",
+    "avgSqm": 21.61,
+    "bortleLe4Percent": 98.8,
+    "pixelCount": 3440
+  },
+  {
+    "name": "Croatia",
+    "code": "HR",
+    "avgSqm": 21.38,
+    "bortleLe4Percent": 94,
+    "pixelCount": 1056
+  },
+  {
+    "name": "Cuba",
+    "code": "CU",
+    "avgSqm": 21.63,
+    "bortleLe4Percent": 98.6,
+    "pixelCount": 1459
+  },
+  {
+    "name": "Curacao",
+    "code": "UC",
+    "avgSqm": 20.93,
+    "bortleLe4Percent": 64,
+    "pixelCount": 14
+  },
+  {
+    "name": "Cyprus",
+    "code": "CY",
+    "avgSqm": 21.18,
+    "bortleLe4Percent": 82.3,
+    "pixelCount": 149
+  },
+  {
+    "name": "Czechia",
+    "code": "EZ",
+    "avgSqm": 21.32,
+    "bortleLe4Percent": 90.9,
+    "pixelCount": 1345
+  },
+  {
+    "name": "Dem Rep of the Congo",
+    "code": "CG",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 99.8,
+    "pixelCount": 24106
+  },
+  {
+    "name": "Demchok Area",
+    "code": "UU",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 100,
+    "pixelCount": 32
+  },
+  {
+    "name": "Denmark",
+    "code": "DA",
+    "avgSqm": 21.34,
+    "bortleLe4Percent": 91.9,
+    "pixelCount": 1030
+  },
+  {
+    "name": "Dhekelia",
+    "code": "DX",
+    "avgSqm": 21.03,
+    "bortleLe4Percent": 91.6,
+    "pixelCount": 9
+  },
+  {
+    "name": "Djibouti",
+    "code": "DJ",
+    "avgSqm": 21.75,
+    "bortleLe4Percent": 99.3,
+    "pixelCount": 270
+  },
+  {
+    "name": "Dominica",
+    "code": "DO",
+    "avgSqm": 21.62,
+    "bortleLe4Percent": 100,
+    "pixelCount": 14
+  },
+  {
+    "name": "Dominican Republic",
+    "code": "DR",
+    "avgSqm": 21.39,
+    "bortleLe4Percent": 90,
+    "pixelCount": 604
+  },
+  {
+    "name": "Dragonja River Mouth",
+    "code": "UU",
+    "avgSqm": 20.85,
+    "bortleLe4Percent": 100,
+    "pixelCount": 1
+  },
+  {
+    "name": "Dramana-Shakatoe Area",
+    "code": "UU",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 100,
+    "pixelCount": 6
+  },
+  {
+    "name": "Ecuador",
+    "code": "EC",
+    "avgSqm": 21.53,
+    "bortleLe4Percent": 93.9,
+    "pixelCount": 2806
+  },
+  {
+    "name": "Egypt",
+    "code": "EG",
+    "avgSqm": 21.6,
+    "bortleLe4Percent": 94.5,
+    "pixelCount": 11265
+  },
+  {
+    "name": "El Salvador",
+    "code": "ES",
+    "avgSqm": 21.45,
+    "bortleLe4Percent": 93.9,
+    "pixelCount": 261
+  },
+  {
+    "name": "Equatorial Guinea",
+    "code": "EK",
+    "avgSqm": 21.66,
+    "bortleLe4Percent": 98.3,
+    "pixelCount": 319
+  },
+  {
+    "name": "Eritrea",
+    "code": "ER",
+    "avgSqm": 21.78,
+    "bortleLe4Percent": 100,
+    "pixelCount": 1429
+  },
+  {
+    "name": "Estonia",
+    "code": "EN",
+    "avgSqm": 21.5,
+    "bortleLe4Percent": 97.6,
+    "pixelCount": 1026
+  },
+  {
+    "name": "Ethiopia",
+    "code": "ET",
+    "avgSqm": 21.75,
+    "bortleLe4Percent": 99.8,
+    "pixelCount": 11812
+  },
+  {
+    "name": "Falkland Islands",
+    "code": "FA",
+    "avgSqm": 21.63,
+    "bortleLe4Percent": 100,
+    "pixelCount": 298
+  },
+  {
+    "name": "Faroe Is",
+    "code": "FO",
+    "avgSqm": 21.46,
+    "bortleLe4Percent": 96.5,
+    "pixelCount": 76
+  },
+  {
+    "name": "Fed States of Micronesia",
+    "code": "FM",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 100,
+    "pixelCount": 36
+  },
+  {
+    "name": "Fiji",
+    "code": "FJ",
+    "avgSqm": 21.74,
+    "bortleLe4Percent": 99.6,
+    "pixelCount": 366
+  },
+  {
+    "name": "Finland",
+    "code": "FI",
+    "avgSqm": 21.35,
+    "bortleLe4Percent": 95.5,
+    "pixelCount": 8169
+  },
+  {
+    "name": "France",
+    "code": "FR",
+    "avgSqm": 21.46,
+    "bortleLe4Percent": 94.7,
+    "pixelCount": 8416
+  },
+  {
+    "name": "French Guiana",
+    "code": "FG",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 99.7,
+    "pixelCount": 915
+  },
+  {
+    "name": "French Polynesia",
+    "code": "FP",
+    "avgSqm": 21.71,
+    "bortleLe4Percent": 98.2,
+    "pixelCount": 237
+  },
+  {
+    "name": "French S & Antarctic Lands",
+    "code": "FS",
+    "avgSqm": 21.61,
+    "bortleLe4Percent": 100,
+    "pixelCount": 197
+  },
+  {
+    "name": "Gabon",
+    "code": "GB",
+    "avgSqm": 21.71,
+    "bortleLe4Percent": 99.5,
+    "pixelCount": 2834
+  },
+  {
+    "name": "Gambia, The",
+    "code": "GA",
+    "avgSqm": 21.63,
+    "bortleLe4Percent": 97.7,
+    "pixelCount": 167
+  },
+  {
+    "name": "Gaza Strip",
+    "code": "GZ",
+    "avgSqm": 21.04,
+    "bortleLe4Percent": 87.7,
+    "pixelCount": 11
+  },
+  {
+    "name": "Georgia",
+    "code": "GG",
+    "avgSqm": 21.52,
+    "bortleLe4Percent": 96.8,
+    "pixelCount": 1062
+  },
+  {
+    "name": "Germany",
+    "code": "GM",
+    "avgSqm": 21.3,
+    "bortleLe4Percent": 90.6,
+    "pixelCount": 6039
+  },
+  {
+    "name": "Ghana",
+    "code": "GH",
+    "avgSqm": 21.53,
+    "bortleLe4Percent": 96.7,
+    "pixelCount": 2571
+  },
+  {
+    "name": "Gibraltar",
+    "code": "GI",
+    "avgSqm": 20.71,
+    "bortleLe4Percent": 0,
+    "pixelCount": 1
+  },
+  {
+    "name": "Greece",
+    "code": "GR",
+    "avgSqm": 21.36,
+    "bortleLe4Percent": 91.8,
+    "pixelCount": 2358
+  },
+  {
+    "name": "Greenland",
+    "code": "GL",
+    "avgSqm": 21.39,
+    "bortleLe4Percent": 100,
+    "pixelCount": 39210
+  },
+  {
+    "name": "Grenada",
+    "code": "GJ",
+    "avgSqm": 21.55,
+    "bortleLe4Percent": 100,
+    "pixelCount": 10
+  },
+  {
+    "name": "Guadeloupe",
+    "code": "GP",
+    "avgSqm": 21.21,
+    "bortleLe4Percent": 83.1,
+    "pixelCount": 37
+  },
+  {
+    "name": "Guam",
+    "code": "GQ",
+    "avgSqm": 21.04,
+    "bortleLe4Percent": 63.3,
+    "pixelCount": 17
+  },
+  {
+    "name": "Guatemala",
+    "code": "GT",
+    "avgSqm": 21.59,
+    "bortleLe4Percent": 97.6,
+    "pixelCount": 1245
+  },
+  {
+    "name": "Guernsey",
+    "code": "GK",
+    "avgSqm": 21.37,
+    "bortleLe4Percent": 100,
+    "pixelCount": 3
+  },
+  {
+    "name": "Guinea",
+    "code": "GV",
+    "avgSqm": 21.67,
+    "bortleLe4Percent": 99.8,
+    "pixelCount": 2712
+  },
+  {
+    "name": "Guinea-Bissau",
+    "code": "PU",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 99.6,
+    "pixelCount": 452
+  },
+  {
+    "name": "Guyana",
+    "code": "GY",
+    "avgSqm": 21.74,
+    "bortleLe4Percent": 99.7,
+    "pixelCount": 2305
+  },
+  {
+    "name": "Haiti",
+    "code": "HA",
+    "avgSqm": 21.74,
+    "bortleLe4Percent": 100,
+    "pixelCount": 387
+  },
+  {
+    "name": "Halaib Triangle",
+    "code": "SU",
+    "avgSqm": 21.76,
+    "bortleLe4Percent": 99.9,
+    "pixelCount": 221
+  },
+  {
+    "name": "Heard I & McDonald Is",
+    "code": "HM",
+    "avgSqm": 21.44,
+    "bortleLe4Percent": 100,
+    "pixelCount": 15
+  },
+  {
+    "name": "Honduras",
+    "code": "HO",
+    "avgSqm": 21.61,
+    "bortleLe4Percent": 98.2,
+    "pixelCount": 1307
+  },
+  {
+    "name": "Hong Kong",
+    "code": "HK",
+    "avgSqm": 19.77,
+    "bortleLe4Percent": 14.6,
+    "pixelCount": 26
+  },
+  {
+    "name": "Hungary",
+    "code": "HU",
+    "avgSqm": 21.42,
+    "bortleLe4Percent": 94.9,
+    "pixelCount": 1497
+  },
+  {
+    "name": "Iceland",
+    "code": "IC",
+    "avgSqm": 21.32,
+    "bortleLe4Percent": 98.9,
+    "pixelCount": 2723
+  },
+  {
+    "name": "IN-CH Small Disputed Areas",
+    "code": "UU",
+    "avgSqm": 21.67,
+    "bortleLe4Percent": 100,
+    "pixelCount": 62
+  },
+  {
+    "name": "India",
+    "code": "IN",
+    "avgSqm": 21.38,
+    "bortleLe4Percent": 93.9,
+    "pixelCount": 35646
+  },
+  {
+    "name": "Indonesia",
+    "code": "ID",
+    "avgSqm": 21.66,
+    "bortleLe4Percent": 97.6,
+    "pixelCount": 21747
+  },
+  {
+    "name": "Invernada Area",
+    "code": "BR",
+    "avgSqm": 21.69,
+    "bortleLe4Percent": 100,
+    "pixelCount": 6
+  },
+  {
+    "name": "Iran",
+    "code": "IR",
+    "avgSqm": 21.49,
+    "bortleLe4Percent": 93.7,
+    "pixelCount": 19835
+  },
+  {
+    "name": "Iraq",
+    "code": "IZ",
+    "avgSqm": 21.32,
+    "bortleLe4Percent": 85.1,
+    "pixelCount": 5446
+  },
+  {
+    "name": "Ireland",
+    "code": "EI",
+    "avgSqm": 21.41,
+    "bortleLe4Percent": 96.2,
+    "pixelCount": 1352
+  },
+  {
+    "name": "Isla Brasilera",
+    "code": "UU",
+    "avgSqm": 21.7,
+    "bortleLe4Percent": 100,
+    "pixelCount": 1
+  },
+  {
+    "name": "Isle of Man",
+    "code": "IM",
+    "avgSqm": 21.55,
+    "bortleLe4Percent": 100,
+    "pixelCount": 20
+  },
+  {
+    "name": "Israel",
+    "code": "IS",
+    "avgSqm": 20.65,
+    "bortleLe4Percent": 53.3,
+    "pixelCount": 319
+  },
+  {
+    "name": "Italy",
+    "code": "IT",
+    "avgSqm": 21.02,
+    "bortleLe4Percent": 71.8,
+    "pixelCount": 4563
+  },
+  {
+    "name": "Jamaica",
+    "code": "JM",
+    "avgSqm": 21.37,
+    "bortleLe4Percent": 96.3,
+    "pixelCount": 156
+  },
+  {
+    "name": "Jan Mayen",
+    "code": "JN",
+    "avgSqm": 21.33,
+    "bortleLe4Percent": 100,
+    "pixelCount": 28
+  },
+  {
+    "name": "Japan",
+    "code": "JA",
+    "avgSqm": 21.42,
+    "bortleLe4Percent": 90.3,
+    "pixelCount": 5736
+  },
+  {
+    "name": "Jersey",
+    "code": "JE",
+    "avgSqm": 21.06,
+    "bortleLe4Percent": 73.3,
+    "pixelCount": 8
+  },
+  {
+    "name": "Jordan",
+    "code": "JO",
+    "avgSqm": 21.44,
+    "bortleLe4Percent": 88.4,
+    "pixelCount": 1151
+  },
+  {
+    "name": "Kalapani Area",
+    "code": "UU",
+    "avgSqm": 21.66,
+    "bortleLe4Percent": 100,
+    "pixelCount": 2
+  },
+  {
+    "name": "Kazakhstan",
+    "code": "KZ",
+    "avgSqm": 21.63,
+    "bortleLe4Percent": 99.4,
+    "pixelCount": 41862
+  },
+  {
+    "name": "Kenya",
+    "code": "KE",
+    "avgSqm": 21.7,
+    "bortleLe4Percent": 99.6,
+    "pixelCount": 6143
+  },
+  {
+    "name": "Kiribati",
+    "code": "KR",
+    "avgSqm": 21.8,
+    "bortleLe4Percent": 100,
+    "pixelCount": 91
+  },
+  {
+    "name": "Korea, North",
+    "code": "KN",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 99.7,
+    "pixelCount": 1786
+  },
+  {
+    "name": "Korea, South",
+    "code": "KS",
+    "avgSqm": 20.94,
+    "bortleLe4Percent": 72.2,
+    "pixelCount": 1413
+  },
+  {
+    "name": "Korean Is. (UN Jurisdiction)",
+    "code": "UU",
+    "avgSqm": 21.51,
+    "bortleLe4Percent": 100,
+    "pixelCount": 2
+  },
+  {
+    "name": "Kosovo",
+    "code": "KV",
+    "avgSqm": 21.18,
+    "bortleLe4Percent": 81.8,
+    "pixelCount": 188
+  },
+  {
+    "name": "Koualou Area",
+    "code": "UU",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 100,
+    "pixelCount": 1
+  },
+  {
+    "name": "Kuwait",
+    "code": "KU",
+    "avgSqm": 20.7,
+    "bortleLe4Percent": 58.8,
+    "pixelCount": 252
+  },
+  {
+    "name": "Kyrgyzstan",
+    "code": "KG",
+    "avgSqm": 21.62,
+    "bortleLe4Percent": 99.1,
+    "pixelCount": 2886
+  },
+  {
+    "name": "Laos",
+    "code": "LA",
+    "avgSqm": 21.72,
+    "bortleLe4Percent": 99.6,
+    "pixelCount": 2691
+  },
+  {
+    "name": "Latvia",
+    "code": "LG",
+    "avgSqm": 21.54,
+    "bortleLe4Percent": 97.8,
+    "pixelCount": 1301
+  },
+  {
+    "name": "Lebanon",
+    "code": "LE",
+    "avgSqm": 21.15,
+    "bortleLe4Percent": 80.2,
+    "pixelCount": 158
+  },
+  {
+    "name": "Lesotho",
+    "code": "LT",
+    "avgSqm": 21.72,
+    "bortleLe4Percent": 99.5,
+    "pixelCount": 405
+  },
+  {
+    "name": "Liberia",
+    "code": "LI",
+    "avgSqm": 21.69,
+    "bortleLe4Percent": 99.9,
+    "pixelCount": 1077
+  },
+  {
+    "name": "Libya",
+    "code": "LY",
+    "avgSqm": 21.67,
+    "bortleLe4Percent": 98.7,
+    "pixelCount": 18646
+  },
+  {
+    "name": "Liechtenstein",
+    "code": "LS",
+    "avgSqm": 21.2,
+    "bortleLe4Percent": 78.3,
+    "pixelCount": 9
+  },
+  {
+    "name": "Lithuania",
+    "code": "LH",
+    "avgSqm": 21.51,
+    "bortleLe4Percent": 97,
+    "pixelCount": 1250
+  },
+  {
+    "name": "Luxembourg",
+    "code": "LU",
+    "avgSqm": 20.98,
+    "bortleLe4Percent": 80,
+    "pixelCount": 60
+  },
+  {
+    "name": "Macau",
+    "code": "MC",
+    "avgSqm": 18.91,
+    "bortleLe4Percent": 0,
+    "pixelCount": 1
+  },
+  {
+    "name": "Macedonia",
+    "code": "MK",
+    "avgSqm": 21.5,
+    "bortleLe4Percent": 95.3,
+    "pixelCount": 393
+  },
+  {
+    "name": "Madagascar",
+    "code": "MA",
+    "avgSqm": 21.76,
+    "bortleLe4Percent": 100,
+    "pixelCount": 6607
+  },
+  {
+    "name": "Malawi",
+    "code": "MI",
+    "avgSqm": 21.74,
+    "bortleLe4Percent": 99.2,
+    "pixelCount": 1383
+  },
+  {
+    "name": "Malaysia",
+    "code": "MY",
+    "avgSqm": 21.54,
+    "bortleLe4Percent": 92.5,
+    "pixelCount": 3739
+  },
+  {
+    "name": "Maldives",
+    "code": "MV",
+    "avgSqm": 21.58,
+    "bortleLe4Percent": 98.4,
+    "pixelCount": 95
+  },
+  {
+    "name": "Mali",
+    "code": "ML",
+    "avgSqm": 21.71,
+    "bortleLe4Percent": 99.9,
+    "pixelCount": 13659
+  },
+  {
+    "name": "Malta",
+    "code": "MT",
+    "avgSqm": 20.03,
+    "bortleLe4Percent": 13.5,
+    "pixelCount": 12
+  },
+  {
+    "name": "Marshall Is",
+    "code": "RM",
+    "avgSqm": 21.77,
+    "bortleLe4Percent": 100,
+    "pixelCount": 72
+  },
+  {
+    "name": "Martinique",
+    "code": "MB",
+    "avgSqm": 21.27,
+    "bortleLe4Percent": 85.8,
+    "pixelCount": 23
+  },
+  {
+    "name": "Mauritania",
+    "code": "MR",
+    "avgSqm": 21.71,
+    "bortleLe4Percent": 99.9,
+    "pixelCount": 11438
+  },
+  {
+    "name": "Mauritius",
+    "code": "MP",
+    "avgSqm": 21.07,
+    "bortleLe4Percent": 78.3,
+    "pixelCount": 43
+  },
+  {
+    "name": "Mayotte",
+    "code": "MF",
+    "avgSqm": 21.29,
+    "bortleLe4Percent": 100,
+    "pixelCount": 13
+  },
+  {
+    "name": "Mexico",
+    "code": "MX",
+    "avgSqm": 21.58,
+    "bortleLe4Percent": 96.4,
+    "pixelCount": 22484
+  },
+  {
+    "name": "Moldova",
+    "code": "MD",
+    "avgSqm": 21.55,
+    "bortleLe4Percent": 98.2,
+    "pixelCount": 593
+  },
+  {
+    "name": "Monaco",
+    "code": "MN",
+    "avgSqm": 20.07,
+    "bortleLe4Percent": 0,
+    "pixelCount": 2
+  },
+  {
+    "name": "Mongolia",
+    "code": "MG",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 99.9,
+    "pixelCount": 23428
+  },
+  {
+    "name": "Montenegro",
+    "code": "MJ",
+    "avgSqm": 21.48,
+    "bortleLe4Percent": 92.7,
+    "pixelCount": 237
+  },
+  {
+    "name": "Montserrat",
+    "code": "MH",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 100,
+    "pixelCount": 4
+  },
+  {
+    "name": "Morocco",
+    "code": "MO",
+    "avgSqm": 21.58,
+    "bortleLe4Percent": 96.8,
+    "pixelCount": 5098
+  },
+  {
+    "name": "Mozambique",
+    "code": "MZ",
+    "avgSqm": 21.75,
+    "bortleLe4Percent": 99.7,
+    "pixelCount": 8720
+  },
+  {
+    "name": "Namibia",
+    "code": "WA",
+    "avgSqm": 21.77,
+    "bortleLe4Percent": 99.9,
+    "pixelCount": 9255
+  },
+  {
+    "name": "Nauru",
+    "code": "NR",
+    "avgSqm": 21.46,
+    "bortleLe4Percent": 100,
+    "pixelCount": 2
+  },
+  {
+    "name": "Navassa I",
+    "code": "BQ",
+    "avgSqm": 21.78,
+    "bortleLe4Percent": 100,
+    "pixelCount": 2
+  },
+  {
+    "name": "Nepal",
+    "code": "NP",
+    "avgSqm": 21.58,
+    "bortleLe4Percent": 98.8,
+    "pixelCount": 1845
+  },
+  {
+    "name": "Netherlands",
+    "code": "NL",
+    "avgSqm": 20.82,
+    "bortleLe4Percent": 62.6,
+    "pixelCount": 714
+  },
+  {
+    "name": "Netherlands (Caribbean)",
+    "code": "NL",
+    "avgSqm": 21.31,
+    "bortleLe4Percent": 70.5,
+    "pixelCount": 12
+  },
+  {
+    "name": "New Caledonia",
+    "code": "NC",
+    "avgSqm": 21.75,
+    "bortleLe4Percent": 99.5,
+    "pixelCount": 310
+  },
+  {
+    "name": "New Zealand",
+    "code": "NZ",
+    "avgSqm": 21.68,
+    "bortleLe4Percent": 98.9,
+    "pixelCount": 4095
+  },
+  {
+    "name": "Nicaragua",
+    "code": "NU",
+    "avgSqm": 21.7,
+    "bortleLe4Percent": 99.3,
+    "pixelCount": 1446
+  },
+  {
+    "name": "Niger",
+    "code": "NG",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 100,
+    "pixelCount": 12766
+  },
+  {
+    "name": "Nigeria",
+    "code": "NI",
+    "avgSqm": 21.66,
+    "bortleLe4Percent": 98.2,
+    "pixelCount": 9564
+  },
+  {
+    "name": "Niue",
+    "code": "NE",
+    "avgSqm": 21.77,
+    "bortleLe4Percent": 100,
+    "pixelCount": 9
+  },
+  {
+    "name": "No Man's Land",
+    "code": "NM",
+    "avgSqm": 19.73,
+    "bortleLe4Percent": 0,
+    "pixelCount": 6
+  },
+  {
+    "name": "Norfolk I",
+    "code": "NF",
+    "avgSqm": 21.78,
+    "bortleLe4Percent": 100,
+    "pixelCount": 4
+  },
+  {
+    "name": "Northern Mariana Is",
+    "code": "CQ",
+    "avgSqm": 21.59,
+    "bortleLe4Percent": 100,
+    "pixelCount": 33
+  },
+  {
+    "name": "Norway",
+    "code": "NO",
+    "avgSqm": 21.33,
+    "bortleLe4Percent": 96.1,
+    "pixelCount": 8550
+  },
+  {
+    "name": "Oman",
+    "code": "MU",
+    "avgSqm": 21.56,
+    "bortleLe4Percent": 94.7,
+    "pixelCount": 3532
+  },
+  {
+    "name": "Pakistan",
+    "code": "PK",
+    "avgSqm": 21.6,
+    "bortleLe4Percent": 98.4,
+    "pixelCount": 10589
+  },
+  {
+    "name": "Palau",
+    "code": "PS",
+    "avgSqm": 21.78,
+    "bortleLe4Percent": 100,
+    "pixelCount": 27
+  },
+  {
+    "name": "Panama",
+    "code": "PM",
+    "avgSqm": 21.65,
+    "bortleLe4Percent": 97.8,
+    "pixelCount": 956
+  },
+  {
+    "name": "Papua New Guinea",
+    "code": "PP",
+    "avgSqm": 21.78,
+    "bortleLe4Percent": 99.9,
+    "pixelCount": 5287
+  },
+  {
+    "name": "Paracel Is",
+    "code": "PF",
+    "avgSqm": 21.44,
+    "bortleLe4Percent": 100,
+    "pixelCount": 1
+  },
+  {
+    "name": "Paraguay",
+    "code": "PA",
+    "avgSqm": 21.66,
+    "bortleLe4Percent": 98.4,
+    "pixelCount": 4585
+  },
+  {
+    "name": "Peru",
+    "code": "PE",
+    "avgSqm": 21.74,
+    "bortleLe4Percent": 99.2,
+    "pixelCount": 13680
+  },
+  {
+    "name": "Philippines",
+    "code": "RP",
+    "avgSqm": 21.64,
+    "bortleLe4Percent": 97.5,
+    "pixelCount": 3882
+  },
+  {
+    "name": "Pitcairn Is",
+    "code": "PC",
+    "avgSqm": 21.76,
+    "bortleLe4Percent": 100,
+    "pixelCount": 5
+  },
+  {
+    "name": "Poland",
+    "code": "PL",
+    "avgSqm": 21.33,
+    "bortleLe4Percent": 91.5,
+    "pixelCount": 5302
+  },
+  {
+    "name": "Portugal",
+    "code": "PO",
+    "avgSqm": 21.24,
+    "bortleLe4Percent": 85,
+    "pixelCount": 1292
+  },
+  {
+    "name": "Portugal (Azores)",
+    "code": "PO",
+    "avgSqm": 21.47,
+    "bortleLe4Percent": 91.9,
+    "pixelCount": 81
+  },
+  {
+    "name": "Portugal (Madeira Is)",
+    "code": "PO",
+    "avgSqm": 21.12,
+    "bortleLe4Percent": 88.7,
+    "pixelCount": 22
+  },
+  {
+    "name": "Puerto Rico",
+    "code": "RQ",
+    "avgSqm": 20.86,
+    "bortleLe4Percent": 66.6,
+    "pixelCount": 129
+  },
+  {
+    "name": "Qatar",
+    "code": "QA",
+    "avgSqm": 20.35,
+    "bortleLe4Percent": 49.2,
+    "pixelCount": 167
+  },
+  {
+    "name": "Rep of the Congo",
+    "code": "CF",
+    "avgSqm": 21.72,
+    "bortleLe4Percent": 99.5,
+    "pixelCount": 3713
+  },
+  {
+    "name": "Reunion",
+    "code": "RE",
+    "avgSqm": 21.36,
+    "bortleLe4Percent": 88.4,
+    "pixelCount": 38
+  },
+  {
+    "name": "Romania",
+    "code": "RO",
+    "avgSqm": 21.45,
+    "bortleLe4Percent": 95.9,
+    "pixelCount": 3602
+  },
+  {
+    "name": "Russia",
+    "code": "RS",
+    "avgSqm": 21.43,
+    "bortleLe4Percent": 99.3,
+    "pixelCount": 282075
+  },
+  {
+    "name": "Rwanda",
+    "code": "RW",
+    "avgSqm": 21.59,
+    "bortleLe4Percent": 97.5,
+    "pixelCount": 300
+  },
+  {
+    "name": "S Georgia & S Sandwich Is",
+    "code": "SX",
+    "avgSqm": 21.52,
+    "bortleLe4Percent": 100,
+    "pixelCount": 131
+  },
+  {
+    "name": "Saint Lucia",
+    "code": "ST",
+    "avgSqm": 21.47,
+    "bortleLe4Percent": 100,
+    "pixelCount": 15
+  },
+  {
+    "name": "Samoa",
+    "code": "WS",
+    "avgSqm": 21.76,
+    "bortleLe4Percent": 100,
+    "pixelCount": 52
+  },
+  {
+    "name": "San Marino",
+    "code": "SM",
+    "avgSqm": 20.31,
+    "bortleLe4Percent": 6.2,
+    "pixelCount": 5
+  },
+  {
+    "name": "Sao Tome & Principe",
+    "code": "TP",
+    "avgSqm": 21.61,
+    "bortleLe4Percent": 100,
+    "pixelCount": 21
+  },
+  {
+    "name": "Saudi Arabia",
+    "code": "SA",
+    "avgSqm": 21.57,
+    "bortleLe4Percent": 94.5,
+    "pixelCount": 21667
+  },
+  {
+    "name": "Senegal",
+    "code": "SG",
+    "avgSqm": 21.67,
+    "bortleLe4Percent": 99.1,
+    "pixelCount": 2202
+  },
+  {
+    "name": "Senkakus",
+    "code": "UU",
+    "avgSqm": 21.77,
+    "bortleLe4Percent": 100,
+    "pixelCount": 1
+  },
+  {
+    "name": "Serbia",
+    "code": "RI",
+    "avgSqm": 21.32,
+    "bortleLe4Percent": 89.6,
+    "pixelCount": 1212
+  },
+  {
+    "name": "Seychelles",
+    "code": "SE",
+    "avgSqm": 21.5,
+    "bortleLe4Percent": 100,
+    "pixelCount": 34
+  },
+  {
+    "name": "Siachen-Saltoro Area",
+    "code": "UU",
+    "avgSqm": 21.64,
+    "bortleLe4Percent": 100,
+    "pixelCount": 57
+  },
+  {
+    "name": "Sierra Leone",
+    "code": "SL",
+    "avgSqm": 21.69,
+    "bortleLe4Percent": 99.9,
+    "pixelCount": 824
+  },
+  {
+    "name": "Sinafir & Tiran Is.",
+    "code": "UU",
+    "avgSqm": 21.54,
+    "bortleLe4Percent": 100,
+    "pixelCount": 7
+  },
+  {
+    "name": "Singapore",
+    "code": "SN",
+    "avgSqm": 18.87,
+    "bortleLe4Percent": 0,
+    "pixelCount": 15
+  },
+  {
+    "name": "Sint Maarten",
+    "code": "NN",
+    "avgSqm": 20.57,
+    "bortleLe4Percent": 40.6,
+    "pixelCount": 4
+  },
+  {
+    "name": "Slovakia",
+    "code": "LO",
+    "avgSqm": 21.42,
+    "bortleLe4Percent": 95.3,
+    "pixelCount": 839
+  },
+  {
+    "name": "Slovenia",
+    "code": "SI",
+    "avgSqm": 21.4,
+    "bortleLe4Percent": 94.6,
+    "pixelCount": 361
+  },
+  {
+    "name": "Solomon Is",
+    "code": "BP",
+    "avgSqm": 21.8,
+    "bortleLe4Percent": 100,
+    "pixelCount": 545
+  },
+  {
+    "name": "Somalia",
+    "code": "SO",
+    "avgSqm": 21.74,
+    "bortleLe4Percent": 100,
+    "pixelCount": 6709
+  },
+  {
+    "name": "South Africa",
+    "code": "SF",
+    "avgSqm": 21.65,
+    "bortleLe4Percent": 97.7,
+    "pixelCount": 14457
+  },
+  {
+    "name": "South Sudan",
+    "code": "OD",
+    "avgSqm": 21.7,
+    "bortleLe4Percent": 99.2,
+    "pixelCount": 6811
+  },
+  {
+    "name": "Spain",
+    "code": "SP",
+    "avgSqm": 21.38,
+    "bortleLe4Percent": 90.5,
+    "pixelCount": 6892
+  },
+  {
+    "name": "Spain (Africa)",
+    "code": "SP",
+    "avgSqm": 20.13,
+    "bortleLe4Percent": 21.7,
+    "pixelCount": 6
+  },
+  {
+    "name": "Spain (Canary Is)",
+    "code": "SP",
+    "avgSqm": 21.22,
+    "bortleLe4Percent": 83.5,
+    "pixelCount": 159
+  },
+  {
+    "name": "Spratly Is",
+    "code": "PG",
+    "avgSqm": 21.59,
+    "bortleLe4Percent": 100,
+    "pixelCount": 1
+  },
+  {
+    "name": "Sri Lanka",
+    "code": "CE",
+    "avgSqm": 21.6,
+    "bortleLe4Percent": 98.5,
+    "pixelCount": 759
+  },
+  {
+    "name": "St Barthelemy",
+    "code": "TB",
+    "avgSqm": 21.13,
+    "bortleLe4Percent": 100,
+    "pixelCount": 2
+  },
+  {
+    "name": "St Helena",
+    "code": "SH",
+    "avgSqm": 21.72,
+    "bortleLe4Percent": 100,
+    "pixelCount": 14
+  },
+  {
+    "name": "St Kitts & Nevis",
+    "code": "SC",
+    "avgSqm": 21.23,
+    "bortleLe4Percent": 85.7,
+    "pixelCount": 10
+  },
+  {
+    "name": "St Martin",
+    "code": "RN",
+    "avgSqm": 21.29,
+    "bortleLe4Percent": 100,
+    "pixelCount": 3
+  },
+  {
+    "name": "St Pierre & Miquelon",
+    "code": "SB",
+    "avgSqm": 21.62,
+    "bortleLe4Percent": 100,
+    "pixelCount": 15
+  },
+  {
+    "name": "St Vincent & the Grenadines",
+    "code": "VC",
+    "avgSqm": 21.55,
+    "bortleLe4Percent": 100,
+    "pixelCount": 11
+  },
+  {
+    "name": "Sudan",
+    "code": "SU",
+    "avgSqm": 21.75,
+    "bortleLe4Percent": 99.8,
+    "pixelCount": 19517
+  },
+  {
+    "name": "Suriname",
+    "code": "NS",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 99.8,
+    "pixelCount": 1585
+  },
+  {
+    "name": "Svalbard",
+    "code": "SV",
+    "avgSqm": 21.6,
+    "bortleLe4Percent": 100,
+    "pixelCount": 17
+  },
+  {
+    "name": "Swaziland",
+    "code": "WZ",
+    "avgSqm": 21.53,
+    "bortleLe4Percent": 97.9,
+    "pixelCount": 222
+  },
+  {
+    "name": "Sweden",
+    "code": "SW",
+    "avgSqm": 21.39,
+    "bortleLe4Percent": 96.7,
+    "pixelCount": 10271
+  },
+  {
+    "name": "Switzerland",
+    "code": "SZ",
+    "avgSqm": 21.4,
+    "bortleLe4Percent": 92,
+    "pixelCount": 701
+  },
+  {
+    "name": "Syria",
+    "code": "SY",
+    "avgSqm": 21.59,
+    "bortleLe4Percent": 97.4,
+    "pixelCount": 2480
+  },
+  {
+    "name": "Taiwan",
+    "code": "TW",
+    "avgSqm": 20.99,
+    "bortleLe4Percent": 65.6,
+    "pixelCount": 488
+  },
+  {
+    "name": "Tajikistan",
+    "code": "TI",
+    "avgSqm": 21.62,
+    "bortleLe4Percent": 98.9,
+    "pixelCount": 2035
+  },
+  {
+    "name": "Tanzania",
+    "code": "TZ",
+    "avgSqm": 21.72,
+    "bortleLe4Percent": 99.6,
+    "pixelCount": 9811
+  },
+  {
+    "name": "Thailand",
+    "code": "TH",
+    "avgSqm": 21.37,
+    "bortleLe4Percent": 91.7,
+    "pixelCount": 5823
+  },
+  {
+    "name": "Timor-Leste",
+    "code": "TT",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 98.9,
+    "pixelCount": 206
+  },
+  {
+    "name": "Togo",
+    "code": "TO",
+    "avgSqm": 21.63,
+    "bortleLe4Percent": 99,
+    "pixelCount": 659
+  },
+  {
+    "name": "Tokelau",
+    "code": "TL",
+    "avgSqm": 21.81,
+    "bortleLe4Percent": 100,
+    "pixelCount": 5
+  },
+  {
+    "name": "Tonga",
+    "code": "TN",
+    "avgSqm": 21.64,
+    "bortleLe4Percent": 100,
+    "pixelCount": 29
+  },
+  {
+    "name": "Trinidad & Tobago",
+    "code": "TD",
+    "avgSqm": 20.73,
+    "bortleLe4Percent": 57.3,
+    "pixelCount": 79
+  },
+  {
+    "name": "Tunisia",
+    "code": "TS",
+    "avgSqm": 21.5,
+    "bortleLe4Percent": 94.5,
+    "pixelCount": 2051
+  },
+  {
+    "name": "Turkey",
+    "code": "TU",
+    "avgSqm": 21.35,
+    "bortleLe4Percent": 91.1,
+    "pixelCount": 10555
+  },
+  {
+    "name": "Turkmenistan",
+    "code": "TX",
+    "avgSqm": 21.64,
+    "bortleLe4Percent": 98.6,
+    "pixelCount": 6625
+  },
+  {
+    "name": "Turks & Caicos Is",
+    "code": "TK",
+    "avgSqm": 21.62,
+    "bortleLe4Percent": 92.1,
+    "pixelCount": 29
+  },
+  {
+    "name": "Tuvalu",
+    "code": "TV",
+    "avgSqm": 21.79,
+    "bortleLe4Percent": 100,
+    "pixelCount": 13
+  },
+  {
+    "name": "Uganda",
+    "code": "UG",
+    "avgSqm": 21.7,
+    "bortleLe4Percent": 99.4,
+    "pixelCount": 2543
+  },
+  {
+    "name": "Ukraine",
+    "code": "UP",
+    "avgSqm": 21.62,
+    "bortleLe4Percent": 99.1,
+    "pixelCount": 9639
+  },
+  {
+    "name": "United Arab Emirates",
+    "code": "AE",
+    "avgSqm": 21.05,
+    "bortleLe4Percent": 70.4,
+    "pixelCount": 898
+  },
+  {
+    "name": "United Kingdom",
+    "code": "UK",
+    "avgSqm": 21.31,
+    "bortleLe4Percent": 87.3,
+    "pixelCount": 4815
+  },
+  {
+    "name": "United States",
+    "code": "US",
+    "avgSqm": 21.46,
+    "bortleLe4Percent": 92.7,
+    "pixelCount": 104168
+  },
+  {
+    "name": "United States (Alaska)",
+    "code": "US",
+    "avgSqm": 21.32,
+    "bortleLe4Percent": 99.7,
+    "pixelCount": 36861
+  },
+  {
+    "name": "United States (Hawaii)",
+    "code": "US",
+    "avgSqm": 21.62,
+    "bortleLe4Percent": 94.4,
+    "pixelCount": 278
+  },
+  {
+    "name": "Uruguay",
+    "code": "UY",
+    "avgSqm": 21.66,
+    "bortleLe4Percent": 98.1,
+    "pixelCount": 2244
+  },
+  {
+    "name": "US Minor Pacific Is. Refuges",
+    "code": "UM",
+    "avgSqm": 21.79,
+    "bortleLe4Percent": 100,
+    "pixelCount": 8
+  },
+  {
+    "name": "US Virgin Is",
+    "code": "VQ",
+    "avgSqm": 20.8,
+    "bortleLe4Percent": 55.1,
+    "pixelCount": 15
+  },
+  {
+    "name": "Uzbekistan",
+    "code": "UZ",
+    "avgSqm": 21.6,
+    "bortleLe4Percent": 98.2,
+    "pixelCount": 6418
+  },
+  {
+    "name": "Vanuatu",
+    "code": "NH",
+    "avgSqm": 21.79,
+    "bortleLe4Percent": 100,
+    "pixelCount": 262
+  },
+  {
+    "name": "Vatican City",
+    "code": "VT",
+    "avgSqm": 18.71,
+    "bortleLe4Percent": 0,
+    "pixelCount": 1
+  },
+  {
+    "name": "Venezuela",
+    "code": "VE",
+    "avgSqm": 21.66,
+    "bortleLe4Percent": 97.3,
+    "pixelCount": 9725
+  },
+  {
+    "name": "Vietnam",
+    "code": "VM",
+    "avgSqm": 21.46,
+    "bortleLe4Percent": 92,
+    "pixelCount": 3891
+  },
+  {
+    "name": "Wake I",
+    "code": "WQ",
+    "avgSqm": 21.76,
+    "bortleLe4Percent": 100,
+    "pixelCount": 1
+  },
+  {
+    "name": "Wallis & Futuna",
+    "code": "WF",
+    "avgSqm": 21.78,
+    "bortleLe4Percent": 100,
+    "pixelCount": 8
+  },
+  {
+    "name": "West Bank",
+    "code": "WE",
+    "avgSqm": 20.21,
+    "bortleLe4Percent": 20.5,
+    "pixelCount": 91
+  },
+  {
+    "name": "Western Sahara",
+    "code": "WI",
+    "avgSqm": 21.71,
+    "bortleLe4Percent": 99.8,
+    "pixelCount": 3187
+  },
+  {
+    "name": "Yemen",
+    "code": "YM",
+    "avgSqm": 21.73,
+    "bortleLe4Percent": 99.4,
+    "pixelCount": 4969
+  },
+  {
+    "name": "Zambia",
+    "code": "ZA",
+    "avgSqm": 21.75,
+    "bortleLe4Percent": 99.7,
+    "pixelCount": 8116
+  },
+  {
+    "name": "Zimbabwe",
+    "code": "ZI",
+    "avgSqm": 21.76,
+    "bortleLe4Percent": 99.6,
+    "pixelCount": 4322
+  }
+]
