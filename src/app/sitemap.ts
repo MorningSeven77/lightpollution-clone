@@ -6,7 +6,7 @@ const SITE_URL = "https://www.lightpollutionmap.io";
 // tells Google the en/zh versions are translations of each other rather than
 // duplicate content, matching the hreflang pairing already set up in
 // src/app/[locale]/layout.tsx's generateMetadata.
-const PAGES = ["", "/golden-hour", "/rankings"];
+const PAGES = ["", "/golden-hour", "/rankings", "/about-data"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return PAGES.map((path) => ({

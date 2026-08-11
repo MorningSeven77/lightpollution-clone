@@ -65,6 +65,35 @@
     "methodologyTitle": "数据是怎么算出来的",
     "methodologyBody": "平均 SQM 是对每个国家/地区陆地范围内、逐像素的简化 SQM 估算值（跟本站地图和位置详情面板用的是同一套公式）取平均，数据来自 VIIRS 年度夜光合成影像——不是专业光污染图集用的真实大气传播模型，也不一定是同一套国界数据，所以几个百分点以内的差异不用太当真。倍数是相对于列表里最暗的国家/地区的天光亮度倍数（10^((最暗−本地)/2.5)，标准的星等换算关系）。「Bortle ≤ 4」是该地区面积里波特尔 4 级或更暗区域所占的比例。"
   },
+  "aboutData": {
+    "navLabel": "关于本站与数据来源",
+    "eyebrow": "透明度与数据说明",
+    "pageTitle": "关于本站与它的数据",
+    "pageSubtitle": "光污染地图是怎么做出来的、数字代表什么、数据从哪里来。",
+    "backToMap": "← 返回地图",
+    "dataStatusTitle": "当前数据状态",
+    "dataStatusBadge": "年度卫星图层",
+    "dataStatusBody": "本站建站时通过 Google Earth Engine 能拿到的、最新一个完整的 NOAA VIIRS 年度合成数据。更新到更新的年份需要改动代码——本站不会按固定周期自动刷新数据。",
+    "producedTitle": "地图是怎么做出来的",
+    "producedStep1Title": "01 · 卫星数据输入",
+    "producedStep1Body": "NOAA VIIRS 昼夜波段的年度合成影像，提供地图上每个位置的原始人造光辐射值。",
+    "producedStep2Title": "02 · 天空亮度换算模型",
+    "producedStep2Body": "用一个简化的对数公式把辐射值换算成类似 SQM 的天空亮度数值。这是一个刻意简化的近似模型——不是专业光污染图集（比如 Falchi 与 Cinzano 的《世界光污染地图集》）用的真实大气辐射传输模型。",
+    "producedStep3Title": "03 · 面向大众的解读",
+    "producedStep3Body": "SQM 是更精确的对比数值。波特尔等级是从这个模型算出的天空亮度换算而来、常被引用的简化参考值——不是现场实测出来的结果。",
+    "limitsTitle": "重要局限",
+    "limitsBody": "实际观测条件还取决于云量、气溶胶、积雪、月光、临时照明、地形和当地遮挡物等因素。模型算出来的数值不应该当作实时现场测量结果，也不能保证一定能看到星空。规划观星行程时，建议把本站内置的天气、月相、晴夜比例等工具一起参考，条件允许的话最好实地确认一下。",
+    "otherFeaturesTitle": "站内其它估算功能",
+    "otherFeaturesBody": "夜间天气评分、曝光计算器、晴夜比例气候统计、方向性天空亮度图，全部都是基于免费公开数据（Open-Meteo、NOAA）算出的简化估算值，明确标注过，不是精确的天气预报或实测数据——每个功能自己展示的地方都写清楚了各自的简化方式。",
+    "sourcesTitle": "数据来源与参考资料",
+    "sourceViirs": "NOAA VIIRS 年度夜间灯光合成影像——光污染数据的主要来源。",
+    "sourceBortle": "波特尔暗夜等级（Bortle Dark-Sky Scale）——本站分级参考的公开标准。",
+    "sourceOpenMeteo": "Open-Meteo——免费的天气预报与历史归档接口，为夜间天气和晴夜比例这两个功能提供数据。",
+    "sourceNoaaSwpc": "NOAA 空间天气预报中心——OVATION 极光模型，为极光概率图层提供数据。",
+    "contactTitle": "意见反馈与联系方式",
+    "contactBody": "这是一个独立、非商业的练手项目。欢迎通过邮件提出问题、指正或反馈意见。",
+    "contactEmailLabel": "邮箱"
+  },
   "siteHeader": {
     "title": "光污染地图",
     "subtitle": "一份光污染地图与暗夜地点查找工具——点击地图任意位置，即可查看当地波特尔等级评分与附近推荐的观星地点。",
@@ -104,7 +133,10 @@
         "question": "有没有针对具体城市或地区的光污染地图？",
         "answer": "有——直接在地图的位置搜索框里输入州名或城市名（比如美国的德克萨斯州、加州，或者纽约、拉斯维加斯这类光污染严重的大城市），地图就会飞到对应位置并显示当地的波特尔等级和 SQM 读数；专门的分地区浏览列表页正在计划中，之后会加入地图的入口里。"
       }
-    ]
+    ],
+    "feedbackTitle": "意见反馈",
+    "feedbackAboutLink": "关于本站与数据来源",
+    "feedbackEmailLabel": "邮箱"
   },
   "searchBar": {
     "placeholder": "搜索地点…",

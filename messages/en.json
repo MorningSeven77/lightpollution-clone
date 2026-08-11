@@ -65,6 +65,35 @@
     "methodologyTitle": "How this is calculated",
     "methodologyBody": "Avg SQM is the average of a simplified per-pixel SQM estimate (same formula this site's map and location detail panel use) over each country/region's land area, from the annual VIIRS night-light composite — not the same atmospheric propagation model or exact boundary dataset a professional light-pollution atlas would use, so treat differences of a few hundredths as noise. Ratio is the sky-background brightness multiple versus the darkest country/region in this list (10^((darkest − this)/2.5), the standard astronomical magnitude relationship). \"Bortle ≤ 4\" is the share of that area at Bortle class 4 or darker."
   },
+  "aboutData": {
+    "navLabel": "About & Data",
+    "eyebrow": "TRANSPARENCY & DATA",
+    "pageTitle": "About this map and its data",
+    "pageSubtitle": "How the light pollution map is built, what its numbers mean, and where the data comes from.",
+    "backToMap": "← Back to map",
+    "dataStatusTitle": "Current data status",
+    "dataStatusBadge": "ANNUAL SATELLITE LAYER",
+    "dataStatusBody": "The most recent complete NOAA VIIRS annual composite available via Google Earth Engine at the time this map was built. Updating to a newer year requires a source-code change — this map does not refresh on a schedule.",
+    "producedTitle": "How the map is produced",
+    "producedStep1Title": "01 · Satellite input",
+    "producedStep1Body": "NOAA's VIIRS Day/Night Band annual composite provides the raw artificial-light radiance for every point on the map.",
+    "producedStep2Title": "02 · Sky-brightness model",
+    "producedStep2Body": "A simplified logarithmic formula converts that radiance into an SQM-like brightness value. This is a deliberately simplified approximation — not the real atmospheric radiative-transfer model that professional light-pollution atlases (e.g. Falchi & Cinzano's World Atlas) use.",
+    "producedStep3Title": "03 · Public interpretation",
+    "producedStep3Body": "SQM is the more precise comparison value. Bortle class is a simplified, commonly-cited reference derived from that modeled brightness — not a direct field observation.",
+    "limitsTitle": "Important limits",
+    "limitsBody": "Actual observing conditions also depend on clouds, aerosols, snow, moonlight, temporary lighting, terrain, and local obstructions. A modeled value should not be treated as a live field measurement or a guarantee of visibility. For trip planning, combine this map with its built-in weather, moon-phase, and clear-nights tools and, where possible, an on-site check.",
+    "otherFeaturesTitle": "Other estimates on this map",
+    "otherFeaturesBody": "The nighttime weather score, exposure calculator, clear-nights climate stat, and directional sky brightness chart are all clearly-labeled simplified estimates built from free public data (Open-Meteo, NOAA) — not precise forecasts or measurements. Each one explains its own approximation where it's shown.",
+    "sourcesTitle": "Sources and references",
+    "sourceViirs": "NOAA VIIRS annual nighttime-light composite — primary light-pollution input.",
+    "sourceBortle": "The Bortle Dark-Sky Scale — public reference for the classification shown on the map.",
+    "sourceOpenMeteo": "Open-Meteo — free weather forecast and historical archive API, powers the nighttime weather and clear-nights features.",
+    "sourceNoaaSwpc": "NOAA Space Weather Prediction Center — OVATION aurora model, powers the aurora probability layer.",
+    "contactTitle": "Feedback and contact",
+    "contactBody": "This is an independent, non-commercial practice project. Questions, corrections, or feedback are welcome by email.",
+    "contactEmailLabel": "Email"
+  },
   "siteHeader": {
     "title": "Light Pollution Map",
     "subtitle": "A light pollution map and dark sky finder — click anywhere to see the Bortle Scale rating and best nearby stargazing spots.",
@@ -104,7 +133,10 @@
         "question": "Do you have light pollution maps for specific US states or cities?",
         "answer": "Yes — search directly for any location in the map's search bar, from broad regions like light pollution map texas or light pollution map california down to specific cities such as light pollution in nyc or las vegas light pollution, and the map will fly straight to that spot with its Bortle and SQM readings. A dedicated regional browse page is planned for the future."
       }
-    ]
+    ],
+    "feedbackTitle": "Feedback",
+    "feedbackAboutLink": "About & Data",
+    "feedbackEmailLabel": "Email"
   },
   "searchBar": {
     "placeholder": "Search location…",

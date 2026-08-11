@@ -158,6 +158,15 @@
   **前端**：`src/components/DirectionalSkyBrightnessChart.tsx`（纯展示组件，接 `directions`/`darkest`/`brightest` props）——SVG 折线+面积图，X 轴 0°-360° 方位角，Y 轴复用 `bortle.ts` 本来就在用的 SQM 16-22 范围（跟应用里其它 SQM 数字视觉刻度一致），暖色（琥珀色）代表光害辉光，N/E/S/W 四条参考线；下方两行"最暗天区：方位+SQM"「最亮光害：方位+SQM」文字统计，方位角转 16 方位罗盘缩写（N/NNE/NE...）的小函数是从 `GoldenHourCalculator.tsx` 里已有的同名逻辑直接复制的一份小写（4 行代码，没有为了复用单独抽一个共享文件——两处独立小重复比额外抽象更省事）。接进 `LocationDetailPanel.tsx` 第 6 个并行请求，渲染位置紧跟在"波特尔/SQM/可见恒星数"之后、趋势图之前，对齐竞品原版的实际展示顺序。
 
   已完成，`tsc`/`lint`/生产 `build` 全过（`build` 输出确认 `/api/directional-sky-brightness` 是新增的动态路由，单次请求耗时约 2 秒，量级跟 `best-spots` 相近）。中英文都在浏览器里用真实点击验证过图表 SVG 里的折线/面积坐标点是合法数字（不是 NaN/空），文字统计"Darkest sky: SSW 195° · SQM 20.32"「最暗天区: SSW 195° · SQM 20.32」跟独立 curl 测试的原始 JSON 完全一致。
+- **FAQ 意见反馈入口 + `/about-data` 页面 + 位置详情滚动条配色**：一次提了三个不相关的小需求，分开记。
+
+  **FAQ 反馈入口**：先去竞品站实测——`InfoPanel.tsx` 对应的竞品 FAQ 面板一路滚到最底才找到，是一个不起眼的"Feedback"小节：一个"About & Data"链接 + 三个社交媒体账号（X/Bluesky/Facebook）。这个项目没有社交账号，直接把三个社交链接换成用户自己的邮箱 mailto 链接（`morning.seven.77.77.77@gmail.com`），加在 `InfoPanel.tsx` 现有 FAQ 列表下方、`border-t` 分隔的新区块里，同样是"About & Data"链接（指向新页面）+ 邮箱两行，位置和结构照抄竞品，内容换成这个项目真实拥有的联系方式。
+
+  **`/about-data` 页面**：跟 `golden-hour`/`rankings` 一样的 `layout.tsx`（`generateMetadata`）+ `page.tsx`（`"use client"` + `SiteHeader` + 返回地图链接）结构，加进了 `sitemap.ts` 的 `PAGES` 列表。**内容不是照抄竞品原文，是参考竞品的板块结构、换成这个项目真实的数据情况写的**——竞品原版有"2025 完整年层 / 2026 预估层"两张卡片，这个区别是他们自己的月度更新流水线才有的东西；先去查了 `earthEngine.ts` 里 `getViirsImage()` 实际用的年份范围（`LATEST_YEAR_START/END = "2024-01-01"/"2025-01-01"`），确认这个项目只有单一一个"2024 年度层"，没有"预估层"这个概念，所以这次做成了一张卡片而不是两张，如实反映项目自己的数据状态，没有编造一个不存在的"预估层"出来对齐竞品结构。"数据是怎么做出来的"三步卡片里，第二步"天空亮度换算模型"特意写清楚是简化对数公式、不是 `bortle.ts` 注释里提到的 Falchi-Cinzano《世界光污染地图集》那种真实大气辐射传输模型——这句话直接复用了 `bortle.ts` 顶部已有注释的原意，不是新编的说法。"其它估算功能"一节点名列出了这个项目自己做过的几个"明确标注为简化估算"的功能（夜间天气评分/曝光计算器/晴夜比例/方向性天空亮度），算是把散落在各处的"这是近似值"说明在一个地方汇总一遍。"责任与联系方式"没有照抄竞品"Stargazing Hub Team"这种听起来像正经团队的说法——这个项目就是用户自己的练手项目，写成"独立、非商业的练手项目"更如实，联系方式换成同一个邮箱地址。
+
+  **位置详情面板滚动条配色**：`overflow-y-auto` 之前一直用浏览器默认滚动条（多数系统下是亮色/灰色，跟面板本身的深色 `zinc-900` 背景很不搭）。在 `globals.css` 里加了一个 `.themed-scrollbar` 工具类——同时写了 Firefox 标准的 `scrollbar-width`/`scrollbar-color` 属性和 WebKit 系的 `::-webkit-scrollbar*` 伪元素规则（这两套是两个完全独立的机制，没有一条 CSS 规则能同时覆盖两边，必须都写），滚动条本体用半透明白色（`rgba(255,255,255,0.18)`，悬停时 `0.32`）配透明轨道，跟面板已有的 `border-white/10` 那种"半透明白"配色语言保持一致，没有另起一套新颜色。只加在 `LocationDetailPanel.tsx` 这一个面板上（用户只提到这一个），没有顺手扩散到其它可滚动面板（历史记录模态、黄金时刻弹窗、排行榜表格等）——如果以后要统一改，直接把同一个类名加上去就行，类本身是通用的。
+
+  已完成，`tsc`/`lint`/生产 `build` 全过（`build` 输出确认 `/about-data` 是新增的 SSG 页面，`/en/about-data`、`/zh/about-data` 都在列）。中英文都在浏览器里验证过：FAQ 面板底部"意见反馈"区块的两个链接 `href` 分别正确指向 `/zh/about-data`（locale-aware）和 `mailto:morning.seven.77.77.77@gmail.com`；`/about-data` 页面完整内容正确渲染；位置详情面板的 `themed-scrollbar` 类通过 `getComputedStyle` 实测确认 `scrollbarColor`/`scrollbarWidth` 两个属性都生效（不只是类名挂上去了，样式规则真的匹配到了）。
 
 ## 已知坑点（踩过的坑，遇到类似问题不用重新排查一遍）
 

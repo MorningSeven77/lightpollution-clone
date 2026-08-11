@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 type QaItem = { question: string; answer: string };
+
+const FEEDBACK_EMAIL = "morning.seven.77.77.77@gmail.com";
 
 export default function InfoPanel() {
   const [open, setOpen] = useState(false);
@@ -56,6 +59,18 @@ export default function InfoPanel() {
                 <p className="text-xs leading-relaxed text-zinc-400">{item.answer}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-6 border-t border-white/10 pt-4">
+            <h3 className="mb-2 text-xs font-medium text-zinc-200">{t("feedbackTitle")}</h3>
+            <div className="space-y-1 text-xs">
+              <Link href="/about-data" className="block text-blue-400 hover:text-blue-300">
+                {t("feedbackAboutLink")}
+              </Link>
+              <a href={`mailto:${FEEDBACK_EMAIL}`} className="block text-blue-400 hover:text-blue-300">
+                {t("feedbackEmailLabel")}: {FEEDBACK_EMAIL}
+              </a>
+            </div>
           </div>
         </div>
       </div>
