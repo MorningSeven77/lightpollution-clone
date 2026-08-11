@@ -175,7 +175,11 @@
     "sqmLabel": "SQM ≈ {n} mag/arcsec²",
     "starEstimate": "Estimated naked-eye visible stars: ~{min}-{max} (rough estimate)",
     "trendLoading": "Loading trend chart…",
-    "weatherLoading": "Loading weather…"
+    "weatherLoading": "Loading weather…",
+    "clearNightsLoading": "Loading clear-night climate…",
+    "clearNightsLabel": "Clear Nights ({month})",
+    "clearNightsValue": "{percent}%",
+    "clearNightsCaption": "Share of nights in {month} with mostly clear skies, based on the last {years} years of historical weather data — a climate estimate, not a forecast."
   },
   "darkSkyPlace": {
     "title": "Certified Dark Sky Place",
@@ -188,6 +192,14 @@
     "title": "Light pollution trend ({startYear}-{endYear}, higher SQM = darker)",
     "ariaLabel": "Yearly SQM trend bar chart",
     "tooltip": "{year}: SQM ≈ {sqm}, Bortle {bortleClass}"
+  },
+  "directionalSkyBrightness": {
+    "title": "Directional Sky Brightness",
+    "loading": "Loading directional sky brightness…",
+    "darkestLabel": "Darkest sky",
+    "brightestLabel": "Brightest glow",
+    "directionStat": "{compass} {azimuth}° · SQM {sqm}",
+    "caption": "Estimated skyglow by compass direction, based on nearby light sources — a simplified model, not a precise atmospheric propagation simulation."
   },
   "weatherSection": {
     "title": "Nighttime Weather",

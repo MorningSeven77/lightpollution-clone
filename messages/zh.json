@@ -175,7 +175,11 @@
     "sqmLabel": "SQM ≈ {n} mag/arcsec²",
     "starEstimate": "预计肉眼可见恒星数：约 {min}-{max} 颗（粗略估算）",
     "trendLoading": "趋势图查询中…",
-    "weatherLoading": "天气查询中…"
+    "weatherLoading": "天气查询中…",
+    "clearNightsLoading": "晴夜比例查询中…",
+    "clearNightsLabel": "晴夜比例（{month}）",
+    "clearNightsValue": "{percent}%",
+    "clearNightsCaption": "基于过去 {years} 年历史气象数据，{month}份晴朗（少云）夜晚所占的比例——这是气候统计估算值，不是天气预报。"
   },
   "darkSkyPlace": {
     "title": "认证暗空地点",
@@ -188,6 +192,14 @@
     "title": "光害趋势（{startYear}-{endYear}，SQM 越高越暗）",
     "ariaLabel": "历年 SQM 趋势柱状图",
     "tooltip": "{year} 年：SQM ≈ {sqm}，Bortle {bortleClass}"
+  },
+  "directionalSkyBrightness": {
+    "title": "方向性天空亮度",
+    "loading": "方向性天空亮度查询中…",
+    "darkestLabel": "最暗天区",
+    "brightestLabel": "最亮光害",
+    "directionStat": "{compass} {azimuth}° · SQM {sqm}",
+    "caption": "根据周边光源估算各方位的天空辉光——简化模型，不是精确的大气传播模拟。"
   },
   "weatherSection": {
     "title": "夜间天气",

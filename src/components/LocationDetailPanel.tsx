@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { STAR_COUNT_ESTIMATES } from "@/lib/bortle";
 import { SelectedLocation } from "@/components/Map";
 import TrendChart from "@/components/TrendChart";
@@ -9,6 +9,8 @@ import { TrendPoint } from "@/app/api/trend/route";
 import { WeatherDay } from "@/app/api/weather/route";
 import WeatherSection, { ScoredWeatherDay } from "@/components/WeatherSection";
 import { computeStargazingScore } from "@/lib/stargazing";
+import DirectionalSkyBrightnessChart from "@/components/DirectionalSkyBrightnessChart";
+import type { DirectionalBrightnessPoint } from "@/app/api/directional-sky-brightness/route";
 import ExposureCalculator from "@/components/ExposureCalculator";
 import BestSpotsPanel from "@/components/BestSpotsPanel";
 import { addLocationHistoryEntry } from "@/lib/locationHistory";
@@ -30,6 +32,16 @@ type PlaceNameState = { status: "loading" } | { status: "error" } | { status: "d
 type TrendState = { status: "loading" } | { status: "error" } | { status: "done"; points: TrendPoint[] };
 
 type WeatherState = { status: "loading" } | { status: "error" } | { status: "done"; days: WeatherDay[] };
+
+type ClearNightsState =
+  | { status: "loading" }
+  | { status: "error" }
+  | { status: "done"; month: number; yearsSampled: number; percentClear: number | null };
+
+type DirectionalBrightnessState =
+  | { status: "loading" }
+  | { status: "error" }
+  | { status: "done"; directions: DirectionalBrightnessPoint[]; darkest: DirectionalBrightnessPoint; brightest: DirectionalBrightnessPoint };
 
 export default function LocationDetailPanel({ location, onClose, onBestSpotsFound }: LocationDetailPanelProps) {
   if (!location) return null;
@@ -60,8 +72,12 @@ function LocationDetailPanelContent({
   const [placeName, setPlaceName] = useState<PlaceNameState>({ status: "loading" });
   const [trend, setTrend] = useState<TrendState>({ status: "loading" });
   const [weather, setWeather] = useState<WeatherState>({ status: "loading" });
+  const [clearNights, setClearNights] = useState<ClearNightsState>({ status: "loading" });
+  const [directionalBrightness, setDirectionalBrightness] = useState<DirectionalBrightnessState>({ status: "loading" });
   const t = useTranslations("locationDetail");
+  const tDirectionalBrightness = useTranslations("directionalSkyBrightness");
   const tBortleDescriptions = useTranslations("dataLabels.bortleDescriptions");
+  const locale = useLocale();
 
   // AbortController-backed so React Strict Mode's dev-only double-invoke of
   // this effect (mount -> cleanup -> mount again) cancels the first fetch
@@ -119,14 +135,46 @@ function LocationDetailPanelContent({
       });
   }, []);
 
+  const fetchClearNights = useCallback((lat: number, lng: number, signal: AbortSignal) => {
+    fetch(`/api/clear-nights?lat=${lat}&lng=${lng}`, { signal })
+      .then(async (res) => {
+        if (!res.ok) throw new Error("clear-nights request failed");
+        const data = (await res.json()) as { month: number; yearsSampled: number; percentClear: number | null };
+        setClearNights({ status: "done", ...data });
+      })
+      .catch((err) => {
+        if (err instanceof DOMException && err.name === "AbortError") return;
+        setClearNights({ status: "error" });
+      });
+  }, []);
+
+  const fetchDirectionalBrightness = useCallback((lat: number, lng: number, signal: AbortSignal) => {
+    fetch(`/api/directional-sky-brightness?lat=${lat}&lng=${lng}`, { signal })
+      .then(async (res) => {
+        if (!res.ok) throw new Error("directional-sky-brightness request failed");
+        const data = (await res.json()) as {
+          directions: DirectionalBrightnessPoint[];
+          darkest: DirectionalBrightnessPoint;
+          brightest: DirectionalBrightnessPoint;
+        };
+        setDirectionalBrightness({ status: "done", ...data });
+      })
+      .catch((err) => {
+        if (err instanceof DOMException && err.name === "AbortError") return;
+        setDirectionalBrightness({ status: "error" });
+      });
+  }, []);
+
   useEffect(() => {
     const controller = new AbortController();
     fetchPointValue(location.lat, location.lng, controller.signal);
     fetchPlaceName(location.lat, location.lng, controller.signal);
     fetchTrend(location.lat, location.lng, controller.signal);
     fetchWeather(location.lat, location.lng, controller.signal);
+    fetchClearNights(location.lat, location.lng, controller.signal);
+    fetchDirectionalBrightness(location.lat, location.lng, controller.signal);
     return () => controller.abort();
-  }, [location, fetchPointValue, fetchPlaceName, fetchTrend, fetchWeather]);
+  }, [location, fetchPointValue, fetchPlaceName, fetchTrend, fetchWeather, fetchClearNights, fetchDirectionalBrightness]);
 
   // Records one history entry per selected point, once both the Bortle/SQM
   // value and place name have settled (name may still end up null/unknown —
@@ -167,6 +215,11 @@ function LocationDetailPanelContent({
     fetchPointValue(location.lat, location.lng, new AbortController().signal);
   };
 
+  const clearNightsMonthLabel =
+    clearNights.status === "done"
+      ? new Intl.DateTimeFormat(locale, { month: "short" }).format(new Date(2000, clearNights.month - 1, 1))
+      : "";
+
   const placeNameText =
     placeName.status === "loading"
       ? t("loadingPlaceName")
@@ -175,7 +228,7 @@ function LocationDetailPanelContent({
         : t("unknownPlace");
 
   return (
-    <div className="absolute left-4 top-20 z-10 w-full max-w-xs rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
+    <div className="absolute left-4 top-20 z-10 max-h-[80vh] w-full max-w-xs overflow-y-auto rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-2 flex items-center justify-between">
         <h2 className="font-medium">{t("title")}</h2>
         <button type="button" onClick={onClose} aria-label={t("closeAria")} className="text-zinc-400 hover:text-zinc-100">
@@ -221,6 +274,21 @@ function LocationDetailPanelContent({
             </div>
           )}
 
+          {directionalBrightness.status === "loading" && (
+            <div className="mt-3 text-xs text-zinc-400">{tDirectionalBrightness("loading")}</div>
+          )}
+          {directionalBrightness.status === "done" && (
+            <div className="mt-3 border-t border-white/10 pt-3">
+              <h3 className="mb-2 text-xs font-medium text-zinc-300">{tDirectionalBrightness("title")}</h3>
+              <DirectionalSkyBrightnessChart
+                directions={directionalBrightness.directions}
+                darkest={directionalBrightness.darkest}
+                brightest={directionalBrightness.brightest}
+              />
+            </div>
+          )}
+          {/* Same "stays quiet on failure" treatment as the other optional sections. */}
+
           {trend.status === "loading" && <div className="mt-3 text-xs text-zinc-400">{t("trendLoading")}</div>}
           {trend.status === "done" && (
             <div className="mt-3">
@@ -235,6 +303,20 @@ function LocationDetailPanelContent({
             <WeatherSection days={scoredWeatherDays} bortleClass={pointValue.bortleClass} sqm={pointValue.sqm} />
           )}
           {/* Same "stays quiet on failure" treatment as the trend chart above. */}
+
+          {clearNights.status === "loading" && <div className="mt-3 text-xs text-zinc-400">{t("clearNightsLoading")}</div>}
+          {clearNights.status === "done" && clearNights.percentClear !== null && (
+            <div className="mt-3 border-t border-white/10 pt-3">
+              <div className="flex items-baseline justify-between">
+                <span className="text-xs text-zinc-400">{t("clearNightsLabel", { month: clearNightsMonthLabel })}</span>
+                <span className="text-lg font-medium">{t("clearNightsValue", { percent: clearNights.percentClear })}</span>
+              </div>
+              <div className="mt-1 text-[10px] leading-relaxed text-zinc-500">
+                {t("clearNightsCaption", { month: clearNightsMonthLabel, years: clearNights.yearsSampled })}
+              </div>
+            </div>
+          )}
+          {/* Same "stays quiet on failure" treatment as the other optional sections. */}
 
           <ExposureCalculator sqm={pointValue.sqm} />
 
