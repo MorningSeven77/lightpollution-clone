@@ -116,7 +116,7 @@ export default function RankingsPage() {
           </div>
 
           <div className="mt-3 overflow-x-auto rounded-lg border border-white/10">
-            <table className="w-full min-w-[560px] text-sm">
+            <table className="w-full min-w-[640px] text-sm">
               <thead>
                 <tr className="border-b border-white/10 bg-zinc-900/80 text-xs text-zinc-400">
                   <th className="px-3 py-2 text-left font-medium">{t("columnRank")}</th>
@@ -135,12 +135,13 @@ export default function RankingsPage() {
                       </button>
                     </th>
                   ))}
+                  <th className="px-3 py-2 text-right font-medium">{t("columnTrend")}</th>
                 </tr>
               </thead>
               <tbody>
                 {rows.length === 0 ? (
                   <tr>
-                    <td colSpan={columns.length + 1} className="px-3 py-6 text-center text-zinc-500">
+                    <td colSpan={columns.length + 2} className="px-3 py-6 text-center text-zinc-500">
                       {t("noResults")}
                     </td>
                   </tr>
@@ -153,23 +154,8 @@ export default function RankingsPage() {
                         <tr className="border-b border-white/5 last:border-b-0 hover:bg-white/5">
                           <td className="px-3 py-2 text-zinc-500">{i + 1}</td>
                           <td className="px-3 py-2">
-                            <button
-                              type="button"
-                              onClick={() => toggleExpand(row.name)}
-                              aria-expanded={isExpanded}
-                              aria-label={t(isExpanded ? "collapseTrendAria" : "expandTrendAria", { country: row.name })}
-                              className="inline-flex items-center gap-1.5 hover:text-zinc-200"
-                            >
-                              <svg
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                className={`h-3 w-3 shrink-0 text-zinc-500 transition-transform ${isExpanded ? "rotate-90" : ""}`}
-                              >
-                                <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L11.293 10 7.23 6.29a.75.75 0 1 1 1.04-1.08l4.65 4.25a.75.75 0 0 1 0 1.08l-4.65 4.25a.75.75 0 0 1-1.06-.02Z" clipRule="evenodd" />
-                              </svg>
-                              <span>{row.name}</span>
-                              <span className="text-xs text-zinc-500">{row.code}</span>
-                            </button>
+                            <span>{row.name}</span>{" "}
+                            <span className="text-xs text-zinc-500">{row.code}</span>
                           </td>
                           <td className="px-3 py-2 text-right tabular-nums">{row.avgSqm.toFixed(2)}</td>
                           <td className="px-3 py-2 text-right tabular-nums">{row.ratio.toFixed(1)}×</td>
@@ -177,10 +163,32 @@ export default function RankingsPage() {
                           <td className="px-3 py-2 text-right tabular-nums text-zinc-500">
                             {row.pixelCount.toLocaleString()}
                           </td>
+                          <td className="px-3 py-2 text-right">
+                            <button
+                              type="button"
+                              onClick={() => toggleExpand(row.name)}
+                              aria-expanded={isExpanded}
+                              aria-label={t(isExpanded ? "collapseTrendAria" : "expandTrendAria", { country: row.name })}
+                              className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 text-xs font-medium transition-colors ${
+                                isExpanded
+                                  ? "border-white/20 bg-white/10 text-zinc-100"
+                                  : "border-white/10 text-zinc-400 hover:border-white/20 hover:text-zinc-200"
+                              }`}
+                            >
+                              <svg
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                className={`h-3 w-3 shrink-0 transition-transform ${isExpanded ? "rotate-90" : ""}`}
+                              >
+                                <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L11.293 10 7.23 6.29a.75.75 0 1 1 1.04-1.08l4.65 4.25a.75.75 0 0 1 0 1.08l-4.65 4.25a.75.75 0 0 1-1.06-.02Z" clipRule="evenodd" />
+                              </svg>
+                              {t(isExpanded ? "collapseButtonLabel" : "trendButtonLabel")}
+                            </button>
+                          </td>
                         </tr>
                         {isExpanded && (
                           <tr key={`${row.name}-trend`} className="border-b border-white/5 bg-black/20 last:border-b-0">
-                            <td colSpan={columns.length + 1} className="px-3 py-3">
+                            <td colSpan={columns.length + 2} className="px-3 py-3">
                               {trendEntry?.status === "loading" && (
                                 <div className="text-xs text-zinc-400">{tCountryTrend("loading")}</div>
                               )}
