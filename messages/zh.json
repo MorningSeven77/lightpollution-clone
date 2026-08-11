@@ -1,16 +1,18 @@
 {
+  "locationSearch": {
+    "useMyLocation": "使用我的位置",
+    "locatingLabel": "定位中…",
+    "geolocationError": "无法获取你的位置",
+    "locationPlaceholder": "搜索地点…",
+    "searching": "搜索中…",
+    "noResults": "没有找到结果"
+  },
   "goldenHour": {
     "navLabel": "黄金时刻",
     "closeAria": "关闭黄金时刻计算器",
     "pageTitle": "日出日落黄金时刻与光线方向",
     "pageSubtitle": "什么时候光线最好——又是从哪个方向照过来的。今天太阳的完整路径，标出了黄金时刻和蓝调时刻。",
     "backToMap": "← 返回地图",
-    "useMyLocation": "使用我的位置",
-    "locatingLabel": "定位中…",
-    "geolocationError": "无法获取你的位置",
-    "locationPlaceholder": "搜索地点…",
-    "searching": "搜索中…",
-    "noResults": "没有找到结果",
     "dateLabel": "日期",
     "coordsApprox": "{lat}, {lng} · 约 UTC{offset}",
     "coordsLocal": "{lat}, {lng} · 你的本地时间",
@@ -94,10 +96,25 @@
     "contactBody": "这是一个独立、非商业的练手项目。欢迎通过邮件提出问题、指正或反馈意见。",
     "contactEmailLabel": "邮箱"
   },
+  "clearSkyMap": {
+    "navLabel": "晴夜气候",
+    "pageTitle": "晴夜气候地图",
+    "pageSubtitle": "查询任意地点每个月的历史晴夜比例——不只是找最佳的一晚，而是找最佳的季节。",
+    "backToMap": "← 返回地图",
+    "loadingMonths": "月度气候数据查询中…",
+    "bestMonthLabel": "最晴朗的月份",
+    "worstMonthLabel": "最多云的月份",
+    "monthStat": "{month} · {percent}%",
+    "chartCaption": "每个月晴朗（少云）夜晚所占的比例——夜间平均云量 ≤30% 算晴夜，基于过去 5 年 Open-Meteo 历史归档数据计算——这是气候统计估算值，不是对某一晚的天气预报。",
+    "definitionTitle": "数据是怎么算出来的",
+    "definitionBody": "对每个日历月份，取该地点过去 5 年的夜间云量做平均（跟站内实时天气预报用的是同一套「夜晚」分桶方法），统计平均云量 ≤30% 的夜晚所占的比例。这是用来看季节性规律的筛选工具，不是对某一晚的承诺——出发前务必再查一下短期天气预报。"
+  },
   "siteHeader": {
     "title": "光污染地图",
     "subtitle": "一份光污染地图与暗夜地点查找工具——点击地图任意位置，即可查看当地波特尔等级评分与附近推荐的观星地点。",
-    "languageSwitcherAria": "切换语言"
+    "languageSwitcherAria": "切换语言",
+    "moreMenuLabel": "更多",
+    "moreMenuAria": "打开更多页面菜单"
   },
   "infoPanel": {
     "openAria": "打开光污染地图常见问题",

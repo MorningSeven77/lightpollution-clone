@@ -168,6 +168,18 @@
 
   已完成，`tsc`/`lint`/生产 `build` 全过（`build` 输出确认 `/about-data` 是新增的 SSG 页面，`/en/about-data`、`/zh/about-data` 都在列）。中英文都在浏览器里验证过：FAQ 面板底部"意见反馈"区块的两个链接 `href` 分别正确指向 `/zh/about-data`（locale-aware）和 `mailto:morning.seven.77.77.77@gmail.com`；`/about-data` 页面完整内容正确渲染；位置详情面板的 `themed-scrollbar` 类通过 `getComputedStyle` 实测确认 `scrollbarColor`/`scrollbarWidth` 两个属性都生效（不只是类名挂上去了，样式规则真的匹配到了）。
 
+- **顶部导航"更多"下拉菜单 + 晴夜气候地图独立落地页（`/clear-sky-map`）**：用户发了竞品"Resources"下拉菜单的截图问里面都是什么，翻了一遍发现里面 4 个真正的落地页（Golden Hour、Clear-night climate、Global Light Pollution Rankings、About & Data）里，这个项目只有黄金时刻和排行榜做成了独立可收录页面，晴夜比例功能虽然早就做了（`LocationDetailPanel.tsx` 里的小字百分比）但从没有自己的落地页，关于本站数据的内容也只在 FAQ 里。用户接着要求照竞品这种"下拉菜单收纳几个落地页"的设计，在语言切换器左边加一个新按钮（名字自己起，用户觉得"Resources"跟这个项目的功能组合对不上），点开是 Golden Hour/Clear-night climate/排行榜/About&Data 四项，原来单独放在顶部导航的排行榜链接也收进这个菜单。
+
+  **新按钮命名为"More"/"更多"**（不是照搬"Resources"）——这个项目的四个落地页是计算器+气候统计+数据表+关于页的混合体，不完全是"资源"这个词通常指的文档/下载类内容，`siteHeader.moreMenuLabel`/`moreMenuAria` 是新增的两个翻译 key。`SiteHeader.tsx` 新增 `MorePagesMenu()` 组件，跟旁边的 `LanguageSwitcher()` 是同一套"点击展开+全屏透明遮罩点外部关闭"下拉模式（两者一直挨在一起，直接照抄现成模式没有另起一套），4 个 `Link` 项复用各自页面早就有的 `navLabel` 翻译 key（`goldenHour.navLabel`/`clearSkyMap.navLabel`/`rankings.navLabel`/`aboutData.navLabel`），没有为菜单项另外新建一套文案。原来 `SiteHeader.tsx` 主函数里单独渲染的"🌍 Rankings"链接删掉，替换成 `<MorePagesMenu />`。
+
+  **`/clear-sky-map` 落地页新建，复用了已有的 `/api/clear-nights` 接口和月度晴夜比例算法，不是新写后端逻辑**——页面本身是"位置搜索 + 12 个月并行请求 + SVG 柱状图 + 最晴/最多云月份文字统计 + 数据说明"，跟 `golden-hour`/`about-data` 一样的 `layout.tsx`（`generateMetadata`）+ `page.tsx` 结构。新增 `src/components/ClearSkyMonthChart.tsx`（纯展示 SVG 柱状图组件，12 根柱子，某个月份数据缺失时渲染成半透明灰色空柱而不是跳过或崩溃，最晴/最多云月份的统计只从有数据的月份里选）。
+
+  **顺手把 `GoldenHourCalculator.tsx` 和新页面共用的"位置搜索"UI 抽成了 `src/components/LocationSearchField.tsx`**——"使用我的位置"按钮 + 防抖 `/api/geocode` 搜索框这段逻辑（约 50 行、带真实的 state/effect）两处几乎一模一样，超过了这个项目一直以来"小重复保留、大重复才抽"的阈值（比如 `azimuthToCompassPoint` 这种 4 行小函数一直是故意保留两份不抽的）。配套把 `messages/*.json` 里原本挂在 `goldenHour`命名空间下的 `useMyLocation`/`locatingLabel`/`geolocationError`/`locationPlaceholder`/`searching`/`noResults` 六个 key 挪到新的共享命名空间 `locationSearch` 下，两个页面都改成读这个共享命名空间。`GoldenHourCalculator.tsx` 改造后重新完整验证过一遍（搜索/定位/日期/罗盘/结果全部正常），确认这次重构没有破坏这个已经上线的功能。
+
+  **`react-hooks/set-state-in-effect` 这条规则第四次命中**：`clear-sky-map/page.tsx` 一开始跟 `golden-hour` 早期版本一样，在 `useEffect` 里先同步调一次 `setMonthly({status:"loading"})` 再发起 12 个并行请求，想在切换地点时把状态重置回"加载中"。**这次用的修法是 `LocationDetailPanel.tsx` 一直在用、但这个项目其他几次踩坑时没有直接复用的第三种解法**：把 12 个月请求的逻辑拆进一个按 `location` 坐标 `key` 重新挂载的内层组件 `MonthlyClearSkyResults`，`useState({status:"loading"})` 的初始值本身就承担了"切换地点后重置成加载中"的语义，`useEffect` 里只保留发请求和 `.then()`/`.catch()` 里的 `setState`（这些是异步回调里调用，不会触发这条规则）。**这条规则目前为止在这个项目里一共命中过 4 次**（`LocationHistoryPanel.tsx` 对比状态、`LanguageContext.tsx` 的 localStorage 读取、`IconToolbar.tsx` 互斥改造时的 `LocationHistoryPanel.tsx`、这次），前三次总结的三种解法（挪进事件处理函数 / `useSyncExternalStore` / key-remount）加起来基本覆盖了这个项目里会遇到的所有场景，以后再撞见先看是哪一种再挑对应解法，不用现想。
+
+  **验证**：`tsc`/`lint`/生产 `build` 全过（`build` 输出确认 `/en/clear-sky-map`、`/zh/clear-sky-map` 都是新增的 SSG 页面）。中英文都在浏览器里验证过：`更多`/`More` 下拉菜单打开后 4 个链接的 `href` 都正确带 locale 前缀；`/clear-sky-map` 搜索东京后 12 个月真实数据正确渲染（1 月最晴 51%、6 月最多云 11%，符合东京梅雨季的真实气候常识），个别月份因为 Open-Meteo 上游瞬时 502 返回 null 时柱状图正确降级成灰色空柱、不影响其余月份和最晴/最多云统计的显示；`golden-hour` 页面重构后重新搜索巴黎验证了日出日落/黄金时刻/蓝调时刻/罗盘方位角数据全部正确，确认共享组件抽取没有破坏原有功能。
+
 ## 已知坑点（踩过的坑，遇到类似问题不用重新排查一遍）
 
 - **maplibre-gl v6 地图纯黑不渲染**：v6 是纯 ESM 包，打包工具解析不了它内部 Web Worker 的脚本地址，必须手动 `setWorkerUrl()`（已在 `Map.tsx` 里处理）。worker 文件还用相对路径 import 了一个同目录的 `maplibre-gl-shared.mjs`，不能指向打包工具生成的带 hash 文件名路径，所以用 `scripts/copy-maplibre-worker.mjs` 在 postinstall 时复制到 `public/maplibre/` 保持原文件名。

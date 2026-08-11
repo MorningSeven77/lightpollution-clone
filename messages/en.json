@@ -1,16 +1,18 @@
 {
+  "locationSearch": {
+    "useMyLocation": "Use my location",
+    "locatingLabel": "Locating…",
+    "geolocationError": "Couldn't get your location",
+    "locationPlaceholder": "Search a location…",
+    "searching": "Searching…",
+    "noResults": "No results found"
+  },
   "goldenHour": {
     "navLabel": "Golden Hour",
     "closeAria": "Close golden hour calculator",
     "pageTitle": "Golden Hour & Light Direction",
     "pageSubtitle": "When the light is good — and which way it falls. The sun's path today, with the golden and blue hours marked.",
     "backToMap": "← Back to map",
-    "useMyLocation": "Use my location",
-    "locatingLabel": "Locating…",
-    "geolocationError": "Couldn't get your location",
-    "locationPlaceholder": "Search a location…",
-    "searching": "Searching…",
-    "noResults": "No results found",
     "dateLabel": "Date",
     "coordsApprox": "{lat}, {lng} · approx. UTC{offset}",
     "coordsLocal": "{lat}, {lng} · your local time",
@@ -94,10 +96,25 @@
     "contactBody": "This is an independent, non-commercial practice project. Questions, corrections, or feedback are welcome by email.",
     "contactEmailLabel": "Email"
   },
+  "clearSkyMap": {
+    "navLabel": "Clear-Night Climate",
+    "pageTitle": "Clear Sky Map & Climate",
+    "pageSubtitle": "Historical share of clear nights by month for any location — plan the best season to visit, not just the best night.",
+    "backToMap": "← Back to map",
+    "loadingMonths": "Loading monthly climate data…",
+    "bestMonthLabel": "Clearest month",
+    "worstMonthLabel": "Cloudiest month",
+    "monthStat": "{month} · {percent}%",
+    "chartCaption": "Share of nights with mostly clear skies (average night-time cloud cover ≤30%) for each calendar month, based on the last 5 years of Open-Meteo historical archive data — a climate estimate, not a forecast for any specific night.",
+    "definitionTitle": "How this is calculated",
+    "definitionBody": "For each calendar month, this averages night-time cloud cover across the last 5 years at this location (same night-bucketing method the live weather forecast uses) and reports the share of nights at or under 30% average cloud cover. It's a screening tool for seasonal patterns, not a promise about any particular night — always check a short-range forecast before you travel."
+  },
   "siteHeader": {
     "title": "Light Pollution Map",
     "subtitle": "A light pollution map and dark sky finder — click anywhere to see the Bortle Scale rating and best nearby stargazing spots.",
-    "languageSwitcherAria": "Switch language"
+    "languageSwitcherAria": "Switch language",
+    "moreMenuLabel": "More",
+    "moreMenuAria": "Open more pages menu"
   },
   "infoPanel": {
     "openAria": "Open Light Pollution Map FAQ",
