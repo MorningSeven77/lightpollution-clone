@@ -65,7 +65,25 @@
     "noResults": "No matches",
     "countLabel": "{count} countries/regions",
     "methodologyTitle": "How this is calculated",
-    "methodologyBody": "Avg SQM is the average of a simplified per-pixel SQM estimate (same formula this site's map and location detail panel use) over each country/region's land area, from the annual VIIRS night-light composite — not the same atmospheric propagation model or exact boundary dataset a professional light-pollution atlas would use, so treat differences of a few hundredths as noise. Ratio is the sky-background brightness multiple versus the darkest country/region in this list (10^((darkest − this)/2.5), the standard astronomical magnitude relationship). \"Bortle ≤ 4\" is the share of that area at Bortle class 4 or darker."
+    "methodologyBody": "Avg SQM is the average of a simplified per-pixel SQM estimate (same formula this site's map and location detail panel use) over each country/region's land area, from the annual VIIRS night-light composite — not the same atmospheric propagation model or exact boundary dataset a professional light-pollution atlas would use, so treat differences of a few hundredths as noise. Ratio is the sky-background brightness multiple versus the darkest country/region in this list (10^((darkest − this)/2.5), the standard astronomical magnitude relationship). \"Bortle ≤ 4\" is the share of that area at Bortle class 4 or darker.",
+    "expandTrendAria": "Show annual trend for {country}",
+    "collapseTrendAria": "Hide annual trend for {country}"
+  },
+  "countryTrend": {
+    "loading": "Loading annual trend…",
+    "error": "Couldn't load the annual trend for this country — try again later.",
+    "latestYearLabel": "Latest year",
+    "latestSqmLabel": "Latest avg SQM",
+    "latestRatioLabel": "Latest ratio",
+    "bortleLe4Label": "Bortle ≤ 4",
+    "yearSpanLabel": "Year span",
+    "latestPixelsLabel": "Latest pixels",
+    "yearSpanValue": "{startYear}–{endYear}",
+    "chartTitle": "SQM trend, {startYear}–{endYear}",
+    "chartAriaLabel": "Line chart of average SQM by year",
+    "distributionTitle": "Bortle 1–9 distribution (area-weighted, {year})",
+    "bortleClassAbbrev": "B{bortleClass}",
+    "methodologyNote": "Computed on demand for just this country (unlike the table above, which is precomputed for all of them) — small countries are sampled at close to full resolution, very large ones (Russia, Canada, ...) use a coarser grid to stay fast, so treat these numbers as a lower-precision companion to the SQM/Bortle columns above rather than a more authoritative source."
   },
   "aboutData": {
     "navLabel": "About & Data",

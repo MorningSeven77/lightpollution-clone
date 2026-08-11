@@ -1,20 +1,44 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import SiteHeader from "@/components/SiteHeader";
+import CountryTrendPanel from "@/components/CountryTrendPanel";
 import { COUNTRY_LIGHT_POLLUTION } from "@/lib/countryRankings";
 import { computeSkyBackgroundRatio } from "@/lib/locationHistory";
+import type { CountryTrendResponse } from "@/app/api/country-trend/route";
 
 type SortKey = "avgSqm" | "ratio" | "bortleLe4Percent" | "pixelCount" | "name";
 type SortDirection = "asc" | "desc";
+type TrendCacheEntry = { status: "loading" } | { status: "error" } | { status: "done"; data: CountryTrendResponse };
 
 export default function RankingsPage() {
   const t = useTranslations("rankings");
+  const tCountryTrend = useTranslations("countryTrend");
   const [query, setQuery] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("avgSqm");
   const [sortDirection, setSortDirection] = useState<SortDirection>("desc");
+  const [expandedCountry, setExpandedCountry] = useState<string | null>(null);
+  const [trendCache, setTrendCache] = useState<Record<string, TrendCacheEntry>>({});
+
+  // Fetched on the click that opens a row (not in an effect) — each
+  // country's trend is expensive enough (a live Earth Engine zonal query)
+  // that it should only ever run in response to the user actually asking
+  // for it, and only once per country per page load (cached by name).
+  const toggleExpand = (name: string) => {
+    if (expandedCountry === name) {
+      setExpandedCountry(null);
+      return;
+    }
+    setExpandedCountry(name);
+    if (trendCache[name]) return;
+    setTrendCache((prev) => ({ ...prev, [name]: { status: "loading" } }));
+    fetch(`/api/country-trend?name=${encodeURIComponent(name)}`)
+      .then((res) => (res.ok ? res.json() : Promise.reject(new Error("request failed"))))
+      .then((data: CountryTrendResponse) => setTrendCache((prev) => ({ ...prev, [name]: { status: "done", data } })))
+      .catch(() => setTrendCache((prev) => ({ ...prev, [name]: { status: "error" } })));
+  };
 
   // Darkest (highest SQM) country in the whole dataset is the reference
   // point for every row's ratio — same relationship computeSkyBackgroundRatio
@@ -121,21 +145,57 @@ export default function RankingsPage() {
                     </td>
                   </tr>
                 ) : (
-                  rows.map((row, i) => (
-                    <tr key={row.name} className="border-b border-white/5 last:border-b-0 hover:bg-white/5">
-                      <td className="px-3 py-2 text-zinc-500">{i + 1}</td>
-                      <td className="px-3 py-2">
-                        <span>{row.name}</span>
-                        <span className="ml-1.5 text-xs text-zinc-500">{row.code}</span>
-                      </td>
-                      <td className="px-3 py-2 text-right tabular-nums">{row.avgSqm.toFixed(2)}</td>
-                      <td className="px-3 py-2 text-right tabular-nums">{row.ratio.toFixed(1)}×</td>
-                      <td className="px-3 py-2 text-right tabular-nums">{row.bortleLe4Percent.toFixed(1)}%</td>
-                      <td className="px-3 py-2 text-right tabular-nums text-zinc-500">
-                        {row.pixelCount.toLocaleString()}
-                      </td>
-                    </tr>
-                  ))
+                  rows.map((row, i) => {
+                    const isExpanded = expandedCountry === row.name;
+                    const trendEntry = trendCache[row.name];
+                    return (
+                      <Fragment key={row.name}>
+                        <tr className="border-b border-white/5 last:border-b-0 hover:bg-white/5">
+                          <td className="px-3 py-2 text-zinc-500">{i + 1}</td>
+                          <td className="px-3 py-2">
+                            <button
+                              type="button"
+                              onClick={() => toggleExpand(row.name)}
+                              aria-expanded={isExpanded}
+                              aria-label={t(isExpanded ? "collapseTrendAria" : "expandTrendAria", { country: row.name })}
+                              className="inline-flex items-center gap-1.5 hover:text-zinc-200"
+                            >
+                              <svg
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                className={`h-3 w-3 shrink-0 text-zinc-500 transition-transform ${isExpanded ? "rotate-90" : ""}`}
+                              >
+                                <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L11.293 10 7.23 6.29a.75.75 0 1 1 1.04-1.08l4.65 4.25a.75.75 0 0 1 0 1.08l-4.65 4.25a.75.75 0 0 1-1.06-.02Z" clipRule="evenodd" />
+                              </svg>
+                              <span>{row.name}</span>
+                              <span className="text-xs text-zinc-500">{row.code}</span>
+                            </button>
+                          </td>
+                          <td className="px-3 py-2 text-right tabular-nums">{row.avgSqm.toFixed(2)}</td>
+                          <td className="px-3 py-2 text-right tabular-nums">{row.ratio.toFixed(1)}×</td>
+                          <td className="px-3 py-2 text-right tabular-nums">{row.bortleLe4Percent.toFixed(1)}%</td>
+                          <td className="px-3 py-2 text-right tabular-nums text-zinc-500">
+                            {row.pixelCount.toLocaleString()}
+                          </td>
+                        </tr>
+                        {isExpanded && (
+                          <tr key={`${row.name}-trend`} className="border-b border-white/5 bg-black/20 last:border-b-0">
+                            <td colSpan={columns.length + 1} className="px-3 py-3">
+                              {trendEntry?.status === "loading" && (
+                                <div className="text-xs text-zinc-400">{tCountryTrend("loading")}</div>
+                              )}
+                              {trendEntry?.status === "error" && (
+                                <div className="text-xs text-rose-400">{tCountryTrend("error")}</div>
+                              )}
+                              {trendEntry?.status === "done" && (
+                                <CountryTrendPanel data={trendEntry.data} darkestSqm={darkestSqm} />
+                              )}
+                            </td>
+                          </tr>
+                        )}
+                      </Fragment>
+                    );
+                  })
                 )}
               </tbody>
             </table>

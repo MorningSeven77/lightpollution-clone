@@ -65,7 +65,25 @@
     "noResults": "没有匹配结果",
     "countLabel": "{count} 个国家/地区",
     "methodologyTitle": "数据是怎么算出来的",
-    "methodologyBody": "平均 SQM 是对每个国家/地区陆地范围内、逐像素的简化 SQM 估算值（跟本站地图和位置详情面板用的是同一套公式）取平均，数据来自 VIIRS 年度夜光合成影像——不是专业光污染图集用的真实大气传播模型，也不一定是同一套国界数据，所以几个百分点以内的差异不用太当真。倍数是相对于列表里最暗的国家/地区的天光亮度倍数（10^((最暗−本地)/2.5)，标准的星等换算关系）。「Bortle ≤ 4」是该地区面积里波特尔 4 级或更暗区域所占的比例。"
+    "methodologyBody": "平均 SQM 是对每个国家/地区陆地范围内、逐像素的简化 SQM 估算值（跟本站地图和位置详情面板用的是同一套公式）取平均，数据来自 VIIRS 年度夜光合成影像——不是专业光污染图集用的真实大气传播模型，也不一定是同一套国界数据，所以几个百分点以内的差异不用太当真。倍数是相对于列表里最暗的国家/地区的天光亮度倍数（10^((最暗−本地)/2.5)，标准的星等换算关系）。「Bortle ≤ 4」是该地区面积里波特尔 4 级或更暗区域所占的比例。",
+    "expandTrendAria": "展开 {country} 的年度趋势",
+    "collapseTrendAria": "收起 {country} 的年度趋势"
+  },
+  "countryTrend": {
+    "loading": "正在加载年度趋势…",
+    "error": "这个国家的年度趋势加载失败，请稍后再试。",
+    "latestYearLabel": "最新年份",
+    "latestSqmLabel": "最新平均 SQM",
+    "latestRatioLabel": "最新亮度倍数",
+    "bortleLe4Label": "Bortle ≤ 4",
+    "yearSpanLabel": "年份跨度",
+    "latestPixelsLabel": "最新像元数",
+    "yearSpanValue": "{startYear}–{endYear}",
+    "chartTitle": "SQM 趋势，{startYear}–{endYear}",
+    "chartAriaLabel": "按年份显示平均 SQM 的折线图",
+    "distributionTitle": "波特尔 1–9 面积加权分布（{year}）",
+    "bortleClassAbbrev": "B{bortleClass}",
+    "methodologyNote": "这份趋势是按需现算的（不像上面的表格是全部预先算好的）——小国家采样精度接近上面表格的原始精度，特别大的国家（俄罗斯/加拿大等）为了保证速度会用更粗的采样网格，数字可能跟上面表格的 SQM/波特尔列有小幅出入，仅供参考，不是更权威的数字。"
   },
   "aboutData": {
     "navLabel": "关于本站与数据来源",
