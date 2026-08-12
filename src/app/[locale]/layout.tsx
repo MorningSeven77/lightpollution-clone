@@ -64,6 +64,14 @@ export async function generateMetadata({
       url: canonicalUrl,
       type: "website",
     },
+    // Not using the app/icon.svg file convention here on purpose — this
+    // layout lives under the [locale] dynamic segment, and that convention
+    // generates a per-segment icon route that needs its own
+    // generateStaticParams; pointing straight at the existing public/
+    // asset avoids that entirely and works identically across locales.
+    icons: {
+      icon: "/logo.svg",
+    },
   };
 }
 
