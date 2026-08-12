@@ -185,6 +185,31 @@
     "title": "光污染强度（VIIRS 卫星数据 · {styleLabel}）",
     "hint": "点击地图查看该点的 Bortle 等级与近似 SQM 值"
   },
+  "skyPhotoAnalyzer": {
+    "openAria": "打开照片测光分析",
+    "closeAria": "关闭照片测光分析",
+    "title": "拍照分析天空亮度",
+    "tipZenith": "把相机对准头顶正上方（天顶）",
+    "tipClearSky": "在晴朗无云的夜晚拍摄",
+    "tipAutoMode": "用默认/自动相机模式，不要手动长曝光",
+    "takePhoto": "拍照",
+    "choosePhoto": "从相册选择",
+    "analyzing": "正在分析照片…",
+    "error": "读取照片失败，换一张试试。",
+    "estimatedBortleLabel": "估算波特尔等级",
+    "referenceSqmLabel": "参考 SQM",
+    "avgBrightnessLabel": "平均亮度",
+    "visibleStarsLabel": "预估可见星数",
+    "reanalyze": "重新分析",
+    "disclaimer": "仅供参考的粗略估算——读取照片在你设备上的平均像素亮度算出来的，没有任何真实校准依据（不读取 EXIF 拍摄参数，没有参考星定标，也不是专业测光）。不同手机的自动曝光差异很大，所以这个数字只能当个大概参考，不是真实测量值——地图本身基于真实卫星数据的 Bortle/SQM 数值要可靠得多。",
+    "severity": {
+      "excellent": "极暗",
+      "good": "较暗",
+      "moderate": "中等",
+      "high": "较高",
+      "veryHigh": "极高"
+    }
+  },
   "moonPhase": {
     "openAria": "打开月相面板",
     "closeAria": "关闭月相面板",

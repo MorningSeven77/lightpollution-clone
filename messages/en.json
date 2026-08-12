@@ -185,6 +185,31 @@
     "title": "Light Pollution Intensity (VIIRS satellite data · {styleLabel})",
     "hint": "Click the map to see the Bortle class and approximate SQM value for that point"
   },
+  "skyPhotoAnalyzer": {
+    "openAria": "Open sky photo brightness analyzer",
+    "closeAria": "Close sky photo brightness analyzer",
+    "title": "Analyze Sky Photo",
+    "tipZenith": "Point your camera straight up at the zenith",
+    "tipClearSky": "Take the photo at night in a clear sky",
+    "tipAutoMode": "Use default/auto camera mode (no manual long exposure)",
+    "takePhoto": "Take Photo",
+    "choosePhoto": "Choose Photo",
+    "analyzing": "Analyzing photo…",
+    "error": "Couldn't read that photo — try a different one.",
+    "estimatedBortleLabel": "Estimated Bortle Class",
+    "referenceSqmLabel": "Reference SQM",
+    "avgBrightnessLabel": "Avg. brightness",
+    "visibleStarsLabel": "Est. visible stars",
+    "reanalyze": "Re-analyze",
+    "disclaimer": "Rough estimate only — reads the photo's average pixel brightness on your device, not calibrated against any real reference (no EXIF, no known reference star, no professional photometry). Camera auto-exposure varies a lot between phones, so treat this as illustrative, not a measurement — the map's own Bortle/SQM values (from real satellite data) are far more reliable.",
+    "severity": {
+      "excellent": "Excellent",
+      "good": "Good",
+      "moderate": "Moderate",
+      "high": "High",
+      "veryHigh": "Very High"
+    }
+  },
   "moonPhase": {
     "openAria": "Open moon phase panel",
     "closeAria": "Close moon phase panel",

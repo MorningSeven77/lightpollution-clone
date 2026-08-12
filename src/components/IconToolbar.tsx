@@ -12,8 +12,9 @@ import LocationHistoryPanel from "@/components/LocationHistoryPanel";
 import BestSpotsSearchModal from "@/components/BestSpotsSearchModal";
 import GoldenHourCalculator from "@/components/GoldenHourCalculator";
 import MapControls from "@/components/MapControls";
+import SkyPhotoAnalyzer from "@/components/SkyPhotoAnalyzer";
 
-type ActivePopup = "moonPhase" | "goldenHour" | "history" | "mapControls" | "bestSpots" | null;
+type ActivePopup = "moonPhase" | "goldenHour" | "history" | "mapControls" | "bestSpots" | "skyPhoto" | null;
 
 // Shared row of quick-access icon buttons, docked top-right (same corner as
 // the settings panel below it). Each button gets a hover tooltip instead of
@@ -213,6 +214,8 @@ export default function IconToolbar({
         onOpenChange={makeOpenChangeHandler("history")}
         onSelectLocation={onSelectHistoryLocation}
       />
+
+      <SkyPhotoAnalyzer open={activePopup === "skyPhoto"} onOpenChange={makeOpenChangeHandler("skyPhoto")} />
 
       <MapControls
         open={activePopup === "mapControls"}

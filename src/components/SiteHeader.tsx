@@ -145,7 +145,8 @@ export default function SiteHeader({ titleAsHeading = true }: SiteHeaderProps) {
   return (
     <header className="relative z-20 flex h-14 shrink-0 items-center justify-between border-b border-white/10 bg-zinc-900 px-4 text-zinc-100">
       <div className="flex items-baseline gap-2 overflow-hidden">
-        <span className="text-lg">🌌</span>
+        {/* eslint-disable-next-line @next/next/no-img-element -- static file in public/, no next/image optimization needed for a 24px logo */}
+        <img src="/logo.svg" alt="" className="h-6 w-6 shrink-0 self-center rounded-md" />
         <TitleTag className="truncate font-semibold">{t("title")}</TitleTag>
         <p className="hidden truncate text-xs text-zinc-400 sm:inline">{t("subtitle")}</p>
       </div>
