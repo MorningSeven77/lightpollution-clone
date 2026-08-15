@@ -52,7 +52,7 @@ export default function BestSpotsSearchModal({ lat, lng, onResults, onClose }: B
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-3 flex items-center justify-between">
-          <span className="font-medium">{t("modalTitle")}</span>
+          <h2 className="font-medium">{t("modalTitle")}</h2>
           <button type="button" onClick={onClose} aria-label={t("closeAria")} className="text-zinc-400 hover:text-zinc-100">
             ✕
           </button>

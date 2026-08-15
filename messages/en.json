@@ -176,6 +176,123 @@
     "feedbackAboutLink": "About & Data",
     "feedbackEmailLabel": "Email"
   },
+  "bortleScaleMap": {
+    "title": "Bortle Scale Map",
+    "subtitle": "An interactive Bortle map showing real-time sky darkness — check the Bortle scale for any location on Earth.",
+    "legend": {
+      "title": "Bortle Scale Map (VIIRS satellite data · {styleLabel})",
+      "hint": "Click the map to see the Bortle class and approximate SQM value for that point"
+    },
+    "infoPanel": {
+      "openAria": "Open Bortle Scale Map FAQ",
+      "closeAria": "Close FAQ",
+      "title": "Bortle Scale Map FAQ",
+      "intro": "New to the Bortle scale map? Here's what you need to know.",
+      "modules": [
+        {
+          "title": "What is it",
+          "qa": [
+            {
+              "question": "What is the Bortle scale?",
+              "answer": "The Bortle scale (formally the Bortle dark sky scale) is a 9-level scale created by astronomer John Bortle in 2001 to rate how dark or light-polluted the night sky is at a location, from Class 1 (pristine) to Class 9 (inner-city)."
+            },
+            {
+              "question": "What does each Bortle class mean?",
+              "answer": "Class 1–2 are excellent dark-sky sites where the Milky Way casts shadows; Class 4–6 are suburban skies where only bright stars are visible; Class 7–9 are urban skies where light pollution hides most of the night sky."
+            }
+          ]
+        },
+        {
+          "title": "How it works",
+          "qa": [
+            {
+              "question": "How do I use this Bortle scale map?",
+              "answer": "Zoom or search any address on the bortle map — the color overlay shows the estimated Bortle class for that spot based on satellite light pollution data."
+            },
+            {
+              "question": "How does this Bortle scale map actually work?",
+              "answer": "The map starts from NOAA's VIIRS satellite data, which measures artificial light radiance from space. A simplified logarithmic formula converts that radiance into an SQM-like brightness value, and the Bortle class shown is a simplified reference derived from that modeled value — not a live field measurement or a full atmospheric model like the professional World Atlas."
+            },
+            {
+              "question": "Is this Bortle map accurate?",
+              "answer": "It's a modeled estimate, not a precise scientific measurement — real sky conditions also depend on clouds, moonlight, and local terrain. SQM is the more precise comparison value, and Bortle class here is best used as a quick, easy-to-read reference for planning, not a guarantee of what you'll see."
+            },
+            {
+              "question": "What's the difference between Bortle scale and SQM?",
+              "answer": "SQM (Sky Quality Meter) gives a modeled brightness reading in mag/arcsec², while the bortle dark sky scale groups that value into 9 simple categories — this map converts the modeled SQM value into a Bortle class for easy reading."
+            }
+          ]
+        },
+        {
+          "title": "Who it's for",
+          "qa": [
+            {
+              "question": "What Bortle class do I need for stargazing or astrophotography?",
+              "answer": "Class 1–4 is ideal for viewing faint deep-sky objects and the Milky Way; Class 5–6 still works well for planets, the Moon, and bright astrophotography targets."
+            },
+            {
+              "question": "Who uses this map?",
+              "answer": "Amateur astronomers planning an observing trip, astrophotographers scouting dark-sky locations, and travelers or campers who want to know if they'll see the Milky Way at their destination all use this bortle map before heading out."
+            },
+            {
+              "question": "Where can I find dark sky locations near me?",
+              "answer": "Use the bortle map to scan outward from your location for the nearest low-Bortle-class (dark sky) areas — parks and rural regions typically offer the biggest improvement."
+            }
+          ]
+        }
+      ],
+      "feedbackTitle": "Feedback",
+      "feedbackAboutLink": "About & Data",
+      "feedbackEmailLabel": "Email"
+    }
+  },
+  "darkSkyMap": {
+    "title": "Dark Sky Map",
+    "subtitle": "A global dark sky map rating night sky darkness by location, based on the same dark sky scale used to compare stargazing conditions.",
+    "legend": {
+      "title": "Dark Sky Scale (VIIRS satellite data · {styleLabel})",
+      "hint": "Click the map to see the Bortle class and approximate SQM value for that point"
+    },
+    "infoPanel": {
+      "openAria": "Open Dark Sky Map FAQ",
+      "closeAria": "Close FAQ",
+      "title": "Dark Sky Map FAQ",
+      "intro": "Here's what this dark sky map shows and how to read it.",
+      "qa": [
+        {
+          "question": "What does this dark sky map show?",
+          "answer": "It displays the estimated darkness of the night sky at any location worldwide, based on satellite-measured light pollution — darker colors indicate less artificial light and better sky visibility."
+        },
+        {
+          "question": "What is the dark sky scale?",
+          "answer": "The dark sky scale — also known as the Bortle scale — is a 9-level classification of night sky darkness, from Class 1 (pristine, no light pollution) to Class 9 (heavily light-polluted urban sky)."
+        },
+        {
+          "question": "How is the dark sky scale rating calculated?",
+          "answer": "Satellite data measuring artificial light radiance is converted into an estimated sky-brightness value, which is then mapped onto the dark sky scale. It's a simplified model, not a precise field measurement — actual conditions vary with clouds, moonlight, and terrain."
+        },
+        {
+          "question": "What do the different colors on the dark sky map mean?",
+          "answer": "Each color band corresponds to a range on the dark sky scale — from black/green (Class 1–2, darkest skies) through yellow and orange (Class 5–6, suburban) to red/white (Class 8–9, heavily lit urban areas)."
+        },
+        {
+          "question": "What dark sky scale rating is considered good for stargazing?",
+          "answer": "Class 1–4 offers minimal light interference and clear views of faint objects like the Milky Way; Class 5–6 still supports viewing planets, the Moon, and brighter stars."
+        },
+        {
+          "question": "How accurate is this dark sky map?",
+          "answer": "The ratings are a modeled estimate rather than an on-site measurement — useful for comparing locations and planning ahead, but local factors on any given night can shift actual visibility."
+        },
+        {
+          "question": "Is this dark sky map limited to certain countries?",
+          "answer": "No — the dark sky map covers locations globally, so you can check the dark sky scale rating for any city, park, or coordinate on Earth."
+        }
+      ],
+      "feedbackTitle": "Feedback",
+      "feedbackAboutLink": "About & Data",
+      "feedbackEmailLabel": "Email"
+    }
+  },
   "searchBar": {
     "placeholder": "Search location…",
     "searching": "Searching…",
@@ -250,7 +367,7 @@
     "closeAria": "Close map controls",
     "title": "Map Controls",
     "basemapLabel": "Basemap",
-    "lightPollutionLayerLabel": "Light pollution layer (VIIRS 2024)",
+    "lightPollutionLayerLabel": "Light pollution layer (VIIRS 2025)",
     "weatherOverlayLabel": "Weather overlay",
     "darkSkyPlacesLabel": "Certified Dark Sky Places",
     "auroraLabel": "Aurora probability (NOAA forecast)",
@@ -286,7 +403,10 @@
   "trendChart": {
     "title": "Light pollution trend ({startYear}-{endYear}, higher SQM = darker)",
     "ariaLabel": "Yearly SQM trend bar chart",
-    "tooltip": "{year}: SQM ≈ {sqm}, Bortle {bortleClass}"
+    "tooltip": "{year}: SQM ≈ {sqm}, Bortle {bortleClass}",
+    "estimatedTooltip": "{year} (estimated): SQM ≈ {sqm}, Bortle {bortleClass} — trend projection, not satellite data",
+    "estimatedYearLabel": "{year} (est.)",
+    "estimatedCaption": "{year} is a trend-based projection from recent years — the satellite composite for {year} isn't published yet."
   },
   "directionalSkyBrightness": {
     "title": "Directional Sky Brightness",

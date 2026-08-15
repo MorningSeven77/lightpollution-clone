@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { STAR_COUNT_ESTIMATES } from "@/lib/bortle";
+import { STAR_COUNT_ESTIMATES, radianceToBortleEstimate } from "@/lib/bortle";
+import { estimateRadianceForYear } from "@/lib/trendEstimate";
 import { SelectedLocation } from "@/components/Map";
 import TrendChart from "@/components/TrendChart";
 import { TrendPoint } from "@/app/api/trend/route";
@@ -196,6 +197,23 @@ function LocationDetailPanelContent({
     });
   }, [location, pointValue, placeName]);
 
+  // A trend-extrapolated point for the current calendar year, shown only
+  // when the real satellite trend doesn't already reach it (the VIIRS annual
+  // composite for "this year" isn't published until well into the next one —
+  // see src/lib/earthEngine.ts). Recomputes automatically as real years get
+  // added over time without any code change, since it's driven by the actual
+  // wall-clock year rather than a constant.
+  const currentYearEstimate = useMemo(() => {
+    if (trend.status !== "done" || trend.points.length === 0) return null;
+    const currentYear = new Date().getFullYear();
+    const latestRealYear = trend.points[trend.points.length - 1].year;
+    if (currentYear <= latestRealYear) return null;
+    const radiance = estimateRadianceForYear(trend.points, currentYear);
+    if (radiance == null) return null;
+    const { bortleClass, sqm } = radianceToBortleEstimate(radiance);
+    return { year: currentYear, radiance, bortleClass, sqm };
+  }, [trend]);
+
   // Combines once both independent fetches land — the weather API returns
   // raw data only (no score) so it never has to wait on pointValue first.
   const scoredWeatherDays: ScoredWeatherDay[] = useMemo(() => {
@@ -292,7 +310,7 @@ function LocationDetailPanelContent({
           {trend.status === "loading" && <div className="mt-3 text-xs text-zinc-400">{t("trendLoading")}</div>}
           {trend.status === "done" && (
             <div className="mt-3">
-              <TrendChart points={trend.points} />
+              <TrendChart points={trend.points} estimatedPoint={currentYearEstimate} />
             </div>
           )}
           {/* A missing trend chart isn't worth a visible error — the Bortle/SQM

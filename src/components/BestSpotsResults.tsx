@@ -15,7 +15,7 @@ export default function BestSpotsResults({ spots, onClose, onSelectSpot }: BestS
   return (
     <div className="absolute right-72 top-20 z-10 w-64 rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
       <div className="mb-2 flex items-center justify-between">
-        <span className="font-medium">{t("resultsTitle", { count: spots.length })}</span>
+        <h2 className="font-medium">{t("resultsTitle", { count: spots.length })}</h2>
         <button type="button" onClick={onClose} aria-label={t("closeResultsAria")} className="text-zinc-400 hover:text-zinc-100">
           ✕
         </button>

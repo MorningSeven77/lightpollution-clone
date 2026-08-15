@@ -136,9 +136,15 @@ export type SiteHeaderProps = {
   // /golden-hour) have their own real <h1> — on those this renders as plain
   // text instead, to avoid two competing h1s on one page.
   titleAsHeading?: boolean;
+  // Lets keyword-landing variants of the home page (e.g. /bortle-scale-map)
+  // swap in their own H1 wording and hero subheading text, targeting a
+  // different search keyword than the brand name. Both fall back to the
+  // default siteHeader translations.
+  title?: string;
+  subtitle?: string;
 };
 
-export default function SiteHeader({ titleAsHeading = true }: SiteHeaderProps) {
+export default function SiteHeader({ titleAsHeading = true, title, subtitle }: SiteHeaderProps) {
   const t = useTranslations("siteHeader");
   const TitleTag = titleAsHeading ? "h1" : "span";
 
@@ -147,8 +153,8 @@ export default function SiteHeader({ titleAsHeading = true }: SiteHeaderProps) {
       <div className="flex items-baseline gap-2 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element -- static file in public/, no next/image optimization needed for a 24px logo */}
         <img src="/logo.svg" alt="" className="h-6 w-6 shrink-0 self-center rounded-md" />
-        <TitleTag className="truncate font-semibold">{t("title")}</TitleTag>
-        <p className="hidden truncate text-xs text-zinc-400 sm:inline">{t("subtitle")}</p>
+        <TitleTag className="truncate font-semibold">{title ?? t("title")}</TitleTag>
+        <p className="hidden truncate text-xs text-zinc-400 sm:inline">{subtitle ?? t("subtitle")}</p>
       </div>
       <div className="flex items-center gap-2">
         <MorePagesMenu />

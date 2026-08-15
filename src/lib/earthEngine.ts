@@ -60,8 +60,8 @@ async function getGoogleAccessToken(key: ServiceAccountKey): Promise<GoogleAcces
 // "average" is the average radiance band, in nW/sr/cm^2.
 const VIIRS_COLLECTION = "NOAA/VIIRS/DNB/ANNUAL_V22";
 const VIIRS_BAND = "average";
-const LATEST_YEAR_START = "2024-01-01";
-const LATEST_YEAR_END = "2025-01-01";
+const LATEST_YEAR_START = "2025-01-01";
+const LATEST_YEAR_END = "2026-01-01";
 
 let initPromise: Promise<typeof ee> | null = null;
 

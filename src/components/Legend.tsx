@@ -6,11 +6,15 @@ import { radianceToBortleEstimate } from "@/lib/bortle";
 
 export type LegendProps = {
   colorStyle: ColorStyleId;
+  // Lets keyword-landing variants of the home page (e.g. /bortle-scale-map)
+  // swap in their own legend title while reusing this same component. Must
+  // point at a namespace with the same shape as the default "legend".
+  namespace?: string;
 };
 
-export default function Legend({ colorStyle }: LegendProps) {
+export default function Legend({ colorStyle, namespace = "legend" }: LegendProps) {
   const style = COLOR_STYLES[colorStyle];
-  const t = useTranslations("legend");
+  const t = useTranslations(namespace);
   const tColorStyles = useTranslations("dataLabels.colorStyles");
 
   return (
