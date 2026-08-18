@@ -63,6 +63,9 @@ export default function AboutDataPage() {
             <li>• {t("sourceBortle")}</li>
             <li>• {t("sourceOpenMeteo")}</li>
             <li>• {t("sourceNoaaSwpc")}</li>
+            <li>• {t("sourceHyg")}</li>
+            <li>• {t("sourceD3Celestial")}</li>
+            <li>• {t("sourceAstronomyEngine")}</li>
           </ul>
         </section>
 

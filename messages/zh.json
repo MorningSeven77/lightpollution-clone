@@ -113,12 +113,14 @@
     "sourceBortle": "波特尔暗夜等级（Bortle Dark-Sky Scale）——本站分级参考的公开标准。",
     "sourceOpenMeteo": "Open-Meteo——免费的天气预报与历史归档接口，为夜间天气和晴夜比例这两个功能提供数据。",
     "sourceNoaaSwpc": "NOAA 空间天气预报中心——OVATION 极光模型，为极光概率图层提供数据。",
+    "sourceHyg": "HYG 星表数据库（Hipparcos/Yale/Gliese-Jahreiss，CC BY-SA 4.0）——星空图页面约 8900 颗肉眼可见恒星的位置与星等数据。",
+    "sourceD3Celestial": "d3-celestial（Olaf Frohn，BSD-3-Clause）——星空图页面 88 个星座的连线与中英文名称数据。",
+    "sourceAstronomyEngine": "Astronomy Engine（MIT）——星空图页面太阳、月亮、行星位置与恒星时的计算库。",
     "contactTitle": "意见反馈与联系方式",
     "contactBody": "这是一个独立、非商业的练手项目。欢迎通过邮件提出问题、指正或反馈意见。",
     "contactEmailLabel": "邮箱"
   },
   "clearSkyMap": {
-    "navLabel": "晴夜气候",
     "pageTitle": "晴夜气候地图",
     "pageSubtitle": "查询任意地点每个月的历史晴夜比例——不只是找最佳的一晚，而是找最佳的季节。",
     "backToMap": "← 返回地图",
@@ -135,7 +137,9 @@
     "subtitle": "一份光污染地图与暗夜地点查找工具——点击地图任意位置，即可查看当地波特尔等级评分与附近推荐的观星地点。",
     "languageSwitcherAria": "切换语言",
     "moreMenuLabel": "更多",
-    "moreMenuAria": "打开更多页面菜单"
+    "moreMenuAria": "打开更多页面菜单",
+    "otherMapsMenuLabel": "其他地图",
+    "otherMapsMenuAria": "打开其他地图菜单"
   },
   "infoPanel": {
     "openAria": "打开光污染地图常见问题",
@@ -179,6 +183,7 @@
   "bortleScaleMap": {
     "title": "波特尔等级地图",
     "subtitle": "实时显示夜空黑暗程度的交互式波特尔地图——查询地球上任意地点的波特尔等级。",
+    "navLabel": "波特尔等级地图",
     "legend": {
       "title": "波特尔等级地图（VIIRS 卫星数据 · {styleLabel}）",
       "hint": "点击地图查看该点的 Bortle 等级与近似 SQM 值"
@@ -249,6 +254,7 @@
   "darkSkyMap": {
     "title": "暗夜地图",
     "subtitle": "一张全球暗夜地图，按地点评定夜空黑暗程度，采用与比较各地观星条件相同的暗夜等级标准。",
+    "navLabel": "暗夜地图",
     "legend": {
       "title": "暗夜等级（VIIRS 卫星数据 · {styleLabel}）",
       "hint": "点击地图查看该点的 Bortle 等级与近似 SQM 值"
@@ -391,7 +397,8 @@
     "clearNightsLoading": "晴夜比例查询中…",
     "clearNightsLabel": "晴夜比例（{month}）",
     "clearNightsValue": "{percent}%",
-    "clearNightsCaption": "基于过去 {years} 年历史气象数据，{month}份晴朗（少云）夜晚所占的比例——这是气候统计估算值，不是天气预报。"
+    "clearNightsCaption": "基于过去 {years} 年历史气象数据，{month}份晴朗（少云）夜晚所占的比例——这是气候统计估算值，不是天气预报。",
+    "viewInStarMap": "在星空图中查看这个地点"
   },
   "darkSkyPlace": {
     "title": "认证暗空地点",
@@ -518,6 +525,54 @@
       "none": "无/隐藏",
       "clouds": "云层",
       "rain": "降水"
+    }
+  },
+  "starMap": {
+    "navLabel": "星空图",
+    "pageTitle": "实时星空图",
+    "pageSubtitle": "拖拽转向查看夜空，太阳、月亮、行星和 88 个星座连线都在真实位置上。",
+    "loadingCanvas": "正在加载星空…",
+    "dateTimeSectionLabel": "观测时间",
+    "locationSectionLabel": "观测地点",
+    "dateLabel": "日期",
+    "timeLabel": "时间",
+    "nowButton": "回到当前时刻",
+    "liveIndicator": "● 实时",
+    "frozenIndicator": "已暂停在选定时刻",
+    "dragHint": "拖拽 / 滑动查看四周",
+    "contextLostMessage": "渲染已暂停（浏览器回收了这个页面的图形资源，常见于标签页处于后台/不可见状态）——切回这个标签页后通常会自动恢复，如果一直没恢复，刷新页面即可。",
+    "speedLabel": "播放速度",
+    "speedLive": "实时",
+    "speedPaused": "暂停",
+    "speedForwardMinute": "1 分钟/秒",
+    "speedForwardHour": "1 小时/秒",
+    "speedForwardDay": "1 天/秒",
+    "speedReverseMinute": "倒放 1 分钟/秒",
+    "speedReverseHour": "倒放 1 小时/秒",
+    "speedReverseDay": "倒放 1 天/秒",
+    "searchPlaceholder": "搜索天体（行星/恒星/M31…）",
+    "searchNoResults": "没有找到匹配的天体",
+    "searchAria": "搜索天体",
+    "fovLabel": "视场角 {fov}°",
+    "zoomInAria": "放大",
+    "zoomOutAria": "缩小",
+    "fullscreenEnterAria": "进入全屏",
+    "fullscreenExitAria": "退出全屏",
+    "fullscreenLabel": "全屏",
+    "nightModeLabel": "夜间模式",
+    "atmosphereLabel": "大气层",
+    "azimuthalGridLabel": "地平网格",
+    "equatorialGridLabel": "赤道网格",
+    "planetNames": {
+      "Sun": "太阳",
+      "Moon": "月球",
+      "Mercury": "水星",
+      "Venus": "金星",
+      "Mars": "火星",
+      "Jupiter": "木星",
+      "Saturn": "土星",
+      "Uranus": "天王星",
+      "Neptune": "海王星"
     }
   }
 }

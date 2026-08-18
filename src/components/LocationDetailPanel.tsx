@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { STAR_COUNT_ESTIMATES, radianceToBortleEstimate } from "@/lib/bortle";
 import { estimateRadianceForYear } from "@/lib/trendEstimate";
 import { SelectedLocation } from "@/components/Map";
@@ -257,7 +258,13 @@ function LocationDetailPanelContent({
       <div className="mb-2 text-xs text-zinc-400">
         {location.lat.toFixed(4)}, {location.lng.toFixed(4)}
       </div>
-      <div className="mb-3 text-xs">{placeNameText}</div>
+      <div className="mb-1 text-xs">{placeNameText}</div>
+      <Link
+        href={`/star-map?lat=${location.lat}&lng=${location.lng}`}
+        className="mb-3 inline-flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300"
+      >
+        🔭 {t("viewInStarMap")}
+      </Link>
 
       {pointValue.status === "loading" && <div className="text-zinc-400">{t("loading")}</div>}
 

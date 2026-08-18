@@ -113,12 +113,14 @@
     "sourceBortle": "The Bortle Dark-Sky Scale — public reference for the classification shown on the map.",
     "sourceOpenMeteo": "Open-Meteo — free weather forecast and historical archive API, powers the nighttime weather and clear-nights features.",
     "sourceNoaaSwpc": "NOAA Space Weather Prediction Center — OVATION aurora model, powers the aurora probability layer.",
+    "sourceHyg": "HYG star database (Hipparcos/Yale/Gliese-Jahreiss, CC BY-SA 4.0) — position and magnitude data for the ~8,900 naked-eye stars on the star map page.",
+    "sourceD3Celestial": "d3-celestial (Olaf Frohn, BSD-3-Clause) — constellation line figures and bilingual names on the star map page.",
+    "sourceAstronomyEngine": "Astronomy Engine (MIT) — the library computing Sun/Moon/planet positions and sidereal time on the star map page.",
     "contactTitle": "Feedback and contact",
     "contactBody": "This is an independent, non-commercial practice project. Questions, corrections, or feedback are welcome by email.",
     "contactEmailLabel": "Email"
   },
   "clearSkyMap": {
-    "navLabel": "Clear-Night Climate",
     "pageTitle": "Clear Sky Map & Climate",
     "pageSubtitle": "Historical share of clear nights by month for any location — plan the best season to visit, not just the best night.",
     "backToMap": "← Back to map",
@@ -135,7 +137,9 @@
     "subtitle": "A light pollution map and dark sky finder — click anywhere to see the Bortle Scale rating and best nearby stargazing spots.",
     "languageSwitcherAria": "Switch language",
     "moreMenuLabel": "More",
-    "moreMenuAria": "Open more pages menu"
+    "moreMenuAria": "Open more pages menu",
+    "otherMapsMenuLabel": "Other Maps",
+    "otherMapsMenuAria": "Open other maps menu"
   },
   "infoPanel": {
     "openAria": "Open Light Pollution Map FAQ",
@@ -179,6 +183,7 @@
   "bortleScaleMap": {
     "title": "Bortle Scale Map",
     "subtitle": "An interactive Bortle map showing real-time sky darkness — check the Bortle scale for any location on Earth.",
+    "navLabel": "Bortle Scale Map",
     "legend": {
       "title": "Bortle Scale Map (VIIRS satellite data · {styleLabel})",
       "hint": "Click the map to see the Bortle class and approximate SQM value for that point"
@@ -249,6 +254,7 @@
   "darkSkyMap": {
     "title": "Dark Sky Map",
     "subtitle": "A global dark sky map rating night sky darkness by location, based on the same dark sky scale used to compare stargazing conditions.",
+    "navLabel": "Dark Sky Map",
     "legend": {
       "title": "Dark Sky Scale (VIIRS satellite data · {styleLabel})",
       "hint": "Click the map to see the Bortle class and approximate SQM value for that point"
@@ -391,7 +397,8 @@
     "clearNightsLoading": "Loading clear-night climate…",
     "clearNightsLabel": "Clear Nights ({month})",
     "clearNightsValue": "{percent}%",
-    "clearNightsCaption": "Share of nights in {month} with mostly clear skies, based on the last {years} years of historical weather data — a climate estimate, not a forecast."
+    "clearNightsCaption": "Share of nights in {month} with mostly clear skies, based on the last {years} years of historical weather data — a climate estimate, not a forecast.",
+    "viewInStarMap": "View this location in the Star Map"
   },
   "darkSkyPlace": {
     "title": "Certified Dark Sky Place",
@@ -518,6 +525,54 @@
       "none": "None",
       "clouds": "Clouds",
       "rain": "Precipitation"
+    }
+  },
+  "starMap": {
+    "navLabel": "Star Map",
+    "pageTitle": "Real-Time Star Map",
+    "pageSubtitle": "Drag to look around the sky — the Sun, Moon, planets and 88 constellations are all shown in their true positions.",
+    "loadingCanvas": "Loading the night sky…",
+    "dateTimeSectionLabel": "Observation time",
+    "locationSectionLabel": "Observation location",
+    "dateLabel": "Date",
+    "timeLabel": "Time",
+    "nowButton": "Jump to now",
+    "liveIndicator": "● Live",
+    "frozenIndicator": "Paused at selected time",
+    "dragHint": "Drag / swipe to look around",
+    "contextLostMessage": "Rendering paused (the browser reclaimed this page's graphics resources, usually because the tab is backgrounded/not visible) -- it usually resumes automatically once this tab is visible again; reload the page if it doesn't.",
+    "speedLabel": "Speed",
+    "speedLive": "Live",
+    "speedPaused": "Paused",
+    "speedForwardMinute": "1 min/sec",
+    "speedForwardHour": "1 hour/sec",
+    "speedForwardDay": "1 day/sec",
+    "speedReverseMinute": "Reverse 1 min/sec",
+    "speedReverseHour": "Reverse 1 hour/sec",
+    "speedReverseDay": "Reverse 1 day/sec",
+    "searchPlaceholder": "Search sky objects (planets/stars/M31…)",
+    "searchNoResults": "No matching objects found",
+    "searchAria": "Search sky objects",
+    "fovLabel": "FOV {fov}°",
+    "zoomInAria": "Zoom in",
+    "zoomOutAria": "Zoom out",
+    "fullscreenEnterAria": "Enter fullscreen",
+    "fullscreenExitAria": "Exit fullscreen",
+    "fullscreenLabel": "Fullscreen",
+    "nightModeLabel": "Night mode",
+    "atmosphereLabel": "Atmosphere",
+    "azimuthalGridLabel": "Azimuthal grid",
+    "equatorialGridLabel": "Equatorial grid",
+    "planetNames": {
+      "Sun": "Sun",
+      "Moon": "Moon",
+      "Mercury": "Mercury",
+      "Venus": "Venus",
+      "Mars": "Mars",
+      "Jupiter": "Jupiter",
+      "Saturn": "Saturn",
+      "Uranus": "Uranus",
+      "Neptune": "Neptune"
     }
   }
 }

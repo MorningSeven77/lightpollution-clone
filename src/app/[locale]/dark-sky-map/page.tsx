@@ -11,6 +11,7 @@ export default function DarkSkyMapPage() {
       heroSubtitle={t("subtitle")}
       legendNamespace="darkSkyMap.legend"
       infoPanelNamespace="darkSkyMap.infoPanel"
+      currentMapPage="dark-sky-map"
     />
   );
 }
