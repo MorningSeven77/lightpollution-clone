@@ -12,6 +12,7 @@ export default function BortleScaleMapPage() {
       legendNamespace="bortleScaleMap.legend"
       infoPanelNamespace="bortleScaleMap.infoPanel"
       infoPanelGrouped
+      currentMapPage="bortle-scale-map"
     />
   );
 }

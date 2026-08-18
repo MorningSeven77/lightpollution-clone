@@ -9,7 +9,7 @@ import LocationDetailPanel from "@/components/LocationDetailPanel";
 import DarkSkyPlacePanel from "@/components/DarkSkyPlacePanel";
 import IconToolbar from "@/components/IconToolbar";
 import BestSpotsResults from "@/components/BestSpotsResults";
-import SiteHeader from "@/components/SiteHeader";
+import SiteHeader, { type MapFamilyPageId } from "@/components/SiteHeader";
 import { BasemapId, DEFAULT_BASEMAP } from "@/lib/basemapStyles";
 import { ColorStyleId, DEFAULT_COLOR_STYLE } from "@/lib/colorStyles";
 import { DarkSkyPlace } from "@/lib/darkSkyPlaces";
@@ -26,6 +26,14 @@ export type HomeMapExperienceProps = {
   legendNamespace?: string;
   infoPanelNamespace?: string;
   infoPanelGrouped?: boolean;
+  // Which map-family page this render IS -- undefined on the home page
+  // itself (SiteHeader then shows all three in "其他地图" with no "back to
+  // light pollution map" link, since we're already there), set on the
+  // bortle-scale-map/dark-sky-map landing pages that also share this
+  // component. Every page rendering HomeMapExperience is part of the map
+  // family, so showOtherMapsMenu itself is always on -- no separate prop
+  // needed for that.
+  currentMapPage?: MapFamilyPageId;
 };
 
 export default function HomeMapExperience({
@@ -34,6 +42,7 @@ export default function HomeMapExperience({
   legendNamespace,
   infoPanelNamespace,
   infoPanelGrouped,
+  currentMapPage,
 }: HomeMapExperienceProps) {
   const mapRef = useRef<MapHandle>(null);
   const [basemap, setBasemap] = useState<BasemapId>(DEFAULT_BASEMAP);
@@ -76,7 +85,7 @@ export default function HomeMapExperience({
 
   return (
     <main className="flex h-screen w-screen flex-col overflow-hidden">
-      <SiteHeader title={heroTitle} subtitle={heroSubtitle} />
+      <SiteHeader title={heroTitle} subtitle={heroSubtitle} showOtherMapsMenu currentMapPage={currentMapPage} />
       <div className="relative flex-1">
       <Map
         ref={mapRef}
