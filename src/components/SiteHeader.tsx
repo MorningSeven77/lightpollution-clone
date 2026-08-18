@@ -127,12 +127,13 @@ function MorePagesMenu() {
   );
 }
 
-export type MapFamilyPageId = "star-map" | "bortle-scale-map" | "dark-sky-map";
+export type MapFamilyPageId = "star-map" | "bortle-scale-map" | "dark-sky-map" | "best-places-to-stargaze";
 
 const OTHER_MAPS: ReadonlyArray<{ id: MapFamilyPageId; href: string; icon: string; namespace: string }> = [
   { id: "star-map", href: "/star-map", icon: "🔭", namespace: "starMap" },
   { id: "bortle-scale-map", href: "/bortle-scale-map", icon: "🌃", namespace: "bortleScaleMap" },
   { id: "dark-sky-map", href: "/dark-sky-map", icon: "🌑", namespace: "darkSkyMap" },
+  { id: "best-places-to-stargaze", href: "/best-places-to-stargaze", icon: "✨", namespace: "bestPlacesToStargaze" },
 ];
 
 function OtherMapsMenu({ currentMapPage }: { currentMapPage?: MapFamilyPageId }) {
@@ -140,11 +141,13 @@ function OtherMapsMenu({ currentMapPage }: { currentMapPage?: MapFamilyPageId })
   const tStarMap = useTranslations("starMap");
   const tBortleScaleMap = useTranslations("bortleScaleMap");
   const tDarkSkyMap = useTranslations("darkSkyMap");
+  const tBestPlacesToStargaze = useTranslations("bestPlacesToStargaze");
   const [open, setOpen] = useState(false);
   const labelByNamespace: Record<string, string> = {
     starMap: tStarMap("navLabel"),
     bortleScaleMap: tBortleScaleMap("navLabel"),
     darkSkyMap: tDarkSkyMap("navLabel"),
+    bestPlacesToStargaze: tBestPlacesToStargaze("navLabel"),
   };
 
   // Excludes whichever map page the visitor is already on -- e.g. on
