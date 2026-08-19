@@ -34,6 +34,12 @@ export type HomeMapExperienceProps = {
   // family, so showOtherMapsMenu itself is always on -- no separate prop
   // needed for that.
   currentMapPage?: MapFamilyPageId;
+  // Lets /best-places-to-stargaze show both overlay layers immediately on
+  // load instead of requiring the visitor to open the toolbar first -- both
+  // default to off/false so the home page and the other two map-family
+  // pages keep their current behavior unchanged.
+  autoSearchBestSpotsOnLoad?: boolean;
+  defaultShowDarkSkyPlaces?: boolean;
 };
 
 export default function HomeMapExperience({
@@ -43,6 +49,8 @@ export default function HomeMapExperience({
   infoPanelNamespace,
   infoPanelGrouped,
   currentMapPage,
+  autoSearchBestSpotsOnLoad,
+  defaultShowDarkSkyPlaces,
 }: HomeMapExperienceProps) {
   const mapRef = useRef<MapHandle>(null);
   const [basemap, setBasemap] = useState<BasemapId>(DEFAULT_BASEMAP);
@@ -50,7 +58,7 @@ export default function HomeMapExperience({
   const [opacity, setOpacity] = useState(75);
   const [visible, setVisible] = useState(true);
   const [selectedLocation, setSelectedLocation] = useState<SelectedLocation | null>(null);
-  const [showDarkSkyPlaces, setShowDarkSkyPlaces] = useState(false);
+  const [showDarkSkyPlaces, setShowDarkSkyPlaces] = useState(defaultShowDarkSkyPlaces ?? false);
   const [selectedDarkSkyPlace, setSelectedDarkSkyPlace] = useState<DarkSkyPlace | null>(null);
   const [showAurora, setShowAurora] = useState(false);
   const [showTerminator, setShowTerminator] = useState(false);
@@ -66,18 +74,30 @@ export default function HomeMapExperience({
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        mapRef.current?.flyTo({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-          zoom: 8,
-        });
+        const { latitude: lat, longitude: lng } = position.coords;
+        mapRef.current?.flyTo({ lat, lng, zoom: 8 });
+
+        if (autoSearchBestSpotsOnLoad) {
+          // Background auto-enhancement, not a user-initiated search --
+          // fails silently (same treatment as geolocation denial above)
+          // instead of surfacing an error toast. Uses /api/best-spots'
+          // own defaults (radiusKm=100/maxResults=10/minDistanceKm=10).
+          fetch(`/api/best-spots?lat=${lat}&lng=${lng}`)
+            .then((res) => (res.ok ? res.json() : null))
+            .then((data) => {
+              if (data?.spots) setBestSpots(data.spots);
+            })
+            .catch(() => {});
+        }
       },
       () => {
         // Permission denied or unavailable: keep the default world view.
       },
       { timeout: 5000 },
     );
-  }, []);
+    // autoSearchBestSpotsOnLoad is a static per-page prop (never changes
+    // after mount) but listed here to satisfy exhaustive-deps.
+  }, [autoSearchBestSpotsOnLoad]);
 
   const handleSelect = (result: GeocodeResult) => {
     mapRef.current?.flyTo({ lat: result.lat, lng: result.lng, zoom: 10 });

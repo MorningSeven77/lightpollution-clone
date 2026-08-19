@@ -299,6 +299,54 @@
       "feedbackEmailLabel": "Email"
     }
   },
+  "bestPlacesToStargaze": {
+    "title": "Best Places to Stargaze",
+    "subtitle": "Find the best places to stargaze near you — algorithmically ranked dark-sky spots from live satellite data, plus certified Dark Sky Places worldwide.",
+    "navLabel": "Best Places to Stargaze",
+    "legend": {
+      "title": "Best Stargazing Spots (VIIRS satellite data · {styleLabel})",
+      "hint": "Purple numbered markers are algorithmically recommended spots; colored dots are certified Dark Sky Places. Click any marker, or the map itself, for details."
+    },
+    "infoPanel": {
+      "openAria": "Open Best Places to Stargaze FAQ",
+      "closeAria": "Close FAQ",
+      "title": "Best Places to Stargaze FAQ",
+      "intro": "Here's what this map shows and how the recommended spots are found.",
+      "qa": [
+        {
+          "question": "What does this map show?",
+          "answer": "Two things at once: purple numbered markers are stargazing spots recommended by our own algorithm from live light pollution data, and colored dots are officially certified Dark Sky Places from DarkSky International."
+        },
+        {
+          "question": "How are the recommended spots (purple markers) calculated?",
+          "answer": "We sample satellite-measured light pollution across the search area, score each candidate point by how dark its sky is and how far it is from the search center, then pick the highest-scoring points that are still spaced apart from each other. It's a simplified estimate, not a field survey — actual conditions vary with clouds, moonlight, and terrain."
+        },
+        {
+          "question": "What's the difference between the purple markers and the colored dots?",
+          "answer": "Purple numbered markers are computed on the fly for wherever you're looking, ranked purely by measured light pollution. Colored dots are a fixed, curated list of places DarkSky International has formally certified — a much smaller set, but independently vetted rather than estimated."
+        },
+        {
+          "question": "How do I search a different location or radius?",
+          "answer": "Use the search bar to jump to a place, or the telescope icon in the toolbar to re-run the search around wherever the map is currently centered, with your own radius and result-count settings."
+        },
+        {
+          "question": "How is this different from the Dark Sky Map and Bortle Scale Map?",
+          "answer": "Those two pages show the same underlying light pollution data as a continuous map you explore by panning and clicking. This page is built specifically to surface a short list of nearby recommended spots instead of exploring the whole map yourself."
+        },
+        {
+          "question": "Does this cover my country?",
+          "answer": "Yes — both the recommended-spot search and the light pollution data behind it cover the entire globe, though certified Dark Sky Places are naturally concentrated wherever DarkSky International has an active certification program."
+        },
+        {
+          "question": "How accurate are the recommended spots?",
+          "answer": "They're a useful starting point for planning, not a guarantee — satellite light pollution data doesn't account for local obstructions, weather on the night you actually go, or access restrictions at a given spot."
+        }
+      ],
+      "feedbackTitle": "Feedback",
+      "feedbackAboutLink": "About & Data",
+      "feedbackEmailLabel": "Email"
+    }
+  },
   "searchBar": {
     "placeholder": "Search location…",
     "searching": "Searching…",
