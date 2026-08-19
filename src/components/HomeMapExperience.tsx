@@ -15,6 +15,21 @@ import { ColorStyleId, DEFAULT_COLOR_STYLE } from "@/lib/colorStyles";
 import { DarkSkyPlace } from "@/lib/darkSkyPlaces";
 import { WeatherOverlayId, DEFAULT_WEATHER_OVERLAY } from "@/lib/weatherOverlay";
 import type { RankedSpot } from "@/lib/bestSpots";
+import { readViewFromUrl } from "@/lib/urlState";
+
+// Background auto-enhancement, not a user-initiated search -- fails silently
+// (returns null) instead of surfacing an error toast. Uses /api/best-spots'
+// own defaults (radiusKm=100/maxResults=10/minDistanceKm=10).
+async function fetchBestSpots(lat: number, lng: number): Promise<RankedSpot[] | null> {
+  try {
+    const res = await fetch(`/api/best-spots?lat=${lat}&lng=${lng}`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data?.spots ?? null;
+  } catch {
+    return null;
+  }
+}
 
 export type HomeMapExperienceProps = {
   // Lets keyword-landing variants of this same map experience (e.g.
@@ -66,6 +81,22 @@ export default function HomeMapExperience({
   const [bestSpots, setBestSpots] = useState<RankedSpot[] | null>(null);
 
   useEffect(() => {
+    if (!autoSearchBestSpotsOnLoad) return;
+    // Show results the instant the page loads rather than waiting on the
+    // geolocation permission prompt (which can take a while, or never
+    // resolve if the visitor ignores it) -- search around wherever the map
+    // is starting from: a shared link's coordinates, or the default world
+    // view. The geolocation effect below re-runs this against the
+    // visitor's real location once/if it resolves, replacing these.
+    const { lat, lng } = readViewFromUrl();
+    fetchBestSpots(lat, lng).then((spots) => {
+      if (spots) setBestSpots(spots);
+    });
+    // autoSearchBestSpotsOnLoad is a static per-page prop (never changes
+    // after mount) but listed here to satisfy exhaustive-deps.
+  }, [autoSearchBestSpotsOnLoad]);
+
+  useEffect(() => {
     if (typeof window === "undefined" || !("geolocation" in navigator)) return;
 
     // If the URL already encodes a view (e.g. a shared link), respect it
@@ -78,20 +109,14 @@ export default function HomeMapExperience({
         mapRef.current?.flyTo({ lat, lng, zoom: 8 });
 
         if (autoSearchBestSpotsOnLoad) {
-          // Background auto-enhancement, not a user-initiated search --
-          // fails silently (same treatment as geolocation denial above)
-          // instead of surfacing an error toast. Uses /api/best-spots'
-          // own defaults (radiusKm=100/maxResults=10/minDistanceKm=10).
-          fetch(`/api/best-spots?lat=${lat}&lng=${lng}`)
-            .then((res) => (res.ok ? res.json() : null))
-            .then((data) => {
-              if (data?.spots) setBestSpots(data.spots);
-            })
-            .catch(() => {});
+          fetchBestSpots(lat, lng).then((spots) => {
+            if (spots) setBestSpots(spots);
+          });
         }
       },
       () => {
-        // Permission denied or unavailable: keep the default world view.
+        // Permission denied or unavailable: keep the default world view
+        // (and whatever fetchBestSpots' default-view search already found).
       },
       { timeout: 5000 },
     );
