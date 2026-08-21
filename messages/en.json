@@ -301,7 +301,7 @@
   },
   "bestPlacesToStargaze": {
     "title": "Best Places to Stargaze",
-    "subtitle": "Find the best places to stargaze near you — algorithmically ranked dark-sky spots from live satellite data, plus certified Dark Sky Places worldwide.",
+    "subtitle": "Find the best places to stargaze near you — dark, clear skies for viewing the Milky Way and stars.",
     "navLabel": "Best Places to Stargaze",
     "legend": {
       "title": "Best Stargazing Spots (VIIRS satellite data · {styleLabel})",
@@ -311,35 +311,31 @@
       "openAria": "Open Best Places to Stargaze FAQ",
       "closeAria": "Close FAQ",
       "title": "Best Places to Stargaze FAQ",
-      "intro": "Here's what this map shows and how the recommended spots are found.",
+      "intro": "Here's how to find the best places to stargaze near you.",
       "qa": [
         {
-          "question": "What does this map show?",
-          "answer": "Two things at once: purple numbered markers are stargazing spots recommended by our own algorithm from live light pollution data, and colored dots are officially certified Dark Sky Places from DarkSky International."
+          "question": "What makes a location good for stargazing?",
+          "answer": "The best places to stargaze have minimal light pollution, typically Class 1–4 on the dark sky scale, along with a clear horizon and stable weather — national parks, deserts, and rural areas away from cities usually score highest."
         },
         {
-          "question": "How are the recommended spots (purple markers) calculated?",
-          "answer": "We sample satellite-measured light pollution across the search area, score each candidate point by how dark its sky is and how far it is from the search center, then pick the highest-scoring points that are still spaced apart from each other. It's a simplified estimate, not a field survey — actual conditions vary with clouds, moonlight, and terrain."
+          "question": "How do I find stargazing spots near me?",
+          "answer": "Search your area on the map to see nearby locations ranked by sky darkness — even a short drive away from a city can put you somewhere noticeably better for stargazing near you."
         },
         {
-          "question": "What's the difference between the purple markers and the colored dots?",
-          "answer": "Purple numbered markers are computed on the fly for wherever you're looking, ranked purely by measured light pollution. Colored dots are a fixed, curated list of places DarkSky International has formally certified — a much smaller set, but independently vetted rather than estimated."
+          "question": "Where can you see the Milky Way?",
+          "answer": "The Milky Way is visible from dark sky locations, generally Class 1–3, away from major light pollution — it's rarely visible from suburban or urban areas, even on a clear night."
         },
         {
-          "question": "How do I search a different location or radius?",
-          "answer": "Use the search bar to jump to a place, or the telescope icon in the toolbar to re-run the search around wherever the map is currently centered, with your own radius and result-count settings."
+          "question": "What's the difference between a decent stargazing spot and a great one?",
+          "answer": "A decent spot just needs low light pollution and open sky; a great one also has minimal moonlight, good weather, and some elevation, which cuts down atmospheric haze."
         },
         {
-          "question": "How is this different from the Dark Sky Map and Bortle Scale Map?",
-          "answer": "Those two pages show the same underlying light pollution data as a continuous map you explore by panning and clicking. This page is built specifically to surface a short list of nearby recommended spots instead of exploring the whole map yourself."
+          "question": "Do I need any equipment to stargaze at these spots?",
+          "answer": "No — naked-eye viewing works fine at any dark sky location. Binoculars or a small telescope add detail for planets and deep-sky objects, but they're optional."
         },
         {
-          "question": "Does this cover my country?",
-          "answer": "Yes — both the recommended-spot search and the light pollution data behind it cover the entire globe, though certified Dark Sky Places are naturally concentrated wherever DarkSky International has an active certification program."
-        },
-        {
-          "question": "How accurate are the recommended spots?",
-          "answer": "They're a useful starting point for planning, not a guarantee — satellite light pollution data doesn't account for local obstructions, weather on the night you actually go, or access restrictions at a given spot."
+          "question": "When is the best time to go stargazing?",
+          "answer": "Aim for a clear night near the new moon — moonlight is one of the biggest factors that can wash out an otherwise dark sky, even at a great location."
         }
       ],
       "feedbackTitle": "Feedback",
