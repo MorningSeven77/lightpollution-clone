@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 
 const PAGE_COPY = {
   en: {
-    title: "Best Places to Stargaze – Interactive Dark Sky Finder Map",
+    title: "Best Places to Stargaze – Find Stargazing Spots Near You",
     description:
-      "Find the best places to stargaze near you on a full-screen map — algorithmically ranked dark-sky spots from live light pollution data, plus certified Dark Sky Places worldwide.",
+      "Find the best places to stargaze near you, ranked by night-sky darkness — locate dark, clear spots to see the Milky Way and stars in full view.",
   },
   zh: {
-    title: "最佳观星地点 – 交互式暗夜地图",
-    description: "全屏地图直接找到附近最佳观星地点——基于实时光污染数据算法推荐的暗夜观星点，叠加全球官方认证的暗夜地点。",
+    title: "最佳观星地点 – 查找附近的观星点",
+    description: "在地图上直接找到附近最佳观星地点——按夜空黑暗程度排名，定位适合看银河和满天繁星的黑暗晴朗地点。",
   },
 } as const;
 
