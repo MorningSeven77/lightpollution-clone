@@ -204,20 +204,35 @@ export default function HomeMapExperience({
           }}
         />
       )}
-      {/* Backlink badge for the Fazier directory listing. Positioned clear of
-          MapLibre's own compact attribution control, which claims the very
-          bottom-right corner (see the attributionControl option in Map.tsx) —
-          a light chip so the badge's own dark text stays legible against the
-          map's dark basemap. */}
-      <div className="absolute bottom-2 right-12 z-10 rounded-md bg-white px-2 py-1 shadow-lg">
-        <a
-          href="https://fazier.com"
-          target="_blank"
-          rel="noopener"
-          style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "#1a1a1a", textDecoration: "none" }}
-        >
-          Featured on <strong>Fazier</strong>
+      {/* Backlink badges for directory listings, stacked bottom-right. Both
+          positioned clear of MapLibre's own compact attribution control,
+          which claims the very bottom-right corner (see the
+          attributionControl option in Map.tsx). */}
+      <div className="absolute bottom-2 right-12 z-10 flex flex-col items-end gap-2">
+        <a href="https://dang.ai" target="_blank" rel="dofollow noopener" style={{ display: "inline-block", textDecoration: "none" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset served from dang.ai, not a locally optimizable image */}
+          <img
+            src="https://assets.dang.ai/badges/dang-verified-dark.png"
+            alt="Verified on DANG!"
+            width={260}
+            height={94}
+            style={{ display: "block", width: 260, maxWidth: "100%", height: "auto", border: 0, outline: "none", textDecoration: "none" }}
+          />
         </a>
+        {/* Fazier's badge is plain text with no background of its own, so it
+            gets a light chip here so its dark text stays legible against the
+            map's dark basemap — DANG's badge above is already a fully
+            designed image and needs no such wrapper. */}
+        <div className="rounded-md bg-white px-2 py-1 shadow-lg">
+          <a
+            href="https://fazier.com"
+            target="_blank"
+            rel="noopener"
+            style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "#1a1a1a", textDecoration: "none" }}
+          >
+            Featured on <strong>Fazier</strong>
+          </a>
+        </div>
       </div>
       </div>
     </main>
