@@ -60,6 +60,21 @@ export default function DirectoryBadges() {
                 Featured on <strong>Fazier</strong>
               </a>
             </div>
+            <a
+              href="https://startupfa.me/s/light-pollution-map?utm_source=www.lightpollutionmap.io"
+              target="_blank"
+              rel="noopener"
+              style={{ display: "inline-block" }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset served from startupfa.me, not a locally optimizable image */}
+              <img
+                src="https://startupfa.me/badges/featured-badge.webp"
+                alt="Light Pollution Map - Featured on Startup Fame"
+                width={171}
+                height={54}
+                style={{ display: "block", width: 171, maxWidth: "100%", height: "auto" }}
+              />
+            </a>
           </div>
         </>
       )}
