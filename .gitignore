@@ -42,3 +42,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code: nested git worktrees for parallel sessions, and local
+# dev-server launch config -- neither belongs in the repo.
+.claude/

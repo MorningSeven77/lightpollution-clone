@@ -204,6 +204,21 @@ export default function HomeMapExperience({
           }}
         />
       )}
+      {/* Backlink badge for the Fazier directory listing. Positioned clear of
+          MapLibre's own compact attribution control, which claims the very
+          bottom-right corner (see the attributionControl option in Map.tsx) —
+          a light chip so the badge's own dark text stays legible against the
+          map's dark basemap. */}
+      <div className="absolute bottom-2 right-12 z-10 rounded-md bg-white px-2 py-1 shadow-lg">
+        <a
+          href="https://fazier.com"
+          target="_blank"
+          rel="noopener"
+          style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "#1a1a1a", textDecoration: "none" }}
+        >
+          Featured on <strong>Fazier</strong>
+        </a>
+      </div>
       </div>
     </main>
   );
