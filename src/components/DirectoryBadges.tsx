@@ -89,6 +89,18 @@ export default function DirectoryBadges() {
             style={{ display: "block", width: 171, maxWidth: "100%", height: "auto" }}
           />
         </a>
+        {/* "white" variant is designed for dark backgrounds, so like DANG's
+            badge above it needs no extra chip. */}
+        <a href="https://twelve.tools" target="_blank" rel="noopener" style={{ display: "inline-block" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset served from twelve.tools, not a locally optimizable image */}
+          <img
+            src="https://twelve.tools/badge0-white.svg"
+            alt="Featured on Twelve Tools"
+            width={148}
+            height={40}
+            style={{ display: "block", width: 148, maxWidth: "100%", height: "auto" }}
+          />
+        </a>
       </div>
     </>
   );
