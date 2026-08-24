@@ -24,60 +24,72 @@ export default function DirectoryBadges() {
         🏅
       </button>
 
-      {open && (
-        <>
-          {/* Click-outside-to-close via a full-screen transparent overlay,
-              same pattern used by the site's other dropdown menus. */}
-          <div className="fixed inset-0 z-30" onClick={() => setOpen(false)} />
-          {/* A sibling of the trigger button, not nested inside it — nesting
-              it there made this panel's shrink-to-fit width resolve against
-              the button's own 32px box (absolutely positioned descendants
-              don't contribute to their ancestor's auto width), squeezing the
-              260px-wide DANG badge down to ~110px. Positioned independently
-              here against the map container instead. */}
-          <div className="absolute bottom-12 right-12 z-40 flex flex-col items-end gap-2">
-            <a href="https://dang.ai" target="_blank" rel="dofollow noopener" style={{ display: "inline-block", textDecoration: "none" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset served from dang.ai, not a locally optimizable image */}
-              <img
-                src="https://assets.dang.ai/badges/dang-verified-dark.png"
-                alt="Verified on DANG!"
-                width={260}
-                height={94}
-                style={{ display: "block", width: 260, maxWidth: "100%", height: "auto", border: 0, outline: "none", textDecoration: "none" }}
-              />
-            </a>
-            {/* Fazier's badge is plain text with no background of its own, so
-                it gets a light chip here so its dark text stays legible
-                against the map's dark basemap — DANG's badge above is
-                already a fully designed image and needs no such wrapper. */}
-            <div className="rounded-md bg-white px-2 py-1 shadow-lg">
-              <a
-                href="https://fazier.com"
-                target="_blank"
-                rel="noopener"
-                style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "#1a1a1a", textDecoration: "none" }}
-              >
-                Featured on <strong>Fazier</strong>
-              </a>
-            </div>
-            <a
-              href="https://startupfa.me/s/light-pollution-map?utm_source=www.lightpollutionmap.io"
-              target="_blank"
-              rel="noopener"
-              style={{ display: "inline-block" }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset served from startupfa.me, not a locally optimizable image */}
-              <img
-                src="https://startupfa.me/badges/featured-badge.webp"
-                alt="Light Pollution Map - Featured on Startup Fame"
-                width={171}
-                height={54}
-                style={{ display: "block", width: 171, maxWidth: "100%", height: "auto" }}
-              />
-            </a>
-          </div>
-        </>
-      )}
+      {/* Click-outside-to-close via a full-screen transparent overlay, same
+          pattern used by the site's other dropdown menus. Conditionally
+          mounted is correct here (unlike the badge panel below) — this is
+          just a click-catcher with no content of its own, and if it stayed
+          mounted while closed it would block every click on the map
+          underneath it. */}
+      {open && <div className="fixed inset-0 z-30" onClick={() => setOpen(false)} />}
+
+      {/* Always mounted (not `open &&`) — several of these directories
+          (Startup Fame, DANG, Fazier) verify their badge by fetching this
+          page's raw HTML and looking for the <a>/<img> markup, without
+          executing JS. Conditionally rendering this panel meant the badge
+          markup simply didn't exist in the server-rendered HTML (or the
+          initial client DOM) until a visitor clicked the trigger, so those
+          verification crawlers never saw it. Only *visibility* is toggled
+          client-side now — same "always mounted, CSS-hidden" approach
+          InfoPanel.tsx uses for its slide-in FAQ panel — and it's still a
+          sibling of the trigger button, not nested inside it: nesting it
+          there made this panel's shrink-to-fit width resolve against the
+          button's own 32px box (absolutely positioned descendants don't
+          contribute to their ancestor's auto width), squeezing the 260px-
+          wide DANG badge down to ~110px. */}
+      <div
+        className={`absolute bottom-12 right-12 z-40 flex-col items-end gap-2 ${open ? "flex" : "hidden"}`}
+        aria-hidden={!open}
+      >
+        <a href="https://dang.ai" target="_blank" rel="dofollow noopener" style={{ display: "inline-block", textDecoration: "none" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset served from dang.ai, not a locally optimizable image */}
+          <img
+            src="https://assets.dang.ai/badges/dang-verified-dark.png"
+            alt="Verified on DANG!"
+            width={260}
+            height={94}
+            style={{ display: "block", width: 260, maxWidth: "100%", height: "auto", border: 0, outline: "none", textDecoration: "none" }}
+          />
+        </a>
+        {/* Fazier's badge is plain text with no background of its own, so it
+            gets a light chip here so its dark text stays legible against the
+            map's dark basemap — DANG's badge above is already a fully
+            designed image and needs no such wrapper. */}
+        <div className="rounded-md bg-white px-2 py-1 shadow-lg">
+          <a
+            href="https://fazier.com"
+            target="_blank"
+            rel="noopener"
+            style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "#1a1a1a", textDecoration: "none" }}
+          >
+            Featured on <strong>Fazier</strong>
+          </a>
+        </div>
+        <a
+          href="https://startupfa.me/s/light-pollution-map?utm_source=www.lightpollutionmap.io"
+          target="_blank"
+          rel="noopener"
+          style={{ display: "inline-block" }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset served from startupfa.me, not a locally optimizable image */}
+          <img
+            src="https://startupfa.me/badges/featured-badge.webp"
+            alt="Light Pollution Map - Featured on Startup Fame"
+            width={171}
+            height={54}
+            style={{ display: "block", width: 171, maxWidth: "100%", height: "auto" }}
+          />
+        </a>
+      </div>
     </>
   );
 }
