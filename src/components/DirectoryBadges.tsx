@@ -101,6 +101,33 @@ export default function DirectoryBadges() {
             style={{ display: "block", width: 148, maxWidth: "100%", height: "auto" }}
           />
         </a>
+        <a href="https://www.toolpilot.ai" target="_blank" rel="noopener" style={{ display: "inline-block" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset served from toolpilot.ai, not a locally optimizable image */}
+          <img
+            src="https://www.toolpilot.ai/cdn/shop/files/f-b.png"
+            alt="Featured on ToolPilot"
+            width={300}
+            height={66}
+            style={{ display: "block", width: 300, maxWidth: "100%", height: "auto" }}
+          />
+        </a>
+        {/* Self-contained white-background badge (verified its SVG source has
+            its own white rounded rect + border baked in), so like DANG's and
+            Twelve Tools' badges above it needs no extra chip. */}
+        <a
+          href="https://findly.tools/light-pollution-map?utm_source=light-pollution-map"
+          target="_blank"
+          rel="noopener"
+          style={{ display: "inline-block" }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset served from findly.tools, not a locally optimizable image. No height given upstream, so it's left to the image's natural aspect ratio. */}
+          <img
+            src="https://findly.tools/badges/findly-tools-badge-light.svg"
+            alt="Featured on Findly.tools"
+            width={150}
+            style={{ display: "block", width: 150, maxWidth: "100%", height: "auto" }}
+          />
+        </a>
       </div>
     </>
   );
