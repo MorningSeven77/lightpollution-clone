@@ -117,7 +117,7 @@
     "sourceD3Celestial": "d3-celestial（Olaf Frohn，BSD-3-Clause）——星空图页面 88 个星座的连线与中英文名称数据。",
     "sourceAstronomyEngine": "Astronomy Engine（MIT）——星空图页面太阳、月亮、行星位置与恒星时的计算库。",
     "contactTitle": "意见反馈与联系方式",
-    "contactBody": "这是一个独立、非商业的练手项目。欢迎通过邮件提出问题、指正或反馈意见。",
+    "contactBody": "欢迎通过邮件提出问题、指正或反馈意见。",
     "contactEmailLabel": "邮箱"
   },
   "clearSkyMap": {
