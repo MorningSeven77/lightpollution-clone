@@ -117,7 +117,7 @@
     "sourceD3Celestial": "d3-celestial (Olaf Frohn, BSD-3-Clause) — constellation line figures and bilingual names on the star map page.",
     "sourceAstronomyEngine": "Astronomy Engine (MIT) — the library computing Sun/Moon/planet positions and sidereal time on the star map page.",
     "contactTitle": "Feedback and contact",
-    "contactBody": "This is an independent, non-commercial practice project. Questions, corrections, or feedback are welcome by email.",
+    "contactBody": "Questions, corrections, or feedback are welcome by email.",
     "contactEmailLabel": "Email"
   },
   "clearSkyMap": {
