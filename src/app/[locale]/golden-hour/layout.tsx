@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumb, localizedUrl, webPage } from "@/lib/structuredData";
 
 const PAGE_COPY = {
   en: {
@@ -11,6 +14,8 @@ const PAGE_COPY = {
     description: "查询任意地点今天的日出、日落、黄金时刻和蓝调时刻时间，附带太阳方位角——方便安排摄影和观星行程。",
   },
 } as const;
+
+const PATH = "/golden-hour";
 
 export async function generateMetadata({
   params,
@@ -25,6 +30,26 @@ export async function generateMetadata({
   };
 }
 
-export default function GoldenHourLayout({ children }: { children: React.ReactNode }) {
-  return children;
+export default async function GoldenHourLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const copy = locale === "zh" ? PAGE_COPY.zh : PAGE_COPY.en;
+  const t = await getTranslations({ locale, namespace: "goldenHour" });
+  const tHeader = await getTranslations({ locale, namespace: "siteHeader" });
+  const url = localizedUrl(locale, PATH);
+
+  return (
+    <>
+      <JsonLd data={webPage({ locale, url, name: t("pageTitle"), description: copy.description })} />
+      <JsonLd
+        data={breadcrumb({ locale, url, homeName: tHeader("title"), pageName: t("navLabel") })}
+      />
+      {children}
+    </>
+  );
 }

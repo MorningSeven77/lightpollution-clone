@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumb, localizedUrl, webPage } from "@/lib/structuredData";
 
 const PAGE_COPY = {
   en: {
@@ -11,6 +14,8 @@ const PAGE_COPY = {
     description: "查询任意地点每个月历史晴夜比例，基于 5 年天气历史归档数据——不只是找最佳的一晚，而是找最佳的季节。",
   },
 } as const;
+
+const PATH = "/clear-sky-map";
 
 export async function generateMetadata({
   params,
@@ -25,6 +30,26 @@ export async function generateMetadata({
   };
 }
 
-export default function ClearSkyMapLayout({ children }: { children: React.ReactNode }) {
-  return children;
+export default async function ClearSkyMapLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const copy = locale === "zh" ? PAGE_COPY.zh : PAGE_COPY.en;
+  const t = await getTranslations({ locale, namespace: "clearSkyMap" });
+  const tHeader = await getTranslations({ locale, namespace: "siteHeader" });
+  const url = localizedUrl(locale, PATH);
+
+  return (
+    <>
+      <JsonLd data={webPage({ locale, url, name: t("pageTitle"), description: copy.description })} />
+      <JsonLd
+        data={breadcrumb({ locale, url, homeName: tHeader("title"), pageName: t("pageTitle") })}
+      />
+      {children}
+    </>
+  );
 }
