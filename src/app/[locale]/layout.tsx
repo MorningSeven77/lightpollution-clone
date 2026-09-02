@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { JsonLd } from "@/components/JsonLd";
+import { siteGraph } from "@/lib/structuredData";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -90,12 +92,24 @@ export default async function LocaleLayout({
   // translation consumption happens in Client Components.
   setRequestLocale(locale);
 
+  const tHeader = await getTranslations({ locale, namespace: "siteHeader" });
+
   return (
     <html
       lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* Site-wide structured data (WebSite + Organization). Page-specific
+            nodes (WebApplication, FAQPage, BreadcrumbList, …) are rendered
+            from the individual page/layout components. */}
+        <JsonLd
+          data={siteGraph({
+            locale,
+            name: tHeader("title"),
+            description: tHeader("subtitle"),
+          })}
+        />
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
         {/* Privacy-friendly analytics by Plausible */}
         <Script src="https://plausible.lumenfeng.com/js/pa-fLteL5i6UPhNafhIpnWqJ.js" strategy="afterInteractive" />
