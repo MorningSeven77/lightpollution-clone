@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 // Backlink badges for directory listings this project is featured on
-// (Fazier, DANG, ...). Collapsed into a single small trigger button by
+// (Fazier, DANG, ShowMeBestAI, ...). Collapsed into a single small trigger button by
 // default — a full-size badge stack sitting permanently on the map got
 // flagged as too obtrusive, and more directories are expected to be added
 // here over time, so a fixed-footprint trigger (like the app's other
@@ -126,6 +126,32 @@ export default function DirectoryBadges() {
             alt="Featured on Findly.tools"
             width={150}
             style={{ display: "block", width: 150, maxWidth: "100%", height: "auto" }}
+          />
+        </a>
+        {/* "white" variant is designed for dark backgrounds, so like DANG's
+            and Twelve Tools' badges above it needs no extra chip. */}
+        <a href="https://showmebest.ai" target="_blank" rel="noopener" style={{ display: "inline-block" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset served from showmebest.ai, not a locally optimizable image */}
+          <img
+            src="https://showmebest.ai/badge/feature-badge-white.webp"
+            alt="Featured on ShowMeBestAI"
+            width={220}
+            height={60}
+            style={{ display: "block", width: 220, maxWidth: "100%", height: "auto" }}
+          />
+        </a>
+        {/* "dark" variant is designed for dark backgrounds, so like DANG's,
+            Twelve Tools' and ShowMeBestAI's badges above it needs no extra
+            chip. No width given upstream (only a fixed height), so it's left
+            to the image's natural aspect ratio, same as Findly.tools' badge
+            above (which instead has a fixed width and auto height). */}
+        <a href="https://turbo0.com/item/light-pollution-map" target="_blank" rel="noopener noreferrer">
+          {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset served from img.turbo0.com, not a locally optimizable image */}
+          <img
+            src="https://img.turbo0.com/badge-listed-dark.svg"
+            alt="Listed on Turbo0"
+            height={54}
+            style={{ display: "block", height: 54, maxHeight: "100%", width: "auto" }}
           />
         </a>
       </div>
