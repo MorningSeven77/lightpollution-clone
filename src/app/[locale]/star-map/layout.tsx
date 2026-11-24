@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { JsonLd } from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/pageMetadata";
 import { breadcrumb, localizedUrl, webPage } from "@/lib/structuredData";
 
 const PAGE_COPY = {
   en: {
-    title: "Star Map — Real-Time Night Sky Viewer | Light Pollution Map",
+    title: "Star Map – Live Night Sky Map",
     description:
-      "A real-time 3D star map: drag to look around the sky, see the Sun, Moon and planets in their true positions, and the 88 constellations, for any date, time and location.",
+      "Interactive star map of the night sky: constellations, planets, the Moon, and the Sun for a chosen time and place. This is a sky chart, not the light-pollution map.",
   },
   zh: {
-    title: "星空图 — 实时夜空查看器 | 光污染地图",
-    description: "实时 3D 星空图：拖拽转向查看星空，展示任意日期、时间、地点下太阳/月亮/行星的真实位置和 88 个星座连线。",
+    title: "星空图 – 实时夜空星图",
+    description: "可交互的夜空星图：按所选时间与地点显示星座、行星、月亮和太阳。这是星图，不是光污染地图。",
   },
 } as const;
 
@@ -24,10 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const copy = locale === "zh" ? PAGE_COPY.zh : PAGE_COPY.en;
-  return {
-    title: copy.title,
-    description: copy.description,
-  };
+  return pageMetadata(locale, PATH, copy);
 }
 
 export default async function StarMapLayout({

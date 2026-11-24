@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { JsonLd } from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/pageMetadata";
 import { breadcrumb, faqPage, localizedUrl, webPage, type QAItem } from "@/lib/structuredData";
 
 const PAGE_COPY = {
   en: {
-    title: "Best Places to Stargaze – Find Stargazing Spots Near You",
+    title: "Best Places to Stargaze Near You",
     description:
-      "Find the best places to stargaze near you, ranked by night-sky darkness — locate dark, clear spots to see the Milky Way and stars in full view.",
+      "Find places to stargaze near you from modeled night-sky darkness. This is our own spot search, not a separate product. State maps cover Texas, Colorado, and the other listed states.",
   },
   zh: {
-    title: "最佳观星地点 – 查找附近的观星点",
-    description: "在地图上直接找到附近最佳观星地点——按夜空黑暗程度排名，定位适合看银河和满天繁星的黑暗晴朗地点。",
+    title: "最佳观星地点 – 查找附近观星点",
+    description: "按模型化的夜空黑暗程度查找附近观星地点。这是本站自己的地点搜索，不是另一个产品。州地图覆盖得克萨斯、科罗拉多和其他已列出的州。",
   },
 } as const;
 
@@ -24,10 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const copy = locale === "zh" ? PAGE_COPY.zh : PAGE_COPY.en;
-  return {
-    title: copy.title,
-    description: copy.description,
-  };
+  return pageMetadata(locale, PATH, copy);
 }
 
 export default async function BestPlacesToStargazeLayout({

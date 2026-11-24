@@ -128,6 +128,9 @@ export type MapProps = {
   basemap: BasemapId;
   opacity: number; // 0-100
   visible: boolean;
+  // Used when the page itself is a regional map. A shared ?lat=&lng= link
+  // still wins, so the same map can open on a pinned place.
+  initialView?: MapView;
   selectedLocation: SelectedLocation | null;
   onMapClick: (lat: number, lng: number) => void;
   showDarkSkyPlaces: boolean;
@@ -378,10 +381,12 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
     weatherOverlay,
     bestSpots,
     onBestSpotClick,
+    initialView,
   },
   ref,
 ) {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const initialViewRef = useRef(initialView);
   const mapRef = useRef<MaplibreMap | null>(null);
   const markerRef = useRef<Marker | null>(null);
   const tileUrlCacheRef = useRef<Partial<Record<ColorStyleId, string>>>({});
@@ -426,7 +431,9 @@ const Map = forwardRef<MapHandle, MapProps>(function Map(
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
-    const initialView = readViewFromUrl();
+    const params = new URLSearchParams(window.location.search);
+    const urlView = readViewFromUrl();
+    const initialView = params.has("lat") ? urlView : (initialViewRef.current ?? urlView);
 
     const map = new MaplibreMap({
       container: containerRef.current,

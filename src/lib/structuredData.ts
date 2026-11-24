@@ -93,25 +93,28 @@ export function faqPage(opts: { locale: string; url: string; qa: QAItem[] }) {
   };
 }
 
-export function breadcrumb(opts: { locale: string; url: string; homeName: string; pageName: string }) {
+export function breadcrumb(opts: {
+  locale: string;
+  url: string;
+  homeName: string;
+  pageName: string;
+  parent?: { name: string; url: string };
+}) {
+  const crumbs = [
+    { name: opts.homeName, item: localizedUrl(opts.locale, "") },
+    ...(opts.parent ? [{ name: opts.parent.name, item: opts.parent.url }] : []),
+    { name: opts.pageName, item: opts.url },
+  ];
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "@id": `${opts.url}/#breadcrumb`,
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: opts.homeName,
-        item: localizedUrl(opts.locale, ""),
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: opts.pageName,
-        item: opts.url,
-      },
-    ],
+    itemListElement: crumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      item: crumb.item,
+    })),
   };
 }
 

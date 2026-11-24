@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { JsonLd } from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/pageMetadata";
 import { breadcrumb, faqPage, localizedUrl, webPage, type QAItem } from "@/lib/structuredData";
 
 const PAGE_COPY = {
   en: {
-    title: "Dark Sky Map – Check the Dark Sky Scale by Location",
+    title: "Dark Sky Map – Worldwide Night-Sky Darkness",
     description:
-      "An interactive dark sky map showing night sky darkness worldwide, rated on the dark sky scale used to compare stargazing conditions by location.",
+      "A worldwide dark sky map of night-sky darkness from satellite night lights. Compare places on one global map. Bortle class definitions stay on the Bortle scale map, and the United States has its own map.",
   },
   zh: {
-    title: "暗夜地图 – 按地点查询暗夜等级",
-    description: "交互式暗夜地图，展示全球任意地点的夜空黑暗程度，评级标准与用于比较各地观星条件的暗夜等级一致。",
+    title: "暗夜地图 – 全球夜空黑暗程度",
+    description: "全球暗夜地图，用卫星夜间灯光比较各地夜空有多暗。波特尔等级说明在波特尔等级地图上，美国有单独的地图。",
   },
 } as const;
 
@@ -24,10 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const copy = locale === "zh" ? PAGE_COPY.zh : PAGE_COPY.en;
-  return {
-    title: copy.title,
-    description: copy.description,
-  };
+  return pageMetadata(locale, PATH, copy);
 }
 
 export default async function DarkSkyMapLayout({

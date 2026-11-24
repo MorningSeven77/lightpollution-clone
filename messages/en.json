@@ -10,8 +10,8 @@
   "goldenHour": {
     "navLabel": "Golden Hour",
     "closeAria": "Close golden hour calculator",
-    "pageTitle": "Golden Hour & Light Direction",
-    "pageSubtitle": "When the light is good — and which way it falls. The sun's path today, with the golden and blue hours marked.",
+    "pageTitle": "When Are Golden Hours?",
+    "pageSubtitle": "Sunrise, sunset, golden hour, and blue hour, and which way the light falls.",
     "backToMap": "← Back to map",
     "dateLabel": "Date",
     "coordsApprox": "{lat}, {lng} · approx. UTC{offset}",
@@ -121,8 +121,8 @@
     "contactEmailLabel": "Email"
   },
   "clearSkyMap": {
-    "pageTitle": "Clear Sky Map & Climate",
-    "pageSubtitle": "Historical share of clear nights by month for any location — plan the best season to visit, not just the best night.",
+    "pageTitle": "Clear Sky Map: Historical Clear Nights",
+    "pageSubtitle": "A climate record of clear nights by month. Not a forecast for tonight.",
     "backToMap": "← Back to map",
     "loadingMonths": "Loading monthly climate data…",
     "bestMonthLabel": "Clearest month",
@@ -130,11 +130,11 @@
     "monthStat": "{month} · {percent}%",
     "chartCaption": "Share of nights with mostly clear skies (average night-time cloud cover ≤30%) for each calendar month, based on the last 5 years of Open-Meteo historical archive data — a climate estimate, not a forecast for any specific night.",
     "definitionTitle": "How this is calculated",
-    "definitionBody": "For each calendar month, this averages night-time cloud cover across the last 5 years at this location (same night-bucketing method the live weather forecast uses) and reports the share of nights at or under 30% average cloud cover. It's a screening tool for seasonal patterns, not a promise about any particular night — always check a short-range forecast before you travel."
+    "definitionBody": "This page is a historical clear-night climate, not a forecast for tonight and not an hourly cloud map. For each calendar month, it averages night-time cloud cover across the last 5 complete years at this location and reports the share of nights at or under 30% average cloud cover. It screens seasonal patterns. It does not promise a particular night."
   },
   "siteHeader": {
     "title": "Light Pollution Map",
-    "subtitle": "A light pollution map and dark sky finder — click anywhere to see the Bortle Scale rating and best nearby stargazing spots.",
+    "subtitle": "World light pollution map — click anywhere for an approximate Bortle class.",
     "languageSwitcherAria": "Switch language",
     "moreMenuLabel": "More",
     "moreMenuAria": "Open more pages menu",
@@ -145,11 +145,11 @@
     "openAria": "Open Light Pollution Map FAQ",
     "closeAria": "Close FAQ",
     "title": "Light Pollution Map FAQ",
-    "intro": "A light pollution map and dark sky finder — click anywhere to see the Bortle Scale rating and best nearby stargazing spots.",
+    "intro": "This is the world light pollution map. Click any place for an approximate Bortle class. Dark-sky maps, the Bortle class guide, and US state maps are separate pages.",
     "qa": [
       {
         "question": "What is this light pollution map and how does it work?",
-        "answer": "This light pollution map (also called a dark sky map or light map) uses satellite-derived night-light data to show artificial skyglow anywhere on Earth. It works as an interactive light pollution map — click any point on the world light pollution map to see a detailed brightness reading for that exact location, from heavily lit cities down to the darkest rural skies."
+        "answer": "This is the world light pollution map, also what people mean by a lightpollution map, a map of light pollution, or a global night light map. It uses NOAA VIIRS annual night lights. Click any point for an approximate brightness reading. A search for a light pollution map 2025 still opens this tool: the annual layer published here is the 2024 composite, not a relabeled 2025 map. The separate dark sky map page is the worldwide darkness view, and the US light pollution map is the country view."
       },
       {
         "question": "What is the Bortle Scale, and how is sky brightness (SQM) measured?",
@@ -157,32 +157,63 @@
       },
       {
         "question": "How do I find dark skies or zero-light-pollution places near me?",
-        "answer": "Use the map as a dark sky finder or dark site finder to locate the lowest light pollution near me — look for the darkest shading on the map, which marks certified dark sky places, dark sky parks, and other places with no light pollution. True zero light pollution is rare, but Bortle 1–2 areas away from major cities come very close, making them the best spots for genuinely dark, unpolluted skies."
+        "answer": "Darker colors are lower modeled radiance, not pins for certified parks. For places to stargaze near you, open Best Places to Stargaze, which is this site's own search. Certified places are listed on the dark sky parks page and can be shown as dots. True zero light is not something this map certifies."
       },
       {
         "question": "What does the sky look like without light pollution, and how is light pollution measured, caused, and reduced?",
-        "answer": "Under a truly dark night sky without light pollution, thousands of stars, the Milky Way, and faint nebulae become visible — compare your area's light pollution levels on the map against a Bortle 1 site to see the difference. Light pollution is measured with an SQM or estimated from satellite data (this map's method for how to measure light pollution), and skyglow can travel over 100 km from a city, so how far does light pollution travel matters when picking a site. Common examples of light pollution include streetlights, signage, and unshielded fixtures — together they cause light contamination that raises sky brightness citywide. On a practical level, shielded fixtures and warmer lighting are the main way communities reduce light pollution over time."
+        "answer": "What a night sky without light pollution looks like, and what light pollution means, are explained on their own pages. This map estimates brightness from satellite night lights. It does not measure limiting magnitude, and it does not host comparison photographs."
       },
       {
         "question": "How can I use this map for stargazing, Milky Way viewing, and astrophotography?",
-        "answer": "Use the map as a stargazing map to plan trips: a milky way visibility map reading of Bortle 4 or darker (ideally during a new moon) tells you how to view the milky way clearly. For astrophotography, brighter skies push you toward shorter sub-exposures — check the map's light pollution reading before taking night sky photos to pick a starting exposure time."
+        "answer": "Use this map to compare how bright places are. Whether you can see the Milky Way also depends on the Moon, clouds, and season, which the Milky Way guide explains. The exposure calculator in the location panel is a simplified estimate, not a single correct shutter speed."
       },
       {
         "question": "Can I check meteor shower or aurora visibility on this map?",
-        "answer": "Yes — combine the darkness map with a meteor shower forecast to find both a dark viewing spot and the shower's radiant direction. For the northern lights, enable the aurora probability layer to see current visibility odds for your latitude, then cross-reference with the map to avoid local skyglow."
+        "answer": "This site does not publish a meteor-shower forecast. The aurora control is a NOAA probability layer, not a guarantee you will see the northern lights. A dedicated aurora map is not part of this site."
       },
       {
         "question": "Do you have light pollution maps for specific US states or cities?",
-        "answer": "Yes — search directly for any location in the map's search bar, from broad regions like light pollution map texas or light pollution map california down to specific cities such as light pollution in nyc or las vegas light pollution, and the map will fly straight to that spot with its Bortle and SQM readings. A dedicated regional browse page is planned for the future."
+        "answer": "Yes. The US light pollution map links to Texas, California, Colorado, Florida, Utah, Oregon, Michigan, Arizona, Minnesota, Wisconsin, Ohio, and Washington. Search still flies the world map to a city such as New York or Las Vegas. There is no separate city page."
       }
     ],
     "feedbackTitle": "Feedback",
     "feedbackAboutLink": "About & Data",
-    "feedbackEmailLabel": "Email"
+    "feedbackEmailLabel": "Email",
+    "relatedTitle": "Related pages",
+    "relatedLinks": [
+      {
+        "href": "/us-light-pollution-map",
+        "label": "US light pollution map"
+      },
+      {
+        "href": "/bortle-scale-map",
+        "label": "Bortle scale map"
+      },
+      {
+        "href": "/dark-sky-map",
+        "label": "Dark sky map"
+      },
+      {
+        "href": "/best-places-to-stargaze",
+        "label": "Best places to stargaze"
+      },
+      {
+        "href": "/star-map",
+        "label": "Star map"
+      },
+      {
+        "href": "/what-is-light-pollution",
+        "label": "What is light pollution"
+      },
+      {
+        "href": "/dark-sky-parks",
+        "label": "Dark sky parks"
+      }
+    ]
   },
   "bortleScaleMap": {
     "title": "Bortle Scale Map",
-    "subtitle": "An interactive Bortle map showing real-time sky darkness — check the Bortle scale for any location on Earth.",
+    "subtitle": "Bortle scale map and the class guide. Click to estimate what Bortle class you are in.",
     "navLabel": "Bortle Scale Map",
     "legend": {
       "title": "Bortle Scale Map (VIIRS satellite data · {styleLabel})",
@@ -203,7 +234,7 @@
             },
             {
               "question": "What does each Bortle class mean?",
-              "answer": "Class 1–2 are excellent dark-sky sites where the Milky Way casts shadows; Class 4–6 are suburban skies where only bright stars are visible; Class 7–9 are urban skies where light pollution hides most of the night sky."
+              "answer": "Bortle 1 is the darkest step on this scale, and Bortle 2 is the next step down from a pristine sky. Bortle 4 is the bright edge of a rural or outer-suburban sky, where the Milky Way is weakened but not gone. Classes 5 and 6 are suburban. Classes 7–9 are city skies. These are the original visual descriptions. The class this map shows is a simplified reading of satellite light, not a limiting-magnitude observation."
             }
           ]
         },
@@ -211,8 +242,8 @@
           "title": "How it works",
           "qa": [
             {
-              "question": "How do I use this Bortle scale map?",
-              "answer": "Zoom or search any address on the bortle map — the color overlay shows the estimated Bortle class for that spot based on satellite light pollution data."
+              "question": "What Bortle am I in?",
+              "answer": "Search your town or click the map. The panel shows an approximate Bortle class for that point. It answers the practical question, and it is still a model, not a meter reading at your feet."
             },
             {
               "question": "How does this Bortle scale map actually work?",
@@ -248,12 +279,31 @@
       ],
       "feedbackTitle": "Feedback",
       "feedbackAboutLink": "About & Data",
-      "feedbackEmailLabel": "Email"
+      "feedbackEmailLabel": "Email",
+      "relatedTitle": "Related pages",
+      "relatedLinks": [
+        {
+          "href": "/",
+          "label": "World light pollution map"
+        },
+        {
+          "href": "/dark-sky-map",
+          "label": "Dark sky map"
+        },
+        {
+          "href": "/what-is-light-pollution",
+          "label": "What is light pollution"
+        },
+        {
+          "href": "/night-sky-without-light-pollution",
+          "label": "Night sky without light pollution"
+        }
+      ]
     }
   },
   "darkSkyMap": {
     "title": "Dark Sky Map",
-    "subtitle": "A global dark sky map rating night sky darkness by location, based on the same dark sky scale used to compare stargazing conditions.",
+    "subtitle": "Worldwide dark sky map. Class-by-class definitions are on the Bortle scale map. The US map is separate.",
     "navLabel": "Dark Sky Map",
     "legend": {
       "title": "Dark Sky Scale (VIIRS satellite data · {styleLabel})",
@@ -267,11 +317,11 @@
       "qa": [
         {
           "question": "What does this dark sky map show?",
-          "answer": "It displays the estimated darkness of the night sky at any location worldwide, based on satellite-measured light pollution — darker colors indicate less artificial light and better sky visibility."
+          "answer": "It shows modeled night-sky darkness worldwide. Darker colors mean lower satellite radiance. The United States map and the Bortle class guide are separate pages. This is not a weather map."
         },
         {
           "question": "What is the dark sky scale?",
-          "answer": "The dark sky scale — also known as the Bortle scale — is a 9-level classification of night sky darkness, from Class 1 (pristine, no light pollution) to Class 9 (heavily light-polluted urban sky)."
+          "answer": "The colors follow the same nine-step idea as the Bortle scale. The class-by-class explanation, including what Bortle you are in, is on the Bortle scale map. This page is the worldwide comparison."
         },
         {
           "question": "How is the dark sky scale rating calculated?",
@@ -283,7 +333,7 @@
         },
         {
           "question": "What dark sky scale rating is considered good for stargazing?",
-          "answer": "Class 1–4 offers minimal light interference and clear views of faint objects like the Milky Way; Class 5–6 still supports viewing planets, the Moon, and brighter stars."
+          "answer": "Classes 1–4 are the darker end of the scale and classes 5–6 are brighter. That is a planning hint, not a promise you will see the Milky Way."
         },
         {
           "question": "How accurate is this dark sky map?",
@@ -296,12 +346,31 @@
       ],
       "feedbackTitle": "Feedback",
       "feedbackAboutLink": "About & Data",
-      "feedbackEmailLabel": "Email"
+      "feedbackEmailLabel": "Email",
+      "relatedTitle": "Related pages",
+      "relatedLinks": [
+        {
+          "href": "/",
+          "label": "World light pollution map"
+        },
+        {
+          "href": "/bortle-scale-map",
+          "label": "Bortle scale map"
+        },
+        {
+          "href": "/us-light-pollution-map",
+          "label": "US light pollution map"
+        },
+        {
+          "href": "/dark-sky-parks",
+          "label": "Dark sky parks"
+        }
+      ]
     }
   },
   "bestPlacesToStargaze": {
     "title": "Best Places to Stargaze",
-    "subtitle": "Find the best places to stargaze near you — dark, clear skies for viewing the Milky Way and stars.",
+    "subtitle": "Search stargazing spots near you from modeled darkness. This is our own search, not another product.",
     "navLabel": "Best Places to Stargaze",
     "legend": {
       "title": "Best Stargazing Spots (VIIRS satellite data · {styleLabel})",
@@ -323,24 +392,51 @@
         },
         {
           "question": "Where can you see the Milky Way?",
-          "answer": "The Milky Way is visible from dark sky locations, generally Class 1–3, away from major light pollution — it's rarely visible from suburban or urban areas, even on a clear night."
+          "answer": "Darker places help, and cities usually hide it, but darkness alone does not guarantee a view. The Milky Way guide covers season and the Moon. This search does not promise a sighting."
         },
         {
           "question": "What's the difference between a decent stargazing spot and a great one?",
           "answer": "A decent spot just needs low light pollution and open sky; a great one also has minimal moonlight, good weather, and some elevation, which cuts down atmospheric haze."
         },
         {
-          "question": "Do I need any equipment to stargaze at these spots?",
-          "answer": "No — naked-eye viewing works fine at any dark sky location. Binoculars or a small telescope add detail for planets and deep-sky objects, but they're optional."
+          "question": "What about stargazing in Colorado or around Denver?",
+          "answer": "Denver sits on the bright Front Range. For the state pattern and the places in our snapshot, open the Colorado light pollution map. This page can still search around a point you choose, including Denver, but the result is a model, not a guarantee for tonight."
         },
         {
-          "question": "When is the best time to go stargazing?",
-          "answer": "Aim for a clear night near the new moon — moonlight is one of the biggest factors that can wash out an otherwise dark sky, even at a great location."
+          "question": "Is this a dark site finder?",
+          "answer": "It does the job of finding a darker place to look at the sky. It is this website's own search, ranked from the light-pollution model. It is not a separate product, and the name is not a brand we are copying."
+        },
+        {
+          "question": "Does this tell me if tonight is clear, and is it only the northern hemisphere?",
+          "answer": "No. Tonight's clouds are not this page. The clear sky map is a historical clear-night climate, not a forecast. The search works in both hemispheres; the northern hemisphere is not a special mode."
         }
       ],
       "feedbackTitle": "Feedback",
       "feedbackAboutLink": "About & Data",
-      "feedbackEmailLabel": "Email"
+      "feedbackEmailLabel": "Email",
+      "relatedTitle": "Related pages",
+      "relatedLinks": [
+        {
+          "href": "/us-light-pollution-map",
+          "label": "US light pollution map"
+        },
+        {
+          "href": "/light-pollution-map/colorado",
+          "label": "Colorado light pollution map"
+        },
+        {
+          "href": "/dark-sky-parks",
+          "label": "Dark sky parks"
+        },
+        {
+          "href": "/where-to-see-the-milky-way",
+          "label": "Where to see the Milky Way"
+        },
+        {
+          "href": "/clear-sky-map",
+          "label": "Clear-night climate"
+        }
+      ]
     }
   },
   "searchBar": {
@@ -457,7 +553,7 @@
     "tooltip": "{year}: SQM ≈ {sqm}, Bortle {bortleClass}",
     "estimatedTooltip": "{year} (estimated): SQM ≈ {sqm}, Bortle {bortleClass} — trend projection, not satellite data",
     "estimatedYearLabel": "{year} (est.)",
-    "estimatedCaption": "{year} is a trend-based projection from recent years — the satellite composite for {year} isn't published yet."
+    "estimatedCaption": "{year} is a trend-based projection from recent years — the satellite composite for {year} is not published yet."
   },
   "directionalSkyBrightness": {
     "title": "Directional Sky Brightness",
@@ -479,7 +575,15 @@
     "footer": "Weather data from Open-Meteo",
     "yesterday": "Yesterday",
     "today": "Today",
-    "weekdays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "weekdays": [
+      "Sun",
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ],
     "constraintCloud": "Main limiting factor: cloud cover",
     "constraintMoon": "Main limiting factor: moonlight",
     "constraintLightPollution": "Main limiting factor: light pollution",
@@ -555,10 +659,22 @@
       "urban": "Urban Night Sky Place"
     },
     "colorStyles": {
-      "classic": { "label": "Classic", "description": "Clear zones" },
-      "soft": { "label": "Bright", "description": "Smooth intensity" },
-      "vivid": { "label": "Glow", "description": "Sky glow spread" },
-      "amber": { "label": "Scientific", "description": "Fixed SQM scale" }
+      "classic": {
+        "label": "Classic",
+        "description": "Clear zones"
+      },
+      "soft": {
+        "label": "Bright",
+        "description": "Smooth intensity"
+      },
+      "vivid": {
+        "label": "Glow",
+        "description": "Sky glow spread"
+      },
+      "amber": {
+        "label": "Scientific",
+        "description": "Fixed SQM scale"
+      }
     },
     "basemaps": {
       "street": "Streets",
@@ -573,8 +689,8 @@
   },
   "starMap": {
     "navLabel": "Star Map",
-    "pageTitle": "Real-Time Star Map",
-    "pageSubtitle": "Drag to look around the sky — the Sun, Moon, planets and 88 constellations are all shown in their true positions.",
+    "pageTitle": "Star Map",
+    "pageSubtitle": "A live night sky map: stars, planets, the Moon, and the Sun for any time and place.",
     "loadingCanvas": "Loading the night sky…",
     "dateTimeSectionLabel": "Observation time",
     "locationSectionLabel": "Observation location",
@@ -617,6 +733,49 @@
       "Saturn": "Saturn",
       "Uranus": "Uranus",
       "Neptune": "Neptune"
+    }
+  },
+  "guides": {
+    "backToMap": "Back to the world map",
+    "openFullMap": "Open this view on the full map",
+    "mapCaption": "The embedded map uses the classic color bands and the designated-place dots. Style, aurora, weather, and the day-night line are on the full map.",
+    "mapHeading": "Map",
+    "toolEntryTitle": "Open a place on the map",
+    "toolEntryBody": "Search a place and the world light pollution map opens there. This page does not draw its own brightness layer.",
+    "placesTitle": "Places in this snapshot",
+    "placesBody": "Names, categories, years, and links come from the DarkSky International records already stored with this site. A blank year means the snapshot did not record one. A community or urban listing is a lighting-policy record, not a sky measurement.",
+    "noPlaces": "This snapshot has no designated place inside the state boundary used here. The map still shows modeled night lights. Nearby states are linked below.",
+    "yearLabel": "Designated in {year}",
+    "yearMissing": "Year not recorded in this snapshot",
+    "unitedStates": "United States",
+    "officialLink": "DarkSky record",
+    "directoryFilter": "Filter by name",
+    "directoryAll": "All categories",
+    "directoryEmpty": "No places match that filter.",
+    "faqTitle": "Questions",
+    "relatedTitle": "Related pages",
+    "sourcesTitle": "Sources",
+    "sourceViirs": "NOAA VIIRS annual night lights (V22) on Google Earth Engine",
+    "sourceAbout": "How this site turns radiance into an approximate SQM and Bortle class",
+    "sourceDarkSky": "Each place link opens the DarkSky International record stored with that place. This site does not add silver or gold tiers, and it does not invent access rules.",
+    "navUs": "US light pollution map",
+    "navParks": "Dark sky parks",
+    "navWhat": "What is light pollution",
+    "usStatsTitle": "Area-weighted national figures",
+    "usStatsBody": "The area-weighted model average for the contiguous United States is SQM {sqm}, and {percent} percent of the sampled land falls at Bortle 4 or darker. Alaska is stored separately at SQM {alaskaSqm}, with {alaskaPercent} percent at Bortle 4 or darker. These numbers are dominated by rural land. They are not a city-sky measurement and they are not a field reading. This snapshot lists {count} designated places inside the United States.",
+    "stateNames": {
+      "texas": "Texas",
+      "california": "California",
+      "colorado": "Colorado",
+      "florida": "Florida",
+      "utah": "Utah",
+      "oregon": "Oregon",
+      "michigan": "Michigan",
+      "arizona": "Arizona",
+      "minnesota": "Minnesota",
+      "wisconsin": "Wisconsin",
+      "ohio": "Ohio",
+      "washington": "Washington"
     }
   }
 }
