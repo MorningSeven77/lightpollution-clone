@@ -23,13 +23,13 @@ const SITE_URL = "https://www.lightpollutionmap.io";
 
 const SITE_COPY = {
   en: {
-    title: "Light Pollution Map – Bortle Scale & Dark Sky Finder",
+    title: "Light Pollution Map – World Night Lights, Bortle and SQM",
     description:
-      "Interactive light pollution map with Bortle Scale ratings. Find dark sky spots, check SQM levels, and plan stargazing trips near you.",
+      "See artificial night lights worldwide. Click any place for an approximate Bortle class and a sky-brightness estimate from satellite night lights.",
   },
   zh: {
-    title: "光污染地图 – 波特尔等级与暗夜地点查找",
-    description: "交互式光污染地图，提供波特尔等级评分——查找附近暗夜观星地点，查看 SQM 天空亮度，规划观星行程。",
+    title: "光污染地图 – 世界夜间灯光、波特尔等级与 SQM",
+    description: "查看全球人工夜间灯光。点击任意地点，得到由卫星夜间灯光换算的近似波特尔等级和天空亮度估计。",
   },
 } as const;
 
@@ -46,26 +46,15 @@ export async function generateMetadata({
   const copy = locale === "zh" ? SITE_COPY.zh : SITE_COPY.en;
   // "as-needed" localePrefix: the default locale (en) lives at the bare
   // path, every other locale gets a /<locale> prefix.
-  const localizedPath = locale === routing.defaultLocale ? "" : `/${locale}`;
-  const canonicalUrl = `${SITE_URL}${localizedPath}`;
-
   return {
     metadataBase: new URL(SITE_URL),
     title: copy.title,
     description: copy.description,
-    alternates: {
-      canonical: canonicalUrl,
-      languages: {
-        en: SITE_URL,
-        zh: `${SITE_URL}/zh`,
-      },
-    },
-    openGraph: {
-      title: copy.title,
-      description: copy.description,
-      url: canonicalUrl,
-      type: "website",
-    },
+    // Canonical and og:url are set per page. Setting them here made every
+    // inner page inherit the homepage address.
+    // Preview deployments should not be indexed. Production builds leave
+    // robots unset so they stay indexable.
+    ...(process.env.VERCEL_ENV === "preview" ? { robots: { index: false, follow: false } } : {}),
     // Not using the app/icon.svg file convention here on purpose — this
     // layout lives under the [locale] dynamic segment, and that convention
     // generates a per-segment icon route that needs its own

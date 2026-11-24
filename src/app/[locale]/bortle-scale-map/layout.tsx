@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { JsonLd } from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/pageMetadata";
 import { breadcrumb, faqPage, localizedUrl, webPage, type QAItem } from "@/lib/structuredData";
 
 const PAGE_COPY = {
   en: {
-    title: "Bortle Scale Map – Find Your Bortle Class | LightPollutionMap.io",
+    title: "Bortle Scale Map – Classes 1–9 for Any Location",
     description:
-      "See how dark the night sky is anywhere on Earth with our interactive Bortle scale map — built for stargazers, photographers, and dark-sky seekers.",
+      "Find the Bortle class for a place and read what classes 1 through 9 mean. The class on the map is estimated from satellite night lights.",
   },
   zh: {
-    title: "波特尔等级地图 – 查询你所在地的波特尔等级 | LightPollutionMap.io",
-    description: "用交互式波特尔等级地图查看地球上任意地点的夜空黑暗程度——专为观星爱好者、摄影师和暗夜寻访者打造。",
+    title: "波特尔等级地图 – 1 到 9 级与所在位置",
+    description: "查找一个地点的波特尔等级，并阅读 1 到 9 级分别是什么意思。地图上的等级由卫星夜间灯光估计。",
   },
 } as const;
 
@@ -24,10 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const copy = locale === "zh" ? PAGE_COPY.zh : PAGE_COPY.en;
-  return {
-    title: copy.title,
-    description: copy.description,
-  };
+  return pageMetadata(locale, PATH, copy);
 }
 
 export default async function BortleScaleMapLayout({

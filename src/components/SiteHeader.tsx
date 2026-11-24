@@ -74,16 +74,15 @@ function LanguageSwitcher() {
 
 function MorePagesMenu() {
   const t = useTranslations("siteHeader");
+  const tGuides = useTranslations("guides");
   const tRankings = useTranslations("rankings");
   const tAboutData = useTranslations("aboutData");
   const [open, setOpen] = useState(false);
 
-  // Golden Hour, Clear-Night Climate, and Star Map used to live here too --
-  // moved out (star map into OtherMapsMenu below, alongside the other map
-  // experiences; golden hour/clear-sky-map dropped from header nav
-  // entirely, still reachable as standalone pages/links elsewhere) so this
-  // menu is purely the two reference/content pages now.
   const items = [
+    { href: "/us-light-pollution-map", icon: "🇺🇸", label: tGuides("navUs") },
+    { href: "/dark-sky-parks", icon: "🏞️", label: tGuides("navParks") },
+    { href: "/what-is-light-pollution", icon: "💡", label: tGuides("navWhat") },
     { href: "/rankings", icon: "🌍", label: tRankings("navLabel") },
     { href: "/about-data", icon: "ℹ️", label: tAboutData("navLabel") },
   ] as const;
@@ -108,7 +107,7 @@ function MorePagesMenu() {
       {open && (
         <>
           <div className="fixed inset-0 z-30" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-full z-40 mt-1 w-48 overflow-hidden rounded-md border border-white/10 bg-zinc-900 text-xs text-zinc-100 shadow-lg">
+          <div className="absolute right-0 top-full z-40 mt-1 w-64 overflow-hidden rounded-md border border-white/10 bg-zinc-900 text-xs text-zinc-100 shadow-lg">
             {items.map((item) => (
               <Link
                 key={item.href}
@@ -174,7 +173,7 @@ function OtherMapsMenu({ currentMapPage }: { currentMapPage?: MapFamilyPageId })
       {open && (
         <>
           <div className="fixed inset-0 z-30" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-full z-40 mt-1 w-48 overflow-hidden rounded-md border border-white/10 bg-zinc-900 text-xs text-zinc-100 shadow-lg">
+          <div className="absolute right-0 top-full z-40 mt-1 w-64 overflow-hidden rounded-md border border-white/10 bg-zinc-900 text-xs text-zinc-100 shadow-lg">
             {items.map((item) => (
               <Link
                 key={item.href}

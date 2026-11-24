@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { JsonLd } from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/pageMetadata";
 import { breadcrumb, localizedUrl, webPage } from "@/lib/structuredData";
 
 const PAGE_COPY = {
   en: {
-    title: "Clear Sky Map & Climate | Light Pollution Map",
+    title: "Clear Sky Map – Historical Clear-Night Climate",
     description:
-      "Historical share of clear nights by month for any location, based on 5 years of weather archive data — plan the best season to visit, not just the best night.",
+      "See which months have historically had more clear nights at a place you choose. This is a climate summary from past weather archives.",
   },
   zh: {
-    title: "晴夜气候地图 | 光污染地图",
-    description: "查询任意地点每个月历史晴夜比例，基于 5 年天气历史归档数据——不只是找最佳的一晚，而是找最佳的季节。",
+    title: "晴夜气候地图 – 历史晴夜比例，不是今晚预报",
+    description: "查看你选的地点在哪些月份历史上晴夜更多。这是根据过去天气档案做的气候摘要。",
   },
 } as const;
 
@@ -24,10 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const copy = locale === "zh" ? PAGE_COPY.zh : PAGE_COPY.en;
-  return {
-    title: copy.title,
-    description: copy.description,
-  };
+  return pageMetadata(locale, PATH, copy);
 }
 
 export default async function ClearSkyMapLayout({

@@ -93,6 +93,21 @@ export default function InfoPanel({ namespace = "infoPanel", grouped = false }: 
             </div>
           )}
 
+          {t.has("relatedLinks") && (
+            <div className="mt-6 border-t border-white/10 pt-4">
+              <h3 className="mb-2 text-xs font-medium text-zinc-200">{t("relatedTitle")}</h3>
+              <ul className="space-y-1 text-xs">
+                {(t.raw("relatedLinks") as { href: string; label: string }[]).map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="text-blue-400 hover:text-blue-300">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <div className="mt-6 border-t border-white/10 pt-4">
             <h3 className="mb-2 text-xs font-medium text-zinc-200">{t("feedbackTitle")}</h3>
             <div className="space-y-1 text-xs">

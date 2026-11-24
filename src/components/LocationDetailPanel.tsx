@@ -22,6 +22,8 @@ export type LocationDetailPanelProps = {
   location: SelectedLocation | null;
   onClose: () => void;
   onBestSpotsFound: (spots: RankedSpot[]) => void;
+  // Replaces the default max-h-[80vh] when the panel sits in a shorter map.
+  className?: string;
 };
 
 type PointValueState =
@@ -45,7 +47,7 @@ type DirectionalBrightnessState =
   | { status: "error" }
   | { status: "done"; directions: DirectionalBrightnessPoint[]; darkest: DirectionalBrightnessPoint; brightest: DirectionalBrightnessPoint };
 
-export default function LocationDetailPanel({ location, onClose, onBestSpotsFound }: LocationDetailPanelProps) {
+export default function LocationDetailPanel({ location, onClose, onBestSpotsFound, className }: LocationDetailPanelProps) {
   if (!location) return null;
 
   // Remounts the panel (resetting state to its initial "loading" values)
@@ -57,6 +59,7 @@ export default function LocationDetailPanel({ location, onClose, onBestSpotsFoun
       location={location}
       onClose={onClose}
       onBestSpotsFound={onBestSpotsFound}
+      className={className}
     />
   );
 }
@@ -65,10 +68,12 @@ function LocationDetailPanelContent({
   location,
   onClose,
   onBestSpotsFound,
+  className,
 }: {
   location: SelectedLocation;
   onClose: () => void;
   onBestSpotsFound: (spots: RankedSpot[]) => void;
+  className?: string;
 }) {
   const [pointValue, setPointValue] = useState<PointValueState>({ status: "loading" });
   const [placeName, setPlaceName] = useState<PlaceNameState>({ status: "loading" });
@@ -247,7 +252,7 @@ function LocationDetailPanelContent({
         : t("unknownPlace");
 
   return (
-    <div className="themed-scrollbar absolute left-4 top-20 z-10 max-h-[80vh] w-full max-w-xs overflow-y-auto rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur">
+    <div className={`themed-scrollbar absolute left-4 top-20 z-10 w-full max-w-xs overflow-y-auto rounded-md border border-white/10 bg-zinc-900/90 p-3 text-sm text-zinc-100 shadow-lg backdrop-blur ${className ?? "max-h-[80vh]"}`}>
       <div className="mb-2 flex items-center justify-between">
         <h2 className="font-medium">{t("title")}</h2>
         <button type="button" onClick={onClose} aria-label={t("closeAria")} className="text-zinc-400 hover:text-zinc-100">

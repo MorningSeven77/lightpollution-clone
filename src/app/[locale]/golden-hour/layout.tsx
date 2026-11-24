@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { JsonLd } from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/pageMetadata";
 import { breadcrumb, localizedUrl, webPage } from "@/lib/structuredData";
 
 const PAGE_COPY = {
   en: {
-    title: "Golden Hour Calculator & Light Direction | Light Pollution Map",
+    title: "When Are Golden Hours? Sunrise, Sunset and Blue Hour",
     description:
-      "Find today's sunrise, sunset, golden hour, and blue hour times for any location, with the sun's azimuth at each — for photography and stargazing planning.",
+      "See sunrise, sunset, golden hour, and blue hour for a date and place, and which way the light falls.",
   },
   zh: {
-    title: "日出日落黄金时刻计算器 | 光污染地图",
-    description: "查询任意地点今天的日出、日落、黄金时刻和蓝调时刻时间，附带太阳方位角——方便安排摄影和观星行程。",
+    title: "黄金时刻是什么时候？日出、日落与蓝调时刻",
+    description: "查看某个日期和地点的日出、日落、黄金时刻、蓝调时刻，以及光线从哪边来。",
   },
 } as const;
 
@@ -24,10 +25,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const copy = locale === "zh" ? PAGE_COPY.zh : PAGE_COPY.en;
-  return {
-    title: copy.title,
-    description: copy.description,
-  };
+  return pageMetadata(locale, PATH, copy);
 }
 
 export default async function GoldenHourLayout({

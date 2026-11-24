@@ -1,7 +1,26 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import HomeMapExperience from "@/components/HomeMapExperience";
 import { JsonLd } from "@/components/JsonLd";
+import { pageMetadata } from "@/lib/pageMetadata";
 import { faqPage, localizedUrl, webApplication, type QAItem } from "@/lib/structuredData";
+
+const HOME_COPY = {
+  en: {
+    title: "Light Pollution Map – World Night Lights, Bortle and SQM",
+    description:
+      "See artificial night lights worldwide. Click any place for an approximate Bortle class and a sky-brightness estimate from satellite night lights.",
+  },
+  zh: {
+    title: "光污染地图 – 世界夜间灯光、波特尔等级与 SQM",
+    description: "查看全球人工夜间灯光。点击任意地点，得到由卫星夜间灯光换算的近似波特尔等级和天空亮度估计。",
+  },
+} as const;
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const copy = locale === "zh" ? HOME_COPY.zh : HOME_COPY.en;
+  return pageMetadata(locale, "", copy);
+}
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
