@@ -8,11 +8,11 @@ const PAGE_COPY = {
   en: {
     title: "Clear Sky Map – Historical Clear-Night Climate",
     description:
-      "Monthly share of historically clear nights from five years of weather archives. This clear sky map is a climate summary, not a forecast for tonight and not an hourly cloud map.",
+      "See which months have historically had more clear nights at a place you choose. This is a climate summary from past weather archives.",
   },
   zh: {
     title: "晴夜气候地图 – 历史晴夜比例，不是今晚预报",
-    description: "用五年天气档案统计每个月历史上的晴夜比例。这张晴夜地图是气候摘要，不是今晚的预报，也不是逐小时云图。",
+    description: "查看你选的地点在哪些月份历史上晴夜更多。这是根据过去天气档案做的气候摘要。",
   },
 } as const;
 

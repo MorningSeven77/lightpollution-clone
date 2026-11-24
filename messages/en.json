@@ -149,7 +149,7 @@
     "qa": [
       {
         "question": "What is this light pollution map and how does it work?",
-        "answer": "This is the world light pollution map, also what people mean by a lightpollution map, a map of light pollution, or a global night light map. It uses NOAA VIIRS annual night lights. Click any point for an approximate brightness reading. A search for a light pollution map 2025 still opens this tool: the annual layer published here is the 2024 composite, not a relabeled 2025 map. The separate dark sky map page is the worldwide darkness view, and the US light pollution map is the country view."
+        "answer": "This is the world light pollution map, also what people mean by a lightpollution map, a map of light pollution, or a global night light map. It uses NOAA VIIRS annual night lights. Click any point for an approximate brightness reading. A search that names a calendar year still opens this tool. The layer is the annual night-light composite described on the About and Data page, and it is not retitled to match the year in the search.  The separate dark sky map page is the worldwide darkness view, and the US light pollution map is the country view."
       },
       {
         "question": "What is the Bortle Scale, and how is sky brightness (SQM) measured?",
@@ -303,7 +303,7 @@
   },
   "darkSkyMap": {
     "title": "Dark Sky Map",
-    "subtitle": "Worldwide dark sky map. Class-by-class definitions are on the Bortle scale map. The US map is separate.",
+    "subtitle": "Compare night-sky darkness worldwide. Class definitions are on the Bortle scale map.",
     "navLabel": "Dark Sky Map",
     "legend": {
       "title": "Dark Sky Scale (VIIRS satellite data · {styleLabel})",
@@ -370,7 +370,7 @@
   },
   "bestPlacesToStargaze": {
     "title": "Best Places to Stargaze",
-    "subtitle": "Search stargazing spots near you from modeled darkness. This is our own search, not another product.",
+    "subtitle": "Search darker places to stargaze around a town or a point you choose.",
     "navLabel": "Best Places to Stargaze",
     "legend": {
       "title": "Best Stargazing Spots (VIIRS satellite data · {styleLabel})",
@@ -404,7 +404,7 @@
         },
         {
           "question": "Is this a dark site finder?",
-          "answer": "It does the job of finding a darker place to look at the sky. It is this website's own search, ranked from the light-pollution model. It is not a separate product, and the name is not a brand we are copying."
+          "answer": "Search a town or a point on the map and the results are darker places around it, ranked from the night-light model. The search lives on this site."
         },
         {
           "question": "Does this tell me if tonight is clear, and is it only the northern hemisphere?",
@@ -742,11 +742,11 @@
     "mapHeading": "Map",
     "toolEntryTitle": "Open a place on the map",
     "toolEntryBody": "Search a place and the world light pollution map opens there. This page does not draw its own brightness layer.",
-    "placesTitle": "Places in this snapshot",
-    "placesBody": "Names, categories, years, and links come from the DarkSky International records already stored with this site. A blank year means the snapshot did not record one. A community or urban listing is a lighting-policy record, not a sky measurement.",
-    "noPlaces": "This snapshot has no designated place inside the state boundary used here. The map still shows modeled night lights. Nearby states are linked below.",
+    "placesTitle": "Designated places",
+    "placesBody": "Each row is a DarkSky International place kept with this site: the name, category, year, and a link to that place page. A missing year was not in the record. A community or urban listing is a lighting policy, not a sky measurement.",
+    "noPlaces": "No designated place in this list falls inside the state. The map still shows night lights. Nearby states are linked below.",
     "yearLabel": "Designated in {year}",
-    "yearMissing": "Year not recorded in this snapshot",
+    "yearMissing": "Year not in the record",
     "unitedStates": "United States",
     "officialLink": "DarkSky record",
     "directoryFilter": "Filter by name",
@@ -761,8 +761,8 @@
     "navUs": "US light pollution map",
     "navParks": "Dark sky parks",
     "navWhat": "What is light pollution",
-    "usStatsTitle": "Area-weighted national figures",
-    "usStatsBody": "The area-weighted model average for the contiguous United States is SQM {sqm}, and {percent} percent of the sampled land falls at Bortle 4 or darker. Alaska is stored separately at SQM {alaskaSqm}, with {alaskaPercent} percent at Bortle 4 or darker. These numbers are dominated by rural land. They are not a city-sky measurement and they are not a field reading. This snapshot lists {count} designated places inside the United States.",
+    "usStatsTitle": "About a national average",
+    "usStatsBody": "This page does not lead with one national number. Most US land is rural, so an area-weighted average would describe empty land more than a city or a campground. The rankings page averages a simplified conversion of NOAA VIIRS night lights for each country. The About and Data page explains that conversion. It is not a sky-quality meter reading.",
     "stateNames": {
       "texas": "Texas",
       "california": "California",

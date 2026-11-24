@@ -8,11 +8,11 @@ const PAGE_COPY = {
   en: {
     title: "Star Map – Live Night Sky Map",
     description:
-      "Interactive star map of the night sky: constellations, planets, the Moon, and the Sun for a chosen time and place. This is a sky chart, not the light-pollution map.",
+      "Look around a live night sky: stars, planets, the Moon, and the Sun for a time and place you choose.",
   },
   zh: {
     title: "星空图 – 实时夜空星图",
-    description: "可交互的夜空星图：按所选时间与地点显示星座、行星、月亮和太阳。这是星图，不是光污染地图。",
+    description: "查看实时夜空：按你选的时间和地点显示恒星、行星、月亮和太阳。",
   },
 } as const;
 

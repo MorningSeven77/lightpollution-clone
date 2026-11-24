@@ -8,7 +8,6 @@ import { STATE_PLACE_IDS, US_PLACE_IDS } from "@/content/guides/placeIndex";
 import { routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/pageMetadata";
 import { localizedUrl } from "@/lib/structuredData";
-import countryRows from "@/data/countryLightPollution.json";
 
 type GuideParams = { locale: string; state?: string };
 
@@ -68,35 +67,15 @@ function viewFor(slug: string) {
 }
 
 function UsStats({ locale }: { locale: string }) {
-  const rows = countryRows as { name: string; avgSqm: number; bortleLe4Percent: number }[];
-  const us = rows.find((row) => row.name === "United States");
-  const alaska = rows.find((row) => row.name === "United States (Alaska)");
-  if (!us || !alaska) return null;
-  return <UsStatsText locale={locale} us={us} alaska={alaska} />;
+  return <UsStatsText locale={locale} />;
 }
 
-async function UsStatsText({
-  locale,
-  us,
-  alaska,
-}: {
-  locale: string;
-  us: { avgSqm: number; bortleLe4Percent: number };
-  alaska: { avgSqm: number; bortleLe4Percent: number };
-}) {
+async function UsStatsText({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: "guides" });
   return (
     <section className="mt-8 rounded-lg border border-white/10 bg-zinc-900/50 p-4" id="national-average">
       <h2 className="text-sm font-medium text-zinc-100">{t("usStatsTitle")}</h2>
-      <p className="mt-2 text-sm leading-relaxed text-zinc-300">
-        {t("usStatsBody", {
-          sqm: us.avgSqm.toFixed(2),
-          percent: String(us.bortleLe4Percent),
-          alaskaSqm: alaska.avgSqm.toFixed(2),
-          alaskaPercent: String(alaska.bortleLe4Percent),
-          count: String(US_PLACE_IDS.length),
-        })}
-      </p>
+      <p className="mt-2 text-sm leading-relaxed text-zinc-300">{t("usStatsBody")}</p>
     </section>
   );
 }

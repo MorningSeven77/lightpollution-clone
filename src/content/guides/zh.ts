@@ -7,7 +7,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   us: {
     metaTitle: "美国光污染地图 – 美国夜间灯光与暗夜",
     metaDescription:
-      "美国光污染地图，视图落在美国而不是整颗地球。城市走廊和乡村不是同一片天空。全国按面积加权的平均值也不能当成某个城市的读数。",
+      "打开对准美国的光污染地图。城市走廊和乡村看到的是不同的天空。州页面包括得克萨斯、加利福尼亚、科罗拉多和其他九个州。",
     h1: "美国光污染地图",
     eyebrow: "美国",
     lede: [
@@ -27,8 +27,8 @@ export const zhGuides: Record<string, GuideCopy> = {
         id: "average",
         heading: "为什么全国平均值不适合用来描述一次出行",
         paragraphs: [
-          "美国大部分土地不是市中心。按面积加权的平均值会被乡村像素拉高。旁边的数字只能连同这句警告一起看。它们来自本站的国家表，公式的局限写在排行榜说明里。它们不是联邦政府的天空普查。",
-          "如果要找一个能站上去的地方，用州页面或暗空公园名录。名录只列出本站 DarkSky International 快照里有坐标的地点，并链到对方的地点页。这里不排名“美国最暗的小镇”。",
+          "美国大部分土地不是市中心。按面积加权的平均值会被乡村土地拉高，所以这一页不以一个全国数字开头。排行榜和关于本站与数据来源页说明了 NOAA VIIRS 夜间灯光的简化换算。这个换算不是天空质量计读数。",
+          "如果要找一个能站上去的地方，用州页面或暗空公园名录。名录列出本站有坐标的 DarkSky International 地点，并链到对方的地点页。",
         ],
       },
     ],
@@ -68,7 +68,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   texas: {
     metaTitle: "得克萨斯州光污染地图与暗夜地图",
     metaDescription:
-      "得克萨斯州光污染地图对准该州。休斯敦–达拉斯–奥斯汀–圣安东尼奥是亮带；大弯和高原公园是快照里的另一类地点。奥斯汀市区的夜空要单独点击，不能拿来代表西部。",
+      "打开得克萨斯州光污染地图。休斯敦、达拉斯、奥斯汀和圣安东尼奥连成亮带。大弯和丘陵地区的地点链到各自的 DarkSky 页面。",
     h1: "得克萨斯州光污染地图",
     eyebrow: "得克萨斯",
     lede: [
@@ -116,7 +116,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   california: {
     metaTitle: "加利福尼亚州光污染地图与暗夜地图",
     metaDescription:
-      "加利福尼亚州光污染地图对准该州。从圣地亚哥、洛杉矶到湾区的海岸都市是亮区。这份快照里的公园条目是死亡谷、约书亚树和安沙-博雷戈。",
+      "打开加利福尼亚州光污染地图。从圣地亚哥到湾区的海岸城市是亮的一侧。死亡谷、约书亚树和安沙-博雷戈链到各自的 DarkSky 页面。",
     h1: "加利福尼亚州光污染地图",
     eyebrow: "加利福尼亚",
     lede: [
@@ -166,7 +166,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   colorado: {
     metaTitle: "科罗拉多州光污染地图与科罗拉多夜空",
     metaDescription:
-      "科罗拉多州光污染地图，对应科罗拉多夜空和暗空查询。前沿山脉是亮带。快照里西部和圣路易斯谷的条目，和丹佛不是同一次点击。",
+      "打开科罗拉多州光污染地图，查看这个州的夜空。包括丹佛在内的前沿山脉是亮带。西部的公园和城镇链到各自的 DarkSky 页面。",
     h1: "科罗拉多州光污染地图",
     eyebrow: "科罗拉多",
     lede: [
@@ -216,7 +216,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   florida: {
     metaTitle: "佛罗里达州光污染地图与暗空",
     metaDescription:
-      "佛罗里达州光污染地图对准半岛。迈阿密、坦帕、奥兰多和杰克逊维尔主导灯光。快照中的公园记录是基西米草原保护州立公园和大柏树。",
+      "打开佛罗里达州光污染地图。迈阿密、坦帕、奥兰多和杰克逊维尔集中了大部分灯光。基西米草原和大柏树链到各自的 DarkSky 页面。",
     h1: "佛罗里达州光污染地图",
     eyebrow: "佛罗里达",
     lede: [
@@ -262,7 +262,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   utah: {
     metaTitle: "犹他州暗夜地图与光污染地图",
     metaDescription:
-      "犹他州暗夜地图对准该州。瓦萨奇前沿是亮带。峡谷国家公园在快照里单独列出，其中天然桥的年份是 2007。它们和盐湖城不是同一种天空。",
+      "打开犹他州暗夜地图。瓦萨奇前沿是亮带。包括天然桥在内的峡谷公园链到各自的 DarkSky 页面。",
     h1: "犹他州暗夜地图",
     eyebrow: "犹他",
     lede: [
@@ -312,7 +312,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   oregon: {
     metaTitle: "俄勒冈州光污染地图与暗空",
     metaDescription:
-      "俄勒冈州光污染地图对准该州。威拉米特谷是亮带。快照里的俄勒冈内陆保护区和高沙漠公园在波特兰的东面和南面。",
+      "打开俄勒冈州光污染地图。威拉米特谷是亮带。俄勒冈内陆保护区和高原沙漠公园链到各自的 DarkSky 页面。",
     h1: "俄勒冈州光污染地图",
     eyebrow: "俄勒冈",
     lede: [
@@ -362,7 +362,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   michigan: {
     metaTitle: "密歇根州光污染地图与暗夜地图",
     metaDescription:
-      "密歇根州光污染地图对准该州。底特律和下半岛南部是亮区。快照中的条目是 Headlands、基威诺、比弗岛和 Dr. T.K. Lawless 县公园。",
+      "打开密歇根州光污染地图。底特律和下半岛南部是亮区。Headlands、基威诺、比弗岛和 Dr. T.K. Lawless 县公园链到各自的 DarkSky 页面。",
     h1: "密歇根州光污染地图",
     eyebrow: "密歇根",
     lede: [
@@ -412,7 +412,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   arizona: {
     metaTitle: "亚利桑那州暗夜地图与光污染地图",
     metaDescription:
-      "亚利桑那州暗夜地图对准该州。凤凰城和图森是亮的盆地。旗杆镇在这份快照里是暗空社区，年份 2001。那是照明记录，不是天空亮度计读数。",
+      "打开亚利桑那州暗夜地图。凤凰城和图森是亮的盆地。旗杆镇以及峡谷和沙漠公园链到各自的 DarkSky 页面。",
     h1: "亚利桑那州暗夜地图",
     eyebrow: "亚利桑那",
     lede: [
@@ -462,7 +462,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   minnesota: {
     metaTitle: "明尼苏达州光污染地图",
     metaDescription:
-      "明尼苏达州光污染地图对准该州。双子城是亮核。边界水域独木舟荒野和旅行者国家公园是快照条目。奎提科在加拿大，不列为明尼苏达。",
+      "打开明尼苏达州光污染地图。双子城是亮核。边界水域和旅行者国家公园链到各自的 DarkSky 页面。",
     h1: "明尼苏达州光污染地图",
     eyebrow: "明尼苏达",
     lede: [
@@ -508,7 +508,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   wisconsin: {
     metaTitle: "威斯康星州光污染地图",
     metaDescription:
-      "威斯康星州光污染地图对准该州。密尔沃基和麦迪逊是明亮都市。多尔县的 Newport State Park 是这份快照里唯一的威斯康星地点。",
+      "打开威斯康星州光污染地图。密尔沃基和麦迪逊是明亮都市。多尔县的 Newport State Park 链到它的 DarkSky 页面。",
     h1: "威斯康星州光污染地图",
     eyebrow: "威斯康星",
     lede: [
@@ -557,7 +557,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   ohio: {
     metaTitle: "俄亥俄州光污染地图",
     metaDescription:
-      "俄亥俄州光污染地图对准该州。克利夫兰、哥伦布和辛辛那提使图层上少有大片空白。Geauga 天文台公园和 Fry Family Park 是这份快照里仅有的俄亥俄记录。",
+      "打开俄亥俄州光污染地图。克利夫兰、哥伦布和辛辛那提让这个州大部分地区都有灯光。Geauga 天文台公园和 Fry Family Park 链到各自的 DarkSky 页面。",
     h1: "俄亥俄州光污染地图",
     eyebrow: "俄亥俄",
     lede: [
@@ -602,7 +602,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   washington: {
     metaTitle: "华盛顿州光污染地图",
     metaDescription:
-      "华盛顿州光污染地图对准该州。普吉特海湾的城市是亮的一侧。这份 DarkSky International 快照里没有落在华盛顿州境内的地点针。这是数据缺口，不是声称那里没有暗处。",
+      "打开华盛顿州光污染地图。普吉特海湾的城市是亮的一侧。这份名单里没有落在华盛顿州境内的 DarkSky International 地点。",
     h1: "华盛顿州光污染地图",
     eyebrow: "华盛顿州",
     lede: [
@@ -649,7 +649,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   parks: {
     metaTitle: "暗空公园、保护区、庇护地与社区",
     metaDescription:
-      "本站 DarkSky International 快照中的暗空公园和其他国际暗空地点名录，配有世界地图。类别和年份抄自该快照。没有等级档位。附近搜索靠地图，不是按你家排好的半径列表。",
+      "在世界地图上浏览暗空公园、保护区、庇护地、社区和城市夜空地点。每个名称都链到它的 DarkSky International 页面。",
     h1: "暗空公园",
     eyebrow: "名录",
     lede: [
@@ -707,7 +707,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   "milky-way": {
     metaTitle: "哪里能看到银河",
     metaDescription:
-      "能不能看到银河，取决于天空有多暗、月亮、云、季节，以及银河亮核升得有多高。这篇说明解释这些，并打开光污染地图。它不保证你一定能看见。",
+      "了解更暗的天空、偏低的月亮、晴朗天气和季节怎样一起影响银河，再打开光污染地图查看一个地点。",
     h1: "哪里能看到银河",
     eyebrow: "说明",
     lede: [
@@ -770,7 +770,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   "night-sky": {
     metaTitle: "没有光污染的夜空是什么样",
     metaDescription:
-      "没有光污染的夜空能看见银河和密密的星星。多数人生活在更亮的天空下。这一页用示意图和地图说明差别。它不是照片，也不保证零光污染。",
+      "看看更暗的夜空和明亮的城市夜空有什么差别，再在光污染地图上比较地点。",
     h1: "没有光污染的夜空",
     eyebrow: "说明",
     lede: [
@@ -832,7 +832,7 @@ export const zhGuides: Record<string, GuideCopy> = {
   "what-is": {
     metaTitle: "什么是光污染",
     metaDescription:
-      "光污染是人工光遮蔽夜空，或溢到不需要它的地方。这一页说明天光、眩光和光侵扰，以及本站地图实际计算的是哪一种近似，不能认证什么。",
+      "阅读光污染是什么，包括天光、眩光和溢到不需要之处的光，再打开地图比较地点。",
     h1: "什么是光污染",
     eyebrow: "说明",
     lede: [
@@ -853,7 +853,7 @@ export const zhGuides: Record<string, GuideCopy> = {
         heading: "人们怎么谈论测量，以及我们实际算什么",
         paragraphs: [
           "天文学家有时用极限星等描述天空，也就是人眼能看见的最暗恒星。本站不把模型换算成极限星等。它从 NOAA VIIRS 辐射出发，使用“关于数据”页写明的简化对数公式，再归入波特尔等级。用极限星等测量光污染是另一种观测。不要把我们的等级引用成那种观测。",
-          "九个等级写在波特尔等级地图上。首页是世界地图。搜索里带年份，例如 2025 年的地图，打开的仍是这个工具。我们发布的年度层是数据页说明的 2024 年合成。我们不会把它改称 2025。",
+          "九个等级写在波特尔等级地图上。首页是世界地图。搜索里如果写了年份，打开的仍是这个工具。年度层是数据页说明的那一层合成。我们不会按搜索词里的年份给它改名。",
         ],
       },
       {

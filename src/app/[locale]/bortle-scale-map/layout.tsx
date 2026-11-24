@@ -8,11 +8,11 @@ const PAGE_COPY = {
   en: {
     title: "Bortle Scale Map – Classes 1–9 for Any Location",
     description:
-      "Bortle scale map and class guide on one page. Click for an approximate Bortle class, and read what classes 1 through 9 mean. Modeled from VIIRS night lights, not a field measurement.",
+      "Find the Bortle class for a place and read what classes 1 through 9 mean. The class on the map is estimated from satellite night lights.",
   },
   zh: {
     title: "波特尔等级地图 – 1 到 9 级与所在位置",
-    description: "波特尔等级地图和等级说明在同一页。点击查看近似的波特尔等级，并阅读 1 到 9 级的含义。来自 VIIRS 夜间灯光的模型，不是实地测量。",
+    description: "查找一个地点的波特尔等级，并阅读 1 到 9 级分别是什么意思。地图上的等级由卫星夜间灯光估计。",
   },
 } as const;
 

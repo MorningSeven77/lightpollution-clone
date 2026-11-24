@@ -8,11 +8,11 @@ const PAGE_COPY = {
   en: {
     title: "When Are Golden Hours? Sunrise, Sunset and Blue Hour",
     description:
-      "See when golden hour and blue hour fall for a date and place, with the sun direction. A searched place uses a longitude time estimate and can be off by about an hour near a time-zone boundary.",
+      "See sunrise, sunset, golden hour, and blue hour for a date and place, and which way the light falls.",
   },
   zh: {
     title: "黄金时刻是什么时候？日出、日落与蓝调时刻",
-    description: "查看某个日期和地点的黄金时刻、蓝调时刻以及太阳方向。搜索地点用经度估算时区，在时区边界附近可能差大约一小时。",
+    description: "查看某个日期和地点的日出、日落、黄金时刻、蓝调时刻，以及光线从哪边来。",
   },
 } as const;
 

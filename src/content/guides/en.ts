@@ -7,7 +7,7 @@ export const enGuides: Record<string, GuideCopy> = {
   us: {
     metaTitle: "US Light Pollution Map – United States Night Lights",
     metaDescription:
-      "US light pollution map and dark sky map of the United States. The map opens on the country. City corridors and rural land are not the same sky, and the area-weighted national average is not a city reading.",
+      "Open the light pollution map on the United States. City corridors and rural land show different skies. State pages cover Texas, California, Colorado, and nine other states.",
     h1: "US light pollution map",
     eyebrow: "UNITED STATES",
     lede: [
@@ -27,8 +27,8 @@ export const enGuides: Record<string, GuideCopy> = {
         id: "average",
         heading: "Why a national average is a poor description of a visit",
         paragraphs: [
-          "Most of the land area of the United States is not a downtown. An area-weighted average is therefore pulled toward rural pixels. Use the figures next to this section only with that warning. They come from this site’s country table, which documents the shortcut formula. They are not a federal sky survey.",
-          "If you want a place to stand, use a state map or the dark sky parks directory. Those pages list only places whose coordinates are in our DarkSky International snapshot, with a link to the place page. They do not rank “the darkest town in America.”",
+          "Most of the land area of the United States is not a downtown. An area-weighted average would be pulled toward rural land, so this page does not lead with one national figure. The rankings page and the About and Data page explain the simplified conversion from NOAA VIIRS night lights. That conversion is not a sky-quality meter reading.",
+          "If you want a place to stand, use a state map or the dark sky parks directory. Those pages list DarkSky International places whose coordinates we have, with a link to each place page.",
         ],
       },
     ],
@@ -72,7 +72,7 @@ export const enGuides: Record<string, GuideCopy> = {
   texas: {
     metaTitle: "Texas Light Pollution Map & Texas Dark Sky Map",
     metaDescription:
-      "Texas light pollution map centered on the state. The Houston–Dallas–Austin–San Antonio band is the bright part; Big Bend and the plains parks are separate listings in our snapshot. The Austin, Texas night sky is a metro sky until you click a point outside it.",
+      "Open the Texas light pollution map. Houston, Dallas, Austin, and San Antonio form the bright band. Big Bend and Hill Country places are listed with links to their DarkSky pages.",
     h1: "Texas light pollution map",
     eyebrow: "TEXAS",
     lede: [
@@ -124,7 +124,7 @@ export const enGuides: Record<string, GuideCopy> = {
   california: {
     metaTitle: "California Light Pollution Map & Dark Sky Map",
     metaDescription:
-      "California light pollution map centered on the state. Coastal metros from San Diego through Los Angeles to the Bay Area dominate the bright pixels. Death Valley, Joshua Tree, and Anza-Borrego are the park listings in this snapshot.",
+      "Open the California light pollution map. Coastal cities from San Diego to the Bay Area are the bright side. Death Valley, Joshua Tree, and Anza-Borrego are listed with their DarkSky pages.",
     h1: "California light pollution map",
     eyebrow: "CALIFORNIA",
     lede: [
@@ -178,7 +178,7 @@ export const enGuides: Record<string, GuideCopy> = {
   colorado: {
     metaTitle: "Colorado Light Pollution Map & Colorado Night Sky",
     metaDescription:
-      "Colorado light pollution map for the Colorado night sky and dark sky Colorado searches. The Front Range is the bright corridor. Western and San Luis Valley listings in our snapshot are a separate click from Denver.",
+      "Open the Colorado light pollution map for the state’s night sky. The Front Range, including Denver, is the bright corridor. Western parks and towns are listed with their DarkSky pages.",
     h1: "Colorado light pollution map",
     eyebrow: "COLORADO",
     lede: [
@@ -232,7 +232,7 @@ export const enGuides: Record<string, GuideCopy> = {
   florida: {
     metaTitle: "Florida Light Pollution Map & Dark Sky Florida",
     metaDescription:
-      "Florida light pollution map centered on the peninsula. Miami, Tampa, Orlando, and Jacksonville dominate the lights. Kissimmee Prairie Preserve State Park and Big Cypress are the park records in this snapshot.",
+      "Open the Florida light pollution map. Miami, Tampa, Orlando, and Jacksonville hold most of the lights. Kissimmee Prairie and Big Cypress are listed with their DarkSky pages.",
     h1: "Florida light pollution map",
     eyebrow: "FLORIDA",
     lede: [
@@ -282,7 +282,7 @@ export const enGuides: Record<string, GuideCopy> = {
   utah: {
     metaTitle: "Utah Dark Sky Map & Light Pollution Map",
     metaDescription:
-      "Utah dark sky map centered on the state. The Wasatch Front is the bright corridor. Canyon country parks in our snapshot, including Natural Bridges in 2007, are separate from Salt Lake City.",
+      "Open the Utah dark sky map. The Wasatch Front is the bright band. Canyon parks, including Natural Bridges, are listed with their DarkSky pages.",
     h1: "Utah dark sky map",
     eyebrow: "UTAH",
     lede: [
@@ -336,7 +336,7 @@ export const enGuides: Record<string, GuideCopy> = {
   oregon: {
     metaTitle: "Oregon Light Pollution Map & Dark Sky Oregon",
     metaDescription:
-      "Oregon light pollution map centered on the state. The Willamette Valley is the bright corridor. The Oregon Outback sanctuary and the high-desert parks in this snapshot are east and south of Portland.",
+      "Open the Oregon light pollution map. The Willamette Valley is the bright corridor. The Oregon Outback and high-desert parks are listed with their DarkSky pages.",
     h1: "Oregon light pollution map",
     eyebrow: "OREGON",
     lede: [
@@ -390,7 +390,7 @@ export const enGuides: Record<string, GuideCopy> = {
   michigan: {
     metaTitle: "Michigan Light Pollution Map & Michigan Dark Sky Map",
     metaDescription:
-      "Michigan light pollution map centered on the state. Detroit and the southern Lower Peninsula are the bright area. Headlands, Keweenaw, Beaver Island, and Dr. T.K. Lawless County Park are the snapshot listings.",
+      "Open the Michigan light pollution map. Detroit and the southern Lower Peninsula are the bright area. Headlands, Keweenaw, Beaver Island, and Dr. T.K. Lawless County Park are listed with their DarkSky pages.",
     h1: "Michigan light pollution map",
     eyebrow: "MICHIGAN",
     lede: [
@@ -444,7 +444,7 @@ export const enGuides: Record<string, GuideCopy> = {
   arizona: {
     metaTitle: "Arizona Dark Sky Map & Light Pollution Map",
     metaDescription:
-      "Arizona dark sky map centered on the state. Phoenix and Tucson are the bright basins. Flagstaff is a Dark Sky Community with year 2001 in this snapshot, which is a lighting record, not a sky-meter reading.",
+      "Open the Arizona dark sky map. Phoenix and Tucson are the bright basins. Flagstaff and the canyon and desert parks are listed with their DarkSky pages.",
     h1: "Arizona dark sky map",
     eyebrow: "ARIZONA",
     lede: [
@@ -498,7 +498,7 @@ export const enGuides: Record<string, GuideCopy> = {
   minnesota: {
     metaTitle: "Minnesota Light Pollution Map",
     metaDescription:
-      "Minnesota light pollution map centered on the state. The Twin Cities are the bright core. Boundary Waters Canoe Area Wilderness and Voyageurs National Park are the snapshot listings. Quetico is in Canada and is not listed as Minnesota.",
+      "Open the Minnesota light pollution map. The Twin Cities are the bright core. Boundary Waters and Voyageurs are listed with their DarkSky pages.",
     h1: "Minnesota light pollution map",
     eyebrow: "MINNESOTA",
     lede: [
@@ -546,7 +546,7 @@ export const enGuides: Record<string, GuideCopy> = {
   wisconsin: {
     metaTitle: "Wisconsin Light Pollution Map",
     metaDescription:
-      "Wisconsin light pollution map centered on the state. Milwaukee and Madison are the bright metros. Newport State Park in Door County is the only Wisconsin place in this DarkSky International snapshot.",
+      "Open the Wisconsin light pollution map. Milwaukee and Madison are the bright metros. Newport State Park in Door County is listed with its DarkSky page.",
     h1: "Wisconsin light pollution map",
     eyebrow: "WISCONSIN",
     lede: [
@@ -598,7 +598,7 @@ export const enGuides: Record<string, GuideCopy> = {
   ohio: {
     metaTitle: "Ohio Light Pollution Map",
     metaDescription:
-      "Ohio light pollution map centered on the state. Cleveland, Columbus, and Cincinnati leave little empty land on the layer. Geauga Observatory Park and Fry Family Park are the only Ohio records in this snapshot.",
+      "Open the Ohio light pollution map. Cleveland, Columbus, and Cincinnati cover most of the state with light. Geauga Observatory Park and Fry Family Park are listed with their DarkSky pages.",
     h1: "Ohio light pollution map",
     eyebrow: "OHIO",
     lede: [
@@ -646,7 +646,7 @@ export const enGuides: Record<string, GuideCopy> = {
   washington: {
     metaTitle: "Washington Light Pollution Map",
     metaDescription:
-      "Washington light pollution map centered on the state. The Puget Sound cities are the bright side. This DarkSky International snapshot has no place pin inside Washington. That is a data gap, not a claim that no dark sites exist.",
+      "Open the Washington light pollution map. The Puget Sound cities are the bright side. This list has no DarkSky International place whose pin falls inside the state.",
     h1: "Washington light pollution map",
     eyebrow: "WASHINGTON",
     lede: [
@@ -697,7 +697,7 @@ export const enGuides: Record<string, GuideCopy> = {
   parks: {
     metaTitle: "Dark Sky Parks, Reserves, Sanctuaries & Communities",
     metaDescription:
-      "Directory of dark sky parks and other International Dark Sky Places in this site’s DarkSky International snapshot, with a world map. Categories and years are copied from that snapshot. Tiers are not. Near-me search is the map, not a sorted radius list.",
+      "Browse dark sky parks, reserves, sanctuaries, communities, and urban night sky places on a world map. Each name links to its DarkSky International page.",
     h1: "Dark sky parks",
     eyebrow: "DIRECTORY",
     lede: [
@@ -760,7 +760,7 @@ export const enGuides: Record<string, GuideCopy> = {
   "milky-way": {
     metaTitle: "Where to See the Milky Way",
     metaDescription:
-      "Where you can see the Milky Way depends on sky darkness, the Moon, clouds, season, and how high the bright galactic center is. This guide explains that and opens the light pollution map. It does not guarantee a view.",
+      "Learn when a darker sky, a low Moon, clear weather, and the season line up for the Milky Way, then open the light pollution map for a place.",
     h1: "Where to see the Milky Way",
     eyebrow: "GUIDE",
     lede: [
@@ -828,7 +828,7 @@ export const enGuides: Record<string, GuideCopy> = {
   "night-sky": {
     metaTitle: "What a Night Sky without Light Pollution Looks Like",
     metaDescription:
-      "A night sky without light pollution shows the Milky Way and thousands of stars. Most people live under a brighter sky. This page explains the difference with a schematic Bortle ladder and the map. It is not a photograph and not a zero-light guarantee.",
+      "See how a darker night sky differs from a bright city sky, then compare places on the light pollution map.",
     h1: "Night sky without light pollution",
     eyebrow: "GUIDE",
     lede: [
@@ -895,7 +895,7 @@ export const enGuides: Record<string, GuideCopy> = {
   "what-is": {
     metaTitle: "What Is Light Pollution?",
     metaDescription:
-      "Light pollution is artificial light that hides the night sky or spills where it is not needed. This page explains skyglow, glare, and light trespass, how this map measures a shortcut, and what it cannot certify.",
+      "Read what light pollution is, including skyglow, glare, and light that spills where it is not wanted, then open the map to compare places.",
     h1: "What is light pollution?",
     eyebrow: "GUIDE",
     lede: [
@@ -916,7 +916,7 @@ export const enGuides: Record<string, GuideCopy> = {
         heading: "How light pollution is talked about, and what we actually compute",
         paragraphs: [
           "Astronomers sometimes describe a sky by limiting magnitude, the faintest star a person can see. This site does not convert its model into a limiting magnitude. It starts from NOAA VIIRS radiance and applies the simplified logarithmic shortcut documented on the About & Data page, then bins that into a Bortle class. Light pollution measured by limiting magnitude is a different observation. Do not quote our class as if it were one.",
-          "The Bortle scale map is where the nine classes are written down. The homepage is the world map. A year in a search, such as a 2025 map, still opens this tool. The annual layer we publish is the 2024 composite described on the data page. We do not relabel it.",
+          "The Bortle scale map is where the nine classes are written down. The homepage is the world map. A year written into a search still opens this tool. The annual layer is the composite described on the data page. We do not retitle it to match the year in the search.",
         ],
       },
       {

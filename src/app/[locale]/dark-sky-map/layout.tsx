@@ -8,11 +8,11 @@ const PAGE_COPY = {
   en: {
     title: "Dark Sky Map – Worldwide Night-Sky Darkness",
     description:
-      "A worldwide dark sky map of night-sky darkness from satellite night lights. Compare places on one global map. Bortle class definitions stay on the Bortle scale map, and the United States has its own map.",
+      "Compare how dark the night sky looks around the world. Open the map, click a place, and read the darkness estimate.",
   },
   zh: {
     title: "暗夜地图 – 全球夜空黑暗程度",
-    description: "全球暗夜地图，用卫星夜间灯光比较各地夜空有多暗。波特尔等级说明在波特尔等级地图上，美国有单独的地图。",
+    description: "比较世界各地的夜空有多暗。打开地图，点击一个地点，查看黑暗程度的估计。",
   },
 } as const;
 

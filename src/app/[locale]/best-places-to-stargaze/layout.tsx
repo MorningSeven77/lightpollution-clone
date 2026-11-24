@@ -8,11 +8,11 @@ const PAGE_COPY = {
   en: {
     title: "Best Places to Stargaze Near You",
     description:
-      "Find places to stargaze near you from modeled night-sky darkness. This is our own spot search, not a separate product. State maps cover Texas, Colorado, and the other listed states.",
+      "Search darker places to stargaze around a town or a point you choose. State maps cover Texas, Colorado, and the other listed states.",
   },
   zh: {
     title: "最佳观星地点 – 查找附近观星点",
-    description: "按模型化的夜空黑暗程度查找附近观星地点。这是本站自己的地点搜索，不是另一个产品。州地图覆盖得克萨斯、科罗拉多和其他已列出的州。",
+    description: "围绕一个城镇或你选的地点，查找更暗的观星地方。州地图覆盖得克萨斯、科罗拉多和其他已列出的州。",
   },
 } as const;
 
